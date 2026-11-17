@@ -1,0 +1,24 @@
+# Private run files
+AGENT_PROMPT.md
+CLAUDE.md
+setup.sh
+STATE.md
+BLOCKED.md
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+
+# Raw and intermediate data (article-level text never goes public)
+data/raw/
+data/interim/
+logs/api_costs.csv
+logs/*.log
+logs/*.out
+
+# Any file holding article-level text
+*article_level*
+*articles_*.csv
+*articles_*.parquet
+*.jsonl
+deliverables/optional_hand_check_50.csv

@@ -1,0 +1,87 @@
+# **Measuring What Matters: Source Inventory**
+
+October 7, 2026 · Cayden Auyang
+
+The study draws on 24 official series (eight categories in three cities), six sources of public attention, three optional newspaper archives, and six core studies. Each entry says what the source measures, how it is produced, how current it is, what it gets wrong, and why it is relevant to this study. Backup indicators are listed in the methodology document.
+
+## **Public attention sources**
+
+News and search carry the main analysis; the four social platforms only feed the current-year snapshot.
+
+| Source | What it gives | Coverage and lag | Known biases and limits | Relevance |
+| :---- | :---- | :---- | :---- | :---- |
+| [GDELT Global Knowledge Graph 2.0](https://www.gdeltproject.org/data.html) | One record per online news article: source, places, themes, tone; machine-translated from 65 languages including Chinese | 19 Feb 2015 onward; updated every 15 minutes; queried through BigQuery; headlines stored only from 2020 | Source list grows over time and over-represents Western outlets ([ONS quality note](https://www.ons.gov.uk/peoplepopulationandcommunity/birthsdeathsandmarriages/deaths/methodologies/globaldatabaseofeventslanguageandtonegdeltdataqualitynote)); location tags unreliable below country level; my 1 to 7 Sep 2026 test found Hong Kong coverage concentrated in a few outlets and New York tagged at state level | News attention for H1 to H3, 2015 to 2026; the one source in this study with local news from all three cities in one format |
+| [Google Trends](https://support.google.com/trends/answer/4355213?hl=en) | Search interest scaled 0 to 100 within each request, from a sample of Google searches | 2004 onward; near real time; Hong Kong as a whole, the New York media market, and England for London | Relative, not absolute; values vary between pulls; a valid measure of concern for some issues and not others (Mellon, 2014); Google users only; the [official API](https://developers.google.com/search/apis/trends) is limited to approved testers and a 5-year window | Search attention for H1 to H3, 2004 to 2026; shows what people looked up, not what outlets chose to cover |
+| [YouTube Data API v3](https://developers.google.com/youtube/v3/determine_quota_cost) | Public comments on videos, searchable by publish date | Current; a daily quota limits calls, and searches cost far more than reading comments | Commenters are self-selected and drawn to controversy | Social snapshot: what residents say under local news videos in the latest 12 months |
+| [X API](https://docs.x.com/x-api/getting-started/pricing) | Public posts; recent search covers 7 days, full-archive search available on pay-per-use | \$0.005 per post read; 3 million reads a month cap | Users are not representative of residents; cost limits sample size | Social snapshot: public posts about each city's problems in the latest 12 months |
+| [Threads keyword search](https://developers.facebook.com/documentation/threads/keyword-search) | Public posts by keyword, with date filters back to July 2023 | Public search needs Meta app review; 2,200 queries a day | Approval not guaranteed; users skew young | Social snapshot, if Meta approves keyword search |
+| [LIHKG](https://en.wikipedia.org/wiki/LIHKG) | Hong Kong's largest local forum; threads readable without an account | Current and past threads; no official API | Users skew young and politically engaged; terms on automated access not yet confirmed; an earlier research tool ([LIHKGr](https://github.com/justinchuntingho/LIHKGr)) got around a reCAPTCHA, which this study will not do | Hong Kong social snapshot: residents discussing local problems in Cantonese |
+
+## **Optional pre-2015 news archives**
+
+GDELT's article data starts in 2015, so news before then needs one archive per city. These run only if time allows and are reported separately.
+
+| Source | What it gives | Coverage and access | Known biases and limits | Relevance |
+| :---- | :---- | :---- | :---- | :---- |
+| [Guardian Open Platform](https://open-platform.theguardian.com/) | Full text of Guardian articles | 1999 onward; free key, about 5,000 calls a day (from third-party documentation; the official page could not be loaded) | One national paper based in London, with its own editorial line | London news for 2005 to 2014, if time allows; reported separately |
+| [New York Times Archive API](https://developer.nytimes.com/docs/archive-product/1/overview) | Headline, abstract, and keywords per article; no full text | 1851 onward; about 5 requests a minute and 500 a day (third-party documentation) | One paper that covers the nation and the world as well as the city | New York news for 2005 to 2014 through its New York coverage; reported separately |
+| [WiseNews (Wisers)](https://www.hkpl.gov.hk/en/common/attachments/e-resources/e-databases/Wisenews_Webleaflet.pdf) | Archive of Hong Kong, mainland, Macau, and Taiwan newspapers | From 1998; needs a subscription or research access | Access not yet requested | Hong Kong news for 2005 to 2014, and a check on GDELT's narrow Hong Kong outlet list |
+
+## **Hong Kong official statistics**
+
+Five of Hong Kong's eight series are monthly back to 2005 or earlier; crime is annual before 2022, health is quarterly from 2013, and education is annual from 2012\.
+
+| Indicator | Method and coverage | Lag | Known biases and breaks | Relevance |
+| :---- | :---- | :---- | :---- | :---- |
+| Safety: [overall reported crime, HK Police](https://www.police.gov.hk/ppp_en/09_statistics/csc_2001_2013.html) | Crimes reported to police, whole territory; annual from 2001, monthly file covers 2022 to 2024 only | Not confirmed | Reported crime only; the 2023 rise was driven by online fraud; whether national security cases are included is not confirmed | Hong Kong's official side of H3, where attention and data are expected to split most; annual, so weaker evidence |
+| Economy: [unemployment rate, seasonally adjusted, C\&SD](https://www.censtatd.gov.hk/api/get.php?id=210-06101&lang=en&full_series=1) | General Household Survey, 3-month moving average; from 1981 | About 2.5 weeks | Smoothing delays turning points; seasonal-adjustment method changed in 2008 | The standard jobless measure, monthly since 1981; job searches have tracked official unemployment in past work |
+| Housing: [private domestic rental index, Rating and Valuation Dept](https://www.rvd.gov.hk/doc/en/statistics/his_data_3.xls) | Rents of private flats by size class; monthly from 1993 | 5 to 6 weeks; recent months provisional | Leaves out subdivided flats, where conditions are worst; nominal, and used as published | What renters pay each month; tests whether housing attention follows rents |
+| Transport: [fatal and serious road accidents, Transport Dept](https://www.td.gov.hk/datagovhk_tis/mttd-csv/en/table71_eng.csv) | Police-reported accidents by severity; monthly, CSV from 2013 and PDF reports from 2003 | 2 to 3 months | Latest months look incomplete; 2003 to 2012 must be extracted from PDFs | Monthly road danger back to 2003, the longest monthly transport series found for Hong Kong |
+| Environment: [NO2 and particulate concentrations, EPD](https://cd.epic.epd.gov.hk/EPICDI/air/station/?lang=_en) | Hourly readings at 15 general and 3 roadside stations; from 1990 | Not confirmed | Stations added over time; the public index changed in 2013, so raw concentrations are used | Raw pollution readings, unaffected by the 2013 index change; tests whether attention to air quality follows the readings |
+| Health: [specialist outpatient waiting time, Hospital Authority](https://data.gov.hk/en-data/dataset/hospital-hadata-sop-waiting-time) | Median and 90th-percentile wait for stable new cases, by cluster and specialty; quarterly, each value a 12-month window; from 2013 (all specialties from 2015\) | Quarterly | Nothing before 2013; overlapping windows smooth out change | Measures access to public hospital care, matching the codebook's Health definition; 2013 onward only |
+| Education: [HKDSE university entrance rate, HKEAA](https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Exam_Report/Examination_Statistics/dseexamstat24_3.pdf) | Share of day-school candidates meeting the minimum requirement; annual from 2012 | Results each July | Requirement changed in 2024; no comparable figure before 2012 | A yearly outcome for day-school HKDSE candidates; tests whether exam results move education attention |
+| Cost of Living: [Composite CPI, C\&SD](https://www.censtatd.gov.hk/api/get.php?id=510-60001&lang=en&full_series=1) | Household price survey, monthly; values from 1981 | 3 to 4 weeks | Includes rent, which is removed to avoid double-counting with Housing; periodic rebasing | Everyday inflation without rent, so Cost of Living and Housing never count the same price change |
+
+## **New York City official statistics**
+
+Seven of New York's eight series are monthly; crime starts in 2006 and subway performance in 2009, and graduation is annual. Prices are for the metro area, not the five boroughs.
+
+| Indicator | Method and coverage | Lag | Known biases and breaks | Relevance |
+| :---- | :---- | :---- | :---- | :---- |
+| Safety: [felony complaints, NYPD](https://data.cityofnewyork.us/resource/qgea-i56i.json) | Every complaint report, counted monthly by report date; from 2006 | About one quarter | Reported crime only; the historic and current-year files are joined each January | New York's official side of H3; most US adults have said crime was rising in years it fell (Gramlich, 2024\) |
+| Economy: [unemployment rate, seasonally adjusted, NYS DOL / BLS](https://data.ny.gov/resource/dh9m-5v4d.json) | Model-based estimate for the five counties; monthly from 1976 | About 3 weeks | Revised every year; COVID spike in 2020 | City jobless rate, monthly since 1976; job searches have tracked US unemployment closely (D'Amuri and Marcucci, 2017\) |
+| Housing: [people in DHS shelters, NYC DHS](https://data.cityofnewyork.us/resource/k46n-sa2m.json) | Daily shelter census from 2013; monthly before that from the [Coalition for the Homeless](https://www.coalitionforthehomeless.org/) worksheet back to 1983 | Next day | DHS system only; three sources joined; asylum-seeker arrivals dominate 2022 to 2024 | The city's most severe housing failure, counted monthly since 1983 |
+| Transport: [subway on-time performance, MTA](https://data.ny.gov/resource/f6rf-2a3t.json) | Share of trains reaching terminals on time; monthly from 2009 | About 1 month | Archive and current files joined at 2015; schedule changes move the measure | The reliability problem riders meet daily; monthly since 2009 |
+| Environment: [daily PM2.5 concentrations by county, EPA AirData](https://aqs.epa.gov/aqsweb/airdata/download_files.html) | Monitor readings for the five counties; from 1999 (the daily index, from 1989, is the backup) | Up to 6 months (files refresh twice a year) | June 2023 wildfire smoke is an outlier; monitors change over time | Fine particles, the pollutant most tied to health; 2023 wildfire smoke tests attention to a sudden spike |
+| Health: [deaths by month, CDC WONDER](https://wonder.cdc.gov/mcd.html) | Death certificates by county of residence; monthly from 1999 | Provisional weekly; recent months incomplete | Counts under 10 suppressed; COVID dominates 2020; measures outcomes, not access to care | A monthly health outcome for all five boroughs back to 1999; COVID tests attention to a real surge |
+| Education: [four-year graduation rate, NYC DOE](https://infohub.nyced.org/reports-and-policies/citywide-information-and-data/graduation-results) | Cohort graduation on the state method; annual from the class of 2005 | Annual | Exam waivers during 2020 to 2022 may have raised rates (to confirm) | The city's main yearly measure of high school outcomes |
+| Cost of Living: [CPI all items less shelter, NY metro, BLS](https://fred.stlouisfed.org/series/CUURA101SA0L2) | Price survey for the metro area; monthly from 1975 | About 2 weeks | Metro, not city; area boundaries redrawn in 2018 | Everyday inflation without housing, so it does not overlap with Housing |
+
+## **London official statistics**
+
+Seven of London's eight series are monthly; education is annual. There is no official London price index, so Cost of Living uses UK-wide inflation.
+
+| Indicator | Method and coverage | Lag | Known biases and breaks | Relevance |
+| :---- | :---- | :---- | :---- | :---- |
+| Safety: [recorded crime, Metropolitan Police](https://data.london.gov.uk/dataset/mps-recorded-crime-geographic-breakdown-exy3m) | Monthly offence counts by borough; from 2008, current categories from 2010 | About 1 month | Excludes the City of London; categories changed in 2019; recording system changed in Feb 2024 | London's official side of H3; monthly counts for every borough the Met covers |
+| Economy: [unemployment rate, London, ONS series YCNI](https://www.ons.gov.uk/employmentandlabourmarket/peoplenotinwork/unemployment/timeseries/ycni/lms) | Labour Force Survey, rolling 3 months; from 1992 | About 6 weeks | Survey response problems in 2023 and 2024; reweighting break in 2019; regional figures are noisy | The official London jobless rate; the claimant count backs it up where survey response fell |
+| Housing: [private rents, London, ONS](https://www.ons.gov.uk/economy/inflationandpriceindices/datasets/priceindexofprivaterentsukmonthlypricestatistics) | Rent index from 2005, joined to the current series from 2015 | About 3 weeks | Covers existing tenancies, so it lags new lets; two methods joined | What private renters pay; tests whether housing attention follows rents |
+| Transport: [killed or seriously injured road casualties, DfT](https://www.gov.uk/government/statistics/road-safety-data) | Police-reported collisions, counted monthly by date; from 1979 | Released yearly, 9 to 20 months behind | The Met moved to injury-based reporting in Nov 2016, which raised "serious" counts; severity-adjusted figures are used | Road deaths and serious injuries, monthly since 1979, adjusted for the 2016 recording change |
+| Environment: [NO2 at Marylebone Road and Bloomsbury, London Air Quality Network](https://api.erg.ic.ac.uk/AirQuality/Data/SiteSpecies/SiteCode=MY1/SpeciesCode=NO2/StartDate=2005-01-01/EndDate=2005-01-03/Json) | Hourly readings at one roadside and one background site; from 1997 and 1992 | Near real time | Two sites stand in for the city; Ultra Low Emission Zone expansions cut pollution in 2019, 2021, and 2023 | Two long-running sites, one roadside and one background; ULEZ expansions test whether attention follows a policy-driven fall |
+| Health: [waiting list share under 18 weeks, NHS England](https://www.england.nhs.uk/statistics/statistical-work-areas/rtt-waiting-times/) | Patients waiting for planned treatment, London region; monthly from Aug 2007 | About 6 weeks | Commissioning boundaries changed in 2013 and 2022; community services dropped from the count in Feb 2024 | The NHS's own 18-week standard for access to planned care, matching the codebook's waiting times |
+| Education: [Attainment 8, London, DfE](https://explore-education-statistics.service.gov.uk/data-catalogue/data-set/9e761bdf-fe02-4e1e-9d3d-b32dac9fa6ef) | Average GCSE score per pupil, by region; annual | Provisional in October, revised in February | Grading changed in 2017; teacher-assessed grades in 2020 and 2021; years before 2015/16 to confirm | The headline GCSE measure, published by region every year |
+| Cost of Living: [CPI annual rate, ONS series D7G7](https://www.ons.gov.uk/economy/inflationandpriceindices/timeseries/d7g7/mm23) | UK-wide price survey; monthly from 1989 | About 1 month | No London figure exists; includes rents | Stands in for London prices because no London index exists; London-only price changes are invisible to it |
+
+## **Core studies**
+
+Each study either sets a hypothesis or shapes a design choice. Full citations are in the methodology document.
+
+| Study | Finding | Relevance to this study |
+| :---- | :---- | :---- |
+| [Funkhouser (1973)](https://doi.org/10.1086/268060) | Compared 1960s news coverage with statistics on the same issues; coverage did not give a reliable picture of what was happening | Basis for H1: attention tracks conditions only weakly |
+| [Soroka (2006)](https://doi.org/10.1111/j.1468-2508.2006.00413.x) | UK coverage and opinion reacted more to economic bad news than to equal good news | Basis for H2: attention reacts more to worsening |
+| [Gramlich (2024), Pew Research Center](https://www.pewresearch.org/short-reads/2024/04/24/what-the-data-says-about-crime-in-the-us/) | In 23 of 27 Gallup surveys since 1993, at least 60% of US adults said crime was rising, while it fell over most of that period | Basis for H3: Safety shows the largest gap |
+| [Mellon (2014)](https://doi.org/10.1080/17457289.2013.846346) | Google search data measured issue salience well for some issues, such as the economy, and poorly for others | Search terms are fixed in advance and weak categories reported as weak |
+| [Gilardi, Alizadeh, and Kubli (2023)](https://doi.org/10.1073/pnas.2305016120) | A language model labeled text more accurately than crowd workers on most tasks tested | Supports AI labeling, but only after the hand-coded check |
+| [Hammond and Weidmann (2014)](https://doi.org/10.1177/2053168014539924) | Machine-coded locations in GDELT's event data are unreliable below the country level | News is filtered by local outlet, not by location tags alone |
+
