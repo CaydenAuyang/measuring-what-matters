@@ -18,6 +18,10 @@ This script adds two more token sources, both computed from saved files and neve
         checks_news, checks_search   the checks with p-values and sample sizes (results.json)
         runs_read_coverage, runs_by_rule_only   how many disconnection causes rest on an AI-read sample
                                of stories and how many on the rule alone (results.json, h3.runs)
+        without_covid_news_reading, without_covid_search_reading,
+        without_all_breaks_news_reading, without_all_breaks_search_reading
+                               where the H1 interval sits against zero in those two checks, in words
+                               ("sits above zero", "includes zero", "sits below zero"; results.json, checks)
 
 Because of these two extra sources, build the paper with this script, not with fill_template.py alone.
 
@@ -52,6 +56,25 @@ def f2(x, nd=2):
 
 def ci(d):
     return f"{f2(d['est'])} ({f2(d['ci_low'])} to {f2(d['ci_high'])})"
+
+def p_cell(h):
+    """A p-value for a table cell, never with more than three decimals. Uses the results file's own
+    wording (p_text, such as "p = 0.011" or "p < 0.001") when it has one. A bootstrap p cannot go below
+    one over the number of resamples plus one, so the smallest values print as "< 0.001"."""
+    t = h.get("p_text")
+    if isinstance(t, str) and t.strip():
+        return re.sub(r"^p\s*=?\s*", "", t.strip())
+    p = h.get("p_boot")
+    if not isinstance(p, (int, float)): return "n/a"
+    return "< 0.001" if p < 0.001 else f"{p:.3f}"
+
+def interval_reading(d):
+    """Where a 95% interval sits against zero, in words. None if there is no interval."""
+    if not isinstance(d, dict) or not isinstance(d.get("ci_low"), (int, float)) or not isinstance(d.get("ci_high"), (int, float)):
+        return None
+    if d["ci_low"] > 0: return "sits above zero"
+    if d["ci_high"] < 0: return "sits below zero"
+    return "includes zero"
 
 
 # ------------------------------------------------------------------ extra token sources
@@ -116,7 +139,7 @@ def checks_table(R, source):
         if not mm:
             return f"| {label} | not run | | | | | | | |"
         h1, h2 = mm["h1"], mm["h2"]
-        return (f"| {label} | {ci(h1)} | {f2(h1['p_boot'], 3)} | {h1['n_pairs']} | {h1['n_obs']:,} | {h1['n_eff_years']:.0f} | "
+        return (f"| {label} | {ci(h1)} | {p_cell(h1)} | {h1['n_pairs']} | {h1['n_obs']:,} | {h1['n_eff_years']:.0f} | "
                 f"{ci(h2['worse'])} | {ci(h2['better'])} | {ci(h2['diff'])} |")
     rows.append(row("Main model", m))
     for name, c in (R.get("checks") or {}).items():
@@ -148,6 +171,11 @@ def extra_sources(src):
         read = sum(1 for r in runs if "sample" in str(r.get("proposed_by", "")))
         paper["runs_read_coverage"] = read
         paper["runs_by_rule_only"] = len(runs) - read
+    # how the H1 interval sits against zero in the two checks that leave years out (results.json, checks.*.<source>.h1)
+    checks = R.get("checks") or {}
+    for name in ("without_covid", "without_all_breaks"):
+        for s in ("news", "search"):
+            paper[f"{name}_{s}_reading"] = interval_reading(((checks.get(name) or {}).get(s) or {}).get("h1"))
     return {"off": off, "paper": paper}
 
 

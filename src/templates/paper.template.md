@@ -16,9 +16,9 @@ Mentors: Mr. Qua and Mr. Lake. Independent study, fall 2026.
 
 ## Abstract
 
-<!-- FINAL PASS: Abstract. Once the final numbers exist (final second coder, second search download, full bootstrap), rewrite the three verdict sentences as plain prose in one direction, keep every number as a token, and keep the last two sentences about AI-only validation and narrow intervals. Remove the italic "Draft filled from" line above if it is no longer wanted. Target about 200 words. -->
+<!-- FINAL PASS: Abstract. Once the final numbers exist (final second coder, second search download, full bootstrap), rewrite the three verdict sentences as plain prose in one direction, keep every number as a token, keep the sentence on the slope without 2020 to 2022, and keep the last two sentences about AI-only validation and narrow intervals. Remove the italic "Draft filled from" line above if it is no longer wanted. Target about 200 words. -->
 
-Civic technology often treats news coverage and online activity as evidence of how a city is doing. This study tests that assumption for Hong Kong, New York City and London. Following a plan registered before any outcome data were pulled, it compares official statistics for eight problem categories with two measures of public attention: each category's share of local news coverage in GDELT ({{counts.news_first_month}} to {{counts.news_last_month}}) and its share of Google search interest ({{counts.search_first_month}} to {{counts.search_last_month}}). Every series is turned into yearly changes, and all city and category pairs are pooled in one model per source. An AI agent ran the study in one unattended session. An AI language model labeled {{counts.articles_labeled_main_panel_total|comma}} sampled articles from the main outlet panels, and a second AI language model checked the labels. The pooled slope of attention change on official change, in standard deviations, was {{main.news.h1.est}} for news (95% interval {{main.news.h1.ci_low}} to {{main.news.h1.ci_high}}) and {{main.search.h1.est}} for search ({{main.search.h1.ci_low}} to {{main.search.h1.ci_high}}). Verdict on H1, a positive but weak link: {{verdicts.h1_news}} for news, {{verdicts.h1_search}} for search. Verdict on H2, a stronger reaction to worsening than to improving: {{verdicts.h2_news}} for news, {{verdicts.h2_search}} for search. Verdict on H3, Safety showing the largest gap: {{verdicts.h3_news}} for news, {{verdicts.h3_search}} for search. No person checked the labels. In a test on unrelated made-up series, {{synthetic_tests.false_positive_check.intervals_that_wrongly_excluded_zero}} of {{synthetic_tests.false_positive_check.trials}} intervals wrongly excluded zero, so the intervals reported here are likely too narrow.
+Civic technology often treats news coverage and online activity as evidence of how a city is doing. This study tests that assumption for Hong Kong, New York City and London. Following a plan registered before any outcome data were pulled, it compares official statistics for eight problem categories with two measures of public attention: each category's share of local news coverage in GDELT ({{counts.news_first_month}} to {{counts.news_last_month}}) and its share of Google search interest ({{counts.search_first_month}} to {{counts.search_last_month}}). Every series is turned into yearly changes, and all city and category pairs are pooled in one model per source. An AI agent ran the study in one unattended session. An AI language model labeled {{counts.articles_labeled_main_panel_total|comma}} sampled articles from the main outlet panels, and a second AI language model checked a sample of {{text.validated_items_total}} of them. The pooled slope of attention change on official change, in standard deviations, was {{main.news.h1.est}} for news (95% interval {{main.news.h1.ci_low}} to {{main.news.h1.ci_high}}) and {{main.search.h1.est}} for search ({{main.search.h1.ci_low}} to {{main.search.h1.ci_high}}). Verdict on H1, a positive but weak link: {{verdicts.h1_news}} for news, {{verdicts.h1_search}} for search. Without 2020 to 2022 the news slope was {{checks.without_covid.news.h1.est}} ({{checks.without_covid.news.h1.ci_low}} to {{checks.without_covid.news.h1.ci_high}}), an interval that {{paper.without_covid_news_reading}}. Verdict on H2, a stronger reaction to worsening than to improving: {{verdicts.h2_news}} for news, {{verdicts.h2_search}} for search. Verdict on H3, Safety showing the largest gap: {{verdicts.h3_news}} for news, {{verdicts.h3_search}} for search. No person checked the labels. In a test on unrelated made-up series, {{synthetic_tests.false_positive_check.intervals_that_wrongly_excluded_zero}} of {{synthetic_tests.false_positive_check.trials}} intervals wrongly excluded zero, so the intervals reported here are likely too narrow.
 
 ## 1. Introduction
 
@@ -49,7 +49,7 @@ The plan tests H1 and H2 with one pooled model each, run for news and for search
 
 ## 3. Data and methods
 
-This section describes the method as it was carried out. Section 8 lists every difference from the plan.
+This section describes the method as it was carried out. Section 8 lists the differences from the plan.
 
 ### 3.1 Cities
 
@@ -86,7 +86,7 @@ Each compared category has a main indicator and a backup in each city, all from 
 
 {{paper.indicator_table}}
 
-Three differences from the plan matter most. London Health is missing because the NHS England statistics pages returned a browser challenge, and the rules for this run say to stop when a site blocks collection. New York Health uses deaths from all causes from an open CDC file that starts in {{off.nyc_health_main.first_period}}, because the planned source sits behind a data-use form. Hong Kong Health and Hong Kong Transport start later than planned.
+Three differences from the plan matter most. London Health is missing because the NHS England statistics pages returned a browser challenge, and the rules for this run say to stop when a site blocks collection. New York Health uses deaths from all causes from an open CDC file whose first month is {{off.nyc_health_main.first_period}}, because the planned source sits behind a data-use form. Hong Kong Health and Hong Kong Transport start later than planned.
 
 Every series is turned into a change from the same period a year earlier, in which a positive number means the problem got worse (Appendix C of the methodology). Counts, pollution levels and waiting times change in percent, computed as 100 times the natural log of the ratio. Rates, shares and scores change in points. For prices and rents, the 12-month rate is computed first and its yearly change is measured in points. Indicators that are better when higher have their sign reversed. Every break in the plan's breaks table is marked in the data, along with breaks the run found in the sources.
 
@@ -98,17 +98,15 @@ News attention comes from GDELT's Global Knowledge Graph (GDELT Project, 2026), 
 
 **Filters and duplicates.** Articles pass a city filter based on GDELT's location tags (Hong Kong and New York) or on the web address (London). Duplicates are removed by web address, and a London story that runs in several papers in one month counts once. Table 17 gives the exact readings.
 
-**Sample.** The pre-registered sample is up to 333 articles per outlet per month in Hong Kong and New York and up to 66 per paper in London, drawn with a fixed seed. Articles were labeled in rounds that add the same number for every outlet and month, and only complete rounds are used. This draft uses up to {{idx.caps_hk_nyc_london.0}} articles per outlet per month in Hong Kong and New York and up to {{idx.caps_hk_nyc_london.2}} in London. Table 3 gives the counts. Its count of official series includes any extra series the run built beyond the planned indicators.
+**Sample.** The pre-registered sample is up to 333 articles per outlet per month in Hong Kong and New York and up to 66 per paper in London, drawn with a fixed seed. Articles were labeled in rounds that add the same number for every outlet and month, and only complete rounds are used. This draft uses up to {{idx.caps_hk_nyc_london.0}} articles per outlet per month in Hong Kong and New York and up to {{idx.caps_hk_nyc_london.2}} in London. Table 3 gives the counts. Its count of official series covers the main and backup indicators that were built. The run also built {{counts.official_series_extra}} extra series that no test uses. They are in the dataset file and are not in that count.
 
 **Table 3.** What the study rests on.
 
 {{tables.counts}}
 
-<!-- FINAL PASS: Table 3. When this template was written, the count of official series (47) included two extra Hong Kong series the tests do not use (hk_safety_main_monthly and hk_environment_backup_monthly), while London Health main and backup are missing. The sentence above the table covers this. Drop that sentence if the count is changed to planned series only. -->
-
 **What the model reads.** GDELT stores headlines only from 2020. So that every year is labeled from the same inputs, an AI language model reads the outlet name, any headline words in the article's web address, and the first 30 GDELT theme tags. It never sees the article text. For an outlet with number-only addresses it reads theme tags alone. Of {{run.items_sampled_total|comma}} sampled items, {{run.items_no_input|comma}} had neither headline words nor theme tags and are left out.
 
-**Labeling.** The prompt holds the codebook and the tie-break rules word for word, plus a description of the inputs and examples of items that are not a civic problem. It was frozen before labeling began. The exact model, settings and prompt are in the labeling card (`data/public/labeling_card.md`).
+**Labeling.** The prompt holds the codebook and the tie-break rules word for word, plus a description of the inputs and examples of items that are not a civic problem. The prompt has not changed since 2026-11-17T21:00:35Z. Two test runs, of 200 and 2,000 Hong Kong items, used it before the full run. The exact model, settings and prompt are in the labeling card (`data/public/labeling_card.md`).
 
 **Index.** For each outlet and month, a category's share is its labeled articles divided by all labeled articles from that outlet, including those labeled not a civic problem. A city's attention share is the average of its outlets' shares, each outlet weighted equally. Shares cancel out the growth in GDELT's source list and the difference in size between cities. The negative-tone share, used in one check, counts only articles labeled negative.
 
@@ -116,7 +114,7 @@ News attention comes from GDELT's Global Knowledge Graph (GDELT Project, 2026), 
 
 Search attention comes from Google Trends (Google, 2026). Each category has one fixed set of search terms per city, listed in Appendix B of the methodology, in Traditional Chinese plus some English for Hong Kong and in English elsewhere. No term was changed after data were seen. The geography is Hong Kong as a whole, the New York media market, and England for London.
 
-Trends scales each request from 0 to 100, so every request includes the Economy set as an anchor. Each set is divided by Economy in its own request, and a category's share is its ratio divided by the sum of the twelve ratios. The requests cover web search from {{counts.search_first_month}} to {{counts.search_last_month}}. An AI agent downloaded the files from the Trends website. The plan called for three downloads on different days. The run took its downloads within one night. Downloads per request behind this draft: {{counts.search_downloads_per_request}}.
+Trends scales each request from 0 to 100, so every request includes the Economy set as an anchor. Each set is divided by Economy in its own request, and a category's share is its ratio divided by the sum of the twelve ratios. The requests cover web search from {{counts.search_first_month}} to {{counts.search_last_month}}. An AI agent downloaded the files from the Trends website. The browser profile it used was already signed in to a Google account, and the run itself did not sign in (Table 17). The plan called for three downloads on different days. The run took its downloads within one night. {{run.trends_note}} Downloads per request behind this draft: {{counts.search_downloads_per_request}}.
 
 A set that reads zero in more than 10% of months is reported as too sparse to test. It is not replaced, and it stays in the denominator. The sparse sets were: Hong Kong, {{paper.sparse_hk}}; New York, {{paper.sparse_nyc}}; England, {{paper.sparse_london}}. Google's charts note that its methods changed at the start of 2011, 2016 and 2022, and search changes in those years are marked as breaks.
 
@@ -128,7 +126,7 @@ Attention is matched to each official series at that series' own frequency: the 
 
 For news, the run computes this change on a matched panel (`logs/decisions.md`). Each outlet's share is compared with the same outlet a year earlier, and those changes are averaged across the outlets present in both periods. Without it, an outlet rejoining the panel would show up as a jump in every category.
 
-A pair is tested only if it has at least 24 matched months, 8 quarters or 5 years. The analysis code set this floor. Each period is flagged if it falls in 2020 to 2022, in a marked break of the official series, or in a marked break of the attention series (Hong Kong in 2019 and 2020, and the Google note years for search).
+A pair is tested only if it has at least 24 matched months, 8 quarters or 5 years. The analysis code set this floor. A check that leaves periods out keeps a pair that still has at least half that number. Each period is flagged if it falls in 2020 to 2022, in a marked break of the official series, or in a marked break of the attention series (Hong Kong in 2019 and 2020, and the Google note years for search).
 
 ### 3.7 The pooled model
 
@@ -148,17 +146,15 @@ Before the code touched real data, it was run on made-up series with known answe
 
 **Disconnection (H3).** For each pair, the share of periods in which attention and the official measure moved in opposite directions. Within each city the compared categories are ranked by that share, and H3 holds for a source if Safety ranks first in at least two cities. For monthly pairs the run also lists every stretch of six or more months in a row of opposite movement, and gives each one of the plan's five causes: the official measure changed how it counts, a real event drew coverage the indicator does not capture, attention followed a news cycle, the two measure different parts of the problem, or unclear. The run assigned causes by a fixed rule based on the marked breaks and a short list of events from the plan's breaks table. The plan also called for reading a sample of each period's coverage. For {{paper.runs_read_coverage}} of the stretches, an AI agent read a seeded sample of that period's stories and revised the cause where the sample pointed elsewhere. The rest have the rule alone. No person read the coverage, so every cause is labeled as proposed by AI, for Cayden to confirm.
 
-**Checks that the results hold.** The plan lists backup indicators, the COVID years and other breaks left out, official series aligned by release date, all listed outlets, and negative-tone share. Its outlet notes add Hong Kong without HK China News Agency and London without the seven borough papers whose volume jumped. The run added two exploratory rows. The labeled sample for the check with all listed outlets was: {{paper.check_sample}}.
+**Checks that the results hold.** The plan lists backup indicators, the COVID years and other breaks left out, official series aligned by release date, all listed outlets, and negative-tone share. Its outlet notes add Hong Kong without HK China News Agency and London without the seven borough papers whose volume jumped. Its breaks table asks for results before and after the Hong Kong outlet closures of 2021, which appear as two description rows. The run added {{text.exploratory_checks_n}} exploratory rows. The labeled sample for the check with all listed outlets was: {{paper.check_sample}}.
 
 The plan also describes a social media snapshot and an optional pre-2015 news extension. Neither feeds any result in this paper (Section 8).
 
 ### 3.10 Pre-registration
 
-The methodology, the outlet lists, the search terms and the indicator rules were committed to a public GitHub repository on November 17, 2026 (commit `e8d5f32`, tag `prereg-v1`, commit time {{run.prereg_utc}}), before any outcome data were pulled. The Internet Archive saved copies of the raw methodology file and the source inventory, and each copy matched the local file's SHA-256 hash. The record is in `deliverables/preregistration.md`, and the repository is at {{run.repository}}.
+The methodology, the outlet lists, the search terms and the indicator rules were committed to a public GitHub repository on November 17, 2026 (commit `e8d5f32`, tag `prereg-v1`, commit time {{run.prereg_utc}}), before any outcome data were pulled. The Internet Archive saved copies of the raw methodology file and the source inventory, and each copy matched the local file's SHA-256 hash. It also saved the proposal and the README. The record, including what happened with the github.com repository page itself, is in `deliverables/preregistration.md`. The repository is at {{run.repository}}.
 
 [CAYDEN TO CONFIRM: whether and when his mentors approved the plan]
-
-<!-- FINAL PASS: Pre-registration. Check deliverables/preregistration.md for the final Internet Archive status of the repository page and add one sentence here if it was saved. -->
 
 ## 4. Validation
 
@@ -166,33 +162,45 @@ The methodology, the outlet lists, the search terms and the indicator rules were
 
 The plan called for me to hand-code about 900 items, and for a classmate to code 150 of them. That did not happen in this run. Two AI language models labeled the same articles independently, and their agreement decides which categories are analyzed. This section reports agreement between two AI coders. It does not show that either coder matches a human reader. Nobody hand-coded any article.
 
-The second coder is an AI language model from a different model family than the first. It never sees the first coder's labels. It reads each article's real headline and opening lines, taken from the live page or the Internet Archive. It applies the same codebook and also records whether the article is really about the study city.
+The second coder is an AI language model from a different model family than the first. It never sees the first coder's labels. It reads each article's real headline and opening lines, taken from the live page or the Internet Archive. Where no page could be read, it reads the real headline alone (Section 4.2). It applies the same codebook and also records whether the article is really about the study city.
 
-### 4.2 The validation set and the rule
+### 4.2 The validation set and the rules
 
-For each city the run aimed for about 300 items from the main-panel sample (Table 4 gives the number scored). Each of the thirteen labels (the twelve categories and "not a civic problem") got at least 20 items, and the rest followed how often the first coder used each label. Items were spread across outlets and across three periods. If a page could not be fetched, the next candidate from the same category, in a fixed random order, took its place. Agreement is weighted back to the full sample.
+For each city the run drew about 300 items from the main-panel sample. The draw gave each of the thirteen labels (the twelve categories and "not a civic problem") at least 20 items, and the rest followed how often the first coder used each label. Within each label the draw was spread across outlets and across three periods. If a page could not be read, the next candidate from the same category, in a fixed random order, took its place.
 
-Two sites limited what the second coder could read (`logs/decisions.md`). The South China Morning Post's site blocked automated requests. For its items from 2020 onward the second coder read only the headline that GDELT stored, and its earlier items were replaced by other items. HK China News Agency's pages were gone from the live site, so Internet Archive copies were used where they exist.
+The threshold is the plan's. A category is analyzed in a city only if Cohen's kappa for that category is at least 0.61. A category that falls short gets one revision of its wording, a fresh sample and one more test. If it still falls short, it is dropped for that city.
 
-The rule is the plan's. A category is analyzed in a city only if Cohen's kappa for that category is at least 0.61. A category that falls short gets one revision of its wording, a fresh sample and one more test. If it still falls short, it is dropped for that city.
+The run added three scoring rules that the plan does not spell out. All three were set after provisional scores from the third AI pass had been seen and before the official second coder ran. A reader should know that, because rules chosen after a first look at scores can lean toward a result.
+
+1. **Which items count.** The 0.61 rule is applied to the validation items that remain in the main series after the headline-check rule (Section 4.4). In Hong Kong that is {{v.cities.hk.n_items}} of {{v.cities.hk.n_items_all}} items, with {{v.cities.hk.n_items_left_out_by_headline_rule}} left out. Leaving items out can take a label below 20 scored items. The count for every label is in `data/public/validation_report.md`, next to the kappa on all items.
+2. **What the second coder reads when no page can be read.** It tries the live page, then the Internet Archive. If neither can be read and the article is from 2020 on, it reads the real headline that GDELT stored, with no opening lines. Earlier items are replaced. Headline-only items in the scored set: {{v.cities.hk.headline_only_items}} in Hong Kong, {{v.cities.nyc.headline_only_items}} in New York City and {{v.cities.london.headline_only_items}} in London. The South China Morning Post's site answered automated requests with a challenge page, so the run stopped using that site and did not fetch its pages from anywhere else. HK China News Agency's pages are gone from the live site, and the Internet Archive holds few of them.
+3. **Weights.** Agreement is weighted on two margins: the first coder's category, in proportion to the labeled sample, and the outlet, in proportion to its weight in the attention index.
 
 ### 4.3 Agreement by category
 
 <!-- FINAL PASS: Validation. After the blind second coder has run (status "final", scored against "coder2"), delete the sentence that explains the two status words, check that all three cities appear in Table 4 and in the kept and dropped lists, and add one plain sentence on any category that was revised and retested (the detail is in data/public/validation_report.md). -->
 
-The status of these numbers is: {{text.validation_status}}. The scoring file records the pass they were scored against as `{{v.scored_against}}`, where `coder2` is the blind second coder and `thirdpass` is a stand-in pass by a third AI model, used before the second coder had run.
+The status of these numbers is: {{text.validation_status}}. {{run.second_coder_note}} The scoring file records the pass they were scored against as `{{v.scored_against}}`, where `coder2` is the blind second coder and `thirdpass` is a stand-in pass by a third AI model, used before the second coder had run.
 
 **Table 4.** Cohen's kappa between the two AI coders, by category and city, with the decision for each category.
 
 {{tables.validation_kappa}}
 
-Overall kappa was {{v.cities.hk.overall_kappa}} in Hong Kong (95% interval {{v.cities.hk.overall_ci_low}} to {{v.cities.hk.overall_ci_high}}), {{v.cities.nyc.overall_kappa}} in New York City ({{v.cities.nyc.overall_ci_low}} to {{v.cities.nyc.overall_ci_high}}) and {{v.cities.london.overall_kappa}} in London ({{v.cities.london.overall_ci_low}} to {{v.cities.london.overall_ci_high}}). Kappa on tone, in the same order, was {{v.cities.hk.tone_kappa}}, {{v.cities.nyc.tone_kappa}} and {{v.cities.london.tone_kappa}}. The negative-tone check depends on the tone labels.
+Overall kappa was {{v.cities.hk.overall_kappa}} in Hong Kong (95% interval {{v.cities.hk.overall_ci_low}} to {{v.cities.hk.overall_ci_high}}), {{v.cities.nyc.overall_kappa}} in New York City ({{v.cities.nyc.overall_ci_low}} to {{v.cities.nyc.overall_ci_high}}) and {{v.cities.london.overall_kappa}} in London ({{v.cities.london.overall_ci_low}} to {{v.cities.london.overall_ci_high}}). Kappa on tone, in the same order, was {{v.cities.hk.tone_kappa}}, {{v.cities.nyc.tone_kappa}} and {{v.cities.london.tone_kappa}}. The plan sets no threshold for tone. The negative-tone check in Table 13 depends on the tone labels, and where a city's tone kappa is under 0.61 that check is weak evidence for the city.
 
 - **Hong Kong.** Kept: {{text.kept_hk}}. Dropped: {{text.dropped_hk}}. Dropped among the eight compared categories: {{text.dropped_compared_hk}}.
 - **New York City.** Kept: {{text.kept_nyc}}. Dropped: {{text.dropped_nyc}}. Dropped among the eight compared categories: {{text.dropped_compared_nyc}}.
 - **London.** Kept: {{text.kept_london}}. Dropped: {{text.dropped_london}}. Dropped among the eight compared categories: {{text.dropped_compared_london}}.
 
 When a compared category is dropped in a city, that city's news pair for the category leaves every test. Search pairs are not affected, because search needs no labels.
+
+No Hong Kong item from before 2020 is in the scored set. The South China Morning Post's pages could not be read, GDELT stores no headline before 2020, and the other two Hong Kong outlets are left out of 2015 to 2019 (Section 4.4). So Hong Kong's labels for 2015 to 2019 were not validated at all.
+
+Table 4b shows which categories pass under simpler alternatives to the three scoring rules in Section 4.2.
+
+**Table 4b.** Categories that pass under other scoring rules (description).
+
+{{tables.validation_rule_variants}}
 
 ### 4.4 The city filter and the headline check
 
@@ -202,7 +210,7 @@ GDELT stores real page titles from 2020 onward. For a sample of 2020 to 2026 art
 
 The plan set a rule for this case. If theme-tag-only labels fall below 0.61, the outlets with number-only addresses are left out of 2015 to 2019. The outcome recorded by the run: {{v.headline_check.rule.text}}
 
-London's borough papers had number-only addresses for part of 2015 and 2016. They have headline words in every later year, so they stay in.
+Some of London's borough papers had number-only addresses for part of 2015 and 2016. The plan's rule is written for outlets, and these papers have headline words in every later year, so the run kept them (Table 17). Their labels for those months rest on theme tags alone and should be read with the Hong Kong result in mind.
 
 ### 4.5 Consistency checks, and what this section does not show
 
@@ -224,6 +232,8 @@ Every number in this section comes from `data/public/results.json`, generated at
 
 {{verdicts.h1_search_sentence}}
 
+These verdicts use every year. Section 5.6 reruns both models without 2020 to 2022, and each verdict should be read together with that row.
+
 The two models pool different pairs over different years, so their slopes are not directly comparable. Tables 6 and 7 fit the same model within each category and within each city. They are description. Each row rests on a few pairs, and no row is a test of H1.
 
 **Table 6.** The H1 slope within each category (description).
@@ -233,6 +243,12 @@ The two models pool different pairs over different years, so their slopes are no
 **Table 7.** The H1 slope within each city (description).
 
 {{tables.h1_by_city}}
+
+The plan said Hong Kong results would be reported by outlet group, because GDELT's Hong Kong coverage leans on a few outlets. Table 7b gives the category shares of each Hong Kong outlet. It is description.
+
+**Table 7b.** Hong Kong: category shares by outlet (description).
+
+{{tables.hk_by_outlet}}
 
 ### 5.2 H2: does attention react more to worsening?
 
@@ -260,7 +276,7 @@ Table 9 compares news with search. A positive lag means news moved after search.
 
 {{verdicts.h3_search_sentence}}
 
-Tables 10 and 11 give the share for every pair, with the number of periods in parentheses. Annual pairs rest on about ten periods, so one year moves their share a long way.
+Tables 10 and 11 give the share for every pair, with the number of periods in parentheses. A period in which either series did not change at all has no direction, so it is left out of the share. That is why some counts here are smaller than the period counts in Appendix Table A1. Annual pairs rest on about ten periods, so one year moves their share a long way.
 
 **Table 10.** Share of periods in which news attention and the official measure moved in opposite directions.
 
@@ -288,41 +304,39 @@ Of the 48 city, category and source pairs, {{text.pairs_tested}} could be tested
 
 ### 5.6 Checks that the results hold
 
-Table 13 reruns the H1 model and the H2 difference under each check. A cell marked "not run" means the check does not apply to that source or could not be computed. The two rows labeled exploratory were not in the plan. A check agrees with the main result when its slope has the same sign and its interval sits on the same side of zero. Where a check's interval includes zero and the main model's does not, the verdict depends on that choice. Appendix Tables A2 and A3 add p-values and sample sizes.
+Table 13 reruns the H1 model and the H2 difference under each check. A cell marked "not run" means the check does not apply to that source or could not be computed. The rows labeled exploratory were not in the plan. The rows that split Hong Kong at the 2021 outlet closures are description. A check agrees with the main result when its slope has the same sign and its interval sits on the same side of zero. Where a check's interval includes zero and the main model's does not, the verdict depends on that choice. Appendix Tables A2 and A3 add p-values and sample sizes.
+
+Without 2020 to 2022, the news slope was {{checks.without_covid.news.h1.est}} ({{checks.without_covid.news.h1.ci_low}} to {{checks.without_covid.news.h1.ci_high}}), and that interval {{paper.without_covid_news_reading}}. The search slope was {{checks.without_covid.search.h1.est}} ({{checks.without_covid.search.h1.ci_low}} to {{checks.without_covid.search.h1.ci_high}}), and that interval {{paper.without_covid_search_reading}}. With every other marked break month also left out, the news interval {{paper.without_all_breaks_news_reading}} and the search interval {{paper.without_all_breaks_search_reading}}. Where one of these intervals includes zero and the main interval does not, the H1 verdict for that source rests on the COVID years.
 
 **Table 13.** Checks that the results hold.
 
 {{tables.checks}}
 
-<!-- FINAL PASS: Checks. Add one or two plain sentences saying which checks changed a verdict, if any, using the rows of Table 13. -->
+<!-- FINAL PASS: Checks. The paragraph above Table 13 on 2020 to 2022 and the break months is filled by tokens. Add a plain sentence only if another row of Table 13 changes a verdict. -->
 
 ### 5.7 Current-year ranking (description)
 
-For each city, the eight compared categories are ranked twice: by how far the official indicator now sits from its own 2015 to 2019 average, and by the category's share of news over the latest twelve months. The Spearman rank correlation between the two orderings was {{text.ranking_rho_hk}} in Hong Kong, {{text.ranking_rho_nyc}} in New York City and {{text.ranking_rho_london}} in London, across {{ranking.hk.n_categories}}, {{ranking.nyc.n_categories}} and {{ranking.london.n_categories}} categories. The rankings are in Appendix Tables A5 to A7. A series with few values in 2015 to 2019 gives an unstable distance, and a category dropped in validation still shows an unvalidated news share.
-
-<!-- FINAL PASS: Ranking. Read each ranking table for implausible distances before quoting any of them. When this template was written, ranking_block in src/analysis.py selected official rows by role == "main", which for Hong Kong Safety mixes the extra monthly series hk_safety_main_monthly with the annual totals and gives a distance near minus 11 standard deviations. Selecting by series_id (city_category_main) would fix it. -->
+For each city, the eight compared categories are ranked twice: by how far the official indicator now sits from its own 2015 to 2019 average, and by the category's share of news over the latest twelve months. The Spearman rank correlation between the two orderings was {{text.ranking_rho_hk}} in Hong Kong, {{text.ranking_rho_nyc}} in New York City and {{text.ranking_rho_london}} in London, across {{ranking.hk.n_categories}}, {{ranking.nyc.n_categories}} and {{ranking.london.n_categories}} categories. The rankings are in Appendix Tables A5 to A7. The distance is measured in the spread of the series over 2015 to 2019. A series with few values in those years, or one that barely moved in them, has a very small spread, and that makes some distances very large. Read the distances as rough, and the rank correlations with them. A category dropped in validation still shows an unvalidated news share.
 
 ### 5.8 The four signal-only categories (description)
 
-Table 14 gives each signal-only category's mean share of local news in 2015 to 2019 and in 2023 to 2026, with its peak month. The plan called for naming the major events behind the peaks. The run reports the peak months and does not name events. A category dropped in validation for a city still appears in the table, and its row is not validated.
+Table 14 gives each signal-only category's mean share of local news in 2015 to 2019 and in 2023 to 2026, with its peak month. The plan called for naming the major events behind the peaks. For some rows an AI agent read a seeded sample of the peak month's headlines and wrote what the coverage was about. Those notes are in the last column. They are proposed by AI, for Cayden to confirm, and a blank cell means no note was written for that row. A category dropped in validation for a city still appears in the table, and its row is not validated.
 
 **Table 14.** Signal-only categories: share of local news (description).
 
 {{tables.signal_only_news}}
 
-<!-- FINAL PASS: Signal-only categories. Name the event behind each peak month only if a person has confirmed it. -->
+<!-- FINAL PASS: Signal-only categories. The last column of Table 14 holds event notes proposed by AI. Once a person has confirmed or changed them, drop the "for Cayden to confirm" wording in the sentence above. -->
 
 ## 6. Discussion
 
-<!-- FINAL PASS: Discussion. This section is neutral on purpose, because the numbers were provisional when it was written. After the final numbers exist: (1) say in plain prose what was found for H1, H2 and H3, using the verdict sentences; (2) say which checks in Table 13 changed a verdict; (3) add what the result means for OurCityHealth; (4) keep the paragraph on what the AI-only validation and the narrow intervals mean for how far to trust any verdict. Interpretation is Cayden's to write or confirm. -->
+<!-- FINAL PASS: Discussion. This section is short and neutral on purpose, because the numbers were provisional when it was written. After the final numbers exist: (1) say in plain prose what was found for H1, H2 and H3, using the verdict sentences; (2) keep the paragraph on the COVID years and say which other checks in Table 13 changed a verdict; (3) add what the result means for OurCityHealth; (4) keep the paragraph on what the AI-only validation and the narrow intervals mean for how far to trust any verdict. Interpretation is Cayden's to write or confirm. -->
 
-This section says what each possible outcome would mean and points to the verdicts in Section 5.
+**The verdicts.** H1, a positive but weak link: {{verdicts.h1_news}} for news and {{verdicts.h1_search}} for search. H2, a stronger reaction to worsening: {{verdicts.h2_news}} for news and {{verdicts.h2_search}} for search. H3, Safety showing the largest gap: {{verdicts.h3_news}} for news and {{verdicts.h3_search}} for search.
 
-**H1.** A verdict of supported for a source means attention in that source carries some information about conditions: when the official measure worsens, attention tends to rise. A small slope would still mean that most of the movement in attention comes from something else. A verdict of not supported means this design could not tell the link from zero. It does not show that there is no link. A verdict of failed means attention moved against the official measure. The verdicts were: {{verdicts.h1_news}} for news and {{verdicts.h1_search}} for search.
+**How to read them.** Supported means the whole 95% interval sat on the predicted side of zero. For H1 that says attention carries some information about conditions, and a small slope still means most of the movement in attention comes from something else. Not supported means this design could not tell the result from zero. It does not show that there is no link. Failed means the interval sat on the wrong side of zero. The H3 measure counts direction only, and it says nothing about which side is right.
 
-**H2.** A verdict of supported means attention registers decline more than recovery, as Soroka (2006) found for UK economic news. A verdict of not supported means the two reactions could not be told apart with this sample. The verdicts were: {{verdicts.h2_news}} for news and {{verdicts.h2_search}} for search.
-
-**H3.** A verdict of supported means crime is where attention and official counts part ways most often, in line with the survey evidence in Gramlich (2024). A verdict of not supported means another category showed the largest gap in most cities, and Tables 10 and 11 name it. The verdicts were: {{verdicts.h3_news}} for news and {{verdicts.h3_search}} for search. In both cases the measure counts direction only. It says nothing about which side is right.
+**The COVID years.** Without 2020 to 2022 the news interval {{paper.without_covid_news_reading}} and the search interval {{paper.without_covid_search_reading}} (Section 5.6). A verdict of supported that does not hold without those years describes the pandemic period more than ordinary years.
 
 **Disconnections.** Each long disconnection has more than one possible reading. The run's labels are a first pass, and they need a person who knows each city to confirm them.
 
@@ -345,21 +359,21 @@ The first seven limitations were stated in the plan.
 The run added these.
 
 - **AI did the labeling and the validation.** The kappa values in Section 4 measure agreement between two AI language models. The plan's central check, agreement with my own hand-coding, was not done.
-- **Theme-tag-only labels are weak.** In the headline check they agreed with real-headline labels at kappa {{v.headline_check.hk.theme_tags_only.kappa}}. The pre-registered rule removes the affected outlets from 2015 to 2019 only. HK China News Agency uses number-only addresses in every year, so its later labels still rest on theme tags alone. Table 13 includes a check without that outlet.
-- **Hong Kong 2015 to 2019 may rest on one outlet.** Whether the headline-check rule applied in this run: {{v.headline_check.rule.applied}}. Where it applied, Hong Kong's news series for those years is the South China Morning Post's Hong Kong section alone, and that outlet's items from before 2020 could not be put in the validation set.
-- **The labeled sample depends on the round reached.** The plan is up to 333 articles per outlet per month in Hong Kong and New York and 66 in London. This draft uses up to {{idx.caps_hk_nyc_london.0}} and {{idx.caps_hk_nyc_london.2}}.
+- **Three scoring rules were set late.** Which items count, what the second coder reads when no page can be read, and how agreement is weighted were all set after provisional scores from the third AI pass had been seen and before the official second coder ran (Section 4.2). Table 4b shows what the simpler rules would have kept.
+- **Theme-tag-only labels are weak.** In the headline check they agreed with real-headline labels at kappa {{v.headline_check.hk.theme_tags_only.kappa}}. The pre-registered rule removes the affected outlets from 2015 to 2019 only. HK China News Agency uses number-only addresses in every year, and Oriental Daily did through 2020 and for part of 2021. So theme-tag-only labels remain in the Hong Kong main series from 2020 on. Table 13 includes a check without HK China News Agency and an exploratory row built only from articles with headline words in the address.
+- **Hong Kong's early years are thin and were not validated.** {{v.headline_check.rule.text}} No Hong Kong item from before 2020 is in the scored validation set, and no South China Morning Post item from before 2020 could be validated at all, so the second coder never checked Hong Kong's labels for 2015 to 2019.
 - **Search data come from one night.** Downloads per request in this draft: {{counts.search_downloads_per_request}}. Downloads taken close together mostly repeat the same sample of searches. Several search sets also read "<1" in most months and carry little signal.
-- **Some official series are missing or short.** Missing: {{paper.main_missing}}. New York Health starts in {{off.nyc_health_main.first_period}}, so its yearly changes fall in or just after the COVID years.
+- **Some official series are missing or short.** Missing: {{paper.main_missing}}. New York Health's first month is {{off.nyc_health_main.first_period}}, so its yearly changes fall in or just after the COVID years.
 - **The intervals are likely too narrow.** On unrelated made-up series the bootstrap wrongly excluded zero in {{synthetic_tests.false_positive_check.intervals_that_wrongly_excluded_zero}} of {{synthetic_tests.false_positive_check.trials}} trials (Section 3.8). An interval that only just excludes zero should not be read as firm.
 - **Disconnection causes are a first pass.** Of {{text.runs_total}} causes, {{paper.runs_by_rule_only}} come from a fixed rule alone. For the rest an AI agent also read a seeded sample of stories. No person read the coverage.
 
 ## 8. Deviations from the pre-registered plan
 
-The plan is the methodology posted on November 17, 2026 (commit `e8d5f32`, tag `prereg-v1`). Tables 15 to 17 list every place where the study did something different. `deliverables/deviations.md` holds the same list with more detail.
+The plan is the methodology posted on November 17, 2026 (commit `e8d5f32`, tag `prereg-v1`). Tables 15 to 17 list the places where the study did something different. `deliverables/deviations.md` holds the full list with more detail.
 
 **Decided before the run.** The largest change is who checked the labels: a second AI language model in place of my hand-coding, and further AI passes in place of a classmate and of my own re-labeling. The pre-registration moved from the Open Science Framework in October to GitHub and the Internet Archive on November 17. The search downloads and the whole schedule were compressed into one session.
 
-**Decided during the run.** After the first labeling key hit a daily cap, I sent new instructions by message. The first coder changed to a small model from a different provider, and every item was relabeled so that one model labels the whole sample. The provider first chosen supplied the second coder instead. The prompt never changed.
+**Decided during the run.** After the first labeling key hit a daily cap, I sent new instructions by message. The first coder changed to a small model from a different provider, and every item was relabeled so that one model labels the whole sample. The provider first chosen supplied the second coder instead. The prompt stayed the same through the switch.
 
 **Forced by what the run found.** London Health is missing, New York Health comes from a different CDC file, and a small share of sampled items had nothing for the model to read.
 
@@ -367,23 +381,23 @@ The plan is the methodology posted on November 17, 2026 (commit `e8d5f32`, tag `
 
 | # | Planned | Done | Why |
 | :-- | :-- | :-- | :-- |
-| 1.1 | I hand-code about 900 items. Agreement between the AI labels and my hand-coding decides which categories are analyzed. | A second AI language model from a different model family codes the same validation set blind, from the real headline and opening lines. The sample design, kappa, the 0.61 threshold, one revision and the drop rule are as written. | The study was compressed into one run with nobody available to hand-code. This measures agreement between two AI coders. |
-| 1.2 | A classmate labels 150 of the same items. I re-label 50 items two weeks later. | A third AI pass by a different model codes the same items. The second coder re-labels 50 items in a fresh request. | Same reason. |
+| 1.1 | I was to hand-code about 900 items. Agreement between the AI labels and that hand-coding was to decide which categories are analyzed. | A second AI language model from a different model family codes the same validation set blind, from the real headline and opening lines, or from the real headline alone where no page could be read. The sample design, kappa, the 0.61 threshold, one revision and the drop rule are as written. Three scoring rules were added (Table 17). | The study was compressed into one run with nobody available to hand-code. This measures agreement between two AI coders. |
+| 1.2 | A classmate was to label 150 of the same items. I was to re-label 50 items two weeks later. | A third AI pass by a different model codes the same items. The second coder re-labels 50 items in a fresh request. | Same reason. |
 | 1.3 | Pre-registration on the Open Science Framework in October, after the mentors approve the plan. | Pre-registration on GitHub and the Internet Archive on November 17, 2026, before any outcome data. | Later than planned. [CAYDEN TO CONFIRM: date of mentor approval, if any] |
 | 1.4 | Each Trends request is downloaded on three different days and averaged. | Downloads taken within one night. Downloads per request in this draft: {{counts.search_downloads_per_request}}. | One-night run. |
 | 1.5 | Work spread over October 12 to November 20. | All stages ran in one session on November 17 and 18. | Compressed schedule. |
 | 2.1 | The first coder is a small model from the provider first chosen. | The first coder is a small model from a different provider. Every item was labeled by this one model. Items the earlier model had labeled were relabeled. | The first provider's key hit a daily cap (3.1). My instruction during the run. |
 | 2.2 | The second coder is a model from a different family than the first. | Still true. The second coder is a model from the provider first chosen for labeling, run blind after its daily quota reset. The third pass is a different model from that provider. | My instruction during the run. |
-| 2.3 | Model and prompt are frozen before the full run. | The prompt was frozen once and never changed. The model changed before the full run (2.1). The first 2,000 items were labeled first to measure cost: {{run.first2000_cost_usd|money}}, or {{paper.cost_per_1000_items|money}} per 1,000 items. The projected cost of the full sample was under the cap of ${{run.language_model_cap_usd}}, so the sample was not shrunk. | My instruction: measure the real cost per item first. |
+| 2.3 | Model and prompt are frozen before the full run. | The same prompt was used for two test runs and for the full run, and it did not change between them (Section 3.4). The model changed before the full run (2.1). The first 2,000 items were labeled first to measure cost: {{run.first2000_cost_usd|money}}, or {{paper.cost_per_1000_items|money}} per 1,000 items. The projected cost of the full sample was under the cap of ${{run.language_model_cap_usd}}, so the sample was not shrunk. | My instruction: measure the real cost per item first. |
 | 2.4 | Not in the plan. | The first coder was compared with a larger model from the same family on {{cmp.n}} of those items. Kappa was {{cmp.kappa_category}} on category and {{cmp.kappa_tone}} on tone. The rule set beforehand was to keep the smaller model at {{cmp.threshold}} or higher. The run kept the smaller model. | My instruction during the run. |
-| 2.5 | Not in the plan. | Every request stayed under 100,000 tokens. The largest in the cost test was {{run.largest_request_tokens|comma}}. All labeling used normal requests. No batch job was submitted, so nothing was billed twice. | My instructions during the run. |
+| 2.5 | Not in the plan. | Every request stayed under 100,000 tokens. The largest was {{run.largest_request_tokens|comma}} input tokens in the cost test and {{run.full_run_largest_request_tokens|comma}} in the full run. All labeling used normal requests. No batch job was submitted, so nothing was billed twice. | My instructions during the run. |
 | 3.1 | Bulk labeling through the first provider's key, with a $100 budget. | That key was on a free tier with a daily request cap. One model reached its cap partway through the Hong Kong sample. A replacement was started and then stopped when the instruction in 2.1 arrived. Neither set of labels is used in any index. Both are kept as cross-model comparisons. | Found in the throughput test. Paid access was not turned on, because that would have changed my cloud settings. |
-| 3.2 | The Internet Archive saves the repository page and the raw methodology file. | The raw methodology, source inventory, proposal and README were saved and checked against their SHA-256. The repository page returned an error on the first tries. The outcome of the retries is in `deliverables/preregistration.md`. | An Archive error for github.com pages. |
+| 3.2 | The Internet Archive saves the repository page and the raw methodology file. | The raw methodology and the source inventory were saved and checked against their SHA-256. The proposal and the README were also saved. The repository page returned an error on the first tries. The outcome of the retries is in `deliverables/preregistration.md`. | An Archive error for github.com pages. |
 | 3.3 | London Health: share of the waiting list waiting under 18 weeks, with A&E four-hour performance as the backup. | Both are missing. London Health has no official series, so that pair is not tested. | The NHS England statistics pages returned a browser challenge. The rules for this run say to stop when a site blocks collection. No open-portal copy was found. |
 | 3.4 | New York Health: deaths of city residents by month from CDC WONDER, from 1999. | Deaths from all causes occurring in New York City, from the CDC's open provisional file, from {{off.nyc_health_main.first_period}}. | CDC WONDER requires accepting a data-use agreement on a web form, which the run does not do. |
 | 3.5 | The model reads the same inputs for every outlet. | True, but {{run.items_no_input|comma}} of {{run.items_sampled_total|comma}} sampled items had no headline words and no theme tags. They could not be labeled and are left out of the shares. | GDELT recorded no themes for them. |
 
-**Official indicators.** Table 16 lists each official series that differs from the methodology's tables. Full notes are in `data/interim/official/`.
+**Official indicators.** Table 16 lists each official series that differs from the methodology's tables. Notes on every series are in `data/public/official_series_meta.json` and in `deliverables/source_inventory_v2.md`.
 
 **Table 16.** Official indicators: differences from the methodology's tables.
 
@@ -410,6 +424,7 @@ The plan is the methodology posted on November 17, 2026 (commit `e8d5f32`, tag `
 | London Education, main | Attainment 8 from 2015/16. | School years ending {{off.london_education_main.first_period}} to {{off.london_education_main.last_period}}. The first three years come from a London Datastore workbook of DfE figures. The latest year is provisional. | Source coverage. |
 | London backups | Temporary accommodation, Underground lost customer hours, PM2.5 at the same sites, absence rate. | Temporary accommodation has some empty quarters. Lost customer hours run {{off.london_transport_backup.first_period}} to {{off.london_transport_backup.last_period}}. PM2.5 uses a different instrument code at Marylebone Road and runs {{off.london_environment_backup.first_period}} to {{off.london_environment_backup.last_period}}. The absence rate lacks one school year. | Source coverage. |
 | London Cost of Living, backup | None exists. | None. | As the methodology says. |
+| Later first periods | Hong Kong Economy from 1981, Hong Kong Environment from 1990, London Environment from 1992. | First periods as built: {{off.hk_economy_main.first_period}}, {{off.hk_environment_main.first_period}} and {{off.london_environment_main.first_period}}. | The statistics office's open file and the publisher's monthly averages start later than the plan's tables say. The London files were fetched from the year the search data begin. |
 
 **Judgment calls.** Table 17 records the reading the run took where the plan left a detail open. Three more choices sit in the analysis code and are described in Section 3: the matched panel, the minimum number of matched periods, and the rule that reads the verdicts.
 
@@ -429,14 +444,27 @@ The plan is the methodology posted on November 17, 2026 (commit `e8d5f32`, tag `
 | Sample for the check with all listed outlets | The same budget of 1,000 a month split equally over every listed outlet: 41 per outlet per month in Hong Kong and London, 50 in New York. |
 | Theme tags sent to the model | The first 30 different tags in order of first appearance. |
 | Poster size | The poster board holds at most 16 letter-size pages laid flat, so the poster kit is 16 pages and not the 18 to 24 first aimed for. This does not affect the paper. |
+| Which validation items the 0.61 rule uses | Items that remain in the main series after the headline-check rule. Kappa on every validation item is in the validation report. Set after provisional scores from the third AI pass had been seen and before the official second coder ran. |
+| Validation text when no page can be read | The live page, then the Internet Archive. If neither can be read and the article is from 2020 on, the second coder reads the real headline that GDELT stored, headline only. Earlier items are replaced. One site challenged automated requests, so the run stopped using it and did not fetch its pages from anywhere else. Set at the same point as the rule above. |
+| Validation weights | Two margins: the first coder's category, in proportion to the labeled sample, and the outlet, in proportion to its weight in the attention index. Set at the same point as the rule above. |
+| Browser used for Google Trends | The browser profile was already signed in to a Google account. The run did not sign in. Google Trends is open to visitors who are not signed in. Whether a signed-out visitor gets the same numbers was not tested. |
+| London papers with number-only addresses | Some London papers had number-only addresses for part of 2015 and 2016. The headline-check rule is written for outlets, and these papers have headline words in every later year, so they were kept. |
+| Minimum periods inside a check | A check that leaves periods out keeps a pair that still has at least half the minimum number of periods. |
+| p-values | From the bootstrap: twice the smaller share of resampled slopes on either side of zero. |
+| Release-date check | Each official series is shifted by its approximate publication lag in whole months. |
+| Causes of disconnections | Proposed by a fixed rule from the marked breaks and a short list of named events. For some stretches an AI agent also read a seeded sample of that period's headlines. |
+| Events at attention peaks | For some rows of Table 14 an AI agent read a seeded sample of the peak month's headlines and wrote what the coverage was about. |
+| Current-year ranking | Each main indicator's mean over its latest 12 months, or its latest value for a quarterly or annual series, is compared with its own 2015 to 2019 mean, in 2015 to 2019 standard deviations. Price indices use the 12-month rate. |
+| Effective sample size | Matched periods divided by the periods in a year, summed over pairs. |
+| Checks added by the run | The rows labeled exploratory in Table 13. |
 
-<!-- FINAL PASS: Deviations, items cut or still open. Section 6 of deliverables/deviations.md was still pending when this template was written. Once it is complete, replace the paragraph below with its rows in prose: the labeling round reached, the validation outcome and categories dropped, the headline check and its effect on Hong Kong 2015 to 2019, the social media snapshot, and the pre-2015 news extension. Also add the items this paper already discloses if they are not there yet: disconnection causes were assigned by rule, with an AI-read sample of stories for only some stretches and no person reading any coverage, the events behind the signal-only peaks were not named, and the analysis code set the minimum number of matched periods and the verdict cutoffs. -->
+<!-- FINAL PASS: Deviations, outcomes and items cut. Check the paragraph below against section 6 of deliverables/deviations.md once the final numbers exist (the one revision, the search downloads, the Internet Archive copy of the repository page). -->
 
-**Items cut or still open.** Items cut or left open at the end of the run are listed in section 6 of `deliverables/deviations.md`, including the social media snapshot and the optional pre-2015 news extension. No result in this paper uses social media data or pre-2015 news.
+**Outcomes and items cut.** Section 6 of `deliverables/deviations.md` lists the outcomes that changed what is analyzed: the categories dropped in validation (Section 4.3), the headline check and its effect on Hong Kong (Section 4.4), the number of search downloads (Section 3.5) and the missing London Health pair. Two parts of the plan were cut. The social media snapshot and the optional pre-2015 news extension need API keys, logins or a subscription that the run did not have. No result in this paper uses social media data or pre-2015 news.
 
 ## 9. AI-use disclosure
 
-An AI agent ran the whole pipeline of this study in one unattended session on November 17 and 18, 2026. It posted the pre-registration, collected the official statistics, queried GDELT, downloaded the Google Trends files, drew the news sample and wrote the analysis code. An AI language model labeled every sampled article. A second AI language model from a different model family validated those labels, and further AI passes served as consistency checks. The agent proposed the causes of the disconnections. It made the figures and tables, and it drafted this paper. No person reviewed the labels, the data or the numbers before this draft was built. The exact model names, settings and prompts are in the labeling card (`data/public/labeling_card.md`) and in the AI-use log that goes with this paper.
+An AI agent ran the whole pipeline of this study in one unattended session on November 17 and 18, 2026. It posted the pre-registration, collected the official statistics, queried GDELT, downloaded the Google Trends files, drew the news sample and wrote the analysis code. An AI language model labeled every sampled article. A second AI language model from a different model family checked a sample of those labels, and further AI passes served as consistency checks. The agent proposed the causes of the disconnections. It made the figures and tables, and it drafted this paper. No person reviewed the labels, the data or the numbers before this draft was built. The exact model names, settings and prompts are in the labeling card (`data/public/labeling_card.md`) and in the AI-use log that goes with this paper.
 
 The pre-registered plan states that the research question, the codebook, the indicator choices, the index design and the interpretation are mine.
 

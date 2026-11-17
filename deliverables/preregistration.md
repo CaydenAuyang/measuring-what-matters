@@ -18,7 +18,9 @@ The study plan was made public and timestamped before any outcome data were coll
 | `spec/methodology.md` at the commit | https://web.archive.org/web/20261117203259/https://raw.githubusercontent.com/CaydenAuyang/measuring-what-matters/e8d5f32e0c64a43b752d27fb76c4f70a099cf3a6/spec/methodology.md | Loads. SHA-256 matches the local file. |
 | `spec/methodology.md` on the main branch | https://web.archive.org/web/20261117203305/https://raw.githubusercontent.com/CaydenAuyang/measuring-what-matters/main/spec/methodology.md | Loads. SHA-256 matches the local file. |
 | `spec/source_inventory.md` at the commit | https://web.archive.org/web/20261117203327/https://raw.githubusercontent.com/CaydenAuyang/measuring-what-matters/e8d5f32e0c64a43b752d27fb76c4f70a099cf3a6/spec/source_inventory.md | Loads. SHA-256 matches the local file. |
-| Repository page | PENDING_REPO_PAGE | The Archive returned error 523 on the first four tries. A retry job is running. See `logs/archive_prereg.log`. |
+| `spec/fall_proposal.md` at the commit | https://web.archive.org/web/20261117203828/https://raw.githubusercontent.com/CaydenAuyang/measuring-what-matters/e8d5f32e0c64a43b752d27fb76c4f70a099cf3a6/spec/fall_proposal.md | Loads. SHA-256 matches the local file. |
+| `README.md` at the commit | https://web.archive.org/web/20261117203854/https://raw.githubusercontent.com/CaydenAuyang/measuring-what-matters/e8d5f32e0c64a43b752d27fb76c4f70a099cf3a6/README.md | Loads. SHA-256 matches the committed file. |
+| Repository page (github.com) | Not saved | The Archive returned error 523 for the github.com page on every try over more than two hours. See `logs/archive_prereg.log`. The raw files above carry the same content and the commit hash is in their addresses. |
 
 ## SHA-256 of each spec file
 
@@ -27,6 +29,7 @@ The study plan was made public and timestamped before any outcome data were coll
 | `spec/methodology.md` | `3b244e0f7ef3828832e1e0bee731729784d3710d1666beff9b20fb895827b5d9` |
 | `spec/source_inventory.md` | `da7932cf19fc7c328076fe7db6d5bd55843714b56a738377368fb4ecd157d5bf` |
 | `spec/fall_proposal.md` | `7234354686853d56dbc6d4ea66a8ae1dc0742dea0405add44ab2f3994545237d` |
+| `README.md` (as committed) | `b577cb7b0e6616eff0c9fdf0b23ca0efef84204695ef5a199b64cd459be20c4b` |
 
 ## What this does and does not show
 

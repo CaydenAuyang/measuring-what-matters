@@ -2,7 +2,7 @@
 
 This card records the model and the prompt used to label every sampled news article.
 
-The prompt was frozen at 2026-11-17T21:07Z, before any labeling, and has not changed. The model changed twice before the full run, for the reasons under "How the first coder was chosen". This version of the card was written at 2026-11-17T21:50:11Z. No index or result had been computed from any label at that point.
+The prompt has not changed since 2026-11-17T21:00:35Z. Two test runs, of 200 and 2,000 Hong Kong items, used it before the first full run. One earlier test with a different output instruction failed on a settings error and produced no labels. The model changed twice before the full run, for the reasons under "How the first coder was chosen". This version of the card was written at 2026-11-17T21:50:11Z. No index or result had been computed from any label at that point.
 
 ## First coder (labels every sampled article)
 
@@ -18,6 +18,17 @@ The prompt was frozen at 2026-11-17T21:07Z, before any labeling, and has not cha
 | Prompt version | `news-v1` |
 | SHA-256 of the system prompt | `5ca9781e7a0012e91f78cb8b940f49d5660fcf73947efbc7995cbdcb5f17be15` |
 | Code | `src/codebook.py` (prompt), `src/labeler_claude.py` (runner), `src/textprep.py` (headline words from addresses) |
+
+## The full run
+
+| Measure | Value |
+| :-- | :-- |
+| Items labeled | 429,082 of 429,084 with something to read (2 could not be labeled) |
+| Requests in the full run (after the first 2,000 items) | 8,567 |
+| Largest request | 26,830 input tokens |
+| Cost of the full run | $26.71 |
+| Time | 27 minutes |
+| Refusals | 0 |
 
 ## How the first coder was chosen
 
@@ -148,4 +159,8 @@ The category table and the four tie-break rules are copied from `spec/methodolog
 | Third pass (stand-in for the classmate's 150 items) | Gemini, `gemini-3.1-flash-lite` | The same real headline and opening lines |
 | Re-label of 50 items | The second coder, in a fresh request | The same |
 
-The second coder's instructions are in `src/coder2_prompt.md`.
+The second coder's instructions are in `src/coder2_prompt.md`. Settings for the second coder and the third pass: temperature 0, `thinkingLevel: minimal`, 25 items per request, JSON array output, run by `src/coder2_gemini.py`.
+
+What the second coder reads, in order: the live page, then the Internet Archive copy. If neither can be read and the article is from 2020 on, it reads the real headline that GDELT stored, without opening lines. One site (scmp.com) answered automated requests with a challenge page. The run stopped using that site and did not fetch its pages from anywhere else, so its items use the stored headline.
+
+The version fields the two providers list for the models named in this card are saved in `data/public/model_versions.json`.

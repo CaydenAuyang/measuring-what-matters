@@ -13,7 +13,7 @@
 ## Sources
 
 - **News:** GDELT Global Knowledge Graph 2.0, queried on BigQuery ({{run.bigquery_tb_billed}} TB billed in total, about ${{run.bigquery_cost_usd}}). {{counts.gdelt_rows_listed_outlets|comma}} records from {{counts.outlets_listed_total}} listed outlets. {{counts.articles_after_city_filter|comma}} articles left after the city filters and duplicate removal.
-- **Search:** Google Trends, downloaded from the website as CSV files. {{counts.search_requests}} requests, {{counts.search_downloads_per_request}} download(s) of each.
+- **Search:** Google Trends, downloaded from the website as CSV files. {{counts.search_requests}} requests. {{run.trends_note}}
 - **Official statistics:** government and official bodies in each city. Addresses for every series are in `official_series_meta.json`.
 
 ## How the news shares were made
@@ -26,7 +26,7 @@
 
 ## Validation
 
-- Second coder: `gemini-3.5-flash-lite` (Google Gemini API), blind to the first coder, reading each article's real headline and opening lines from the live page or the Internet Archive.
+- Second coder: `gemini-3.5-flash-lite` (Google Gemini API), blind to the first coder, reading each article's real headline and opening lines from the live page or the Internet Archive, or the stored headline alone where no page could be read. {{run.second_coder_note}}
 - Third pass: `gemini-3.1-flash-lite`, same text.
 - Status of the numbers below: {{text.validation_status}}.
 

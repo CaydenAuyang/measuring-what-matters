@@ -119,14 +119,19 @@ def derived(src):
             C[s]["h1_categories_below_zero"] = join_words(groups["is below zero"])
             C[s]["h1_categories_not_tested"] = join_words([CATEGORY_NAMES.get(k, k) for k in COMPARED if k not in by_cat])
 
-    # ---- validation: how many category checks reached the threshold, counted the way the poster
-    # counts them (validation_summary.json: cities.*.categories.*.pass, "not a civic problem" included)
+    # ---- validation: how many category checks reached the threshold, counted exactly the way
+    # src/poster.py counts them for card C1: the twelve categories in each city ("not a civic problem"
+    # is reported but is not a category the 0.61 rule can drop), and a category counts as passed when
+    # it is in the city's "kept" list (so a category kept after its one revision counts as kept).
     V = src["v"]
     n_total = n_passed = 0
     for city in (V.get("cities") or {}).values():
-        for e in (city.get("categories") or {}).values():
-            if not isinstance(e, dict): continue
-            passed = e.get("pass")
+        if not isinstance(city, dict): continue
+        kept, dropped = city.get("kept"), city.get("dropped")
+        use_lists = isinstance(kept, list) and isinstance(dropped, list)
+        for lab, e in (city.get("categories") or {}).items():
+            if not isinstance(e, dict) or lab == "not_civic": continue
+            passed = (lab in kept) if use_lists else e.get("pass")
             if passed is None and is_num(e.get("kappa")) and is_num(V.get("threshold")):
                 passed = e["kappa"] >= V["threshold"]
             if passed is None: continue
@@ -134,13 +139,18 @@ def derived(src):
     if n_total:
         C["validation"] = {"checks_total": n_total, "checks_passed": n_passed}
 
-    # ---- disconnections of six months or more, counted by proposed cause (h3.runs)
+    # ---- disconnections of six months or more, counted by proposed cause (h3.runs), and by direction:
+    # worsening_falling counts every run where the official measure worsened while attention's share fell,
+    # whatever cause was proposed for it (some of those runs carry a cause other than "news cycle")
     runs = (R.get("h3") or {}).get("runs")
     if isinstance(runs, list):
         C["runs"] = {v: 0 for v in CAUSE_KEYS.values()}
+        C["runs"]["worsening_falling"] = 0
         for r in runs:
             key = CAUSE_KEYS.get(r.get("proposed_cause"))
             if key: C["runs"][key] += 1
+            if r.get("official_direction") == "worsening" and r.get("attention_direction") == "falling":
+                C["runs"]["worsening_falling"] += 1
     return C
 
 

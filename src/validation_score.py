@@ -102,6 +102,17 @@ def city_block(city, role, tag="v1"):
                   "short_categories": fetch.get("short_categories"), "fetch_rate_by_outlet_period": fetch.get("fetch_rate_by_outlet_period")},
     }
     block["failed_first_test"] = [k for k in ANALYZED if not block["categories"][k]["pass"]]
+    # The same test under simpler rules, so a reader can see how much the three rules set during the run matter.
+    def variant(label, dd, pcx, oc_):
+        scx = VL.score(dd, pcx, reps=50, outlet_counts=oc_)
+        return {"label": label, "n": int(len(dd)), "overall_kappa": scx["overall"]["kappa_weighted"],
+                "failed": [k for k in ANALYZED if scx["by_category"][k]["kappa_weighted"] < THRESHOLD]}
+    block["rule_variants"] = {
+        "plan_as_written": variant("Every validation item, weights by category only (the plan as written)", d_all, pc_all, None),
+        "retained_category_only": variant("Items that remain in the main series, weights by category only", d, pc, None),
+        "rule_used": {"label": "Items that remain in the main series, weights by category and outlet (the rule used)", "n": block["n_items"],
+                      "overall_kappa": block["overall_kappa"], "failed": block["failed_first_test"]},
+    }
     return block
 
 def main():
@@ -132,6 +143,7 @@ def main():
                 drop.append(k)
         b["kept"] = kept; b["dropped"] = drop; dropped[city] = drop
         S["cities"][city] = b
+        S.setdefault("rule_variants", {})[city] = b["rule_variants"]
     hc = jload(os.path.join(V, "headline_check_result.json"))
     if hc:
         S["headline_check"] = {**{c: {g: {"n": v[g].get("n"), "kappa": v[g].get("kappa"), "ci_low": v[g].get("ci_low"), "ci_high": v[g].get("ci_high")} for g in v} for c, v in hc["cities"].items()},
@@ -172,11 +184,11 @@ def write_report(S):
         L.append(f"## {cn[city]}\n")
         L.append(f"- Items in the validation set: {b['n_items_all']}. Items used for the 0.61 rule: {b['n_items']}." + (f" {b['n_items_left_out_by_headline_rule']} items come from outlet-years that the headline-check rule leaves out of the main series, so they are not part of the measure being analyzed. Kappa on all {b['n_items_all']} items is {fmt(b['all_items']['overall_kappa'])}." if b['n_items_left_out_by_headline_rule'] else ""))
         if b.get("headline_only_items"):
-            L.append(f"- {b['headline_only_items']} of these items were coded by the second coder from the real headline alone (taken from GDELT's stored page title), because the outlet's site answered automated requests with a challenge page and the run did not fetch its pages from anywhere else.")
+            L.append(f"- For {b['headline_only_items']} of these items the second coder read the real headline alone, taken from GDELT's stored page title, because no page could be read. One site (scmp.com) answered automated requests with a challenge page, and the run stopped using it and did not fetch its pages from anywhere else. Other pages were gone from both the live site and the Internet Archive.")
         f = b.get("fetch") or {}
         if f.get("tried"):
             L.append(f"- Pages tried: {f['tried']}. Fetched: {f['fetched']} ({(f.get('by_source') or {}).get('live', 0)} from the live site, {(f.get('by_source') or {}).get('archive', 0)} from the Internet Archive). Items that could not be fetched were replaced by the next item from the same category and city in a fixed random order.")
-            if f.get("short_categories"): L.append(f"- Categories that ended below their target count because too few pages could be fetched: {f['short_categories']}")
+            if f.get("short_categories"): L.append("- Categories that ended below their target count because too few pages could be read: " + ", ".join(f"{names.get(k, k)} (short by {v})" for k, v in f["short_categories"].items()) + ".")
         L.append(f"- Overall kappa, weighted back to the full sample: {fmt(b['overall_kappa'])} (95% interval {fmt(b['overall_ci_low'])} to {fmt(b['overall_ci_high'])}). Unweighted: {fmt(b['overall_kappa_unweighted'])}.")
         L.append(f"- Weighted agreement: {b['overall_agreement'] * 100:.0f}%.")
         L.append(f"- Weights match the validation set to the measure on two margins: the first coder's category (in proportion to the labeled sample) and the outlet (in proportion to its weight in the index). Effective sample size after weighting: {b['effective_n']:.0f}.")
@@ -218,7 +230,20 @@ def write_report(S):
             L.append(f"| {names[r]} | " + " | ".join(str(b["confusion_counts"][r][c]) for c in codebook.LABELS) + " |")
         L.append("")
         sp = b["spread"]
-        L.append(f"Spread of the validation set. By outlet: {sp['by_outlet']}. By period: {sp['by_period']}. By language: {sp['by_language']}. By page source: {sp['by_page_source']}.\n")
+        def lst(dct, namer=str):
+            return ", ".join(f"{namer(k)} {v}" for k, v in dct.items())
+        src_names = {"live": "live page", "archive": "Internet Archive", "gdelt_title": "stored headline only"}
+        lang_names = {"eng": "English", "zho": "Chinese"}
+        L.append("Spread of the scored items. By outlet: " + lst(sp["by_outlet"], lambda k: outlets.BY_KEY[k]["name"]) + ". By period: " + lst(sp["by_period"]) +
+                 ". By language of the article: " + lst(sp["by_language"], lambda k: lang_names.get(k, k)) + ". By source of the text: " + lst(sp["by_page_source"], lambda k: src_names.get(k, k)) + ".\n")
+        rv = b.get("rule_variants") or {}
+        if rv:
+            L.append("The same test under simpler rules. Three rules were set during the run, after provisional scores from the third pass had been seen and before the second coder ran: which items count, the stored-headline fallback, and the outlet weights. This table shows what the first two alternatives would give.\n")
+            L.append("| Rule | Items | Overall kappa | Categories below 0.61 |")
+            L.append("| :-- | --: | --: | :-- |")
+            for v in rv.values():
+                L.append(f"| {v['label']} | {v['n']} | {fmt(v['overall_kappa'])} | {', '.join(names[k] for k in v['failed']) or 'none'} |")
+            L.append("")
     hc = S.get("headline_check")
     if hc:
         L.append("## Headline check (2020 onward)\n")
@@ -250,7 +275,7 @@ def write_report(S):
         v = c["relabel"]
         L.append(f"- Re-label (the second coder labels {v['n']} of the same items again in a fresh request, in place of Cayden's two-week re-label): kappa {fmt(v['kappa'])}.")
     if "gemini_repeat" in c:
-        L.append(f"- Earlier repeat tests with two Gemini models on 2,000 Hong Kong items (same inputs as the first coder): kappa 0.68 for one model against itself at a different request size, 0.66 to 0.72 between the two models.")
+        L.append(f"- Earlier repeat tests with two other small models on 2,000 Hong Kong items (same inputs as the first coder; details in the labeling card): kappa 0.68 for one model against itself at a different request size, 0.66 to 0.72 between the two models.")
     L.append("")
     L.append("## Optional human check\n")
     L.append("`deliverables/optional_hand_check_50.csv` holds 50 validation items with a blank label column. If Cayden fills it in, `src/score_hand_check.py` computes his kappa against both AI coders. It has not been filled in.\n")

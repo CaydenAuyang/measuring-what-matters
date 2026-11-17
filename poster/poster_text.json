@@ -23,7 +23,7 @@
  "A4_repo": {
   "heading": "Check the data and code",
   "url": "https://github.com/CaydenAuyang/measuring-what-matters",
-  "ai_use": "AI use: an AI language model labeled the articles, a second AI model from a different family checked the labels, and AI tools ran the analysis and drafted the text."
+  "ai_use": "AI use: an AI language model labeled the articles, a second AI language model from a different family checked a sample of the labels, and AI tools ran the analysis and drafted the text."
  },
  "B1_question": {
   "heading": "The question",
@@ -109,7 +109,7 @@
  "C2_h1": {
   "title_supported": "{Source} attention rose {est} SD per 1 SD of worsening: a {strength} link",
   "title_negative": "H1 failed for {source}: attention fell {abs_est} SD per 1 SD of worsening",
-  "title_unclear": "H1 failed for {source}: no clear link (slope {est}, interval includes zero)",
+  "title_unclear": "H1 not supported for {source}: slope {est}, interval includes zero",
   "title_no_interval": "H1 for {source}: slope {est}, interval not available",
   "title_missing": "Result 1 (H1): not available yet",
   "detail": "95% interval {ci_low} to {ci_high}, bootstrap {p_text}, {n_pairs} city and category pairs.",
@@ -134,8 +134,8 @@
  "C4_h3": {
   "title_supported": "Safety had the largest gap in {n_top} of {n_cities} cities ({source})",
   "title_failed_forms": [
-   "H3 failed for {source}: Safety ranked {rank_list}",
-   "H3 failed: Safety ranked {rank_list}"
+   "H3 not supported for {source}: Safety ranked {rank_list}",
+   "H3 not supported: Safety ranked {rank_list}"
   ],
   "title_untestable": "H3 could not be tested for {source}: no usable Safety pair",
   "title_missing": "Result 3 (H3): not available yet",
@@ -146,7 +146,7 @@
   "other_missing": "{Other}: not available yet."
  },
  "D1_case": {
-  "title": "For {case_months} months, {case_city} {case_category} {case_official_verb} while {case_source} attention {case_attention_verb}",
+  "title": "{case_city}, {case_category}: official data {case_official_verb} for {case_months} months while {case_source} attention {case_attention_verb}",
   "detail": "{case_start} to {case_end}. Proposed cause: {case_cause}. Cause proposed by AI, for Cayden to confirm.",
   "title_missing": "Case study: not available yet",
   "detail_missing": "No period of opposite movement is listed in the results file yet."
@@ -157,16 +157,16 @@
   "_note": "The card shows the first two candidates whose numbers are all available. Add or reorder freely. The line [CAYDEN TO WRITE, 2 sentences] is fixed in the code.",
   "show": 2,
   "candidates": [
-   "{H1_higher_source} attention followed official change more closely than {h1_lower_source} attention (slope {h1_higher_est} against {h1_lower_est}).",
-   "For {lead_source}, {h1_n_clear} of {h1_n_categories} categories showed a clear positive link. The strongest was {h1_top_clear_category} (slope {h1_top_clear_est}).",
+   "Labels made from topic tags alone matched real headlines at only kappa {hc_theme_only_kappa_hk}.",
+   "Without 2020 to 2022 the news slope drops from {h1_news_est} to {nocovid_news_est}.",
    "The share of periods moving in opposite directions ran from {h3_min_share} ({h3_min_pair}) to {h3_max_share} ({h3_max_pair})."
   ]
  },
  "D3_limits": {
   "heading": "Limits and changes to the plan",
   "body": [
-   "AI labeled the articles. A second AI from a different model family checked a sample. No human coded any article.",
-   "The whole study ran in one night.",
+   "An AI language model labeled the articles. A second one from a different family checked a sample. No human coded any article.",
+   "Everything ran in one night.",
    "Search data rests on {search_downloads} per request. The plan said three.",
    "Hong Kong news before 2020 rests on one outlet.",
    "London has no health series."

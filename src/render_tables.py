@@ -22,6 +22,12 @@ def join_names(keys, empty="none"):
     if len(names) == 1: return names[0]
     return ", ".join(names[:-1]) + " and " + names[-1]
 
+def p3(p):
+    return "n/a" if p is None else ("< 0.001" if p < 0.001 else f"{p:.3f}")
+
+def lag_txt(k):
+    return "0 months" if k == 0 else (f"{k:+d} month" if abs(k) == 1 else f"{k:+d} months")
+
 def ci(d):
     return f"{f2(d['est'])} ({f2(d['ci_low'])} to {f2(d['ci_high'])})"
 
@@ -35,7 +41,7 @@ def render(R):
         m = (R.get("main") or {}).get(s)
         if not m: rows.append(f"| {SN[s]} | not available | | | | | | | |"); continue
         h1, h2 = m["h1"], m["h2"]
-        rows.append(f"| {SN[s]} | {ci(h1)} | {f2(h1['p_boot'], 3)} | {h1['n_pairs']} | {h1['n_obs']:,} | {h1['n_eff_years']:.0f} | {ci(h2['worse'])} | {ci(h2['better'])} | {ci(h2['diff'])} |")
+        rows.append(f"| {SN[s]} | {ci(h1)} | {h1.get('p_text', '').replace('p = ', '').replace('p ', '')} | {h1['n_pairs']} | {h1['n_obs']:,} | {h1['n_eff_years']:.0f} | {ci(h2['worse'])} | {ci(h2['better'])} | {ci(h2['diff'])} |")
     T["main"] = "\n".join(rows)
     # ---------------- by category
     rows = ["| Category | News slope (95% interval) | Cities | Search slope (95% interval) | Cities |", "| :-- | :-- | --: | :-- | --: |"]
@@ -74,7 +80,7 @@ def render(R):
         if p.get("excluded"):
             rows.append(f"| {CN[p['city']]} | {KN[p['category']]} | {SN[p['source']]} | {p.get('indicator') or ''} | | | not tested: {p['excluded']} | | | |"); continue
         n_tested += 1; n_sig += (p.get("p_bh") is not None and p["p_bh"] < 0.05)
-        rows.append(f"| {CN[p['city']]} | {KN[p['category']]} | {SN[p['source']]} | {p.get('indicator') or ''} | {p.get('freq')} | {p.get('n')} | {f2(p.get('r'))} ({f2(p.get('r_ci_low'))} to {f2(p.get('r_ci_high'))}) | {f2(p.get('p'), 3)} | {f2(p.get('p_bh'), 3)} | {pct(p.get('opposite_share'))} |")
+        rows.append(f"| {CN[p['city']]} | {KN[p['category']]} | {SN[p['source']]} | {p.get('indicator') or ''} | {p.get('freq')} | {int(p.get('n'))} | {f2(p.get('r'))} ({f2(p.get('r_ci_low'))} to {f2(p.get('r_ci_high'))}) | {p3(p.get('p'))} | {p3(p.get('p_bh'))} | {pct(p.get('opposite_share'))} |")
     T["pair_level"] = "\n".join(rows)
     X["pairs_tested"] = str(n_tested); X["pairs_adjusted_p_below_05"] = str(n_sig)
     X["pairs_not_tested"] = str(len(R.get("pair_level") or []) - n_tested)
@@ -102,31 +108,33 @@ def render(R):
                                    [f"| {k} | {v} |" for k, v in sorted(causes.items(), key=lambda kv: -kv[1])])
     # ---------------- lead / lag
     ll = R.get("leadlag") or {}
-    rows = ["| Category | News: lag with the largest mean r | Mean r | Search: lag with the largest mean r | Mean r |", "| :-- | --: | --: | --: | --: |"]
+    rows = ["| Category | News: lag where the mean r is furthest from zero | Mean r at that lag | Search: lag where the mean r is furthest from zero | Mean r at that lag |", "| :-- | --: | --: | --: | --: |"]
     for k in outlets.COMPARED:
         cells = []
         for s in ["news", "search"]:
             d = ((ll.get("by_category") or {}).get(s) or {}).get(k)
-            cells += [f"{d['best_lag_months']:+d} months", f2(d["best_mean_r"])] if d else ["not tested", ""]
+            cells += [lag_txt(d['best_lag_months']), f2(d["best_mean_r"])] if d else ["not tested", ""]
         rows.append(f"| {KN[k]} | {cells[0]} | {cells[1]} | {cells[2]} | {cells[3]} |")
     T["leadlag_by_category"] = "\n".join(rows)
     bp = ll.get("by_pair") or []
     X["leadlag_pairs"] = str(len(bp)); X["leadlag_pairs_p_below_05"] = str(sum(1 for b in bp if b.get("p_perm") is not None and b["p_perm"] < 0.05))
     ns = ll.get("news_vs_search") or {}
-    rows = ["| Category | Lag with the largest mean r | Mean r at that lag | Mean r at lag 0 | Cities |", "| :-- | --: | --: | --: | --: |"]
+    rows = ["| Category | Lag where the mean r is furthest from zero | Mean r at that lag | Mean r at lag 0 | Cities |", "| :-- | --: | --: | --: | --: |"]
     for k in outlets.CATEGORIES:
         d = ns.get(k)
         if d and "mean_r_by_lag" in d:
-            rows.append(f"| {KN[k]} | {d['best_lag_months']:+d} months | {f2(d['best_mean_r'])} | {f2(d['r_at_lag0'])} | {d['n_cities']} |")
+            rows.append(f"| {KN[k]} | {lag_txt(d['best_lag_months'])} | {f2(d['best_mean_r'])} | {f2(d['r_at_lag0'])} | {d['n_cities']} |")
     T["news_vs_search"] = "\n".join(rows)
     # ---------------- ranking
     for c in outlets.CITIES:
         rk = (R.get("ranking") or {}).get(c)
         if not rk: continue
-        rows = ["| Category | Official: distance from its 2015 to 2019 average (SD, worse is positive) | Official rank | News share, latest 12 months | Attention rank |", "| :-- | --: | --: | --: | --: |"]
+        rows = ["| Category | Official: distance from its 2015 to 2019 average (SD, worse is positive) | Baseline periods in 2015 to 2019 | Official rank | News share, latest 12 months | Attention rank |", "| :-- | --: | --: | --: | --: | --: |"]
         for r in sorted(rk["rows"], key=lambda r: (r["official_rank"] or 99)):
-            rows.append(f"| {KN[r['category']]} | {f2(r['official_z_vs_2015_2019'])} | {r['official_rank'] or 'n/a'} | {f2(r['news_share_pct_latest_12m'], 1)}% | {r['attention_rank'] or 'n/a'} |"
-                        if r["news_share_pct_latest_12m"] is not None else f"| {KN[r['category']]} | {f2(r['official_z_vs_2015_2019'])} | {r['official_rank'] or 'n/a'} | n/a | n/a |")
+            z = r["official_z_vs_2015_2019"]
+            zt = f2(z) + (" (short or very flat baseline: read with care)" if z is not None and (abs(z) > 5 or (r.get("baseline_points") or 0) < 12) else "")
+            att = f"{f2(r['news_share_pct_latest_12m'], 1)}%" if r["news_share_pct_latest_12m"] is not None else "n/a"
+            rows.append(f"| {KN[r['category']]} | {zt} | {r.get('baseline_points') or 'n/a'} | {r['official_rank'] or 'n/a'} | {att} | {r['attention_rank'] or 'n/a'} |")
         T[f"ranking_{c}"] = "\n".join(rows)
         X[f"ranking_rho_{c}"] = f2(rk.get("spearman_rank_correlation"))
     # ---------------- signal-only categories
@@ -179,6 +187,29 @@ def render(R):
             f"| Months of search data | {C.get('search_months')} ({C.get('search_first_month')} to {C.get('search_last_month')}) |",
             f"| Search downloads per request | {C.get('search_downloads_per_request')} |"]
     T["counts"] = "\n".join(rows)
+    # ---------------- Hong Kong by outlet group
+    hb = (R.get("hk_by_outlet") or {})
+    if hb:
+        rows = ["| Category | South China Morning Post 2015 to 2019 | South China Morning Post 2020 to 2026 | Oriental Daily 2020 to 2026 | HK China News Agency 2020 to 2026 |", "| :-- | --: | --: | --: | --: |"]
+        def sh(period, o, k):
+            v = ((hb.get(period) or {}).get(o) or {}).get(k)
+            return "n/a" if v is None else f"{v * 100:.1f}%"
+        for k in outlets.CATEGORIES + ["not_civic"]:
+            rows.append(f"| {KN[k]} | {sh('2015_2019', 'scmp', k)} | {sh('2020_2026', 'scmp', k)} | {sh('2020_2026', 'orientaldaily', k)} | {sh('2020_2026', 'hkcna', k)} |")
+        T["hk_by_outlet"] = "\n".join(rows)
+    # ---------------- validation under simpler rules
+    rv = V.get("rule_variants") or {}
+    if rv:
+        rows = ["| City | Rule | Items | Overall kappa | Categories below 0.61 |", "| :-- | :-- | --: | --: | :-- |"]
+        for c in outlets.CITIES:
+            for name, d in (rv.get(c) or {}).items():
+                rows.append(f"| {CN[c]} | {d['label']} | {d['n']} | {f2(d['overall_kappa'])} | {join_names(d['failed'])} |")
+        T["validation_rule_variants"] = "\n".join(rows)
+    X["exploratory_checks_n"] = str(sum(1 for n in (R.get("checks") or {}) if n.startswith("exploratory")))
+    lv = C.get("labeling_round")
+    X["labeling_round_label"] = {"L5": "round 6 of 6, the full planned sample", "L4": "round 5 of 6", "L3": "round 4 of 6", "L2": "round 3 of 6", "L1": "round 2 of 6", "L0": "round 1 of 6"}.get(lv, str(lv))
+    X["validated_items_total"] = str(sum(b.get("n_items", 0) for b in vc.values())) if vc else "not available"
+    X["validation_items_drawn_total"] = str(sum(b.get("n_items_all", 0) for b in vc.values())) if vc else "not available"
     cs = R.get("case_study")
     if cs:
         X["case_city"] = CN[cs["city"]]; X["case_category"] = KN[cs["category"]]; X["case_source"] = SN[cs["source"]].lower()

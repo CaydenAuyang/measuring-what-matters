@@ -55,10 +55,16 @@ def trends_sparse_from_meta():
                 if g.sparse_flag.astype(str).str.lower().isin(["1", "true", "1.0"]).any(): out[c].append(k)
     return out
 
+def p_text(p):
+    if p is None or p != p: return "p not available"
+    return "p < 0.001" if p < 0.001 else f"p = {p:.3f}"
+
 def subset(df, mode):
     if mode == "all": return df
     if mode == "no_covid": return df[~df.covid]
     if mode == "no_breaks": return df[~df.brk_any]
+    if mode == "hk_before_2021": return df[(df.city == "hk") & (df.t < pd.Period("2021-01", "M"))]
+    if mode == "hk_from_2021": return df[(df.city == "hk") & (df.t >= pd.Period("2021-01", "M"))]
     raise ValueError(mode)
 
 def pooled(df, reps, seed=1, block_months=12):
@@ -66,7 +72,8 @@ def pooled(df, reps, seed=1, block_months=12):
         return None
     h1 = S.pooled_bootstrap(df, split=False, reps=reps, seed=seed, block_months=block_months)
     h2 = S.pooled_bootstrap(df, split=True, reps=reps, seed=seed + 1, block_months=block_months)
-    return {"h1": {**h1["beta"], **h1["_n"]}, "h2": {"worse": h2["beta_worse"], "better": h2["beta_better"], "diff": h2["diff"], **h2["_n"]}}
+    return {"h1": {**h1["beta"], **h1["_n"], "p_text": p_text(h1["beta"]["p_boot"])},
+            "h2": {"worse": h2["beta_worse"], "better": h2["beta_better"], "diff": {**h2["diff"], "p_text": p_text(h2["diff"]["p_boot"])}, **h2["_n"]}}
 
 def run_models(source, skips, reps, **kw):
     mode = kw.pop("mode", "all"); block_months = kw.pop("block_months", 12)
@@ -284,6 +291,18 @@ def signal_only_block(cities):
                                           "mean_2015_2019": float(s[s.index.year <= 2019].mean()), "mean_2023_2026": float(s[s.index.year >= 2023].mean())}
     return out
 
+def hk_by_outlet_block():
+    """Mean share of each category in each Hong Kong main-panel outlet, for the years all three are labeled alike."""
+    p = os.path.join(INT, "news_outlet_monthly.parquet")
+    if not os.path.exists(p): return {}
+    a = pd.read_parquet(p)
+    a = a[(a.variant == "main_no_exclusion") & (a.city == "hk")]
+    out = {}
+    for period, lo, hi in [("2015_2019", "2015-01", "2019-12"), ("2020_2026", "2020-01", "2026-12")]:
+        g = a[(a.month >= lo) & (a.month <= hi)]
+        out[period] = {o: {k: float(v) for k, v in gg.groupby("category").share.mean().items()} for o, gg in g.groupby("outlet")}
+    return out
+
 def counts_block(cities):
     info = jload(os.path.join(INT, "index_info.json"), {})
     mc = pd.read_csv(os.path.join(INT, "gdelt/monthly_counts.csv"))
@@ -304,7 +323,8 @@ def counts_block(cities):
         "official_series_main": int(sum(((d.series_id == f"{c}_{k}_main") & d.value.notna()).any() for c in cities for k in outlets.COMPARED)),
         "official_series_backup": int(sum(((d.series_id == f"{c}_{k}_backup") & d.value.notna()).any() for c in cities for k in outlets.COMPARED)),
         "official_series_planned_main": 24, "official_series_extra": int(d[d.value.notna()].series_id.nunique()) - int(sum(((d.series_id == f"{c}_{k}_{r}") & d.value.notna()).any() for c in cities for k in outlets.COMPARED for r in ("main", "backup"))),
-        "official_values": int(d.value.notna().sum()),
+        "official_values": int(sum(((d.series_id == f"{c}_{k}_{r}") & d.value.notna()).sum() for c in cities for k in outlets.COMPARED for r in ("main", "backup"))),
+        "official_values_with_extra_series": int(d.value.notna().sum()),
         "official_series_total": 0,
         "search_months": int(ts.month.nunique()), "search_first_month": str(ts.month.min()), "search_last_month": str(ts.month.max()),
         "search_downloads_per_request": int(ts.n_downloads.max()) if "n_downloads" in ts.columns else None,
@@ -399,11 +419,11 @@ def main():
     R["case_study"] = dict(named[0], selection_rule="longest run of opposite movement in the news series with a proposed cause other than unclear") if named else None
     # ---- checks that the results hold
     checks = {}
-    def chk(name, sources, label, **kw):
+    def chk(name, sources, label, skips_use=None, **kw):
         checks[name] = {"label": label}
         for s in sources:
             try:
-                res, infos, d = run_models(s, skips, creps, **kw)
+                res, infos, d = run_models(s, skips_use or skips, creps, **kw)
                 checks[name][s] = res
                 checks[name][s + "_pairs_excluded"] = [f'{i["pair"]}: {i["excluded"]}' for i in infos if i.get("excluded")]
             except Exception as e:
@@ -416,10 +436,21 @@ def main():
     chk("negative_tone", ["news"], "Negative-tone share in place of all coverage", measure="neg_share")
     chk("hk_without_hkcna", ["news"], "Hong Kong without HK China News Agency", variant="hk_no_hkcna")
     chk("london_without_seven", ["news"], "London without the seven borough papers that jumped in volume", variant="london_no_seven")
+    # the validation rule exactly as the plan words it: every validation item, weights by category only
+    rv = (R.get("validation") or {}).get("rule_variants") or {}
+    if rv:
+        alt = {"news": dict(skips["news"]), "search": skips["search"]}
+        for c in cities:
+            for k in ((rv.get(c) or {}).get("plan_as_written") or {}).get("failed", []):
+                if k in outlets.COMPARED: alt["news"][(c, k)] = "dropped under the validation rule as written in the plan"
+        chk("validation_rule_as_written", ["news"], "Categories kept or dropped by the validation rule as the plan words it (every validation item, weights by category only)", skips_use=alt)
+    chk("hk_before_2021", ["news"], "Description: Hong Kong pairs only, periods before 2021 (several major outlets closed in 2021)", mode="hk_before_2021")
+    chk("hk_from_2021", ["news"], "Description: Hong Kong pairs only, periods from 2021 on", mode="hk_from_2021")
     chk("exploratory_all_main_outlets_every_year", ["news"], "Exploratory: every main-panel outlet in every year (no outlets left out of 2015 to 2019)", variant="main_no_exclusion")
     chk("exploratory_hk_headline_words_only", ["news"], "Exploratory: Hong Kong from articles with headline words in the address only (no theme-tag-only labels in any year)", variant="hk_headline_only")
     chk("exploratory_24_month_blocks", SOURCES, "Exploratory: bootstrap with 24-month blocks (wider intervals if changes are persistent)", block_months=24)
     R["checks"] = checks
+    R["hk_by_outlet"] = hk_by_outlet_block()
     R["verdicts"] = verdicts_block(R)
     R["ranking"] = ranking_block(cities)
     R["signal_only"] = signal_only_block(cities)

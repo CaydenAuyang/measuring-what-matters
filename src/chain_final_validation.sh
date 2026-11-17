@@ -15,4 +15,7 @@ tail -12 logs/final_validation.out | cut -c1-260
 .venv/bin/python -W ignore src/mark_final_auto.py
 ./src/run_all.sh > logs/run_all_final_auto.out 2>&1; echo "run_all exit $?"
 grep -E "^(news|search) H1|PASSED|FAILED" logs/run_all_final_auto.out | cut -c1-200
+echo "- $(date -u +%FT%TZ) Unattended chain: second coder scored, everything rebuilt (validation status in data/public/validation_summary.json)." >> logs/run_log.md
+./src/publish.sh "Final validation by the blind second coder; results, dataset, poster kit and documents rebuilt" 2>&1 | tail -2
+printf '\n## AUTOMATIC PATH FINISHED %s\nThe 3 AM chain ran: second coder scored, run_all rebuilt everything, public parts pushed. If the main session did not wake after this line, the one-revision step, the paper final pass and the poster D2 candidates were NOT done by hand; MORNING.md says so.\n' "$(date)" >> STATE.md
 echo "final validation chain finished $(date)"

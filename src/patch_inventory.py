@@ -35,7 +35,7 @@ def main():
             f"This run left the field out of the main extract and pulled it later for the headline-check days only (48.4 GB billed). The check used {hc['n_items']:,} articles from 2020 on. "
             f"Where the web address had headline words, the production labels agreed with labels made from the real stored headline at kappa {hc['cities']['hk']['with_headline_words']['kappa']:.2f} in Hong Kong, "
             f"{hc['cities']['nyc']['with_headline_words']['kappa']:.2f} in New York and {hc['cities']['london']['with_headline_words']['kappa']:.2f} in London. For Hong Kong items with theme tags alone the kappa was "
-            f"{hc['cities']['hk']['theme_tags_only']['kappa']:.2f}, below 0.61, so the pre-registered rule left two outlets out of 2015 to 2019. The field also supplied the real headline for {tot['gdelt_title']} South China Morning Post validation candidates after that site challenged automated requests."),
+            f"{hc['cities']['hk']['theme_tags_only']['kappa']:.2f}, below 0.61, so the pre-registered rule left two outlets out of 2015 to 2019. The field also supplied the real headline for {tot['gdelt_title']} validation candidates from 2020 on whose pages could not be read, most of them from the South China Morning Post, whose site challenged automated requests."),
     }
     ia_val = (f"For the first validation draw the run tried {tried - tot['blocked'] - tot['gdelt_title']:,} pages from live sites and, where a live page was gone, from the Archive. {tot['archive']} usable copies came from the Archive. "
               f"HK China News Agency article pages return 404 on the live site, and the Archive held a usable copy for {int((hkcna.source == 'archive').sum())} of {len(hkcna)} tried. "
@@ -63,6 +63,15 @@ def main():
                 head = (f"All nine requests were downloaded {n_dl} time(s): on November 17 between 20:46 and 20:53 UTC" + (" and again after local midnight on November 18" if n_dl >= 2 else "") +
                         ", each with 274 monthly points from January 2004 to October 2026. ")
                 cells[-1] = last[:a] + head + last[b:]; L[i] = " | ".join(cells)
+    # GDELT row: cost figures from the cost log, not typed
+    bq = pd.read_csv(os.path.join(ROOT, "logs/bigquery_costs.csv"))
+    billed = pd.to_numeric(bq.actual_bytes_billed, errors="coerce").fillna(0).sum() / 1e12
+    import re
+    for i, l in enumerate(L):
+        if l.startswith("| [GDELT Global Knowledge Graph 2.0]"):
+            L[i] = re.sub(r"[0-9.]+ TB across all [0-9]+ logged queries", f"{billed:.2f} TB across all {len(bq)} logged queries", l)
+        if l.startswith("| [Google Trends]"):
+            L[i] = re.sub(r" [^.|]*so the two files disagree\.", "", L[i])
     text = "\n".join(L)
     note = "\nThe hand-coded check named in this table is the plan's wording. In this run a second AI language model took the place of hand-coding. See `deliverables/deviations.md`.\n"
     if "The hand-coded check named in this table" not in text:
