@@ -35,8 +35,11 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--city", required=True); ap.add_argument("--model", required=True); ap.add_argument("--role", default="coder2")
     ap.add_argument("--tag", default="v1"); ap.add_argument("--batch", type=int, default=25); ap.add_argument("--rpm", type=float, default=10)
-    ap.add_argument("--input", default=""); ap.add_argument("--output", default="")
+    ap.add_argument("--input", default=""); ap.add_argument("--output", default=""); ap.add_argument("--system", default="")
     a = ap.parse_args()
+    global SYSTEM
+    if a.system:
+        SYSTEM = open(a.system).read()
     key = os.environ["GEMINI_API_KEY"]
     inp = a.input or os.path.join(V, f"{a.city}_coder2_input_{a.tag}.jsonl")
     outp = a.output or os.path.join(V, f"{a.city}_{a.role}_labels_{a.tag}.csv")

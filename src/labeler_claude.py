@@ -18,6 +18,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PRICES = {"claude-haiku-5-5": (0.10, 0.50), "claude-sonnet-5-5": (2.00, 10.00)}
 MAX_PROMPT_TOKENS = 100_000
 lock = threading.Lock()
+SYSTEM = codebook.SYSTEM_PROMPT      # the frozen prompt; --system swaps in a revised prompt file for the one allowed revision
 usage = {"requests": 0, "in": 0, "out": 0, "cache_read": 0, "cache_write": 0, "fail": 0, "refusals": 0, "max_in": 0, "items": 0}
 
 def cost(model):
@@ -37,7 +38,7 @@ def label_batch(client, rows, model, depth=0):
     for attempt in range(3):
         try:
             msg = client.messages.create(
-                model=model, max_tokens=16000, system=codebook.SYSTEM_PROMPT,
+                model=model, max_tokens=16000, system=SYSTEM,
                 messages=[{"role": "user", "content": text}],
             )
         except anthropic.BadRequestError as e:          # not retryable as sent
@@ -110,8 +111,11 @@ def main():
     ap.add_argument("--model", default="claude-haiku-5-5"); ap.add_argument("--batch", type=int, default=50)
     ap.add_argument("--workers", type=int, default=32); ap.add_argument("--limit", type=int, default=0)
     ap.add_argument("--budget", type=float, default=100.0); ap.add_argument("--task", default="label")
-    ap.add_argument("--groups", default=""); ap.add_argument("--stats", default="")
+    ap.add_argument("--groups", default=""); ap.add_argument("--stats", default=""); ap.add_argument("--system", default="")
     a = ap.parse_args()
+    global SYSTEM
+    if a.system:
+        SYSTEM = open(a.system).read()
     envfile.load_env()
     client = anthropic.Anthropic(max_retries=4, timeout=300.0)
     df = pd.read_parquet(a.items) if a.items.endswith(".parquet") else pd.read_csv(a.items)

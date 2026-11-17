@@ -1,0 +1,6 @@
+[
+ {"city": "hk", "category": "governance", "peak_month": "2019-06", "event": "the extradition bill protests", "evidence": "A seeded sample of eight Governance stories from June 2019 is about the extradition bill rallies, the police response and the Chief Executive."},
+ {"city": "nyc", "category": "governance", "peak_month": "2025-06", "event": "the Democratic primary for mayor", "evidence": "A seeded sample of eight Governance stories from June 2025 is mostly about the mayoral primary: debates, endorsements and daily campaign updates."},
+ {"city": "nyc", "category": "technology", "peak_month": "2019-07", "event": "the July 2019 power blackout in Manhattan", "evidence": "All eight sampled Technology stories from July 2019 are about the Con Edison blackout and other power outages. Only 12 stories with headline words carry the label that month."},
+ {"city": "london", "category": "governance", "peak_month": "2015-04", "event": "the 2015 general election campaign", "evidence": "A seeded sample of eight Governance stories from April 2015 is mostly about local candidates, hustings and the count for the May 2015 general election, plus the Tower Hamlets election court verdict."}
+]

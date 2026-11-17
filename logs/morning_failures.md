@@ -1,0 +1,9 @@
+- **Validation is still provisional.** The blind second coder (Gemini) can only run after its daily quota resets at about 3:07 AM. Until then the kappa numbers come from the third AI pass. If this note still says "provisional", the 3 AM step did not finish: run `./src/run_all.sh` after checking `STATE.md`.
+- **The Gemini key was on the free tier.** It hit a daily cap after about 300 requests. You switched the first coder to Claude Haiku 5.5 mid-run. One model labeled everything.
+- **London has no Health series.** The NHS England pages answered with a browser challenge, so collection stopped.
+- **New York Health starts in 2020.** CDC WONDER needs a terms form, which the run did not accept. An open CDC file was used.
+- **Hong Kong news for 2015 to 2019 rests on the South China Morning Post alone.** Labels made from theme tags alone agreed too little with labels from real headlines (kappa 0.42), so the pre-registered rule left out the two outlets with number-only web addresses.
+- **The South China Morning Post's site challenged automated requests.** Its validation items use the real headline that GDELT stored, from 2020 on only.
+- **The Internet Archive would not save the github.com repository page.** The raw plan files were saved and verified.
+- **Cut:** the social media snapshot and the pre-2015 news extension. Both need logins or API keys that were not available.
+- **The poster is 16 pages, not 18 to 24.** A 48 by 36 inch board holds at most 16 Letter pages laid flat.

@@ -27,3 +27,4 @@ deliverables/optional_hand_check_50.csv
 .env
 logs/*.err
 logs/*.flag
+poster/preview/

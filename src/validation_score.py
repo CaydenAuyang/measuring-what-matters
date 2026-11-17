@@ -32,21 +32,37 @@ def load_city(city, role, tag="v1"):
     c2 = pd.read_csv(p, dtype={"vid": str}).drop_duplicates("vid")
     d = vs.merge(c2.rename(columns={"category": "c2_category", "tone": "c2_tone"}), on="vid", how="inner")
     d["stratum"] = d["c1_category"]
+    # items from outlet-years that the headline-check rule leaves out of the main series are not part of the measure being analyzed
+    d["retained"] = True
+    for e in excluded_rules():
+        if e["city"] == city:
+            d.loc[d.outlet.isin(e["outlets"]) & (d.month >= e["from"]) & (d.month <= e["to"]), "retained"] = False
     return d
 
-def pool_counts(city):
+def excluded_rules():
+    hc = jload(os.path.join(V, "headline_check_result.json"))
+    return (hc or {}).get("rule", {}).get("excluded", [])
+
+def pool_counts(city, retained_only=True):
     d = build_index.load()
     level = build_index.levels_done(d)
     order = list(build_index.LEVEL_CAPS)
     use = order[: order.index(level) + 1] if level else order[:1]
     m = d[d.in_main & d.level.isin(use) & (d.city == city) & d.category.notna()]
+    if retained_only:
+        m = build_index.apply_exclusions(m, excluded_rules())
     return m.category.value_counts().to_dict(), level
 
 def city_block(city, role, tag="v1"):
-    d = load_city(city, role, tag)
-    if d is None or len(d) < 50:
+    d_all = load_city(city, role, tag)
+    if d_all is None or len(d_all) < 50:
         return None
-    pc, level = pool_counts(city)
+    # kappa on every validation item, reported for openness
+    pc_all, _ = pool_counts(city, retained_only=False)
+    sc_all = VL.score(d_all, pc_all, reps=300)
+    # the 0.61 rule uses the items that remain in the main series (decided before the second coder ran)
+    d = d_all[d_all.retained].copy()
+    pc, level = pool_counts(city, retained_only=True)
     sc = VL.score(d, pc)
     N = sum(pc.values()); n_s = d.stratum.value_counts()
     w = d.stratum.map(lambda s: (pc.get(s, 0) / N) / (n_s[s] / len(d))).to_numpy()
@@ -54,7 +70,10 @@ def city_block(city, role, tag="v1"):
     tone_k = VL.wkappa(d.c1_tone.to_numpy(), d.c2_tone.to_numpy(), w, codebook.TONES)
     fetch = jload(os.path.join(V, f"{city}_fetch_report_{tag}.json"), {})
     block = {
-        "n_items": int(len(d)), "labeling_round_for_weights": level,
+        "n_items": int(len(d)), "n_items_all": int(len(d_all)), "n_items_left_out_by_headline_rule": int((~d_all.retained).sum()),
+        "all_items": {"overall_kappa": sc_all["overall"]["kappa_weighted"], "categories": {k: v["kappa_weighted"] for k, v in sc_all["by_category"].items()}},
+        "headline_only_items": int((d.source == "gdelt_title").sum()),
+        "labeling_round_for_weights": level,
         "overall_kappa": sc["overall"]["kappa_weighted"], "overall_ci_low": sc["overall"]["ci_low"], "overall_ci_high": sc["overall"]["ci_high"],
         "overall_kappa_unweighted": sc["overall"]["kappa_unweighted"],
         "overall_agreement": sc["overall"]["agreement_weighted"], "overall_agreement_unweighted": sc["overall"]["agreement_unweighted"],
@@ -142,7 +161,9 @@ def write_report(S):
     names = outlets.CATEGORY_NAMES; cn = outlets.CITY_NAMES
     for city, b in S["cities"].items():
         L.append(f"## {cn[city]}\n")
-        L.append(f"- Items in the validation set: {b['n_items']}")
+        L.append(f"- Items in the validation set: {b['n_items_all']}. Items used for the 0.61 rule: {b['n_items']}." + (f" {b['n_items_left_out_by_headline_rule']} items come from outlet-years that the headline-check rule leaves out of the main series, so they are not part of the measure being analyzed. Kappa on all {b['n_items_all']} items is {fmt(b['all_items']['overall_kappa'])}." if b['n_items_left_out_by_headline_rule'] else ""))
+        if b.get("headline_only_items"):
+            L.append(f"- {b['headline_only_items']} of these items were coded by the second coder from the real headline alone (taken from GDELT's stored page title), because the outlet's site answered automated requests with a challenge page and the run did not fetch its pages from anywhere else.")
         f = b.get("fetch") or {}
         if f.get("tried"):
             L.append(f"- Pages tried: {f['tried']}. Fetched: {f['fetched']} ({(f.get('by_source') or {}).get('live', 0)} from the live site, {(f.get('by_source') or {}).get('archive', 0)} from the Internet Archive). Items that could not be fetched were replaced by the next item from the same category and city in a fixed random order.")

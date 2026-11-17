@@ -118,12 +118,19 @@ EVENTS = [  # known events used when proposing a cause for a disconnection (from
     ("london", "environment", "2019-04", "2024-08", "event", "Ultra Low Emission Zone start and expansions cut pollution"),
 ]
 
-def propose_cause(city, category, run, brk_method, source):
+def propose_cause(city, category, run, breaks, source):
     """A first-pass cause from the methodology's five options. Proposed by AI for Cayden to confirm."""
     s, e = pd.Period(run["start"], "M"), pd.Period(run["end"], "M")
     def overlaps(a, b): return not (pd.Period(b, "M") < s or pd.Period(a, "M") > e)
-    if brk_method >= 0.5:
-        return "the official measure changed how it counts", "at least half of these months are marked as a counting break in the official series"
+    months = pd.period_range(s, e, freq="M")
+    for b in breaks or []:
+        if b.get("kind") == "method" and b.get("start") and b.get("end"):
+            try:
+                inside = sum(pd.Period(b["start"][:7], "M") <= m <= pd.Period(b["end"][:7], "M") for m in months)
+            except Exception:
+                inside = 0
+            if inside >= 0.5 * len(months):
+                return "the official measure changed how it counts", f"at least half of these months fall in a counting break marked in the official series: {b.get('note', '')}"
     for c, k, a, b, kind, note in EVENTS:
         if c in (city, "all") and k in (category, None) and overlaps(a, b):
             if kind == "different":
@@ -138,6 +145,7 @@ def propose_cause(city, category, run, brk_method, source):
 
 def h3_block(dfs, infos_all):
     out = {"opposite_share": {}, "safety_rank": {}, "runs": []}
+    notes = jload(os.path.join(ROOT, "src/h3_cause_notes.json"), [])
     for source in SOURCES:
         df = dfs[source]; tab = {}
         for city in outlets.CITIES:
@@ -149,10 +157,14 @@ def h3_block(dfs, infos_all):
                     tab[city][cat] = {"share": sh, "n": m, "freq": g.freq.iloc[0]}
                     if g.freq.iloc[0] == "M":
                         for run in S.opposite_runs(g[["t", "a", "o"]]):
-                            seg = g[(g.t >= pd.Period(run["start"], "M")) & (g.t <= pd.Period(run["end"], "M"))]
-                            cause, evidence = propose_cause(city, cat, run, float(seg.brk_official.mean()), source)
-                            run.update({"city": city, "category": cat, "source": source, "proposed_cause": cause, "evidence": evidence,
-                                        "proposed_by": "AI, for Cayden to confirm"})
+                            info = next((i for i in infos_all[source] if i.get("city") == city and i.get("category") == cat), {})
+                            cause, evidence = propose_cause(city, cat, run, info.get("breaks"), source)
+                            by = "AI, from the breaks table and the list of named events; for Cayden to confirm"
+                            for nt in notes:
+                                if (nt["source"], nt["city"], nt["category"], nt["start"], nt["end"]) == (source, city, cat, run["start"], run["end"]):
+                                    cause, evidence = nt["proposed_cause"], nt["evidence"]
+                                    by = "AI, after reading a seeded sample of the period's coverage; for Cayden to confirm"
+                            run.update({"city": city, "category": cat, "source": source, "proposed_cause": cause, "evidence": evidence, "proposed_by": by})
                             out["runs"].append(run)
         out["opposite_share"][source] = tab
         rank = {}
@@ -251,6 +263,7 @@ def ranking_block(cities):
 
 def signal_only_block(cities):
     out = {}
+    notes = jload(os.path.join(ROOT, "src/signal_event_notes.json"), [])
     for source in SOURCES:
         try: tabs = P.attention_tables(source)
         except Exception: continue
@@ -263,7 +276,10 @@ def signal_only_block(cities):
                 s = (tabs[city][cat] * 100).dropna()
                 s = s[s.index >= pd.Period("2015-01", "M")]
                 yearly = s.groupby(s.index.year).mean()
-                out[source][city][cat] = {"yearly_mean_share_pct": {int(y): float(v) for y, v in yearly.items()},
+                ev = next((n for n in notes if source == "news" and len(s) and (n["city"], n["category"], n["peak_month"]) == (city, cat, str(s.idxmax()))), None)
+                out[source][city][cat] = {"peak_event": ev["event"] if ev else None, "peak_event_evidence": ev["evidence"] if ev else None,
+                                          "peak_event_named_by": "AI, after reading a seeded sample of the month's coverage; for Cayden to confirm" if ev else None,
+                                          "yearly_mean_share_pct": {int(y): float(v) for y, v in yearly.items()},
                                           "peak_month": str(s.idxmax()) if len(s) else None, "peak_share_pct": float(s.max()) if len(s) else None,
                                           "mean_2015_2019": float(s[s.index.year <= 2019].mean()), "mean_2023_2026": float(s[s.index.year >= 2023].mean())}
     return out
@@ -409,6 +425,8 @@ def main():
         if isinstance(o, pd.Period): return str(o)
         return o
     out = clean(R)
+    import render_tables
+    out["tables"], out["text"] = render_tables.render(out)
     json.dump(out, open(os.path.join(PUB, "results.json"), "w"), indent=1, sort_keys=False)
     # tidy yearly changes for the public dataset
     yc = pd.concat([dfs[s].assign(source=s) for s in SOURCES if not dfs[s].empty], ignore_index=True)

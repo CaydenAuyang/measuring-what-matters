@@ -53,7 +53,7 @@ def official_series(city, category, role="main"):
     m = meta.get(sid, {})
     info = {"series_id": sid, "freq": freq, "window": window, "rule": rule, "worse_when": worse, "status": m.get("status", "ok"),
             "name": sub.indicator_name.iloc[0], "release_lag_months": int(round(float(m.get("release_lag_months") or 0))),
-            "n_components": len(changes)}
+            "n_components": len(changes), "breaks": m.get("breaks") or []}
     return (ch, fl), info
 
 def attention_tables(source, variant="main", measure="share"):

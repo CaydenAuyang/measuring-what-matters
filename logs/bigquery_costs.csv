@@ -35,3 +35,5 @@ phase2,monthly counts after filter,69868326,83841991,70254592,2026-11-17T20:52:4
 phase2,monthly raw counts,168603970,202324764,168820736,2026-11-17T20:52:44Z
 phase4,page titles (Extras) for headline-check days,48443845074,58132614088,48444211200,2026-11-17T21:20:05Z
 phase4,stored page titles for blocked-site validation candidates,34178665575,41014398690,34179383296,2026-11-17T22:06:18Z
+phase4,stored page titles for blocked-site validation candidates (hk v2),33132122375,39758546850,33132904448,2026-11-17T22:12:40Z
+phase4,stored page titles for blocked-site validation candidates (hk v2),27324206241,32789047489,27324841984,2026-11-17T22:17:17Z

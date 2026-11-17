@@ -1,0 +1,23 @@
+[
+ {"source": "news", "city": "hk", "category": "economy", "start": "2022-05", "end": "2023-06",
+  "proposed_cause": "the two measure different parts of the problem",
+  "evidence": "The unemployment rate fell through this period. A seeded sample of ten Economy stories from the period is about weak consumer spending, calls to reopen the border, rising interest rates and people leaving the city. The category covers business conditions as a whole. The indicator covers jobs only."},
+ {"source": "news", "city": "london", "category": "housing", "start": "2023-08", "end": "2024-07",
+  "proposed_cause": "the two measure different parts of the problem",
+  "evidence": "Private rents rose faster through this period. A seeded sample of ten Housing stories from the borough papers is about council repairs, planning rules and house prices. None of the ten is about rents."},
+ {"source": "news", "city": "hk", "category": "economy", "start": "2025-08", "end": "2026-06",
+  "proposed_cause": "attention followed a news cycle rather than conditions",
+  "evidence": "The unemployment rate rose while Economy's share of coverage fell from the year before. A seeded sample of eight Economy stories is about growth targets, exports, the minimum wage and markets, with mixed tone."},
+ {"source": "news", "city": "london", "category": "environment", "start": "2019-03", "end": "2019-12",
+  "proposed_cause": "the two measure different parts of the problem",
+  "evidence": "NO2 at the two sites fell after the Ultra Low Emission Zone began in April 2019. A seeded sample of ten Environment stories is about trees, plastic waste, climate change, a heatwave and flooding. The category is wider than the one pollutant the indicator tracks."},
+ {"source": "news", "city": "hk", "category": "environment", "start": "2024-08", "end": "2025-04",
+  "proposed_cause": "the two measure different parts of the problem",
+  "evidence": "NO2 and PM10 rose while Environment's share of coverage fell. A seeded sample of eight Environment stories is about typhoons, storms, recycling rules and water quality. None of the eight is about air pollution, which is what the indicator tracks."},
+ {"source": "news", "city": "london", "category": "cost_of_living", "start": "2020-03", "end": "2020-11",
+  "proposed_cause": "a real event drew coverage the indicator does not capture",
+  "evidence": "UK inflation fell in 2020. A seeded sample of eight Cost of Living stories is about panic buying, fuel prices, food vouchers and energy tariffs during the first COVID-19 lockdowns. Only 65 stories with headline words carry this label in the period, so the series is thin."},
+ {"source": "news", "city": "hk", "category": "economy", "start": "2019-08", "end": "2020-03",
+  "proposed_cause": "attention followed a news cycle rather than conditions",
+  "evidence": "Unemployment rose while the 2019 protests and then the first COVID-19 wave took over coverage. A spike in other categories lowers every other share, which the methodology marks as a break for Hong Kong in 2019 and 2020."}
+]
