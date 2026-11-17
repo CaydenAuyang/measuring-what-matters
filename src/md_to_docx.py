@@ -251,6 +251,7 @@ def convert(md_text, out_path):
         elif kind == "p":
             par = doc.add_paragraph(); spacing(par)
             if not seen_h2: par.alignment = WD_ALIGN_PARAGRAPH.CENTER       # title block
+            if payload.startswith("**Table"): par.paragraph_format.keep_with_next = True   # keep a caption with its table
             add_inline(par, payload)
         elif kind == "quote":
             par = doc.add_paragraph(); spacing(par)

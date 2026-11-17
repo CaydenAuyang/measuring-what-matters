@@ -490,6 +490,12 @@ class Data:
         ho = g(self.R, "main", o, "h1") or {}
         exo = {"Other": o.capitalize(), "other": o, "other_est": f2(ho.get("est")), "other_ci_low": f2(ho.get("ci_low")), "other_ci_high": f2(ho.get("ci_high"))}
         tail = self.other_line("C2_h1", o, "{Other}: slope {other_est} ({other_ci_low} to {other_ci_high}).", "{Other}: not available yet.", exo)
+        # the check without 2020 to 2022 belongs on the card: it shows how much the result leans on the COVID years
+        nc = g(self.R, "checks", "without_covid", L, "h1") or {}
+        if isnum(nc.get("est")) and isnum(nc.get("ci_low")) and isnum(nc.get("ci_high")):
+            exn = dict(ex, nc_est=f2(nc["est"]), nc_ci_low=f2(nc["ci_low"]), nc_ci_high=f2(nc["ci_high"]),
+                       nc_verdict=("the interval includes zero" if nc["ci_low"] <= 0 <= nc["ci_high"] else "the interval still excludes zero"))
+            tail += " " + self.fill(self.tx("C2_h1", "nocovid", default="Without 2020 to 2022: {nc_est} ({nc_ci_low} to {nc_ci_high}), so {nc_verdict}."), exn)
         return self.fill(title, ex), self.fill(detail, ex) + " " + tail
 
     def h2_text(self):

@@ -196,6 +196,10 @@ def main():
     src = fill_template.sources()
     src.update(extra_sources(src))
     text, missing = fill_template.fill(open(TEMPLATE, encoding="utf-8").read(), src)
+    # the template's own header comment is replaced by a note that this file is generated
+    note = (f"<!--\nGENERATED FILE. Built by src/build_paper.py from src/templates/paper.template.md and the results file "
+            f"generated at {src[''].get('generated_utc')} (UTC).\nEdit the template and rebuild. Changes made here are lost at the next build.\n-->")
+    text = re.sub(r"\A\s*<!--.*?-->", lambda m: note, text, count=1, flags=re.S)
     os.makedirs(os.path.dirname(OUT_MD), exist_ok=True)
     open(OUT_MD, "w", encoding="utf-8").write(text)
     md_to_docx.convert(text, OUT_DOCX)
@@ -209,7 +213,9 @@ def main():
     print(f"words, references: {n_words(refs):,}")
     print(f"words, appendix (tables included): {n_words(appendix, tables=True):,}")
     print(f"placeholders '[not available]' in the text: {text.count('[not available]')}")
-    print(f"'[CAYDEN TO CONFIRM' lines: {text.count('[CAYDEN TO CONFIRM')} | 'FINAL PASS' comments: {text.count('FINAL PASS')}")
+    print(f"'[CAYDEN TO CONFIRM' lines: {text.count('[CAYDEN TO CONFIRM')}")
+    marks = re.findall(r"<!--\s*FINAL PASS:\s*([^.]+)\.", text)
+    print(f"places marked for the final pass ({len(marks)}): " + "; ".join(marks))
     uniq = sorted(set(missing))
     if uniq:
         print(f"{len(uniq)} token(s) not available:")

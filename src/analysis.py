@@ -233,7 +233,7 @@ def ranking_block(cities):
     for city in cities:
         rows = []
         for cat in outlets.COMPARED:
-            sub = d[(d.city == city) & (d.category == cat) & (d.role == "main")]
+            sub = d[(d.series_id == f"{city}_{cat}_main") & d.value.notna()]      # the one main indicator, not extra series
             z = None; latest = None; n_base = 0
             if len(sub):
                 rule = sub.change_rule.iloc[0]; worse = sub.worse_when.iloc[0]; zs = []
@@ -301,8 +301,11 @@ def counts_block(cities):
         "articles_labeled_main_panel": info.get("n_labeled_main"), "articles_labeled_main_panel_total": int(sum((info.get("n_labeled_main") or {}).values())),
         "articles_labeled_all": info.get("n_labeled_all"), "labeling_round": info.get("level"), "caps_hk_nyc_london": info.get("caps_hk_nyc_london"),
         "news_months": int(nm.month.nunique()), "news_first_month": str(nm.month.min()) if len(nm) else None, "news_last_month": str(nm.month.max()) if len(nm) else None,
-        "official_series_main": int(d[d.role == "main"].series_id.nunique()), "official_series_backup": int(d[d.role == "backup"].series_id.nunique()),
-        "official_series_total": int(d.series_id.nunique()), "official_values": int(len(d)),
+        "official_series_main": int(sum(((d.series_id == f"{c}_{k}_main") & d.value.notna()).any() for c in cities for k in outlets.COMPARED)),
+        "official_series_backup": int(sum(((d.series_id == f"{c}_{k}_backup") & d.value.notna()).any() for c in cities for k in outlets.COMPARED)),
+        "official_series_planned_main": 24, "official_series_extra": int(d[d.value.notna()].series_id.nunique()) - int(sum(((d.series_id == f"{c}_{k}_{r}") & d.value.notna()).any() for c in cities for k in outlets.COMPARED for r in ("main", "backup"))),
+        "official_values": int(d.value.notna().sum()),
+        "official_series_total": 0,
         "search_months": int(ts.month.nunique()), "search_first_month": str(ts.month.min()), "search_last_month": str(ts.month.max()),
         "search_downloads_per_request": int(ts.n_downloads.max()) if "n_downloads" in ts.columns else None,
         "search_requests": 9, "search_term_sets": 36,
@@ -356,6 +359,10 @@ def verdicts_block(R):
                                      + ("H3 is supported." if sr["h3_supported"] else "H3 predicted the largest gap in at least two cities, so it is not supported."))
     return V
 
+def _fix_counts(C):
+    C["official_series_total"] = C["official_series_main"] + C["official_series_backup"]
+    return C
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--reps", type=int, default=2000); ap.add_argument("--cities", default="hk,nyc,london"); ap.add_argument("--quick", action="store_true")
@@ -370,7 +377,7 @@ def main():
             if k in outlets.COMPARED: skips["search"].setdefault((c, k), "search set too sparse to test (zero in more than 10% of months)")
     R = {"generated_utc": datetime.datetime.now(datetime.UTC).strftime("%Y-%m-%dT%H:%M:%SZ"), "cities": cities, "bootstrap_reps": reps,
          "note": "Main tests: pooled H1 and H2 for news and for search. All else is description, checks, or exploratory."}
-    R["counts"] = counts_block(cities)
+    R["counts"] = _fix_counts(counts_block(cities))
     R["validation"] = jload(os.path.join(PUB, "validation_summary.json"), {})
     main_res, dfs, infos_all = {}, {}, {}
     for source in SOURCES:
@@ -410,6 +417,7 @@ def main():
     chk("hk_without_hkcna", ["news"], "Hong Kong without HK China News Agency", variant="hk_no_hkcna")
     chk("london_without_seven", ["news"], "London without the seven borough papers that jumped in volume", variant="london_no_seven")
     chk("exploratory_all_main_outlets_every_year", ["news"], "Exploratory: every main-panel outlet in every year (no outlets left out of 2015 to 2019)", variant="main_no_exclusion")
+    chk("exploratory_hk_headline_words_only", ["news"], "Exploratory: Hong Kong from articles with headline words in the address only (no theme-tag-only labels in any year)", variant="hk_headline_only")
     chk("exploratory_24_month_blocks", SOURCES, "Exploratory: bootstrap with 24-month blocks (wider intervals if changes are persistent)", block_months=24)
     R["checks"] = checks
     R["verdicts"] = verdicts_block(R)

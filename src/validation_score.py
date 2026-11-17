@@ -216,7 +216,13 @@ def write_report(S):
                 L.append(f"| {cn[c]} | {a_.get('n', 0)} | {fmt(a_.get('kappa'))} | {t_.get('n', 0)} | {fmt(t_.get('kappa'))} |")
         L.append("")
         L.append(hc["rule"]["text"] + "\n")
-        L.append("London's papers had number-only addresses for part of 2015 and 2016 (87% of sampled items in 2015 and about 40% in 2016). The rule in the methodology is written for outlets, and these papers have headline words in every later year, so they stay in. Their 2015 and 2016 labels rest mostly on theme tags and should be read with the Hong Kong result above in mind.\n")
+        try:
+            dd = build_index.load()
+            lon = dd[(dd.city == "london") & dd.in_main]
+            sh = lon.assign(y=lon.month.str[:4], no=(lon.headline.fillna("") == "")).groupby("y").no.mean()
+            L.append(f"Some London papers had number-only addresses in 2015 and 2016: {sh.get('2015', float('nan')) * 100:.0f}% of London's sampled items in 2015 and {sh.get('2016', float('nan')) * 100:.0f}% in 2016 carry no headline words, against {sh.get('2017', float('nan')) * 100:.0f}% in 2017. The rule in the methodology is written for outlets, and these papers have headline words in every later year, so they stay in. Their theme-tag-only labels in 2015 and 2016 should be read with the Hong Kong result above in mind.\n")
+        except Exception:
+            pass
     c = S.get("consistency") or {}
     L.append("## Consistency checks\n")
     if "first_coder_vs_larger_model" in c:

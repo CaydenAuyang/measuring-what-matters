@@ -96,6 +96,19 @@ Each of these is also one line in `logs/decisions.md`.
 | Sample for the "all listed outlets" check | The same 1,000-a-month budget split equally over every listed outlet: 41 per outlet per month in Hong Kong and London, 50 in New York. |
 | Theme tags sent to the model | The first 30 different tags in order of first appearance. |
 | Poster size | A 48 by 36 inch board holds at most 16 US Letter pages laid flat (four rows of four landscape pages). The kit is 16 pages, not the 18 to 24 aimed for. |
+| Yearly change in news attention | Computed on a matched panel: each outlet's own change from a year earlier, averaged across the outlets present in both periods. With every outlet present this equals the change in the city average. It matters for Hong Kong in 2020 (two outlets are left out of 2015 to 2019) and for months where an outlet had no articles. |
+| Which validation items the 0.61 rule uses | Items that remain in the main series after the headline-check rule. Hong Kong items from the two outlets left out of 2015 to 2019 are not counted, because their labels are not used. Kappa on every validation item is reported beside it. This was decided before the second coder ran. |
+| A site that challenged automated requests | scmp.com answered page requests with a challenge. The run stopped using the site and did not fetch its pages from anywhere else. South China Morning Post validation items from 2020 on were coded by the second coder from the real headline that GDELT stored, without opening lines. Earlier items were replaced by other items in the same category. |
+| HK China News Agency in the validation set | Its article pages are gone from the live site and the Internet Archive holds few. Only 16 of 299 Hong Kong validation items are from this outlet, far below its share of the sample. |
+| Minimum data for a pair | A pair enters the pooled model only with at least 24 matched months, 8 quarters, or 5 years. |
+| Wording of verdicts | A hypothesis is called supported only when the 95% interval excludes zero in the predicted direction. A slope below 0.30 is called weak, below 0.50 moderate. These cutoffs are the run's, not the methodology's. |
+| Effective sample size | Reported as matched periods divided by 12 months (4 quarters, 1 year), summed over pairs. |
+| p-values | From the bootstrap: twice the smaller share of resampled slopes on either side of zero. |
+| Release-date check | Each official series is shifted by its approximate publication lag in whole months, taken from the source inventory or from what the run saw. |
+| Causes of disconnections | Proposed by rule from the breaks table and a short list of named events. For the seven longest news disconnections the run also read a seeded sample of that period's headlines. All causes are proposed by AI for Cayden to confirm. |
+| Events named at attention peaks | For attention-only categories that passed validation, the run read a seeded sample of the peak month's headlines and named what they were about. For Cayden to confirm. |
+| Checks added by the run | Three checks are labeled exploratory wherever they appear: every main-panel outlet in every year, Hong Kong from articles with headline words only, and a bootstrap with 24-month blocks. |
+| Current-year ranking | Each main indicator's mean over its latest 12 months (or its latest annual value) is compared with its own 2015 to 2019 mean, in 2015 to 2019 standard deviations, signed so that positive is worse. Price indices use the 12-month rate. |
 
 ## 6. Items cut or still open
 

@@ -82,6 +82,8 @@ def build(write=True):
         "main_no_exclusion": main_all,                                  # every main-panel outlet in every year
         "hk_no_hkcna": apply_exclusions(main_all, excl)[lambda x: ~((x.city == "hk") & (x.outlet == "hkcna"))],
         "london_no_seven": apply_exclusions(main_all, excl)[lambda x: ~((x.city == "london") & x.outlet.isin(SEVEN))],
+        # exploratory: Hong Kong built only from articles whose address carries headline words (no theme-tag-only labels)
+        "hk_headline_only": main_all[lambda x: ~((x.city == "hk") & (x.headline.fillna("") == ""))],
     }
     chk = cfg.get("check_cap") or check_cap_done(d)
     if chk:

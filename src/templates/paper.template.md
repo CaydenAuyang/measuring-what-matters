@@ -18,7 +18,7 @@ Mentors: Mr. Qua and Mr. Lake. Independent study, fall 2026.
 
 <!-- FINAL PASS: Abstract. Once the final numbers exist (final second coder, second search download, full bootstrap), rewrite the three verdict sentences as plain prose in one direction, keep every number as a token, and keep the last two sentences about AI-only validation and narrow intervals. Remove the italic "Draft filled from" line above if it is no longer wanted. Target about 200 words. -->
 
-Civic technology often treats news coverage and online activity as evidence of how a city is doing. This study tests that assumption for Hong Kong, New York City and London. Following a plan registered before any outcome data were pulled, it compares official statistics for eight problem categories with two measures of public attention: each category's share of local news coverage in GDELT ({{counts.news_first_month}} to {{counts.news_last_month}}) and its share of Google search interest ({{counts.search_first_month}} to {{counts.search_last_month}}). Every series is turned into yearly changes, and all city and category pairs are pooled in one model per source. An AI agent ran the study in one unattended session. An AI language model labeled {{counts.articles_labeled_main_panel_total|comma}} sampled articles, and a second AI language model checked the labels. The pooled slope of attention change on official change, in standard deviations, was {{main.news.h1.est}} for news (95% interval {{main.news.h1.ci_low}} to {{main.news.h1.ci_high}}) and {{main.search.h1.est}} for search ({{main.search.h1.ci_low}} to {{main.search.h1.ci_high}}). Verdict on H1, a positive but weak link: {{verdicts.h1_news}} for news, {{verdicts.h1_search}} for search. Verdict on H2, a stronger reaction to worsening than to improving: {{verdicts.h2_news}} for news, {{verdicts.h2_search}} for search. Verdict on H3, Safety showing the largest gap: {{verdicts.h3_news}} for news, {{verdicts.h3_search}} for search. No person checked the labels. In a test on unrelated made-up series, {{synthetic_tests.false_positive_check.intervals_that_wrongly_excluded_zero}} of {{synthetic_tests.false_positive_check.trials}} intervals wrongly excluded zero, so the intervals reported here are likely too narrow.
+Civic technology often treats news coverage and online activity as evidence of how a city is doing. This study tests that assumption for Hong Kong, New York City and London. Following a plan registered before any outcome data were pulled, it compares official statistics for eight problem categories with two measures of public attention: each category's share of local news coverage in GDELT ({{counts.news_first_month}} to {{counts.news_last_month}}) and its share of Google search interest ({{counts.search_first_month}} to {{counts.search_last_month}}). Every series is turned into yearly changes, and all city and category pairs are pooled in one model per source. An AI agent ran the study in one unattended session. An AI language model labeled {{counts.articles_labeled_main_panel_total|comma}} sampled articles from the main outlet panels, and a second AI language model checked the labels. The pooled slope of attention change on official change, in standard deviations, was {{main.news.h1.est}} for news (95% interval {{main.news.h1.ci_low}} to {{main.news.h1.ci_high}}) and {{main.search.h1.est}} for search ({{main.search.h1.ci_low}} to {{main.search.h1.ci_high}}). Verdict on H1, a positive but weak link: {{verdicts.h1_news}} for news, {{verdicts.h1_search}} for search. Verdict on H2, a stronger reaction to worsening than to improving: {{verdicts.h2_news}} for news, {{verdicts.h2_search}} for search. Verdict on H3, Safety showing the largest gap: {{verdicts.h3_news}} for news, {{verdicts.h3_search}} for search. No person checked the labels. In a test on unrelated made-up series, {{synthetic_tests.false_positive_check.intervals_that_wrongly_excluded_zero}} of {{synthetic_tests.false_positive_check.trials}} intervals wrongly excluded zero, so the intervals reported here are likely too narrow.
 
 ## 1. Introduction
 
@@ -104,6 +104,8 @@ News attention comes from GDELT's Global Knowledge Graph (GDELT Project, 2026), 
 
 {{tables.counts}}
 
+<!-- FINAL PASS: Table 3. When this template was written, the count of official series (47) included two extra Hong Kong series the tests do not use (hk_safety_main_monthly and hk_environment_backup_monthly), while London Health main and backup are missing. The sentence above the table covers this. Drop that sentence if the count is changed to planned series only. -->
+
 **What the model reads.** GDELT stores headlines only from 2020. So that every year is labeled from the same inputs, an AI language model reads the outlet name, any headline words in the article's web address, and the first 30 GDELT theme tags. It never sees the article text. For an outlet with number-only addresses it reads theme tags alone. Of {{run.items_sampled_total|comma}} sampled items, {{run.items_no_input|comma}} had neither headline words nor theme tags and are left out.
 
 **Labeling.** The prompt holds the codebook and the tie-break rules word for word, plus a description of the inputs and examples of items that are not a civic problem. It was frozen before labeling began. The exact model, settings and prompt are in the labeling card (`data/public/labeling_card.md`).
@@ -134,7 +136,7 @@ Before pooling, each pair's official change and attention change are divided by 
 
 H1 is tested with one regression of attention change on official change across all pairs, with a separate intercept for each pair. Every pair gets equal total weight, so a monthly pair with about 120 points does not swamp an annual pair with about 10. H2 uses the same model with official change split into two terms, one for periods when the problem worsened and one for periods when it improved. H2 holds if the worsening slope is larger. Each model is run for news and for search. These four models are the pre-registered main tests.
 
-The analysis code reads the results by a fixed rule. A hypothesis counts as supported when the whole 95% interval lies above zero, as failed when it lies below zero, and as not supported otherwise. For H2 the interval is for the difference between the two slopes. The code also calls a slope below 0.3 weak. The plan predicted a weak link and did not set that cutoff.
+The analysis code reads the results by a fixed rule. H1 or H2 counts as supported when the whole 95% interval lies above zero, as failed when it lies below zero, and as not supported otherwise. For H2 the interval is for the difference between the two slopes. The code also calls a slope below 0.3 weak. The plan predicted a weak link and did not set that cutoff.
 
 ### 3.8 The bootstrap
 
@@ -184,7 +186,7 @@ The status of these numbers is: {{text.validation_status}}. The scoring file rec
 
 {{tables.validation_kappa}}
 
-Overall kappa was {{v.cities.hk.overall_kappa}} in Hong Kong (95% interval {{v.cities.hk.overall_ci_low}} to {{v.cities.hk.overall_ci_high}}), {{v.cities.nyc.overall_kappa}} in New York City ({{v.cities.nyc.overall_ci_low}} to {{v.cities.nyc.overall_ci_high}}) and {{v.cities.london.overall_kappa}} in London ({{v.cities.london.overall_ci_low}} to {{v.cities.london.overall_ci_high}}). Kappa on tone was {{v.cities.hk.tone_kappa}}, {{v.cities.nyc.tone_kappa}} and {{v.cities.london.tone_kappa}}. The negative-tone check depends on the tone labels.
+Overall kappa was {{v.cities.hk.overall_kappa}} in Hong Kong (95% interval {{v.cities.hk.overall_ci_low}} to {{v.cities.hk.overall_ci_high}}), {{v.cities.nyc.overall_kappa}} in New York City ({{v.cities.nyc.overall_ci_low}} to {{v.cities.nyc.overall_ci_high}}) and {{v.cities.london.overall_kappa}} in London ({{v.cities.london.overall_ci_low}} to {{v.cities.london.overall_ci_high}}). Kappa on tone, in the same order, was {{v.cities.hk.tone_kappa}}, {{v.cities.nyc.tone_kappa}} and {{v.cities.london.tone_kappa}}. The negative-tone check depends on the tone labels.
 
 - **Hong Kong.** Kept: {{text.kept_hk}}. Dropped: {{text.dropped_hk}}. Dropped among the eight compared categories: {{text.dropped_compared_hk}}.
 - **New York City.** Kept: {{text.kept_nyc}}. Dropped: {{text.dropped_nyc}}. Dropped among the eight compared categories: {{text.dropped_compared_nyc}}.
@@ -298,7 +300,7 @@ Table 13 reruns the H1 model and the H2 difference under each check. A cell mark
 
 For each city, the eight compared categories are ranked twice: by how far the official indicator now sits from its own 2015 to 2019 average, and by the category's share of news over the latest twelve months. The Spearman rank correlation between the two orderings was {{text.ranking_rho_hk}} in Hong Kong, {{text.ranking_rho_nyc}} in New York City and {{text.ranking_rho_london}} in London, across {{ranking.hk.n_categories}}, {{ranking.nyc.n_categories}} and {{ranking.london.n_categories}} categories. The rankings are in Appendix Tables A5 to A7. A series with few values in 2015 to 2019 gives an unstable distance, and a category dropped in validation still shows an unvalidated news share.
 
-<!-- FINAL PASS: Ranking. Read each ranking table for implausible distances before quoting any of them (see the note about Hong Kong Safety in the build report). -->
+<!-- FINAL PASS: Ranking. Read each ranking table for implausible distances before quoting any of them. When this template was written, ranking_block in src/analysis.py selected official rows by role == "main", which for Hong Kong Safety mixes the extra monthly series hk_safety_main_monthly with the annual totals and gives a distance near minus 11 standard deviations. Selecting by series_id (city_category_main) would fix it. -->
 
 ### 5.8 The four signal-only categories (description)
 
@@ -484,7 +486,7 @@ Education Bureau, Hong Kong. (2026). [Teacher wastage rates, primary and seconda
 
 Environmental Protection Department, Hong Kong. (2026). [Monthly average concentrations of nitrogen dioxide and respirable suspended particulates at general stations] [Data set]. https://cd.epic.epd.gov.hk/EPICDI/air/station/?lang=_en
 
-Hong Kong Examinations and Assessment Authority. (2026). [HKDSE examination statistics, 2012 to 2025] [Data set]. https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Exam_Report/Examination_Statistics/dseexamstat24_3.pdf
+Hong Kong Examinations and Assessment Authority. (2012–2025). [HKDSE examination statistics, yearly reports] [Data set]. https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Exam_Report/Examination_Statistics/dseexamstat24_3.pdf
 
 Hong Kong Observatory. (2026). *Number of Very Hot days observed at the Hong Kong Observatory* [Data set].
 
@@ -492,9 +494,9 @@ Hong Kong Police Force. (2026). [Overall reported crime and violent crime, annua
 
 Hospital Authority, Hong Kong. (2026). [Waiting time for stable new cases at specialist outpatient clinics] [Data set]. https://data.gov.hk/en-data/dataset/hospital-hadata-sop-waiting-time
 
-Housing Authority and Housing Bureau, Hong Kong. (2026). [Average waiting time for public rental housing, general applicants, as published each quarter].
+Housing Authority and Housing Bureau, Hong Kong. (various dates). [Average waiting time for public rental housing, general applicants, as published each quarter].
 
-Legislative Council of Hong Kong. (2026). [MTR incidents causing delays of 8 minutes or more, from Research Office paper ISSH07/17-18 and the reply to question 13 of May 14, 2025].
+Legislative Council of Hong Kong. (various dates). [MTR incidents causing delays of 8 minutes or more, from Research Office paper ISSH07/17-18 and the reply to question 13 of May 14, 2025].
 
 Rating and Valuation Department, Hong Kong. (2026). [Private domestic rental index, all classes] [Data set]. https://www.rvd.gov.hk/doc/en/statistics/his_data_3.xls
 

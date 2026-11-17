@@ -1,0 +1,188 @@
+{
+ "_how_this_works": [
+  "src/poster.py re-reads this file on every run. Edit wording here. Never type a result number here.",
+  "{name} placeholders are filled from data/public/results.json, yearly_changes.csv and validation_summary.json at run time.",
+  "See every placeholder and its current value: .venv/bin/python src/poster.py --list-placeholders",
+  "A placeholder whose data is missing prints as 'not available' and is listed on stdout. A name that does not exist stays in braces and src/poster_check.py fails.",
+  "**word** makes bold text. Body text must stay at 60 words or fewer per card. The check counts them.",
+  "For the chart cards (C1 to D1) this file holds the wording of each possible title. The rule that picks which form is used is in src/poster.py and follows the pre-registered decision rules.",
+  "Inside the chart-card forms, extra names work: {source}, {Source}, {est}, {ci_low}, {ci_high}, {p_text}, {n_pairs}, {strength}, {worse}, {better}, {diff}, {diff_low}, {diff_high}, {rank_list}, {rank_list_of}, {n_top}, {n_cities}, {Other} and the {other_...} values."
+ ],
+ "fallbacks": {
+  "_note": "Plan values from spec/methodology.md. Used only when the results file has no value yet, and reported on stdout when used.",
+  "news_years": "2015 to 2026",
+  "search_years": "2004 to 2026"
+ },
+ "banner": {
+  "title": "Measuring What Matters",
+  "question": "When a city's problems get worse, does public attention follow?",
+  "name": "Cayden Auyang",
+  "mentors": "Mentors: Mr. Qua and Mr. Lake",
+  "school": "Pomfret School, fall 2026"
+ },
+ "A4_repo": {
+  "heading": "Check the data and code",
+  "url": "https://github.com/CaydenAuyang/measuring-what-matters",
+  "ai_use": "AI use: an AI language model labeled the articles, a second AI model from a different family checked the labels, and AI tools ran the analysis and drafted the text."
+ },
+ "B1_question": {
+  "heading": "The question",
+  "body": [
+   "Cities publish official statistics on problems like crime and housing.",
+   "News coverage and Google searches show what the public pays attention to.",
+   "When a problem gets worse in the official numbers, does attention rise with it?"
+  ]
+ },
+ "B2_why": {
+  "heading": "Why it matters",
+  "body": [
+   "Official data and public attention are both imperfect measures of the same problems.",
+   "Recorded crime counts only what gets reported.",
+   "Attention can follow a news cycle and miss slow change.",
+   "When the two disagree, either one can be wrong."
+  ]
+ },
+ "B3_method": {
+  "heading": "Three voices, one comparison",
+  "voices": [
+   {
+    "key": "official",
+    "who": "Government",
+    "what": "Official statistics",
+    "years": "about 2005 to 2026"
+   },
+   {
+    "key": "search",
+    "who": "Residents",
+    "what": "Google search interest",
+    "years": "{search_years}"
+   },
+   {
+    "key": "news",
+    "who": "Journalists",
+    "what": "Local news from GDELT",
+    "years": "{news_years}"
+   }
+  ],
+  "comparison": "Compare yearly changes: do they move together?"
+ },
+ "B4_numbers": {
+  "heading": "The data in numbers",
+  "tiles": [
+   {
+    "value": "{n_cities}",
+    "label": "cities"
+   },
+   {
+    "value": "{outlets_main}",
+    "label": "outlets in the main panel"
+   },
+   {
+    "value": "{outlets_listed}",
+    "label": "outlets listed in all"
+   },
+   {
+    "value": "{articles_labeled_all}",
+    "label": "articles labeled by AI"
+   },
+   {
+    "value": "{official_series_total}",
+    "label": "official series, with backups"
+   },
+   {
+    "value": "{search_months}",
+    "label": "months of search data"
+   }
+  ]
+ },
+ "C1_validation": {
+  "placeholder_heading": "Can the AI's labels be trusted?",
+  "placeholder_tag": "PLACEHOLDER",
+  "placeholder_body": "Validation results arrive after the second coder runs",
+  "title_all_pass": "All {val_n_total} category checks reached kappa {threshold}",
+  "title_some_fail": "{val_n_pass} of {val_n_total} category checks reached kappa {threshold}",
+  "detail": "{dropped_sentence} Two AI coders agreed this much. No human checked the labels.",
+  "dropped_some": "Dropped. {val_dropped_list}",
+  "dropped_none": "No category was dropped.",
+  "provisional_tag": "PROVISIONAL."
+ },
+ "C2_h1": {
+  "title_supported": "{Source} attention rose {est} SD per 1 SD of worsening: a {strength} link",
+  "title_negative": "H1 failed for {source}: attention fell {abs_est} SD per 1 SD of worsening",
+  "title_unclear": "H1 failed for {source}: no clear link (slope {est}, interval includes zero)",
+  "title_no_interval": "H1 for {source}: slope {est}, interval not available",
+  "title_missing": "Result 1 (H1): not available yet",
+  "detail": "95% interval {ci_low} to {ci_high}, bootstrap {p_text}, {n_pairs} city and category pairs.",
+  "detail_missing": "News: not available yet. Search: not available yet.",
+  "other_available": "{Other}: slope {other_est} ({other_ci_low} to {other_ci_high}).",
+  "other_missing": "{Other}: not available yet.",
+  "nocovid": "Without 2020 to 2022: {nc_est} ({nc_ci_low} to {nc_ci_high}), so {nc_verdict}."
+ },
+ "C3_h2": {
+  "title_supported": "{Source} attention reacted more to worsening ({worse}) than improving ({better})",
+  "title_reverse": "H2 failed for {source}: stronger reaction to improving ({better}) than worsening ({worse})",
+  "title_not_supported": "H2 not supported for {source}: worsening {worse}, improving {better}, no clear gap",
+  "title_no_interval": "H2 for {source}: worsening {worse}, improving {better}, interval not available",
+  "title_missing": "Result 2 (H2): not available yet",
+  "detail_supported": "Difference {diff} SD, 95% interval {diff_low} to {diff_high}, bootstrap {p_text}.",
+  "detail_reverse": "Difference {diff} SD, 95% interval {diff_low} to {diff_high}, bootstrap {p_text}.",
+  "detail_not_supported": "Difference {diff} SD, 95% interval {diff_low} to {diff_high}, which includes zero (bootstrap {p_text}).",
+  "detail_missing": "News: not available yet. Search: not available yet.",
+  "other_available": "{Other} difference: {other_diff} ({other_diff_low} to {other_diff_high}).",
+  "other_missing": "{Other}: not available yet."
+ },
+ "C4_h3": {
+  "title_supported": "Safety had the largest gap in {n_top} of {n_cities} cities ({source})",
+  "title_failed_forms": [
+   "H3 failed for {source}: Safety ranked {rank_list}",
+   "H3 failed: Safety ranked {rank_list}"
+  ],
+  "title_untestable": "H3 could not be tested for {source}: no usable Safety pair",
+  "title_missing": "Result 3 (H3): not available yet",
+  "detail": "Each number is the share of periods when attention and official data moved in opposite directions.",
+  "detail_untestable": "Safety could not be tested in {cities}.",
+  "detail_missing": "News: not available yet. Search: not available yet.",
+  "other_available": "{Other}: Safety ranked {other_rank_list_of}.",
+  "other_missing": "{Other}: not available yet."
+ },
+ "D1_case": {
+  "title": "For {case_months} months, {case_city} {case_category} {case_official_verb} while {case_source} attention {case_attention_verb}",
+  "detail": "{case_start} to {case_end}. Proposed cause: {case_cause}. Cause proposed by AI, for Cayden to confirm.",
+  "title_missing": "Case study: not available yet",
+  "detail_missing": "No period of opposite movement is listed in the results file yet."
+ },
+ "D2_surprise": {
+  "heading": "What surprised me",
+  "candidates_label": "Two candidates to use or discard:",
+  "_note": "The card shows the first two candidates whose numbers are all available. Add or reorder freely. The line [CAYDEN TO WRITE, 2 sentences] is fixed in the code.",
+  "show": 2,
+  "candidates": [
+   "{H1_higher_source} attention followed official change more closely than {h1_lower_source} attention (slope {h1_higher_est} against {h1_lower_est}).",
+   "For {lead_source}, {h1_n_clear} of {h1_n_categories} categories showed a clear positive link. The strongest was {h1_top_clear_category} (slope {h1_top_clear_est}).",
+   "The share of periods moving in opposite directions ran from {h3_min_share} ({h3_min_pair}) to {h3_max_share} ({h3_max_pair})."
+  ]
+ },
+ "D3_limits": {
+  "heading": "Limits and changes to the plan",
+  "body": [
+   "AI labeled the articles. A second AI from a different model family checked a sample. No human coded any article.",
+   "The whole study ran in one night.",
+   "Search data rests on {search_downloads} per request. The plan said three.",
+   "Hong Kong news before 2020 rests on one outlet.",
+   "London has no health series."
+  ]
+ },
+ "D4_next": {
+  "heading": "What comes next",
+  "body": [
+   "Friday: the full paper.",
+   "Then a submission to the Journal of Emerging Investigators.",
+   "The dataset and code are public, so anyone can check the numbers."
+  ]
+ },
+ "layout_map": {
+  "title": "Layout map: where each printed page goes on the 48 by 36 inch board",
+  "print_note": "Print print_me.pdf at 100% (no scaling), pages turned sideways. Page order: A1 to A4, B1 to B4, C1 to C4, D1 to D4.",
+  "assembly_note": "Glue pages edge to edge, row A first, starting 2 in from the left edge and 1 in from the top. A thin white seam between the banner pages is fine."
+ }
+}
