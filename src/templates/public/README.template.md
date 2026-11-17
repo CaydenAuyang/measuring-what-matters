@@ -10,7 +10,7 @@ The whole dataset was produced in one automated run on November 17 and 18, 2026.
 | :-- | :-- |
 | `news_attention_monthly.csv` | Each category's share of local news coverage, by city and month, {{counts.news_first_month}} to {{counts.news_last_month}}. |
 | `search_attention_monthly.csv` | Each category's share of Google search interest, by city and month, {{counts.search_first_month}} to {{counts.search_last_month}}. |
-| `official_series.csv` | {{counts.official_series_total}} official series (main and backup indicators), at their own frequency, with break flags. |
+| `official_series.csv` | {{counts.official_series_total}} official series (the main and backup indicators), at their own frequency, with break flags. The file also holds {{counts.official_series_extra}} extra series that no test uses (see `codebook.md`). |
 | `official_series_meta.json` | One entry per official series: source addresses, how it was built, coverage, breaks, caveats. |
 | `yearly_changes.csv` | The matched year-over-year changes that the analysis uses, for every city, category and source. |
 | `results.json` | Every number reported in the paper and on the poster. |

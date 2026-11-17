@@ -14,7 +14,7 @@ Category codes: `safety`, `economy`, `housing`, `transport`, `environment`, `hea
 | `n_items` | Labeled articles behind the month's shares. |
 | `n_outlets` | Outlets with at least one labeled article that month. |
 | `min_items_per_outlet` | The smallest outlet's article count that month. |
-| `variant` | `main`: the pre-registered series after the headline-check rule. `main_no_exclusion`: every main-panel outlet in every year. `hk_no_hkcna`: Hong Kong without HK China News Agency. `london_no_seven`: London without the seven papers that jumped in volume. `all_listed`: every listed outlet. |
+| `variant` | `main`: the pre-registered series after the headline-check rule. `main_no_exclusion`: every main-panel outlet in every year. `hk_no_hkcna`: Hong Kong without HK China News Agency. `london_no_seven`: London without the seven papers that jumped in volume. `hk_headline_only`: exploratory, Hong Kong built only from articles whose web address carries headline words, with no outlet left out of any year. `all_listed`: every listed outlet. |
 | `missing_main_outlets` | Main-panel outlets with no articles that month (the month is flagged, and the average uses the others). |
 
 ## search_attention_monthly.csv
@@ -26,7 +26,10 @@ Category codes: `safety`, `economy`, `housing`, `transport`, `environment`, `hea
 | `share` | The set's ratio divided by the sum of the twelve ratios. The twelve shares sum to 1. |
 | `n_downloads` | How many downloads the figure rests on. |
 | `sparse_flag` | 1 if the set reads zero in more than 10% of months. Sparse sets are not tested but stay in the denominator. |
-| `zero_month_flag` | 1 if the set read zero that month. |
+| `zero_month_flag` | 1 if the set read zero that month in at least one download. |
+| `n_zero_downloads` | In how many downloads the set read zero that month. |
+| `source_request` | Which of the city's three requests (`A`, `B` or `C`) the set's figures come from. Economy is in all three (`A+B+C`). |
+| `shares_defined` | 1 if all twelve ratios exist that month, so the shares can be computed. A ratio is undefined when Economy reads zero. |
 
 ## official_series.csv
 
@@ -34,7 +37,7 @@ Category codes: `safety`, `economy`, `housing`, `transport`, `environment`, `hea
 | :-- | :-- |
 | `city`, `category` | As above. |
 | `role` | `main` or `backup` indicator. |
-| `series_id`, `component`, `indicator_name` | Series identifier, component name where a series has more than one (for example NO2 and PM10), and a plain name. |
+| `series_id`, `component`, `indicator_name` | Series identifier, component name where a series has more than one (for example NO2 and PM10), and a plain name. The main and backup indicators are named `<city>_<category>_main` and `<city>_<category>_backup`. Extra series that no test uses are also in the file: `hk_safety_main_monthly` and `hk_environment_backup_monthly`. |
 | `frequency` | `M` monthly, `Q` quarterly, `A` annual. |
 | `period`, `period_end_date` | The period label and its last day. Rolling averages use the end month. School-year series use the year the school year ends. |
 | `window_months` | Months each value covers. |
@@ -74,4 +77,4 @@ The pre-registered outlet lists (Appendix A) and search term sets (Appendix B).
 
 ## results.json
 
-Every reported number. Top-level keys: `counts`, `validation`, `main` (the four pooled models), `h1_by_category`, `h1_by_city`, `pair_level`, `h3`, `leadlag`, `case_study`, `checks`, `verdicts`, `ranking`, `signal_only`, `synthetic_tests`, `tables`, `text`. Slopes are in standard deviations of attention change per standard deviation of official worsening.
+Every reported number. Top-level keys: `generated_utc`, `cities`, `bootstrap_reps`, `note`, `counts`, `validation`, `main` (the four pooled models), `pairs_used`, `h1_by_category`, `h1_by_city`, `pair_level`, `h3`, `leadlag`, `case_study`, `checks`, `verdicts`, `ranking`, `signal_only`, `synthetic_tests`, `tables`, `text`. Slopes are in standard deviations of attention change per standard deviation of official worsening.

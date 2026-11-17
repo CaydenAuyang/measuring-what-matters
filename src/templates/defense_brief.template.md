@@ -1,8 +1,10 @@
 <!-- TEMPLATE: Filled by src/build_docs.py into deliverables/defense_brief.md. Edit this file, never the output.
 Every result number is a token. The only numbers typed here are fixed parts of the plan or of the record:
 dates and counts from spec/methodology.md and spec/fall_proposal.md (95% interval, 12-month blocks, 900 and 300
-items, three downloads, six months, 0.05, the $300 budget, October 7), and dates from deliverables/deviations.md
-(November 17 and 18). calc.* tokens are worked out in src/build_docs.py from the same results files.
+items, three downloads, six months, 0.05, the $300 budget, October 7), dates from deliverables/deviations.md
+(November 17 and 18), and the prompt's last-change time and the two test-run sizes (200 and 2,000 items, from
+src/codebook.py's file time and logs/api_costs.csv). calc.* tokens are worked out in src/build_docs.py from the
+same results files.
 No AI model, product or company is named in this file. The names are in data/public/labeling_card.md. -->
 # Defense brief: Measuring What Matters
 
@@ -16,7 +18,7 @@ If the status reads "provisional", the kappas come from a stand-in third AI pass
 
 **The question.** When a city's problems get worse in the official numbers, does public attention rise with them?
 
-**What was compared.** The cities are Hong Kong, New York City and London. For eight kinds of problems, the study takes the yearly change in an official statistic and sets it next to the yearly change in two kinds of attention. The first is each problem's share of local news coverage, {{counts.news_first_month}} to {{counts.news_last_month}}, built from {{counts.articles_labeled_all|comma}} articles labeled by an AI language model. The second is each problem's share of Google search interest, {{counts.search_first_month}} to {{counts.search_last_month}}.
+**What was compared.** The cities are Hong Kong, New York City and London. For eight kinds of problems, the study takes the yearly change in an official statistic and sets it next to the yearly change in two kinds of attention. The first is each problem's share of local news coverage, {{counts.news_first_month}} to {{counts.news_last_month}}, built from {{counts.articles_labeled_main_panel_total|comma}} main-panel articles labeled by an AI language model. Counting the other listed outlets, which feed one check, the model labeled {{counts.articles_labeled_all|comma}} articles. The second is each problem's share of Google search interest, {{counts.search_first_month}} to {{counts.search_last_month}}.
 
 **The three findings.**
 
@@ -89,17 +91,17 @@ Two things to know before someone asks.
 | Months of search data | {{counts.search_months}} | `results.json -> counts.search_months` |
 | Search downloads per request | {{counts.search_downloads_per_request}} | `results.json -> counts.search_downloads_per_request` |
 | The kappa bar | {{v.threshold}} | `validation_summary.json -> threshold` |
-| Category checks that reached the bar | {{calc.validation.checks_passed}} of {{calc.validation.checks_total}} | `validation_summary.json -> cities.*.categories.*.pass`, counted |
+| Category checks that reached the bar | {{calc.validation.checks_passed}} of {{calc.validation.checks_total}} | `validation_summary.json -> cities.*.kept`, counted over the twelve categories in each city |
 | Overall kappa, Hong Kong | {{v.cities.hk.overall_kappa}} | `validation_summary.json -> cities.hk.overall_kappa` |
 | Overall kappa, New York City | {{v.cities.nyc.overall_kappa}} | `validation_summary.json -> cities.nyc.overall_kappa` |
 | Overall kappa, London | {{v.cities.london.overall_kappa}} | `validation_summary.json -> cities.london.overall_kappa` |
 | H1 slope, news | {{main.news.h1.est}} | `results.json -> main.news.h1.est` |
 | H1 95% interval, news | {{main.news.h1.ci_low}} to {{main.news.h1.ci_high}} | `results.json -> main.news.h1.ci_low`, `ci_high` |
-| H1 bootstrap p, news | {{main.news.h1.p_boot|4f}} | `results.json -> main.news.h1.p_boot` |
+| H1 bootstrap p, news | {{main.news.h1.p_text}} | `results.json -> main.news.h1.p_text` (from `p_boot`) |
 | Pairs in the news model | {{main.news.h1.n_pairs}} | `results.json -> main.news.h1.n_pairs` |
 | H1 slope, search | {{main.search.h1.est}} | `results.json -> main.search.h1.est` |
 | H1 95% interval, search | {{main.search.h1.ci_low}} to {{main.search.h1.ci_high}} | `results.json -> main.search.h1.ci_low`, `ci_high` |
-| H1 bootstrap p, search | {{main.search.h1.p_boot|4f}} | `results.json -> main.search.h1.p_boot` |
+| H1 bootstrap p, search | {{main.search.h1.p_text}} | `results.json -> main.search.h1.p_text` (from `p_boot`) |
 | Pairs in the search model | {{main.search.h1.n_pairs}} | `results.json -> main.search.h1.n_pairs` |
 | H2 news, slope when worsening | {{main.news.h2.worse.est}} | `results.json -> main.news.h2.worse.est` |
 | H2 news, slope when improving | {{main.news.h2.better.est}} | `results.json -> main.news.h2.better.est` |
@@ -117,7 +119,8 @@ Two things to know before someone asks.
 
 Notes on this table.
 
-- A bootstrap p cannot go below one divided by the number of resamples plus one. With {{bootstrap_reps|comma}} resamples, a p at that floor means "none of the resampled slopes crossed zero," which the poster may print as "less than" a round number.
+- A bootstrap p cannot go below one divided by the number of resamples plus one. With {{bootstrap_reps|comma}} resamples, a p at that floor means "none of the resampled slopes crossed zero," and it is printed as "p < 0.001".
+- The count of category checks covers the twelve categories in each of the three cities. "Not a civic problem" is scored and shown, but it is not a category the rule can drop, so it is not in the count.
 - In the Safety rank rows, rank 1 means the largest gap in that city. "[not available]" in a rank row means Safety could not be tested there.
 - The two candidate sentences on the "What surprised me" card are worked out by `src/poster.py` from `results.json -> h1_by_category` and `results.json -> h3.opposite_share`. Check them against the tables at the end of this brief before using either one.
 
@@ -139,6 +142,14 @@ The plan said I would hand-code about 900 items, and that agreement with my labe
 
 I can't show that it is right, and the poster does not say it is. What I can show is agreement: a second AI language model from a different company read the real headline and opening lines of a sample of articles without seeing the first labels, and overall kappa was {{v.cities.hk.overall_kappa}} in Hong Kong, {{v.cities.nyc.overall_kappa}} in New York City and {{v.cities.london.overall_kappa}} in London. Any category under {{v.threshold}} in a city was dropped there. A separate check on 2020 and later articles found that labels made from the words in the web address matched labels made from the real stored headline at kappa {{v.headline_check.hk.with_headline_words.kappa}}, {{v.headline_check.nyc.with_headline_words.kappa}} and {{v.headline_check.london.with_headline_words.kappa}} in the same order. Two models can share a blind spot, so until a person codes a sample I call this consistency between AI coders and nothing stronger.
 
+Three scoring rules need saying out loud. The run set all three after it had seen provisional scores from a third AI pass and before the official second coder ran.
+
+- The {{v.threshold}} rule counts only the validation items that stay in the main series. In Hong Kong that is {{v.cities.hk.n_items}} of {{v.cities.hk.n_items_all}} items.
+- Where no page could be read and the article was from 2020 on, the second coder read the real stored headline alone: {{v.cities.hk.headline_only_items}} items in Hong Kong, {{v.cities.nyc.headline_only_items}} in New York City and {{v.cities.london.headline_only_items}} in London. One site challenged automated requests, so the run stopped using it and did not fetch its pages from anywhere else.
+- The weights match the labeled sample by category and the attention index by outlet.
+
+The table "Kappa under other scoring rules" at the end of this brief shows which categories fall under the bar with the plan as written and with each rule. If someone asks, say which categories the plan as written would have dropped. With the categories that rule keeps, the pooled news slope was {{checks.validation_rule_as_written.news.h1.est}} ({{checks.validation_rule_as_written.news.h1.ci_low}} to {{checks.validation_rule_as_written.news.h1.ci_high}}) across {{checks.validation_rule_as_written.news.h1.n_pairs}} pairs, against {{main.news.h1.est}} ({{main.news.h1.ci_low}} to {{main.news.h1.ci_high}}) across {{main.news.h1.n_pairs}} in the main model. No Hong Kong article from before 2020 is in the scored set, so the second coder never checked Hong Kong's labels for 2015 to 2019. {{run.second_coder_note}}
+
 ### What does a kappa of {{v.threshold}} mean, and why were some categories dropped?
 
 Kappa is agreement beyond chance: 0 is what random labeling would give and 1 is perfect agreement, so {{v.threshold}} is a bit more than halfway from chance to perfect. It is the bottom of the range that Landis and Koch (1977) call substantial agreement. That cutoff is a convention, and it was fixed in the plan before any labels existed. The rule was that a category under the bar in a city gets one revision of its wording and a fresh sample, and if it still falls short it is dropped for that city. Dropping a category costs pairs, and it keeps the least consistent labels out of the results.
@@ -157,13 +168,13 @@ One row in the checks table, marked exploratory, puts every main-panel outlet ba
 
 ### Why did the labeling model change during the run?
 
-The run began labeling with an AI language model through a key that turned out to be on its provider's free tier, and it hit the daily request cap partway through the Hong Kong articles. A second model on the same key was started as a stopgap. I then sent the run an instruction to switch to a model from a different provider on a paid key, to relabel everything from zero so that one model labeled every article, and to keep the first provider's model as the blind second coder. The prompt was frozen before any labeling and did not change, and no label from the two earlier models is used in any result. Before the full run the new model was compared with a larger model from the same provider on {{cmp.n}} items: kappa {{cmp.kappa_category}}, under a rule I set of {{cmp.threshold}} or higher to stay with the smaller one.
+The run began labeling with an AI language model through a key that turned out to be on its provider's free tier, and it hit the daily request cap partway through the Hong Kong articles. A second model on the same key was started as a stopgap. I then sent the run an instruction to switch to a model from a different provider on a paid key, to relabel everything from zero so that one model labeled every article, and to keep the first provider's model as the blind second coder. The prompt has not changed since 2026-11-17T21:00:35Z. Two test runs, of 200 and 2,000 Hong Kong items, used it before the full run. No label from the two earlier models is used in any result. Before the full run the new model was compared with a larger model from the same provider on {{cmp.n}} items: kappa {{cmp.kappa_category}}, under a rule I set of {{cmp.threshold}} or higher to stay with the smaller one.
 
 The model names and the full history are in `data/public/labeling_card.md`.
 
 ### Why did you pre-register, and why on November 17?
 
-Pre-registering means posting the plan with a timestamp before any outcome data exist, so the hypotheses and the tests cannot be adjusted after seeing which way the results go. The plan was to post it in October on the Open Science Framework, after my mentors approved it. It was posted on GitHub on November 17, 2026, with copies of the plan saved by the Internet Archive, and the first query that returned outcome data ran after that. The commit is `{{run.prereg_commit}}`, tag `{{run.prereg_tag}}`, time {{run.prereg_utc}}, and the record is `deliverables/preregistration.md`. So it came later than planned and on a different site, and it still came before the data.
+Pre-registering means posting the plan with a timestamp before any outcome data exist, so the hypotheses and the tests cannot be adjusted after seeing which way the results go. The plan was to post it in October on the Open Science Framework, and that step was meant to follow mentor approval. It was posted on GitHub on November 17, 2026, with copies of the plan saved by the Internet Archive, and the first query that returned outcome data ran after that. The commit is `{{run.prereg_commit}}`, tag `{{run.prereg_tag}}`, time {{run.prereg_utc}}, and the record is `deliverables/preregistration.md`. So it came later than planned and on a different site, and it still came before the data.
 
 [CAYDEN TO CONFIRM: why the pre-registration moved from October to November 17]
 
@@ -209,7 +220,7 @@ BigQuery billed {{run.bigquery_tb_billed}} terabytes across {{run.bigquery_queri
 
 ## The exact sentence to use when someone asks who coded the articles
 
-"An AI language model labeled every article in the study, a second AI language model from a different company checked a sample without seeing the first labels, and no person hand-coded any article in this run."
+"An AI language model labeled every article in the study. A second AI language model from a different company checked a sample without seeing the first labels. No person hand-coded any article in this run, so the agreement score shows that two AI coders agree, and it does not show that either matches a human reader."
 
 ## Lines only Cayden can fill in
 
@@ -261,6 +272,12 @@ Each row pools at most three cities, so read these as description. The main test
 **Kappa by category and city**
 
 {{tables.validation_kappa}}
+
+**Kappa under other scoring rules**
+
+This shows which categories fall below the bar under the plan as written and under each scoring rule the run added.
+
+{{tables.validation_rule_variants}}
 
 **Counts**
 
