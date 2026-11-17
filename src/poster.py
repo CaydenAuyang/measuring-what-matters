@@ -431,6 +431,11 @@ class Data:
         V = self.V or {}
         vp = "validation_summary.json"
         put_num("threshold", V.get("threshold"), f"{vp}: threshold")
+        # headline check and the check without 2020 to 2022, for the "What surprised me" candidates
+        put_num("hc_theme_only_kappa_hk", g(V, "headline_check", "hk", "theme_tags_only", "kappa"), f"{vp}: headline_check.hk.theme_tags_only.kappa")
+        put_num("hc_headline_kappa_hk", g(V, "headline_check", "hk", "with_headline_words", "kappa"), f"{vp}: headline_check.hk.with_headline_words.kappa")
+        for s_ in ("news", "search"):
+            put_num(f"nocovid_{s_}_est", g(self.R, "checks", "without_covid", s_, "h1", "est"), f"checks.without_covid.{s_}.h1.est")
         put("val_status", V.get("status") or NA, f"{vp}: status", not V.get("status"))
         cities = V.get("cities") if isinstance(V.get("cities"), dict) else {}
         n_tot = n_pass = 0; overall = []; dropped = []

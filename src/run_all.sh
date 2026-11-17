@@ -28,6 +28,9 @@ echo "== 7. Dataset package, run facts and documents"
 $PY -W ignore src/package_dataset.py > logs/package_rebuild.out 2>&1
 $PY -W ignore src/run_facts.py > /dev/null
 $PY -W ignore src/build_public_docs.py
+$PY -W ignore src/build_root_docs.py
+$PY -W ignore src/build_manifest.py
+[ -f deliverables/source_inventory_v2.md ] && $PY -W ignore src/patch_inventory.py
 [ -f src/build_docs.py ] && $PY -W ignore src/build_docs.py
 [ -f src/build_paper.py ] && $PY -W ignore src/build_paper.py | tail -2
 echo "== 8. Poster"

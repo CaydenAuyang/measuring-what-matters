@@ -72,7 +72,7 @@ def score(role="coder2", status_role="coder2rev"):
                 d.loc[d.outlet.isin(e["outlets"]) & (d.month >= e["from"]) & (d.month <= e["to"]), "retained"] = False
         d = d[d.retained]
         pc, _ = VS.pool_counts(c, retained_only=True)
-        sc = VL.score(d, pc, a_col="c1_revised", b_col="c2_category")
+        sc = VL.score(d, pc, a_col="c1_revised", b_col="c2_category", outlet_counts=VS._OUTLETS[(c, True)])
         res[c] = {k: {"kappa": sc["by_category"][k]["kappa_weighted"], "ci_low": sc["by_category"][k]["ci_low"], "ci_high": sc["by_category"][k]["ci_high"],
                       "n": int(len(d)), "n_first": sc["by_category"][k]["n_coder1"], "n_second": sc["by_category"][k]["n_coder2"],
                       "pass": bool(sc["by_category"][k]["kappa_weighted"] >= 0.61)} for k in failed}

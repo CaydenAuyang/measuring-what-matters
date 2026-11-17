@@ -51,7 +51,11 @@ def pool_counts(city, retained_only=True):
     m = d[d.in_main & d.level.isin(use) & (d.city == city) & d.category.notna()]
     if retained_only:
         m = build_index.apply_exclusions(m, excluded_rules())
+    # each outlet counts equally in each month of the attention index, so the outlet margin is outlet-months, not article volume
+    _OUTLETS[(city, retained_only)] = m.groupby("outlet").month.nunique().to_dict()
     return m.category.value_counts().to_dict(), level
+
+_OUTLETS = {}
 
 def city_block(city, role, tag="v1"):
     d_all = load_city(city, role, tag)
@@ -59,13 +63,16 @@ def city_block(city, role, tag="v1"):
         return None
     # kappa on every validation item, reported for openness
     pc_all, _ = pool_counts(city, retained_only=False)
-    sc_all = VL.score(d_all, pc_all, reps=300)
+    sc_all = VL.score(d_all, pc_all, reps=300, outlet_counts=_OUTLETS[(city, False)])
     # the 0.61 rule uses the items that remain in the main series (decided before the second coder ran)
     d = d_all[d_all.retained].copy()
     pc, level = pool_counts(city, retained_only=True)
-    sc = VL.score(d, pc)
-    N = sum(pc.values()); n_s = d.stratum.value_counts()
-    w = d.stratum.map(lambda s: (pc.get(s, 0) / N) / (n_s[s] / len(d))).to_numpy()
+    oc = _OUTLETS[(city, True)]
+    sc = VL.score(d, pc, outlet_counts=oc)
+    w = sc["weights"]
+    M = sum(oc.values())
+    outlet_table = {o: {"n_validation": int((d.outlet == o).sum()), "share_of_validation": float((d.outlet == o).mean()),
+                        "share_of_index_weight": float(oc.get(o, 0) / M), "weighted_share": float(w[(d.outlet == o).to_numpy()].sum() / w.sum())} for o in sorted(oc)}
     not_about = (d.about_city == "no").to_numpy()
     tone_k = VL.wkappa(d.c1_tone.to_numpy(), d.c2_tone.to_numpy(), w, codebook.TONES)
     fetch = jload(os.path.join(V, f"{city}_fetch_report_{tag}.json"), {})
@@ -73,6 +80,8 @@ def city_block(city, role, tag="v1"):
         "n_items": int(len(d)), "n_items_all": int(len(d_all)), "n_items_left_out_by_headline_rule": int((~d_all.retained).sum()),
         "all_items": {"overall_kappa": sc_all["overall"]["kappa_weighted"], "categories": {k: v["kappa_weighted"] for k, v in sc_all["by_category"].items()}},
         "headline_only_items": int((d.source == "gdelt_title").sum()),
+        "effective_n": sc["effective_n"], "outlet_weights": outlet_table,
+        "outlets_with_no_validation_items": [o for o, v in outlet_table.items() if v["n_validation"] == 0],
         "labeling_round_for_weights": level,
         "overall_kappa": sc["overall"]["kappa_weighted"], "overall_ci_low": sc["overall"]["ci_low"], "overall_ci_high": sc["overall"]["ci_high"],
         "overall_kappa_unweighted": sc["overall"]["kappa_unweighted"],
@@ -170,6 +179,12 @@ def write_report(S):
             if f.get("short_categories"): L.append(f"- Categories that ended below their target count because too few pages could be fetched: {f['short_categories']}")
         L.append(f"- Overall kappa, weighted back to the full sample: {fmt(b['overall_kappa'])} (95% interval {fmt(b['overall_ci_low'])} to {fmt(b['overall_ci_high'])}). Unweighted: {fmt(b['overall_kappa_unweighted'])}.")
         L.append(f"- Weighted agreement: {b['overall_agreement'] * 100:.0f}%.")
+        L.append(f"- Weights match the validation set to the measure on two margins: the first coder's category (in proportion to the labeled sample) and the outlet (in proportion to its weight in the index). Effective sample size after weighting: {b['effective_n']:.0f}.")
+        ow = b.get("outlet_weights") or {}
+        big = sorted(ow.items(), key=lambda kv: -kv[1]["share_of_index_weight"])[:4]
+        L.append("- Outlet weights follow the attention index, where each outlet counts equally in each month it has articles. " + "; ".join(f"{outlets.BY_KEY[o]['name']} carries {v['share_of_index_weight'] * 100:.0f}% of the index weight and is {v['share_of_validation'] * 100:.0f}% of the validation items" for o, v in big) + ".")
+        if b.get("outlets_with_no_validation_items"):
+            L.append("- Outlets with no validation items at all: " + ", ".join(outlets.BY_KEY[o]['name'] for o in b['outlets_with_no_validation_items']) + ".")
         L.append(f"- Tone kappa (negative, neutral, positive): {fmt(b['tone_kappa'])}.")
         L.append(f"- Share of articles the second coder judged not really about the city: {b['not_about_city_share'] * 100:.0f}% weighted ({b['not_about_city_share_unweighted'] * 100:.0f}% of the validation items).\n")
         L.append("| Category | Kappa | 95% interval | First coder n | Second coder n | Result |")

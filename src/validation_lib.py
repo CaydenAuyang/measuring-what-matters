@@ -57,15 +57,43 @@ def wkappa(a, b, w, labels):
     pe = sum(((w * (a == k)).sum() / W) * ((w * (b == k)).sum() / W) for k in labels)
     return float((po - pe) / (1 - pe)) if pe < 1 else float("nan")
 
-def score(df, pool_counts, labels=None, reps=1000, seed=5, a_col="c1_category", b_col="c2_category"):
-    """df: one row per validation item with the stratum (first coder's label), both coders' labels.
-    pool_counts: first-coder label counts in the full labeled sample of the city (for the weights)."""
+def rake_weights(df, pool_counts, outlet_counts=None, iters=100):
+    """Weights that carry the validation set back to the full labeled sample.
+
+    First margin: the first coder's category (the set was drawn with at least 20 items per category).
+    Second margin, when outlet_counts is given: the outlet, in proportion to its weight in the attention index
+    (outlet-months). Pages from some outlets could be read far more often than from others, so without this
+    margin the outlets that are easy to fetch would count for too much.
+    The two margins are matched by raking (iterative proportional fitting)."""
+    w = np.ones(len(df))
+    cat = df["stratum"].to_numpy(); N = sum(pool_counts.values())
+    tc = {k: pool_counts.get(k, 0) / N for k in set(cat)}
+    tsum = sum(tc.values()); tc = {k: v / tsum for k, v in tc.items()}
+    if outlet_counts:
+        out = df["outlet"].to_numpy(); M = sum(outlet_counts.get(o, 0) for o in set(out))
+        to = {o: outlet_counts.get(o, 0) / M for o in set(out)} if M else None
+    else:
+        to = None
+    for _ in range(iters if to else 1):
+        tot = w.sum()
+        for k, t in tc.items():
+            m = cat == k; cur = w[m].sum() / tot
+            if cur > 0: w[m] *= t / cur
+        if to:
+            tot = w.sum()
+            for o, t in to.items():
+                m = out == o; cur = w[m].sum() / tot
+                if cur > 0 and t > 0: w[m] *= t / cur
+    return w * len(df) / w.sum()
+
+def score(df, pool_counts, labels=None, reps=1000, seed=5, a_col="c1_category", b_col="c2_category", outlet_counts=None):
+    """df: one row per validation item with the stratum (first coder's label), the outlet, and both coders' labels.
+    pool_counts / outlet_counts: first-coder label counts and outlet counts in the full labeled sample of the city."""
     labels = labels or codebook.LABELS
     n_s = df["stratum"].value_counts()
-    N = sum(pool_counts.values())
-    w = df["stratum"].map(lambda s: (pool_counts.get(s, 0) / N) / (n_s[s] / len(df))).to_numpy()
+    w = rake_weights(df, pool_counts, outlet_counts)
     a = df[a_col].to_numpy(); b = df[b_col].to_numpy()
-    out = {"n": int(len(df)), "overall": {"kappa_weighted": wkappa(a, b, w, labels), "kappa_unweighted": wkappa(a, b, np.ones(len(df)), labels),
+    out = {"n": int(len(df)), "effective_n": float(w.sum() ** 2 / (w ** 2).sum()), "weights": w, "overall": {"kappa_weighted": wkappa(a, b, w, labels), "kappa_unweighted": wkappa(a, b, np.ones(len(df)), labels),
                                           "agreement_weighted": float((w * (a == b)).sum() / w.sum()), "agreement_unweighted": float((a == b).mean())},
            "by_category": {}}
     rng = np.random.default_rng(seed)
