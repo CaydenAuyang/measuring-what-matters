@@ -1,0 +1,82 @@
+{
+ "_source": "spec/methodology.md, Appendix B table (markdown backslashes removed, nothing else changed)",
+ "_spec_sha256": "3b244e0f7ef3828832e1e0bee731729784d3710d1666beff9b20fb895827b5d9",
+ "geos": {
+  "hk": "HK",
+  "nyc": "US-NY-501",
+  "london": "GB-ENG"
+ },
+ "geo_labels": {
+  "hk": "Hong Kong",
+  "nyc": "New York NY",
+  "london": "England"
+ },
+ "date": "2004-01-01 2026-10-31",
+ "requests": {
+  "A": [
+   "economy",
+   "safety",
+   "housing",
+   "transport",
+   "environment"
+  ],
+  "B": [
+   "economy",
+   "health",
+   "education",
+   "cost_of_living",
+   "governance"
+  ],
+  "C": [
+   "economy",
+   "culture",
+   "technology",
+   "community",
+   "safety"
+  ]
+ },
+ "sets": {
+  "hk": {
+   "safety": "罪案 + 搶劫 + 騙案 + 治安 + crime rate",
+   "economy": "失業 + 裁員 + 搵工 + 綜援 + unemployment",
+   "housing": "劏房 + 公屋輪候 + 租金 + 樓價 + 露宿者",
+   "transport": "港鐵故障 + 地鐵故障 + 塞車 + 交通意外 + MTR delay",
+   "environment": "空氣污染 + 空氣質素 + 煙霞 + air pollution + air quality",
+   "health": "急症室 + 專科輪候 + 流感 + 精神健康",
+   "education": "收生不足 + 殺校 + 教師流失 + 學位不足",
+   "cost_of_living": "通脹 + 物價 + 加價 + inflation",
+   "governance": "特首 + 立法會 + 區議會 + 示威 + 貪污",
+   "culture": "文化保育 + 古蹟保育 + 藝術資助",
+   "technology": "上唔到網 + 資料外洩 + 網絡攻擊 + data breach",
+   "community": "歧視 + 義工 + 社區中心 + 鄰居糾紛"
+  },
+  "nyc": {
+   "safety": "crime rate + gun violence + robbery + stabbing + burglary",
+   "economy": "unemployment + layoffs + job search + food bank",
+   "housing": "eviction + homeless shelter + affordable housing + rent stabilized + rent increase",
+   "transport": "subway delays + train delays + traffic jam + car crash",
+   "environment": "air quality + air pollution + smog",
+   "health": "emergency room + flu + overdose + mental health",
+   "education": "teacher shortage + school overcrowding + failing schools + school budget cuts",
+   "cost_of_living": "inflation + grocery prices + gas prices + electric bill",
+   "governance": "mayor + city council + corruption + protest",
+   "culture": "arts funding + venue closing + landmark preservation",
+   "technology": "internet outage + data breach + cyberattack + ransomware",
+   "community": "racism + discrimination + volunteer + community center"
+  },
+  "london": {
+   "safety": "crime rate + stabbing + robbery + mugging + burglary",
+   "economy": "unemployment + redundancy + jobcentre + food bank",
+   "housing": "eviction + homeless + social housing + rent increase + temporary accommodation",
+   "transport": "tube delays + tube strike + train delays + traffic jam + car crash",
+   "environment": "air pollution + air quality + smog",
+   "health": "A&E + NHS waiting list + flu + mental health",
+   "education": "teacher shortage + school funding cuts + failing schools + teacher strike",
+   "cost_of_living": "inflation + energy bills + food prices + petrol prices",
+   "governance": "mayor of London + local council + corruption + protest",
+   "culture": "arts funding + venue closure + pub closures + library closures",
+   "technology": "internet outage + data breach + cyber attack + ransomware",
+   "community": "racism + discrimination + volunteering + community centre"
+  }
+ }
+}

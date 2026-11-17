@@ -22,3 +22,8 @@ logs/*.out
 *articles_*.parquet
 *.jsonl
 deliverables/optional_hand_check_50.csv
+
+# Secrets
+.env
+logs/*.err
+logs/*.flag
