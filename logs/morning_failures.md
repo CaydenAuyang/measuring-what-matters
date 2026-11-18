@@ -1,9 +1,9 @@
-- **Validation is still provisional.** The blind second coder can only run after its quota resets at about 3:07 AM. Until then the kappas come from the third AI pass. If this note still says "provisional", that step did not finish: see `STATE.md`.
-- **The first language-model key was on a free tier** and hit a daily cap. You switched the first coder to a model from another provider. One model labeled everything. Names and versions are in `data/public/labeling_card.md`.
-- **London has no Health series** (NHS England pages answered with a browser challenge). **New York Health starts in 2020** (CDC WONDER needs a terms form).
-- **Hong Kong news for 2015 to 2019 rests on the South China Morning Post alone.** Labels from theme tags alone failed the headline check, so the pre-registered rule left out two outlets.
-- **scmp.com challenged automated requests.** Its validation items use GDELT's stored headline, from 2020 on only. No Hong Kong item before 2020 could be validated.
-- **Three validation rules were set during the run**, after provisional scores had been seen. The validation report shows the test under the plan's wording too.
-- **The Internet Archive would not save the github.com repository page.** The raw plan files were saved and verified.
+- **Validation is still provisional.** The blind second coder runs after its quota resets at about 3:07 AM. Until then the kappas come from the third AI pass. If this line is still here, that step did not finish: see `STATE.md`.
+- **The first model key hit a free-tier daily cap.** You switched the first coder to another provider's model. One model labeled everything (`data/public/labeling_card.md`).
+- **London has no Health series** (NHS England pages showed a browser challenge). **New York Health starts in 2020** (CDC WONDER needs a terms form).
+- **Hong Kong news for 2015 to 2019 rests on the South China Morning Post alone.** Two outlets failed the headline check and the pre-registered rule left them out.
+- **scmp.com blocked automated requests.** Its validation items use GDELT's stored headline, 2020 on only. No Hong Kong item before 2020 was validated.
+- **Three validation rules were set during the run**, after provisional scores were seen. The validation report also shows the test as the plan worded it.
+- **The Internet Archive would not save the github.com repository page.** The plan files were saved and verified.
 - **Cut:** the social media snapshot and the pre-2015 news extension (they need logins or API keys).
-- **The poster has fewer pages than planned**: a 48 by 36 inch board holds at most 16 Letter pages.
+- **The poster is 16 pages**, the most a 48 by 36 inch board holds.
