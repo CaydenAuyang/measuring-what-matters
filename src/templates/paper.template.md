@@ -8,9 +8,9 @@ Layout comments read by src/md_to_docx.py: pagebreak, wide-pages, normal-pages.
 
 # Measuring What Matters: When a City's Problems Get Worse, Does Public Attention Follow?
 
-**Cayden Auyang**, Pomfret School
+Cayden Auyang. AI drafted and I reviewed.
 
-Mentors: Mr. Qua and Mr. Lake. Independent study, fall 2026.
+Pomfret School. Mentors: Mr. Qua and Mr. Lake. Independent study, fall 2026.
 
 *Draft filled from the results file generated at {{generated_utc}} (UTC). Validation status: {{text.validation_status}}.*
 
@@ -429,7 +429,7 @@ The largest change is who checked the labels: a second AI language model in plac
 | Google Trends requests | There are 11 sets other than Economy and 12 open slots, so the third request repeats Safety. The first request's Safety is the one used. |
 | Sample for the check with all listed outlets | The same budget of 1,000 a month split equally over every listed outlet. Labeled for this draft: {{paper.check_sample}}. |
 | Theme tags sent to the model | The first 30 different tags in order of first appearance. |
-| Poster size | The poster board holds at most 16 letter-size pages laid flat, so the poster kit is 16 pages and not the 18 to 24 first aimed for. This does not affect the paper. |
+| Poster | The showcase poster is eight pieces on a 710 by 550 mm board, built to a design I supplied during the run, and not the 18 to 24 letter-size pages first aimed for. This does not affect the paper. |
 | Which validation items the 0.61 rule uses | Items that remain in the main series after the headline-check rule. Kappa on every validation item is in the validation report. Set after provisional scores from the third AI pass had been seen and before the official second coder ran. |
 | Validation text when no page can be read | The live page, then the Internet Archive. If neither can be read and the article is from 2020 on, the second coder reads the real headline that GDELT stored, headline only. Earlier items are replaced. One site challenged automated requests, so the run stopped using it and did not fetch its pages from anywhere else. Set at the same point as the rule above. |
 | Validation weights | Two margins: the first coder's category, in proportion to the labeled sample, and the outlet, in proportion to its weight in the attention index. Set at the same point as the rule above. |

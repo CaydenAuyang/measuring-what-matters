@@ -8,6 +8,8 @@ same results files.
 No AI model, product or company is named in this file. The names are in data/public/labeling_card.md. -->
 # Defense brief: Measuring What Matters
 
+Cayden Auyang. AI drafted and I reviewed.
+
 Read this once at breakfast. Then put it away and speak from memory.
 
 Every number below was filled in from the results files when this brief was built. Results file generated: {{generated_utc}}. Validation status: **{{text.validation_status}}**. Bootstrap resamples: {{bootstrap_reps|comma}}.
@@ -34,7 +36,7 @@ If the status reads "provisional", the kappas come from a stand-in third AI pass
 
 **The sentence to add every time.** An AI language model did the labeling and a second AI language model did the checking. No person hand-coded any article in this run, so the check shows that two AI coders agree. It does not show that a person would agree with them.
 
-## Every term on the poster
+## Terms behind the poster
 
 **Cohen's kappa.** Kappa measures how often two coders give the same label, after removing the agreement they would reach by chance alone. A kappa of 0 means no better than chance and 1 means they always agree, and a category had to reach {{v.threshold}} in a city to be used there.
 
@@ -56,13 +58,18 @@ If the status reads "provisional", the kappas come from a stand-in third AI pass
 
 **Permutation test.** For the lead and lag results, the attention series is slid along the calendar by a random amount many times, and each time the strongest correlation across lags of up to 12 months either way is recorded. The p-value is the share of those shifted series that did at least as well as the real one, and this part of the study is exploratory with no prediction attached.
 
-## Each chart's takeaway
+## The two charts on the poster
 
-1. **Kappa chart (card C1).** Each mark is the agreement between the two AI coders for one category in one city, the dashed line is the bar, and hollow diamonds are categories that fell short and were dropped: {{calc.validation.checks_passed}} of {{calc.validation.checks_total}} category checks reached {{v.threshold}}, and overall kappa was {{v.cities.hk.overall_kappa}} in Hong Kong, {{v.cities.nyc.overall_kappa}} in New York City and {{v.cities.london.overall_kappa}} in London.
-2. **H1 chart (card C2).** The top row is the pooled slope for news and for search, each row under it is one category, and a bar that crosses the zero line means no clear link in that row; the pooled slope is {{main.news.h1.est}} for news (H1 {{verdicts.h1_news}}) and {{main.search.h1.est}} for search (H1 {{verdicts.h1_search}}).
-3. **H2 chart (card C3).** Filled marks are the slope in periods when the problem got worse, hollow marks are the slope when it got better, and H2 asks whether the filled one is clearly larger; for news the slopes were {{main.news.h2.worse.est}} when worsening and {{main.news.h2.better.est}} when improving (H2 {{verdicts.h2_news}}), and for search {{main.search.h2.worse.est}} and {{main.search.h2.better.est}} (H2 {{verdicts.h2_search}}).
-4. **H3 chart (card C4).** Each cell is the share of periods in which attention and the official measure moved in opposite directions, the orange outline is the Safety row, the black box is the largest gap in each city, and H3 predicted that box would sit on Safety in at least two cities; it did in {{h3.safety_rank.news.cities_where_safety_is_largest}} of {{counts.cities}} for news (H3 {{verdicts.h3_news}}) and in {{h3.safety_rank.search.cities_where_safety_is_largest}} of {{counts.cities}} for search (H3 {{verdicts.h3_search}}).
-5. **Case-study timeline (card D1).** The solid line is the yearly change in the official measure (up means worse), the dashed line is the yearly change in attention, and the shaded band is the stretch where they moved in opposite directions: {{text.case_city}} {{text.case_category}} in the {{text.case_source}} series, {{case_study.start}} to {{case_study.end}}, with the official measure {{case_study.official_direction}} and attention {{case_study.attention_direction}} for {{case_study.months}} months.
+1. **The answer chart.** Each dot is a pooled slope: how many of its own typical steps attention moves when an official measure worsens by one typical step. The pale bar is the 95% interval. The dark line marked "no link" is zero. Search: {{main.search.h1.est}} ({{main.search.h1.ci_low}} to {{main.search.h1.ci_high}}), H1 {{verdicts.h1_search}}. News: {{main.news.h1.est}} ({{main.news.h1.ci_low}} to {{main.news.h1.ci_high}}), H1 {{verdicts.h1_news}}.
+2. **The case-study chart.** The dark line is the yearly change in the official measure and the orange line is the yearly change in that category's share of news, both in their own typical steps, with worse at the top. The shaded band is the stretch where they moved in opposite directions: {{text.case_city}} {{text.case_category}}, {{case_study.start}} to {{case_study.end}}, with the official measure {{case_study.official_direction}} and attention {{case_study.attention_direction}} for {{case_study.months}} months.
+
+**About the answer title.** The title's wording is picked by a rule in `src/poster_board.py` from the two H1 verdicts, and `poster/board_manifest.json` records which rule fired. The analysis calls a slope under 0.3 weak. If the slopes above are under it, say "follow, weakly" out loud. Without 2020 to 2022 the news slope is {{checks.without_covid.news.h1.est}} ({{checks.without_covid.news.h1.ci_low}} to {{checks.without_covid.news.h1.ci_high}}) and the search slope is {{checks.without_covid.search.h1.est}} ({{checks.without_covid.search.h1.ci_low}} to {{checks.without_covid.search.h1.ci_high}}).
+
+**Results that are not on the poster.** Have these ready.
+
+- Validation: {{calc.validation.checks_passed}} of {{calc.validation.checks_total}} category checks reached kappa {{v.threshold}}. Overall kappa was {{v.cities.hk.overall_kappa}} in Hong Kong, {{v.cities.nyc.overall_kappa}} in New York City and {{v.cities.london.overall_kappa}} in London.
+- H2: for news the slopes were {{main.news.h2.worse.est}} when worsening and {{main.news.h2.better.est}} when improving (H2 {{verdicts.h2_news}}), and for search {{main.search.h2.worse.est}} and {{main.search.h2.better.est}} (H2 {{verdicts.h2_search}}).
+- H3: Safety had the largest gap in {{h3.safety_rank.news.cities_where_safety_is_largest}} of {{counts.cities}} cities for news (H3 {{verdicts.h3_news}}) and in {{h3.safety_rank.search.cities_where_safety_is_largest}} of {{counts.cities}} for search (H3 {{verdicts.h3_search}}).
 
 Two things to know before someone asks.
 
@@ -74,7 +81,7 @@ Two things to know before someone asks.
 - Proposed by: {{case_study.proposed_by}}.
 - [CAYDEN TO CONFIRM: the proposed cause for the case study]
 
-**About the H3 chart.** Two unrelated series would move in opposite directions about half the time. A cell near 50% means no visible relationship. Only a cell well above 50% means the two pulled against each other.
+**About the H3 shares.** Two unrelated series would move in opposite directions about half the time. A cell near 50% means no visible relationship. Only a cell well above 50% means the two pulled against each other.
 
 ## The numbers on the poster and where they come from
 
@@ -82,15 +89,14 @@ Two things to know before someone asks.
 
 | On the poster | Value now | File and field |
 | :-- | :-- | :-- |
-| Cities | {{counts.cities}} | `results.json -> counts.cities` |
-| News outlets in the main panel | {{counts.outlets_main_panel_total}} | `results.json -> counts.outlets_main_panel_total` |
-| Outlets listed in all | {{counts.outlets_listed_total}} | `results.json -> counts.outlets_listed_total` |
-| News articles labeled by AI | {{counts.articles_labeled_all|comma}} | `results.json -> counts.articles_labeled_all` |
-| Official data series, main | {{counts.official_series_main}} | `results.json -> counts.official_series_main` |
-| Official data series, with backups | {{counts.official_series_total}} | `results.json -> counts.official_series_total` |
-| Months of search data | {{counts.search_months}} | `results.json -> counts.search_months` |
-| Search downloads per request | {{counts.search_downloads_per_request}} | `results.json -> counts.search_downloads_per_request` |
-| The kappa bar | {{v.threshold}} | `validation_summary.json -> threshold` |
+| "3 cities" | {{counts.cities}} | `results.json -> counts.cities` |
+| "429k news articles sorted by topic" | {{counts.articles_labeled_all|comma}} | `results.json -> counts.articles_labeled_all`, rounded to thousands. This counts the main panels and the check lists. The main panels alone hold {{counts.articles_labeled_main_panel_total|comma}}. |
+| "Official data series" | {{counts.official_series_main}} | `results.json -> counts.official_series_main` (main indicators; with backups there are {{counts.official_series_total}}) |
+| "Years of search data" | {{counts.search_months}} months | `results.json -> counts.search_months`, divided by 12 and rounded down |
+| "Local news outlets" | {{counts.outlets_main_panel_total}} | `results.json -> counts.outlets_main_panel_total` (the main panels; {{counts.outlets_listed_total}} outlets are listed in all) |
+| "Months of news" | {{counts.news_months}} ({{counts.news_first_month}} to {{counts.news_last_month}}) | `results.json -> counts.news_months` |
+| Search downloads per request (not on the poster) | {{counts.search_downloads_per_request}} | `results.json -> counts.search_downloads_per_request` |
+| The kappa bar (not on the poster) | {{v.threshold}} | `validation_summary.json -> threshold` |
 | Category checks that reached the bar | {{calc.validation.checks_passed}} of {{calc.validation.checks_total}} | `validation_summary.json -> cities.*.kept`, counted over the twelve categories in each city |
 | Overall kappa, Hong Kong | {{v.cities.hk.overall_kappa}} | `validation_summary.json -> cities.hk.overall_kappa` |
 | Overall kappa, New York City | {{v.cities.nyc.overall_kappa}} | `validation_summary.json -> cities.nyc.overall_kappa` |
@@ -122,7 +128,8 @@ Notes on this table.
 - A bootstrap p cannot go below one divided by the number of resamples plus one. With {{bootstrap_reps|comma}} resamples, a p at that floor means "none of the resampled slopes crossed zero," and it is printed as "p < 0.001".
 - The count of category checks covers the twelve categories in each of the three cities. "Not a civic problem" is scored and shown, but it is not a category the rule can drop, so it is not in the count.
 - In the Safety rank rows, rank 1 means the largest gap in that city. "[not available]" in a rank row means Safety could not be tested there.
-- The two candidate sentences on the "What surprised me" card are worked out by `src/poster.py` from `results.json -> h1_by_category` and `results.json -> h3.opposite_share`. Check them against the tables at the end of this brief before using either one.
+- The poster's "What surprised me" box is blank for your two sentences. Two candidates to use or discard, both from the results files: (1) labels made from topic tags alone matched labels made from real headlines at only kappa {{v.headline_check.hk.theme_tags_only.kappa}}; (2) without 2020 to 2022 the news slope goes from {{main.news.h1.est}} to {{checks.without_covid.news.h1.est}}.
+- Rows from the H1 p-values down are not printed on the poster. They are here for questions.
 
 ## Fifteen questions a teacher is likely to ask
 
@@ -233,7 +240,7 @@ These are facts the run could not know. Fill them in before you present, in your
 - [CAYDEN TO CONFIRM: what these results mean for OurCityHealth] The paper's Discussion has a first draft of this paragraph (`paper/paper.md`, Section 6).
 - [CAYDEN TO CONFIRM: license for the dataset] In `data/public/README.md` and the data card.
 - [CAYDEN TO CONFIRM: the proposed cause for the case study] Every other proposed cause in the disconnection table is also marked "for Cayden to confirm."
-- [CAYDEN TO WRITE, 2 sentences: "What surprised me"] The poster card has two candidate sentences to use or discard. Its wording lives in `poster/poster_text.json`.
+- [CAYDEN TO WRITE, 2 sentences: "What surprised me"] The box on the poster is blank. Write in it by hand. Two candidate sentences are under the numbers table above.
 
 To find every open line in the project: `grep -rn "CAYDEN TO" deliverables poster paper data/public MORNING.md`
 

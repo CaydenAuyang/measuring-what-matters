@@ -29,3 +29,5 @@ logs/*.err
 logs/*.flag
 poster/preview/
 MORNING.md
+# Cayden's design reference files for the poster (his working files)
+poster/design_reference*

@@ -4,8 +4,8 @@ Built {{generated_utc}} UTC. Validation: **{{text.validation_status}}**.
 
 ## 1. Print first
 
-1. `poster/print_me.pdf`: US Letter, landscape, 100%, one side.
-2. `poster/layout_map.pdf`: where pages A1 to D4 go on the board.
+1. `poster/a4_pieces.pdf`: A4, 100% (no "fit to page"), one side. Nine pages with cut lines. The numbers piece prints as two halves (pages 7 and 8). Pages 4 to 6 fill the sheet's width, so print borderless if you can.
+2. `poster/board_layout.pdf`: where each piece goes on the 710 by 550 mm board, in mm. `poster/board_preview.png` shows the result.
 3. `deliverables/defense_brief.md`: read it before the showcase.
 
 ## 2. What finished
@@ -26,8 +26,9 @@ Dropped for low agreement between the AI coders. Hong Kong: {{text.dropped_hk}}.
 
 ## 5. Lines only you can fill in
 
-- Poster card D2: `[CAYDEN TO WRITE, 2 sentences]`.
+- The poster's "What surprised me" box: two sentences in your words. Candidates are in the defense brief.
 - Every `[CAYDEN TO CONFIRM: ...]` line: your role, mentor approval date, dataset license, what the results mean for OurCityHealth. The defense brief lists them.
+- Every byline reads "AI drafted and I reviewed." The run posted the files before you read them. Read each one before you share it.
 - The "What Cayden changed" column of `deliverables/ai_use_log.md`.
 - AI proposed the causes of disconnections and the named events. Confirm or change them.
 - Optional: label `deliverables/optional_hand_check_50.csv`, then run `src/score_hand_check.py`.

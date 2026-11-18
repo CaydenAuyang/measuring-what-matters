@@ -7,6 +7,8 @@ data/public/labeling_card.md. calc.* tokens are worked out in src/build_docs.py 
 No AI model, product or company is named in this file. The names are in data/public/labeling_card.md. -->
 # Civic Signal Framework
 
+Cayden Auyang. AI drafted and I reviewed.
+
 How to compare a city's official statistics with public attention, step by step.
 
 ## Who this is for and what it gives you

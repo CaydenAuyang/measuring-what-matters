@@ -4,4 +4,4 @@
 - **Hong Kong news for 2015 to 2019 rests on the South China Morning Post alone**, and no Hong Kong label from before 2020 was validated (scmp.com blocked automated requests).
 - **Three validation rules were set during the run**, after provisional scores were seen. The validation report also shows the test as the plan worded it.
 - **The Internet Archive would not save the github.com repository page.** The plan files were saved and verified.
-- **Cut:** the social media snapshot and the pre-2015 news extension (they need logins or API keys). The poster is 16 pages, the most the board holds.
+- **Cut:** the social media snapshot and the pre-2015 news extension (they need logins or API keys).

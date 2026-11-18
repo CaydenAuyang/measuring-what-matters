@@ -1,5 +1,7 @@
 # Measuring What Matters: public dataset
 
+Cayden Auyang. AI drafted and I reviewed.
+
 Monthly public attention and official statistics for Hong Kong, New York City and London. Built for the study "Measuring What Matters: when a city's problems get worse, does public attention follow?" by Cayden Auyang (Pomfret School, fall 2026).
 
 The whole dataset was produced in one automated run on November 17 and 18, 2026. An AI agent carried out a plan that was posted publicly before any outcome data were collected (commit `{{run.prereg_commit}}`, tag `{{run.prereg_tag}}`, in the repository at {{run.repository}}).

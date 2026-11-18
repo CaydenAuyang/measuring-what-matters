@@ -35,4 +35,6 @@ $PY -W ignore src/build_manifest.py
 [ -f src/build_paper.py ] && $PY -W ignore src/build_paper.py | tail -2
 echo "== 8. Poster"
 [ -f src/poster.py ] && $PY -W ignore src/poster.py | tail -2 && $PY -W ignore src/poster_check.py | tail -2
+echo "== 9. Board poster (A4 pieces, layout, preview)"
+$PY -W ignore src/poster_board.py || echo "BOARD POSTER FAILED: poster/a4_pieces.pdf was not rebuilt"
 echo "== done: $(date)"
