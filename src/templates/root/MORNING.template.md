@@ -4,13 +4,13 @@ Built {{generated_utc}} UTC. Validation: **{{text.validation_status}}**.
 
 ## 1. Print first
 
-1. `poster/a4_pieces.pdf`: A4, 100% (no "fit to page"), one side. Nine pages with cut lines. The numbers piece prints as two halves (pages 7 and 8). Pages 4 to 6 fill the sheet's width, so print borderless if you can.
+1. `poster/a4_pieces.pdf`: A4, 100% (no "fit to page"), one side. Nine pages with cut lines. The numbers piece is two halves (pages 7 and 8). Pages 4 to 6 fill the sheet's width: print borderless if you can.
 2. `poster/board_layout.pdf`: where each piece goes on the 710 by 550 mm board, in mm. `poster/board_preview.png` shows the result.
 3. `deliverables/defense_brief.md`: read it before the showcase.
 
 ## 2. What finished
 
-Pre-registration (public before any outcome data). {{run.items_labeled_total|comma}} articles labeled by one AI model. {{counts.official_series_total}} official series. Google Trends, {{counts.search_downloads_per_request}} downloads per request. AI validation of about 300 articles per city. All pre-registered tests, poster kit, dataset, paper draft, framework, source inventory v2, deviations, AI-use log. `./src/run_all.sh` rebuilds everything. Spent about ${{run.bigquery_cost_usd}} on BigQuery and ${{run.anthropic_cost_usd}} on the paid model key.
+Pre-registration (public before any outcome data). {{run.items_labeled_total|comma}} articles labeled by one AI model. {{counts.official_series_total}} official series. Google Trends, {{counts.search_downloads_per_request}} downloads per request. AI validation of about 300 articles per city. All pre-registered tests, the poster, dataset, paper draft and every other deliverable. `./src/run_all.sh` rebuilds everything. Spent about ${{run.bigquery_cost_usd}} on BigQuery and ${{run.anthropic_cost_usd}} on the paid model key.
 
 ## 3. What failed or was cut (details: `deliverables/deviations.md`)
 
