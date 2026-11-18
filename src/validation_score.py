@@ -44,7 +44,7 @@ def excluded_rules():
     return (hc or {}).get("rule", {}).get("excluded", [])
 
 def pool_counts(city, retained_only=True):
-    d = build_index.load()
+    d = build_index.load(build_index.first_codebook_labels())     # the labels the validation samples were drawn from
     level = build_index.levels_done(d)
     order = list(build_index.LEVEL_CAPS)
     use = order[: order.index(level) + 1] if level else order[:1]

@@ -59,8 +59,8 @@ def score(role="coder2", status_role="coder2rev"):
     for c in outlets.CITIES:
         failed = (summary["cities"].get(c) or {}).get("failed_first_test") or []
         p1 = os.path.join(V, f"{c}_first_revised_labels_v2.jsonl"); p2 = os.path.join(V, f"{c}_{status_role}_labels_v2.csv")
-        if not failed or not (os.path.exists(p1) and os.path.exists(p2)):
-            continue
+        if not (os.path.exists(p1) and os.path.exists(p2)):
+            continue          # a city with no failed category is still scored, so the fresh-sample kappas of its kept categories are on file
         vs = pd.read_csv(os.path.join(V, f"{c}_validation_set_v2.csv"), dtype={"item_id": str, "vid": str})
         a = pd.read_json(p1, lines=True, dtype={"item_id": str}).drop_duplicates("item_id")[["item_id", "category"]].rename(columns={"category": "c1_revised"})
         b = pd.read_csv(p2, dtype={"vid": str}).drop_duplicates("vid")[["vid", "category"]].rename(columns={"category": "c2_category"})

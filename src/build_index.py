@@ -17,10 +17,17 @@ LEVEL_CAPS = {"L0": (30, 6), "L1": (60, 12), "L2": (100, 20), "L3": (150, 30), "
 LEVEL_OF_GRP = {"L0-hk": "L0", "L0-rest": "L0", "L1": "L1", "L2": "L2", "L3": "L3", "L4": "L4", "L5": "L5"}
 SEVEN = ["eastlondonadvertiser", "hackneygazette", "hamhigh", "ilfordrecorder", "islingtongazette", "kilburntimes", "romfordrecorder"]
 
-def load():
+def first_codebook_labels():
+    """Path of the labels made with the first codebook. If the whole sample was labeled again with a revised
+    codebook (src/swap_revised_labels.py), the first file is kept under a new name and the first validation
+    test and the headline check keep using it."""
+    p = os.path.join(ROOT, "data/interim/labels/labels_main_first_codebook.jsonl")
+    return p if os.path.exists(p) else os.path.join(ROOT, "data/interim/labels/labels_main.jsonl")
+
+def load(labels_path=None):
     items = pd.read_parquet(os.path.join(ROOT, "data/interim/labels/items_ordered.parquet"),
                             columns=["item_id", "city", "outlet", "month", "in_main", "in_check", "rk_main", "rk_all", "grp", "headline"])
-    lab = pd.read_json(os.path.join(ROOT, "data/interim/labels/labels_main.jsonl"), lines=True).drop_duplicates("item_id")
+    lab = pd.read_json(labels_path or os.path.join(ROOT, "data/interim/labels/labels_main.jsonl"), lines=True).drop_duplicates("item_id")
     d = items.merge(lab[["item_id", "category", "tone"]], on="item_id", how="left")
     d["level"] = d.grp.map(LEVEL_OF_GRP)
     return d

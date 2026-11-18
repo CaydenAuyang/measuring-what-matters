@@ -29,7 +29,8 @@ def boot_ci(a, b, reps=1000, seed=9):
 def run():
     s = pd.read_csv(os.path.join(V, "headline_check_set.csv"), dtype={"item_id": str})
     t = pd.read_json(os.path.join(V, "headline_check_title_labels.jsonl"), lines=True, dtype={"item_id": str}).drop_duplicates("item_id")
-    p = pd.read_json(os.path.join(ROOT, "data/interim/labels/labels_main.jsonl"), lines=True, dtype={"item_id": str}).drop_duplicates("item_id")
+    first = os.path.join(ROOT, "data/interim/labels/labels_main_first_codebook.jsonl")      # kept if the sample was labeled again with a revised codebook
+    p = pd.read_json(first if os.path.exists(first) else os.path.join(ROOT, "data/interim/labels/labels_main.jsonl"), lines=True, dtype={"item_id": str}).drop_duplicates("item_id")
     d = s.merge(t[["item_id", "category"]].rename(columns={"category": "from_title"}), on="item_id") \
          .merge(p[["item_id", "category"]].rename(columns={"category": "production"}), on="item_id")
     out = {"threshold": THRESHOLD, "n_items": int(len(d)), "n_in_set": int(len(s)), "cities": {}, "by_outlet": {}}
