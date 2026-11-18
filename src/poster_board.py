@@ -37,6 +37,10 @@ PIECES = [
     ("numbers", "By the numbers", 543, 22, 145, 330, "cream"),
     ("qr", "QR card", 543, 364, 145, 164, ""),
 ]
+# Cayden's own words for the "What surprised me" piece (his message of November 18). Kept word for word in every rebuild.
+SURPRISED = ["I expected the news to track real problems better than Google searches. It was the opposite: what people search for follows the official numbers far more closely than what papers cover.",
+             "I assumed that when the news and official data disagreed, one of them was wrong. Often they were measuring different things, like Hong Kong's economy news covering business worries while unemployment fell."]
+SURPRISED_STYLE = "font-size:15px;line-height:1.3;color:#14213D"          # the size of the reference's other body text
 CITY = {"hk": "Hong Kong", "nyc": "New York", "london": "London"}
 CAT = {"safety": "Safety", "economy": "Economy", "housing": "Housing", "transport": "Transport", "environment": "Environment",
        "health": "Health", "education": "Education", "cost_of_living": "Cost of living"}
@@ -164,7 +168,8 @@ def answer_svg(R):
     return "".join(s), {r[0]: {"slope": r[2], "interval": [r[3], r[4]]} for r in rows}
 
 
-def case_svg(cs, Y):
+def case_svg(cs, Y, half=83.0):
+    """half: half the plot height in reference pixels (83 in the reference; smaller when the piece is made shorter)."""
     d = Y[(Y.city == cs["city"]) & (Y.category == cs["category"]) & (Y.source == cs["source"])].sort_values("period_end_month")
     d = d.dropna(subset=["official_change_sd", "attention_change_sd"])
     start = "2019-07" if cs["start"] >= "2020-01" else str(pd.Period(cs["start"], "M") - 24)
@@ -175,22 +180,23 @@ def case_svg(cs, Y):
     step = (520 - 46) / (len(months) - 1)
     xi = {str(m): 46 + i * step for i, m in enumerate(months)}
     top = max(d.official_change_sd.abs().max(), d.attention_change_sd.abs().max())
-    k = 83.0 / max(1, math.ceil(top))                      # both lines share one scale, in standard deviations
-    Yp = lambda v: 109.0 - v * k
+    k = half / max(1, math.ceil(top))                      # both lines share one scale, in standard deviations
+    mid, bot = 26.0 + half, 26.0 + 2 * half                # zero line and bottom of the plot
+    Yp = lambda v: mid - v * k
     xa, xb = xi[cs["start"]], xi[cs["end"]]
-    s = ['<svg width="538" height="232" viewBox="0 0 538 232">',
-         f'<rect x="{xa:.2f}" y="20" width="{xb - xa:.2f}" height="172" fill="#F4A261" opacity="0.18" rx="4"/>',
-         f'<line x1="46" y1="109.0" x2="520" y2="109.0" stroke="{NAVY}" stroke-width="1.4" opacity="0.5"/>']
+    s = [f'<svg width="538" height="{bot + 40:.0f}" viewBox="0 0 538 {bot + 40:.0f}">',
+         f'<rect x="{xa:.2f}" y="20" width="{xb - xa:.2f}" height="{bot - 20:.1f}" fill="#F4A261" opacity="0.18" rx="4"/>',
+         f'<line x1="46" y1="{mid:.1f}" x2="520" y2="{mid:.1f}" stroke="{NAVY}" stroke-width="1.4" opacity="0.5"/>']
     years = sorted({m.year for m in months if m.month == 1})
     every = 1 if len(years) <= 9 else 2
     for yr in years[::every]:
         x = xi[f"{yr}-01"]
-        s.append(f'<text x="{x:.2f}" y="216" font-size="13" fill="{GREY}" text-anchor="middle">{yr}</text><line x1="{x:.2f}" y1="192" x2="{x:.2f}" y2="198" stroke="{GREY}"/>')
+        s.append(f'<text x="{x:.2f}" y="{bot + 24:.1f}" font-size="13" fill="{GREY}" text-anchor="middle">{yr}</text><line x1="{x:.2f}" y1="{bot:.1f}" x2="{x:.2f}" y2="{bot + 6:.1f}" stroke="{GREY}"/>')
     for col, color in (("official_change_sd", NAVY), ("attention_change_sd", CORAL)):
         pts = " ".join(f"{xi[m]:.1f},{Yp(v):.1f}" for m, v in zip(d.period_end_month, d[col]))
         s.append(f'<polyline points="{pts}" fill="none" stroke="{color}" stroke-width="3.2" stroke-linejoin="round" stroke-linecap="round"/>')
     s.append(f'<text x="{(xa + xb) / 2:.2f}" y="38" font-size="14" font-weight="700" fill="#B5542F" text-anchor="middle">{cs["months"]} months apart</text>'
-             f'<text x="38" y="44.83" font-size="12" fill="{GREY}" text-anchor="end">worse</text><text x="38" y="183.17" font-size="12" fill="{GREY}" text-anchor="end">better</text></svg>')
+             f'<text x="38" y="44.83" font-size="12" fill="{GREY}" text-anchor="end">worse</text><text x="38" y="{bot - 8.83:.2f}" font-size="12" fill="{GREY}" text-anchor="end">better</text></svg>')
     return "".join(s), {"first_month": str(months[0]), "last_month": str(months[-1]), "px_per_sd": round(k, 3)}
 
 
@@ -211,7 +217,45 @@ ICONS = {
 }
 
 
+def surprised_text_height():
+    """Height in reference pixels of Cayden's two paragraphs at the box's text width, measured in Chrome."""
+    w = 594 - 2 - 56 - 120 - 22 - 4 - 32               # piece, border, padding, label column, gap, box border, box padding
+    paras = "".join(f'<p style="margin:0 0 {0 if i == len(SURPRISED) - 1 else 10}px 0">{t}</p>' for i, t in enumerate(SURPRISED))
+    html = (f'<!doctype html><html><head><meta charset="utf-8"><style>{font_css("file://" + FONTS)}{BASE_CSS}</style></head><body>'
+            f'<div id="t" style="width:{w}px;{SURPRISED_STYLE}">{paras}</div>'
+            '<script>document.fonts.ready.then(()=>{document.body.setAttribute("data-h",document.getElementById("t").getBoundingClientRect().height)})</script></body></html>')
+    with tempfile.TemporaryDirectory() as tmp, tempfile.TemporaryDirectory() as prof:
+        hp = os.path.join(tmp, "m.html"); open(hp, "w", encoding="utf-8").write(html)
+        out = subprocess.run([find_chrome(), "--headless=new", "--disable-gpu", "--no-first-run", f"--user-data-dir={prof}", "--virtual-time-budget=6000", "--dump-dom", "file://" + hp],
+                             check=True, timeout=120, capture_output=True, text=True).stdout
+    import re
+    m = re.search(r'data-h="([0-9.]+)"', out)
+    if not m:
+        raise SystemExit("poster_board: could not measure the text of the What surprised me piece")
+    return float(m.group(1))
+
+
+def fit_surprised():
+    """Make the What surprised me piece tall enough for the text, and the case study piece shorter by the same amount.
+    Every other piece stays where it is. Returns the plot half-height for the case chart."""
+    need_px = surprised_text_height() + 20 + 4 + 48 + 2          # box padding, box border, piece padding, piece border
+    need_mm = math.ceil(need_px / PX_PER_MM)
+    i_case = next(i for i, p in enumerate(PIECES) if p[0] == "case"); i_sur = next(i for i, p in enumerate(PIECES) if p[0] == "surprised")
+    k, n, x, y, w, h, cls = PIECES[i_sur]
+    extra = max(0, need_mm - h)
+    if extra:
+        PIECES[i_sur] = (k, n, x, y - extra, w, h + extra, cls)
+        k, n, x, y, w, h, cls = PIECES[i_case]
+        PIECES[i_case] = (k, n, x, y, w, h - extra, cls)
+    case_h_px = PIECES[i_case][5] * PX_PER_MM
+    half = (case_h_px - 2 - 48 - 94 - 66) / 2               # border, padding, text above the chart (kicker, two title lines, legend), axis and label room
+    if PIECES[i_sur][5] > 210 or half < 18:
+        raise SystemExit("poster_board: the What surprised me text does not fit with the case study on A4 pieces")
+    return min(83.0, half), extra
+
+
 def build_pieces(R, Y):
+    half, extra = fit_surprised()
     c = R["counts"]
     man = {}
     out = {}
@@ -235,7 +279,8 @@ def build_pieces(R, Y):
     man["answer"] = {"title": [l1, l2], "rule": rule, "values": vals}
     cs, why = pick_case(R)
     t1, t2, leg_off, leg_news = case_wording(cs)
-    svg, info = case_svg(cs, Y)
+    svg, info = case_svg(cs, Y, half)
+    info["made_shorter_by_mm"] = extra
     sw = lambda col: f'<span style="display:inline-block;width:18px;height:4px;background:{col};vertical-align:middle;margin-right:6px;border-radius:2px"></span>'
     longest = max(len(t1), len(t2))           # the reference's own title is 40 characters a line at 27 px; longer wording is set smaller so it stays on two lines
     size = "" if longest <= 41 else f' style="font-size:{max(20.0, 27 * 41 / longest):.1f}px"'
@@ -245,7 +290,8 @@ def build_pieces(R, Y):
     man["case"] = {"title": [t1, t2], "picked_by": why, "city": cs["city"], "category": cs["category"], "start": cs["start"], "end": cs["end"], "months": cs["months"],
                    "official_direction": cs["official_direction"], "attention_direction": cs["attention_direction"], **info}
     out["surprised"] = ('<div style="display:flex;gap:22px;align-items:center;height:100%"><div class="kicker" style="margin:0;flex:none;width:120px;line-height:1.5">What<br>surprised<br>me</div>'
-                        '<div style="flex:1;border:2px dashed #D8D2C6;border-radius:8px;height:110px;display:flex;align-items:center;justify-content:center;color:#B9B2A4;font-size:16px;font-style:italic">Two sentences in Cayden\'s words</div></div>')
+                        '<div style="flex:1;border:2px dashed #D8D2C6;border-radius:8px;padding:10px 16px;' + SURPRISED_STYLE + '">' + "".join(f'<p style="margin:0 0 {0 if i == len(SURPRISED) - 1 else 10}px 0">{t}</p>' for i, t in enumerate(SURPRISED)) + '</div></div>')
+    man["surprised"] = {"text": SURPRISED, "made_taller_by_mm": extra}
     y1, y2 = need(c.get("news_first_month"), "news_first_month")[:4], need(c.get("news_last_month"), "news_last_month")[:4]
     nums = [(str(need(c.get("cities"), "cities")), "cities", NAVY),
             (f"{round(need(c.get('articles_labeled_all'), 'articles_labeled_all') / 1000):,}k", "news articles sorted by topic", CORAL),

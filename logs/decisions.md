@@ -38,3 +38,6 @@
 - The poster carries no text beyond the reference, as instructed. So it does not carry the validation status, the H2 and H3 results, or the note that the case study's cause is proposed by AI. Those are in the defense brief and the morning note.
 - The earlier 16-page Letter kit (`poster/print_me.pdf`, `poster/layout_map.pdf`) is kept and still rebuilt.
 - Bylines: the paper, framework, source inventory, defense brief and dataset README now read "Cayden Auyang. AI drafted and I reviewed." as Cayden instructed. The run posts these files before he has read them. The morning note tells him to read them before sharing. Sentences that say no person checked the labels or numbers during the run stay as they are.
+
+## 2026-11-18, Cayden's second poster message
+- His four sentences go in the "What surprised me" piece word for word (`SURPRISED` in `src/poster_board.py`), at 15 px, the size of the reference's other body text. They did not fit in 82 mm. The code measures the text and resizes: the piece is 48 mm taller (130 mm) and the case study piece 48 mm shorter (142 mm). The case chart's plot is drawn shorter to fit. Both pieces still fit one A4 sheet each. No other piece moved.

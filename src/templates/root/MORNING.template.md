@@ -26,7 +26,6 @@ Dropped for low agreement between the AI coders. Hong Kong: {{text.dropped_hk}}.
 
 ## 5. Lines only you can fill in
 
-- The poster's "What surprised me" box: two sentences in your words. Candidates are in the defense brief.
 - Every `[CAYDEN TO CONFIRM: ...]` line: your role, mentor approval date, dataset license, what the results mean for OurCityHealth. The defense brief lists them.
 - Every byline reads "AI drafted and I reviewed." The run posted the files before you read them. Read each one before you share it.
 - The "What Cayden changed" column of `deliverables/ai_use_log.md`.

@@ -128,7 +128,7 @@ Notes on this table.
 - A bootstrap p cannot go below one divided by the number of resamples plus one. With {{bootstrap_reps|comma}} resamples, a p at that floor means "none of the resampled slopes crossed zero," and it is printed as "p < 0.001".
 - The count of category checks covers the twelve categories in each of the three cities. "Not a civic problem" is scored and shown, but it is not a category the rule can drop, so it is not in the count.
 - In the Safety rank rows, rank 1 means the largest gap in that city. "[not available]" in a rank row means Safety could not be tested there.
-- The poster's "What surprised me" box is blank for your two sentences. Two candidates to use or discard, both from the results files: (1) labels made from topic tags alone matched labels made from real headlines at only kappa {{v.headline_check.hk.theme_tags_only.kappa}}; (2) without 2020 to 2022 the news slope goes from {{main.news.h1.est}} to {{checks.without_covid.news.h1.est}}.
+- The "What surprised me" piece carries the four sentences you wrote on November 18, word for word (`src/poster_board.py`, `SURPRISED`). They are not rebuilt from the results. The first says search follows the official numbers far more closely than news: the slopes behind it are {{main.search.h1.est}} for search and {{main.news.h1.est}} for news, both weak by the analysis's own cutoff, and the two models pool different pairs and years. If a rebuild changes those numbers, reread your sentences.
 - Rows from the H1 p-values down are not printed on the poster. They are here for questions.
 
 ## Fifteen questions a teacher is likely to ask
@@ -240,7 +240,6 @@ These are facts the run could not know. Fill them in before you present, in your
 - [CAYDEN TO CONFIRM: what these results mean for OurCityHealth] The paper's Discussion has a first draft of this paragraph (`paper/paper.md`, Section 6).
 - [CAYDEN TO CONFIRM: license for the dataset] In `data/public/README.md` and the data card.
 - [CAYDEN TO CONFIRM: the proposed cause for the case study] Every other proposed cause in the disconnection table is also marked "for Cayden to confirm."
-- [CAYDEN TO WRITE, 2 sentences: "What surprised me"] The box on the poster is blank. Write in it by hand. Two candidate sentences are under the numbers table above.
 
 To find every open line in the project: `grep -rn "CAYDEN TO" deliverables poster paper data/public MORNING.md`
 
