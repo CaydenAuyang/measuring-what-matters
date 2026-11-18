@@ -1,0 +1,186 @@
+{
+ "answer": {
+  "title": [
+   "Searches follow real problems.",
+   "News barely does."
+  ],
+  "title_px": 33.0,
+  "rule": "search H1 supported, news H1 supported: news supported and its slope is under 0.15",
+  "values": {
+   "Google searches": {
+    "slope": 0.26,
+    "interval": [
+     0.19,
+     0.42
+    ]
+   },
+   "Local news": {
+    "slope": 0.07,
+    "interval": [
+     0.02,
+     0.1
+    ]
+   }
+  }
+ },
+ "case": {
+  "title": [
+   "Hong Kong, 2022 to 2023: jobs recovered,",
+   "but economy news kept rising."
+  ],
+  "picked_by": "the case study in the results file",
+  "city": "hk",
+  "category": "economy",
+  "start": "2022-05",
+  "end": "2023-06",
+  "months": 14,
+  "official_direction": "improving",
+  "attention_direction": "rising",
+  "first_month": "2019-07",
+  "last_month": "2026-10",
+  "px_per_sd": 11.191
+ },
+ "surprised": {
+  "text": [
+   "I expected the news to track real problems better than Google searches. It was the opposite: what people search for follows the official numbers far more closely than what papers cover.",
+   "I assumed that when the news and official data disagreed, one of them was wrong. Often they were measuring different things, like Hong Kong's economy news covering business worries while unemployment fell."
+  ]
+ },
+ "numbers": [
+  {
+   "value": "3",
+   "label": "cities"
+  },
+  {
+   "value": "429k",
+   "label": "news articles sorted by topic"
+  },
+  {
+   "value": "23",
+   "label": "official data series"
+  },
+  {
+   "value": "22",
+   "label": "years of search data"
+  },
+  {
+   "value": "21",
+   "label": "local news outlets"
+  },
+  {
+   "value": "141",
+   "label": "months of news, 2015 to 2026"
+  }
+ ],
+ "qr": {
+  "url": "https://github.com/CaydenAuyang/measuring-what-matters",
+  "modules": 33
+ },
+ "results_generated_utc": "2026-11-18T08:21:14Z",
+ "validation_status": "final",
+ "pages": [
+  {
+   "page": 1,
+   "piece": "Title",
+   "orientation": "landscape"
+  },
+  {
+   "page": 2,
+   "piece": "The question",
+   "orientation": "landscape"
+  },
+  {
+   "page": 3,
+   "piece": "The method",
+   "orientation": "landscape"
+  },
+  {
+   "page": 4,
+   "piece": "The answer (chart)",
+   "orientation": "landscape"
+  },
+  {
+   "page": 5,
+   "piece": "When they disagree (case study)",
+   "orientation": "landscape"
+  },
+  {
+   "page": 6,
+   "piece": "What surprised me",
+   "orientation": "landscape"
+  },
+  {
+   "page": 7,
+   "piece": "By the numbers, top half",
+   "orientation": "portrait"
+  },
+  {
+   "page": 8,
+   "piece": "By the numbers, bottom half",
+   "orientation": "portrait"
+  },
+  {
+   "page": 9,
+   "piece": "QR card",
+   "orientation": "portrait"
+  }
+ ],
+ "pieces_mm": [
+  {
+   "piece": "Title",
+   "left": 22,
+   "top": 22,
+   "width": 215,
+   "height": 150
+  },
+  {
+   "piece": "The question",
+   "left": 22,
+   "top": 184,
+   "width": 215,
+   "height": 150
+  },
+  {
+   "piece": "The method",
+   "left": 22,
+   "top": 346,
+   "width": 215,
+   "height": 182
+  },
+  {
+   "piece": "The answer (chart)",
+   "left": 249,
+   "top": 22,
+   "width": 266,
+   "height": 170
+  },
+  {
+   "piece": "When they disagree (case study)",
+   "left": 249,
+   "top": 204,
+   "width": 266,
+   "height": 200
+  },
+  {
+   "piece": "What surprised me",
+   "left": 249,
+   "top": 416,
+   "width": 266,
+   "height": 112
+  },
+  {
+   "piece": "By the numbers",
+   "left": 527,
+   "top": 22,
+   "width": 161,
+   "height": 330
+  },
+  {
+   "piece": "QR card",
+   "left": 527,
+   "top": 364,
+   "width": 161,
+   "height": 164
+  }
+ ]
+}

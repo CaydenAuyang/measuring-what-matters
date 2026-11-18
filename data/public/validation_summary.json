@@ -1,0 +1,1997 @@
+{
+ "threshold": 0.61,
+ "status": "final",
+ "scored_against": "coder2",
+ "what_this_measures": "Agreement between two independent AI coders. It does not show that either coder matches a human reader.",
+ "first_coder": "An AI language model reading headline words from the web address plus GDELT theme tags.",
+ "second_coder": "A second AI language model from a different model family, blind to the first coder's labels, reading the real headline and opening lines.",
+ "cities": {
+  "hk": {
+   "n_items": 228,
+   "n_items_all": 299,
+   "n_items_left_out_by_headline_rule": 71,
+   "all_items": {
+    "overall_kappa": 0.5756671970725259,
+    "categories": {
+     "safety": 0.5002892030128491,
+     "economy": 0.5432989596873758,
+     "housing": 0.4095895244423637,
+     "transport": 0.3693955159027839,
+     "environment": 0.6220804163075478,
+     "health": 0.7261995306347504,
+     "education": 0.7494834434298747,
+     "cost_of_living": 0.27775595145495996,
+     "governance": 0.691857140875461,
+     "culture": 0.14594459230858736,
+     "technology": 0.11040266024944899,
+     "community": 0.23143598900101706,
+     "not_civic": 0.5965945092545806
+    }
+   },
+   "headline_only_items": 130,
+   "effective_n": 104.70238042244578,
+   "outlet_weights": {
+    "hkcna": {
+     "n_validation": 28,
+     "share_of_validation": 0.12280701754385964,
+     "share_of_index_weight": 0.26973684210526316,
+     "weighted_share": 0.2697368421052631
+    },
+    "orientaldaily": {
+     "n_validation": 89,
+     "share_of_validation": 0.39035087719298245,
+     "share_of_index_weight": 0.26973684210526316,
+     "weighted_share": 0.26973684210526316
+    },
+    "scmp": {
+     "n_validation": 111,
+     "share_of_validation": 0.4868421052631579,
+     "share_of_index_weight": 0.4605263157894737,
+     "weighted_share": 0.46052631578947373
+    }
+   },
+   "outlets_with_no_validation_items": [],
+   "labeling_round_for_weights": "L5",
+   "overall_kappa": 0.6490746256052761,
+   "overall_ci_low": 0.5593972619107832,
+   "overall_ci_high": 0.7386276349438529,
+   "overall_kappa_unweighted": 0.5801280709831331,
+   "overall_agreement": 0.7012206633548249,
+   "overall_agreement_unweighted": 0.6140350877192983,
+   "tone_kappa": 0.5056383890572668,
+   "categories": {
+    "safety": {
+     "kappa": 0.7157611968930225,
+     "kappa_unweighted": 0.5968169761273204,
+     "ci_low": 0.4445763101952365,
+     "ci_high": 0.9038450205501182,
+     "pass": true,
+     "n_first": 15,
+     "n_second": 17
+    },
+    "economy": {
+     "kappa": 0.6485578083071578,
+     "kappa_unweighted": 0.47852028639618127,
+     "ci_low": 0.46011486701657134,
+     "ci_high": 0.8027397159438352,
+     "pass": true,
+     "n_first": 18,
+     "n_second": 31
+    },
+    "housing": {
+     "kappa": 0.4623453227225007,
+     "kappa_unweighted": 0.581497797356828,
+     "ci_low": 0.2529433617144096,
+     "ci_high": 0.7120954947428785,
+     "pass": false,
+     "n_first": 15,
+     "n_second": 24
+    },
+    "transport": {
+     "kappa": 0.35738839602276307,
+     "kappa_unweighted": 0.5678842177808409,
+     "ci_low": 0.1257814400168576,
+     "ci_high": 0.6794152128688513,
+     "pass": false,
+     "n_first": 16,
+     "n_second": 11
+    },
+    "environment": {
+     "kappa": 0.788625421667941,
+     "kappa_unweighted": 0.819095477386935,
+     "ci_low": 0.5858714612863443,
+     "ci_high": 0.9643121089022264,
+     "pass": true,
+     "n_first": 17,
+     "n_second": 19
+    },
+    "health": {
+     "kappa": 0.7591427981649606,
+     "kappa_unweighted": 0.6915887850467289,
+     "ci_low": 0.5789594939984247,
+     "ci_high": 0.8956587287696265,
+     "pass": true,
+     "n_first": 20,
+     "n_second": 19
+    },
+    "education": {
+     "kappa": 0.8238904851169894,
+     "kappa_unweighted": 0.8162475822050295,
+     "ci_low": 0.6346140829475333,
+     "ci_high": 0.9444191925429759,
+     "pass": true,
+     "n_first": 17,
+     "n_second": 12
+    },
+    "cost_of_living": {
+     "kappa": 0.4352827114537986,
+     "kappa_unweighted": 0.4829931972789109,
+     "ci_low": 0.1279691588043168,
+     "ci_high": 0.6924520222685201,
+     "pass": false,
+     "n_first": 15,
+     "n_second": 5
+    },
+    "governance": {
+     "kappa": 0.7251912543674304,
+     "kappa_unweighted": 0.5421686746987955,
+     "ci_low": 0.5519761192361393,
+     "ci_high": 0.8549688580390098,
+     "pass": true,
+     "n_first": 24,
+     "n_second": 36
+    },
+    "culture": {
+     "kappa": 0.18233211925127618,
+     "kappa_unweighted": 0.5002578648788036,
+     "ci_low": 0.059412022306297184,
+     "ci_high": 0.5531061693196974,
+     "pass": false,
+     "n_first": 20,
+     "n_second": 17
+    },
+    "technology": {
+     "kappa": 0.10834213032287025,
+     "kappa_unweighted": 0.38803680981595146,
+     "ci_low": 0.01875499942555205,
+     "ci_high": 0.390756768612717,
+     "pass": false,
+     "n_first": 16,
+     "n_second": 8
+    },
+    "community": {
+     "kappa": 0.36179478326190584,
+     "kappa_unweighted": 0.4740484429065734,
+     "ci_low": 0.14043889325089728,
+     "ci_high": 0.6809669029719804,
+     "pass": false,
+     "n_first": 15,
+     "n_second": 9
+    },
+    "not_civic": {
+     "kappa": 0.6199762319575391,
+     "kappa_unweighted": 0.5615384615384617,
+     "ci_low": 0.37326939941496123,
+     "ci_high": 0.822441193953332,
+     "pass": true,
+     "n_first": 20,
+     "n_second": 20
+    }
+   },
+   "confusion_counts": {
+    "safety": {
+     "safety": 10,
+     "economy": 0,
+     "housing": 0,
+     "transport": 1,
+     "environment": 0,
+     "health": 0,
+     "education": 0,
+     "cost_of_living": 0,
+     "governance": 3,
+     "culture": 0,
+     "technology": 0,
+     "community": 0,
+     "not_civic": 1
+    },
+    "economy": {
+     "safety": 0,
+     "economy": 13,
+     "housing": 1,
+     "transport": 0,
+     "environment": 0,
+     "health": 1,
+     "education": 0,
+     "cost_of_living": 0,
+     "governance": 1,
+     "culture": 0,
+     "technology": 2,
+     "community": 0,
+     "not_civic": 0
+    },
+    "housing": {
+     "safety": 0,
+     "economy": 2,
+     "housing": 12,
+     "transport": 0,
+     "environment": 0,
+     "health": 1,
+     "education": 0,
+     "cost_of_living": 0,
+     "governance": 0,
+     "culture": 0,
+     "technology": 0,
+     "community": 0,
+     "not_civic": 0
+    },
+    "transport": {
+     "safety": 2,
+     "economy": 2,
+     "housing": 0,
+     "transport": 8,
+     "environment": 1,
+     "health": 1,
+     "education": 0,
+     "cost_of_living": 0,
+     "governance": 0,
+     "culture": 0,
+     "technology": 0,
+     "community": 0,
+     "not_civic": 2
+    },
+    "environment": {
+     "safety": 0,
+     "economy": 0,
+     "housing": 0,
+     "transport": 0,
+     "environment": 15,
+     "health": 0,
+     "education": 0,
+     "cost_of_living": 0,
+     "governance": 0,
+     "culture": 1,
+     "technology": 0,
+     "community": 1,
+     "not_civic": 0
+    },
+    "health": {
+     "safety": 0,
+     "economy": 2,
+     "housing": 1,
+     "transport": 0,
+     "environment": 0,
+     "health": 14,
+     "education": 0,
+     "cost_of_living": 0,
+     "governance": 3,
+     "culture": 0,
+     "technology": 0,
+     "community": 0,
+     "not_civic": 0
+    },
+    "education": {
+     "safety": 1,
+     "economy": 0,
+     "housing": 1,
+     "transport": 0,
+     "environment": 0,
+     "health": 1,
+     "education": 12,
+     "cost_of_living": 0,
+     "governance": 1,
+     "culture": 0,
+     "technology": 0,
+     "community": 0,
+     "not_civic": 1
+    },
+    "cost_of_living": {
+     "safety": 1,
+     "economy": 5,
+     "housing": 3,
+     "transport": 1,
+     "environment": 0,
+     "health": 0,
+     "education": 0,
+     "cost_of_living": 5,
+     "governance": 0,
+     "culture": 0,
+     "technology": 0,
+     "community": 0,
+     "not_civic": 0
+    },
+    "governance": {
+     "safety": 1,
+     "economy": 1,
+     "housing": 2,
+     "transport": 0,
+     "environment": 0,
+     "health": 0,
+     "education": 0,
+     "cost_of_living": 0,
+     "governance": 18,
+     "culture": 0,
+     "technology": 1,
+     "community": 0,
+     "not_civic": 1
+    },
+    "culture": {
+     "safety": 0,
+     "economy": 2,
+     "housing": 1,
+     "transport": 0,
+     "environment": 0,
+     "health": 1,
+     "education": 0,
+     "cost_of_living": 0,
+     "governance": 4,
+     "culture": 10,
+     "technology": 0,
+     "community": 1,
+     "not_civic": 1
+    },
+    "technology": {
+     "safety": 1,
+     "economy": 2,
+     "housing": 0,
+     "transport": 0,
+     "environment": 0,
+     "health": 0,
+     "education": 0,
+     "cost_of_living": 0,
+     "governance": 5,
+     "culture": 2,
+     "technology": 5,
+     "community": 0,
+     "not_civic": 1
+    },
+    "community": {
+     "safety": 1,
+     "economy": 1,
+     "housing": 2,
+     "transport": 0,
+     "environment": 2,
+     "health": 0,
+     "education": 0,
+     "cost_of_living": 0,
+     "governance": 0,
+     "culture": 2,
+     "technology": 0,
+     "community": 6,
+     "not_civic": 1
+    },
+    "not_civic": {
+     "safety": 0,
+     "economy": 1,
+     "housing": 1,
+     "transport": 1,
+     "environment": 1,
+     "health": 0,
+     "education": 0,
+     "cost_of_living": 0,
+     "governance": 1,
+     "culture": 2,
+     "technology": 0,
+     "community": 1,
+     "not_civic": 12
+    }
+   },
+   "not_about_city_share": 0.15157424104902958,
+   "not_about_city_share_unweighted": 0.11403508771929824,
+   "not_about_city_by_category": {
+    "safety": {
+     "n": 15,
+     "share_not_about_city": 0.2
+    },
+    "economy": {
+     "n": 18,
+     "share_not_about_city": 0.1111111111111111
+    },
+    "housing": {
+     "n": 15,
+     "share_not_about_city": 0.06666666666666667
+    },
+    "transport": {
+     "n": 16,
+     "share_not_about_city": 0.3125
+    },
+    "environment": {
+     "n": 17,
+     "share_not_about_city": 0.0
+    },
+    "health": {
+     "n": 20,
+     "share_not_about_city": 0.0
+    },
+    "education": {
+     "n": 17,
+     "share_not_about_city": 0.0
+    },
+    "cost_of_living": {
+     "n": 15,
+     "share_not_about_city": 0.26666666666666666
+    },
+    "governance": {
+     "n": 24,
+     "share_not_about_city": 0.08333333333333333
+    },
+    "culture": {
+     "n": 20,
+     "share_not_about_city": 0.0
+    },
+    "technology": {
+     "n": 16,
+     "share_not_about_city": 0.25
+    },
+    "community": {
+     "n": 15,
+     "share_not_about_city": 0.0
+    },
+    "not_civic": {
+     "n": 20,
+     "share_not_about_city": 0.25
+    }
+   },
+   "not_about_city_by_outlet": {
+    "hkcna": {
+     "n": 28,
+     "share_not_about_city": 0.5
+    },
+    "orientaldaily": {
+     "n": 89,
+     "share_not_about_city": 0.12359550561797752
+    },
+    "scmp": {
+     "n": 111,
+     "share_not_about_city": 0.009009009009009009
+    }
+   },
+   "spread": {
+    "by_outlet": {
+     "scmp": 111,
+     "orientaldaily": 89,
+     "hkcna": 28
+    },
+    "by_period": {
+     "2023-2026": 133,
+     "2019-2022": 95
+    },
+    "by_language": {
+     "zho": 117,
+     "eng": 111
+    },
+    "by_page_source": {
+     "gdelt_title": 130,
+     "live": 89,
+     "archive": 9
+    }
+   },
+   "fetch": {
+    "tried": 601,
+    "fetched": 432,
+    "by_source": {
+     "gdelt_title": 230,
+     "live": 183,
+     "blocked": 146,
+     "none": 23,
+     "archive": 19
+    },
+    "short_categories": {},
+    "fetch_rate_by_outlet_period": {
+     "hkcna|2015-2018": 0.304,
+     "hkcna|2019-2022": 0.65,
+     "hkcna|2023-2026": 1.0,
+     "orientaldaily|2015-2018": 1.0,
+     "orientaldaily|2019-2022": 1.0,
+     "orientaldaily|2023-2026": 1.0,
+     "scmp|2015-2018": 0.0,
+     "scmp|2019-2022": 0.765,
+     "scmp|2023-2026": 1.0
+    }
+   },
+   "failed_first_test": [
+    "housing",
+    "transport",
+    "cost_of_living",
+    "culture",
+    "technology",
+    "community"
+   ],
+   "rule_variants": {
+    "plan_as_written": {
+     "label": "Every validation item, weights by category only (the plan as written)",
+     "n": 299,
+     "overall_kappa": 0.5553457357933678,
+     "failed": [
+      "safety",
+      "economy",
+      "housing",
+      "transport",
+      "cost_of_living",
+      "governance",
+      "culture",
+      "technology",
+      "community"
+     ]
+    },
+    "retained_category_only": {
+     "label": "Items that remain in the main series, weights by category only",
+     "n": 228,
+     "overall_kappa": 0.6376463194575703,
+     "failed": [
+      "housing",
+      "transport",
+      "cost_of_living",
+      "culture",
+      "technology",
+      "community"
+     ]
+    },
+    "rule_used": {
+     "label": "Items that remain in the main series, weights by category and outlet (the rule used)",
+     "n": 228,
+     "overall_kappa": 0.6490746256052761,
+     "failed": [
+      "housing",
+      "transport",
+      "cost_of_living",
+      "culture",
+      "technology",
+      "community"
+     ]
+    }
+   },
+   "revised": {},
+   "kept": [
+    "safety",
+    "economy",
+    "environment",
+    "health",
+    "education",
+    "governance"
+   ],
+   "dropped": [
+    "housing",
+    "transport",
+    "cost_of_living",
+    "culture",
+    "technology",
+    "community"
+   ]
+  },
+  "nyc": {
+   "n_items": 300,
+   "n_items_all": 300,
+   "n_items_left_out_by_headline_rule": 0,
+   "all_items": {
+    "overall_kappa": 0.7614448266995036,
+    "categories": {
+     "safety": 0.7988603569233831,
+     "economy": 0.7709488254557564,
+     "housing": 0.9809772021045952,
+     "transport": 0.8170687835664988,
+     "environment": 0.6473660170132232,
+     "health": 0.8642041421304045,
+     "education": 0.7426003981290689,
+     "cost_of_living": 0.6656493205395592,
+     "governance": 0.7706020992449896,
+     "culture": 0.20384351699212686,
+     "technology": 0.6832940424763916,
+     "community": 0.4642908751565021,
+     "not_civic": 0.7249965564426647
+    }
+   },
+   "headline_only_items": 1,
+   "effective_n": 157.88071086504942,
+   "outlet_weights": {
+    "gothamist": {
+     "n_validation": 104,
+     "share_of_validation": 0.3466666666666667,
+     "share_of_index_weight": 0.3204819277108434,
+     "weighted_share": 0.3204819277108434
+    },
+    "nbcnewyork": {
+     "n_validation": 100,
+     "share_of_validation": 0.3333333333333333,
+     "share_of_index_weight": 0.3397590361445783,
+     "weighted_share": 0.3397590361445783
+    },
+    "nydailynews": {
+     "n_validation": 96,
+     "share_of_validation": 0.32,
+     "share_of_index_weight": 0.3397590361445783,
+     "weighted_share": 0.3397590361445783
+    }
+   },
+   "outlets_with_no_validation_items": [],
+   "labeling_round_for_weights": "L5",
+   "overall_kappa": 0.7614448266995036,
+   "overall_ci_low": 0.6902152071279926,
+   "overall_ci_high": 0.8249872267429033,
+   "overall_kappa_unweighted": 0.7133318818491908,
+   "overall_agreement": 0.8055300961194107,
+   "overall_agreement_unweighted": 0.7366666666666667,
+   "tone_kappa": 0.4417763629769298,
+   "categories": {
+    "safety": {
+     "kappa": 0.7988603569233831,
+     "kappa_unweighted": 0.7356965174129356,
+     "ci_low": 0.6878063692253888,
+     "ci_high": 0.8943077851205523,
+     "pass": true,
+     "n_first": 31,
+     "n_second": 42
+    },
+    "economy": {
+     "kappa": 0.7709488254557564,
+     "kappa_unweighted": 0.7244488977955915,
+     "ci_low": 0.5951072202867645,
+     "ci_high": 0.9126973391065788,
+     "pass": true,
+     "n_first": 21,
+     "n_second": 22
+    },
+    "housing": {
+     "kappa": 0.9809772021045952,
+     "kappa_unweighted": 0.9529190207156306,
+     "ci_low": 0.948217732583886,
+     "ci_high": 1.0,
+     "pass": true,
+     "n_first": 22,
+     "n_second": 24
+    },
+    "transport": {
+     "kappa": 0.8170687835664988,
+     "kappa_unweighted": 0.7282608695652172,
+     "ci_low": 0.6813517290204101,
+     "ci_high": 0.9235060487444626,
+     "pass": true,
+     "n_first": 24,
+     "n_second": 24
+    },
+    "environment": {
+     "kappa": 0.6473660170132232,
+     "kappa_unweighted": 0.7643979057591618,
+     "ci_low": 0.45443735061102,
+     "ci_high": 0.8723773494815535,
+     "pass": true,
+     "n_first": 21,
+     "n_second": 20
+    },
+    "health": {
+     "kappa": 0.8642041421304045,
+     "kappa_unweighted": 0.7819450501526384,
+     "ci_low": 0.754799539110108,
+     "ci_high": 0.9508319638874431,
+     "pass": true,
+     "n_first": 23,
+     "n_second": 27
+    },
+    "education": {
+     "kappa": 0.7426003981290689,
+     "kappa_unweighted": 0.727602905569007,
+     "ci_low": 0.564413173643106,
+     "ci_high": 0.8931601407338925,
+     "pass": true,
+     "n_first": 21,
+     "n_second": 14
+    },
+    "cost_of_living": {
+     "kappa": 0.6656493205395592,
+     "kappa_unweighted": 0.6511627906976744,
+     "ci_low": 0.45800343691115736,
+     "ci_high": 0.8246490194951662,
+     "pass": true,
+     "n_first": 20,
+     "n_second": 10
+    },
+    "governance": {
+     "kappa": 0.7706020992449896,
+     "kappa_unweighted": 0.6218233158531665,
+     "ci_low": 0.6489770924519185,
+     "ci_high": 0.8743903111599873,
+     "pass": true,
+     "n_first": 29,
+     "n_second": 46
+    },
+    "culture": {
+     "kappa": 0.20384351699212686,
+     "kappa_unweighted": 0.550561797752809,
+     "ci_low": 0.09784316384118485,
+     "ci_high": 0.4393911826554636,
+     "pass": false,
+     "n_first": 20,
+     "n_second": 18
+    },
+    "technology": {
+     "kappa": 0.6832940424763916,
+     "kappa_unweighted": 0.8228346456692912,
+     "ci_low": 0.4352098374955208,
+     "ci_high": 0.9459146007904994,
+     "pass": true,
+     "n_first": 20,
+     "n_second": 16
+    },
+    "community": {
+     "kappa": 0.4642908751565021,
+     "kappa_unweighted": 0.5280235988200593,
+     "ci_low": 0.2569084236305781,
+     "ci_high": 0.6832887422915354,
+     "pass": false,
+     "n_first": 21,
+     "n_second": 15
+    },
+    "not_civic": {
+     "kappa": 0.7249965564426647,
+     "kappa_unweighted": 0.6669626998223795,
+     "ci_low": 0.5691336849929296,
+     "ci_high": 0.8553212019905776,
+     "pass": true,
+     "n_first": 27,
+     "n_second": 22
+    }
+   },
+   "confusion_counts": {
+    "safety": {
+     "safety": 28,
+     "economy": 0,
+     "housing": 0,
+     "transport": 0,
+     "environment": 0,
+     "health": 0,
+     "education": 0,
+     "cost_of_living": 0,
+     "governance": 3,
+     "culture": 0,
+     "technology": 0,
+     "community": 0,
+     "not_civic": 0
+    },
+    "economy": {
+     "safety": 0,
+     "economy": 16,
+     "housing": 1,
+     "transport": 1,
+     "environment": 0,
+     "health": 0,
+     "education": 1,
+     "cost_of_living": 0,
+     "governance": 1,
+     "culture": 0,
+     "technology": 0,
+     "community": 0,
+     "not_civic": 1
+    },
+    "housing": {
+     "safety": 0,
+     "economy": 0,
+     "housing": 22,
+     "transport": 0,
+     "environment": 0,
+     "health": 0,
+     "education": 0,
+     "cost_of_living": 0,
+     "governance": 0,
+     "culture": 0,
+     "technology": 0,
+     "community": 0,
+     "not_civic": 0
+    },
+    "transport": {
+     "safety": 2,
+     "economy": 0,
+     "housing": 0,
+     "transport": 18,
+     "environment": 1,
+     "health": 0,
+     "education": 0,
+     "cost_of_living": 0,
+     "governance": 1,
+     "culture": 0,
+     "technology": 0,
+     "community": 1,
+     "not_civic": 1
+    },
+    "environment": {
+     "safety": 0,
+     "economy": 1,
+     "housing": 0,
+     "transport": 1,
+     "environment": 16,
+     "health": 2,
+     "education": 0,
+     "cost_of_living": 0,
+     "governance": 0,
+     "culture": 0,
+     "technology": 0,
+     "community": 1,
+     "not_civic": 0
+    },
+    "health": {
+     "safety": 1,
+     "economy": 1,
+     "housing": 0,
+     "transport": 0,
+     "environment": 0,
+     "health": 20,
+     "education": 0,
+     "cost_of_living": 0,
+     "governance": 0,
+     "culture": 1,
+     "technology": 0,
+     "community": 0,
+     "not_civic": 0
+    },
+    "education": {
+     "safety": 2,
+     "economy": 0,
+     "housing": 0,
+     "transport": 1,
+     "environment": 0,
+     "health": 3,
+     "education": 13,
+     "cost_of_living": 0,
+     "governance": 0,
+     "culture": 0,
+     "technology": 1,
+     "community": 1,
+     "not_civic": 0
+    },
+    "cost_of_living": {
+     "safety": 0,
+     "economy": 4,
+     "housing": 0,
+     "transport": 2,
+     "environment": 1,
+     "health": 1,
+     "education": 0,
+     "cost_of_living": 10,
+     "governance": 0,
+     "culture": 1,
+     "technology": 0,
+     "community": 0,
+     "not_civic": 1
+    },
+    "governance": {
+     "safety": 4,
+     "economy": 0,
+     "housing": 0,
+     "transport": 0,
+     "environment": 0,
+     "health": 0,
+     "education": 0,
+     "cost_of_living": 0,
+     "governance": 25,
+     "culture": 0,
+     "technology": 0,
+     "community": 0,
+     "not_civic": 0
+    },
+    "culture": {
+     "safety": 0,
+     "economy": 0,
+     "housing": 0,
+     "transport": 1,
+     "environment": 0,
+     "health": 1,
+     "education": 0,
+     "cost_of_living": 0,
+     "governance": 4,
+     "culture": 11,
+     "technology": 0,
+     "community": 1,
+     "not_civic": 2
+    },
+    "technology": {
+     "safety": 1,
+     "economy": 0,
+     "housing": 1,
+     "transport": 0,
+     "environment": 0,
+     "health": 0,
+     "education": 0,
+     "cost_of_living": 0,
+     "governance": 3,
+     "culture": 0,
+     "technology": 15,
+     "community": 0,
+     "not_civic": 0
+    },
+    "community": {
+     "safety": 3,
+     "economy": 0,
+     "housing": 0,
+     "transport": 0,
+     "environment": 0,
+     "health": 0,
+     "education": 0,
+     "cost_of_living": 0,
+     "governance": 7,
+     "culture": 1,
+     "technology": 0,
+     "community": 10,
+     "not_civic": 0
+    },
+    "not_civic": {
+     "safety": 1,
+     "economy": 0,
+     "housing": 0,
+     "transport": 0,
+     "environment": 2,
+     "health": 0,
+     "education": 0,
+     "cost_of_living": 0,
+     "governance": 2,
+     "culture": 4,
+     "technology": 0,
+     "community": 1,
+     "not_civic": 17
+    }
+   },
+   "not_about_city_share": 0.07624441122087701,
+   "not_about_city_share_unweighted": 0.06,
+   "not_about_city_by_category": {
+    "safety": {
+     "n": 31,
+     "share_not_about_city": 0.12903225806451613
+    },
+    "economy": {
+     "n": 21,
+     "share_not_about_city": 0.047619047619047616
+    },
+    "housing": {
+     "n": 22,
+     "share_not_about_city": 0.045454545454545456
+    },
+    "transport": {
+     "n": 24,
+     "share_not_about_city": 0.0
+    },
+    "environment": {
+     "n": 21,
+     "share_not_about_city": 0.047619047619047616
+    },
+    "health": {
+     "n": 23,
+     "share_not_about_city": 0.043478260869565216
+    },
+    "education": {
+     "n": 21,
+     "share_not_about_city": 0.047619047619047616
+    },
+    "cost_of_living": {
+     "n": 20,
+     "share_not_about_city": 0.05
+    },
+    "governance": {
+     "n": 29,
+     "share_not_about_city": 0.06896551724137931
+    },
+    "culture": {
+     "n": 20,
+     "share_not_about_city": 0.05
+    },
+    "technology": {
+     "n": 20,
+     "share_not_about_city": 0.1
+    },
+    "community": {
+     "n": 21,
+     "share_not_about_city": 0.047619047619047616
+    },
+    "not_civic": {
+     "n": 27,
+     "share_not_about_city": 0.07407407407407407
+    }
+   },
+   "not_about_city_by_outlet": {
+    "gothamist": {
+     "n": 104,
+     "share_not_about_city": 0.028846153846153848
+    },
+    "nbcnewyork": {
+     "n": 100,
+     "share_not_about_city": 0.11
+    },
+    "nydailynews": {
+     "n": 96,
+     "share_not_about_city": 0.041666666666666664
+    }
+   },
+   "spread": {
+    "by_outlet": {
+     "gothamist": 104,
+     "nbcnewyork": 100,
+     "nydailynews": 96
+    },
+    "by_period": {
+     "2019-2022": 103,
+     "2023-2026": 102,
+     "2015-2018": 95
+    },
+    "by_language": {
+     "eng": 300
+    },
+    "by_page_source": {
+     "live": 297,
+     "archive": 2,
+     "gdelt_title": 1
+    }
+   },
+   "fetch": {
+    "tried": 895,
+    "fetched": 869,
+    "by_source": {
+     "live": 865,
+     "none": 26,
+     "archive": 3,
+     "gdelt_title": 1
+    },
+    "short_categories": {},
+    "fetch_rate_by_outlet_period": {
+     "gothamist|2015-2018": 0.989,
+     "gothamist|2019-2022": 1.0,
+     "gothamist|2023-2026": 1.0,
+     "nbcnewyork|2015-2018": 0.989,
+     "nbcnewyork|2019-2022": 1.0,
+     "nbcnewyork|2023-2026": 1.0,
+     "nydailynews|2015-2018": 0.747,
+     "nydailynews|2019-2022": 1.0,
+     "nydailynews|2023-2026": 1.0
+    }
+   },
+   "failed_first_test": [
+    "culture",
+    "community"
+   ],
+   "rule_variants": {
+    "plan_as_written": {
+     "label": "Every validation item, weights by category only (the plan as written)",
+     "n": 300,
+     "overall_kappa": 0.759746473951351,
+     "failed": [
+      "culture",
+      "community"
+     ]
+    },
+    "retained_category_only": {
+     "label": "Items that remain in the main series, weights by category only",
+     "n": 300,
+     "overall_kappa": 0.759746473951351,
+     "failed": [
+      "culture",
+      "community"
+     ]
+    },
+    "rule_used": {
+     "label": "Items that remain in the main series, weights by category and outlet (the rule used)",
+     "n": 300,
+     "overall_kappa": 0.7614448266995036,
+     "failed": [
+      "culture",
+      "community"
+     ]
+    }
+   },
+   "revised": {},
+   "kept": [
+    "safety",
+    "economy",
+    "housing",
+    "transport",
+    "environment",
+    "health",
+    "education",
+    "cost_of_living",
+    "governance",
+    "technology"
+   ],
+   "dropped": [
+    "culture",
+    "community"
+   ]
+  },
+  "london": {
+   "n_items": 299,
+   "n_items_all": 299,
+   "n_items_left_out_by_headline_rule": 0,
+   "all_items": {
+    "overall_kappa": 0.7101913091911864,
+    "categories": {
+     "safety": 0.8308039984294713,
+     "economy": 0.6411108243153827,
+     "housing": 0.8055861106469627,
+     "transport": 0.803106062716746,
+     "environment": 0.6130475178490096,
+     "health": 0.8064399187333251,
+     "education": 0.8799692891773054,
+     "cost_of_living": 0.41109097000098355,
+     "governance": 0.5211833665074739,
+     "culture": 0.1994916947264434,
+     "technology": 0.4511931106990201,
+     "community": 0.34413988572073123,
+     "not_civic": 0.7480826822542538
+    }
+   },
+   "headline_only_items": 16,
+   "effective_n": 164.16637451397824,
+   "outlet_weights": {
+    "ealingtimes": {
+     "n_validation": 26,
+     "share_of_validation": 0.08695652173913043,
+     "share_of_index_weight": 0.06666666666666667,
+     "weighted_share": 0.0666666666666667
+    },
+    "eastlondonadvertiser": {
+     "n_validation": 14,
+     "share_of_validation": 0.046822742474916385,
+     "share_of_index_weight": 0.06666666666666667,
+     "weighted_share": 0.06666666666666668
+    },
+    "enfieldindependent": {
+     "n_validation": 24,
+     "share_of_validation": 0.0802675585284281,
+     "share_of_index_weight": 0.06666666666666667,
+     "weighted_share": 0.06666666666666667
+    },
+    "guardianseries": {
+     "n_validation": 23,
+     "share_of_validation": 0.07692307692307693,
+     "share_of_index_weight": 0.06666666666666667,
+     "weighted_share": 0.06666666666666667
+    },
+    "hackneygazette": {
+     "n_validation": 11,
+     "share_of_validation": 0.03678929765886288,
+     "share_of_index_weight": 0.06666666666666667,
+     "weighted_share": 0.06666666666666668
+    },
+    "hamhigh": {
+     "n_validation": 15,
+     "share_of_validation": 0.05016722408026756,
+     "share_of_index_weight": 0.06666666666666667,
+     "weighted_share": 0.06666666666666668
+    },
+    "harrowtimes": {
+     "n_validation": 28,
+     "share_of_validation": 0.09364548494983277,
+     "share_of_index_weight": 0.06666666666666667,
+     "weighted_share": 0.06666666666666667
+    },
+    "ilfordrecorder": {
+     "n_validation": 18,
+     "share_of_validation": 0.06020066889632107,
+     "share_of_index_weight": 0.06666666666666667,
+     "weighted_share": 0.06666666666666667
+    },
+    "islingtongazette": {
+     "n_validation": 19,
+     "share_of_validation": 0.06354515050167224,
+     "share_of_index_weight": 0.06666666666666667,
+     "weighted_share": 0.06666666666666668
+    },
+    "kilburntimes": {
+     "n_validation": 15,
+     "share_of_validation": 0.05016722408026756,
+     "share_of_index_weight": 0.06666666666666667,
+     "weighted_share": 0.06666666666666667
+    },
+    "newsshopper": {
+     "n_validation": 18,
+     "share_of_validation": 0.06020066889632107,
+     "share_of_index_weight": 0.06666666666666667,
+     "weighted_share": 0.06666666666666667
+    },
+    "richmondtwickenham": {
+     "n_validation": 25,
+     "share_of_validation": 0.08361204013377926,
+     "share_of_index_weight": 0.06666666666666667,
+     "weighted_share": 0.06666666666666667
+    },
+    "romfordrecorder": {
+     "n_validation": 15,
+     "share_of_validation": 0.05016722408026756,
+     "share_of_index_weight": 0.06666666666666667,
+     "weighted_share": 0.06666666666666668
+    },
+    "timesseries": {
+     "n_validation": 22,
+     "share_of_validation": 0.07357859531772576,
+     "share_of_index_weight": 0.06666666666666667,
+     "weighted_share": 0.0666666666666667
+    },
+    "wandsworthguardian": {
+     "n_validation": 26,
+     "share_of_validation": 0.08695652173913043,
+     "share_of_index_weight": 0.06666666666666667,
+     "weighted_share": 0.0666666666666667
+    }
+   },
+   "outlets_with_no_validation_items": [],
+   "labeling_round_for_weights": "L5",
+   "overall_kappa": 0.7101913091911864,
+   "overall_ci_low": 0.6391210046698574,
+   "overall_ci_high": 0.7820902555658754,
+   "overall_kappa_unweighted": 0.672288863179687,
+   "overall_agreement": 0.7573523198072732,
+   "overall_agreement_unweighted": 0.6989966555183946,
+   "tone_kappa": 0.6780893283282856,
+   "categories": {
+    "safety": {
+     "kappa": 0.8308039984294713,
+     "kappa_unweighted": 0.710302508343202,
+     "ci_low": 0.7336297883072174,
+     "ci_high": 0.9202778616587074,
+     "pass": true,
+     "n_first": 28,
+     "n_second": 42
+    },
+    "economy": {
+     "kappa": 0.6411108243153827,
+     "kappa_unweighted": 0.7439191503939705,
+     "ci_low": 0.4444555924258206,
+     "ci_high": 0.873348026244572,
+     "pass": true,
+     "n_first": 21,
+     "n_second": 21
+    },
+    "housing": {
+     "kappa": 0.8055861106469627,
+     "kappa_unweighted": 0.7838033261026752,
+     "ci_low": 0.6716259145742961,
+     "ci_high": 0.9259689596571983,
+     "pass": true,
+     "n_first": 21,
+     "n_second": 24
+    },
+    "transport": {
+     "kappa": 0.803106062716746,
+     "kappa_unweighted": 0.774717455002093,
+     "ci_low": 0.6321060766665239,
+     "ci_high": 0.922952553933536,
+     "pass": true,
+     "n_first": 24,
+     "n_second": 19
+    },
+    "environment": {
+     "kappa": 0.6130475178490096,
+     "kappa_unweighted": 0.6830708661417323,
+     "ci_low": 0.44185189852515416,
+     "ci_high": 0.8043524746556513,
+     "pass": true,
+     "n_first": 22,
+     "n_second": 26
+    },
+    "health": {
+     "kappa": 0.8064399187333251,
+     "kappa_unweighted": 0.8395061728395062,
+     "ci_low": 0.6426030493925239,
+     "ci_high": 0.9398158204191422,
+     "pass": true,
+     "n_first": 23,
+     "n_second": 17
+    },
+    "education": {
+     "kappa": 0.8799692891773054,
+     "kappa_unweighted": 0.8561254932152823,
+     "ci_low": 0.7529617059652993,
+     "ci_high": 0.9619061758527443,
+     "pass": true,
+     "n_first": 21,
+     "n_second": 16
+    },
+    "cost_of_living": {
+     "kappa": 0.41109097000098355,
+     "kappa_unweighted": 0.6628453298252207,
+     "ci_low": 0.20255801314253194,
+     "ci_high": 0.7976423702017863,
+     "pass": false,
+     "n_first": 20,
+     "n_second": 18
+    },
+    "governance": {
+     "kappa": 0.5211833665074739,
+     "kappa_unweighted": 0.43070855433156485,
+     "ci_low": 0.32132394228007366,
+     "ci_high": 0.7062309171969416,
+     "pass": false,
+     "n_first": 24,
+     "n_second": 30
+    },
+    "culture": {
+     "kappa": 0.1994916947264434,
+     "kappa_unweighted": 0.44054054054054004,
+     "ci_low": 0.06947835906461232,
+     "ci_high": 0.48231755605200083,
+     "pass": false,
+     "n_first": 21,
+     "n_second": 13
+    },
+    "technology": {
+     "kappa": 0.4511931106990201,
+     "kappa_unweighted": 0.7637297510865269,
+     "ci_low": 0.21918133616094895,
+     "ci_high": 0.8679909721178133,
+     "pass": false,
+     "n_first": 20,
+     "n_second": 16
+    },
+    "community": {
+     "kappa": 0.34413988572073123,
+     "kappa_unweighted": 0.4571184449428601,
+     "ci_low": 0.15420985885395286,
+     "ci_high": 0.6091201393100566,
+     "pass": false,
+     "n_first": 21,
+     "n_second": 12
+    },
+    "not_civic": {
+     "kappa": 0.7480826822542538,
+     "kappa_unweighted": 0.6180227987421381,
+     "ci_low": 0.6194849123675831,
+     "ci_high": 0.8700759553074975,
+     "pass": true,
+     "n_first": 33,
+     "n_second": 45
+    }
+   },
+   "confusion_counts": {
+    "safety": {
+     "safety": 26,
+     "economy": 0,
+     "housing": 0,
+     "transport": 0,
+     "environment": 2,
+     "health": 0,
+     "education": 0,
+     "cost_of_living": 0,
+     "governance": 0,
+     "culture": 0,
+     "technology": 0,
+     "community": 0,
+     "not_civic": 0
+    },
+    "economy": {
+     "safety": 0,
+     "economy": 16,
+     "housing": 2,
+     "transport": 0,
+     "environment": 0,
+     "health": 0,
+     "education": 0,
+     "cost_of_living": 1,
+     "governance": 1,
+     "culture": 0,
+     "technology": 1,
+     "community": 0,
+     "not_civic": 0
+    },
+    "housing": {
+     "safety": 1,
+     "economy": 0,
+     "housing": 18,
+     "transport": 0,
+     "environment": 1,
+     "health": 0,
+     "education": 0,
+     "cost_of_living": 0,
+     "governance": 0,
+     "culture": 0,
+     "technology": 0,
+     "community": 1,
+     "not_civic": 0
+    },
+    "transport": {
+     "safety": 3,
+     "economy": 0,
+     "housing": 0,
+     "transport": 17,
+     "environment": 2,
+     "health": 0,
+     "education": 0,
+     "cost_of_living": 0,
+     "governance": 0,
+     "culture": 0,
+     "technology": 0,
+     "community": 0,
+     "not_civic": 2
+    },
+    "environment": {
+     "safety": 0,
+     "economy": 0,
+     "housing": 0,
+     "transport": 1,
+     "environment": 17,
+     "health": 0,
+     "education": 0,
+     "cost_of_living": 0,
+     "governance": 2,
+     "culture": 0,
+     "technology": 0,
+     "community": 0,
+     "not_civic": 2
+    },
+    "health": {
+     "safety": 1,
+     "economy": 1,
+     "housing": 0,
+     "transport": 0,
+     "environment": 1,
+     "health": 17,
+     "education": 0,
+     "cost_of_living": 0,
+     "governance": 1,
+     "culture": 0,
+     "technology": 0,
+     "community": 1,
+     "not_civic": 1
+    },
+    "education": {
+     "safety": 0,
+     "economy": 0,
+     "housing": 0,
+     "transport": 0,
+     "environment": 0,
+     "health": 0,
+     "education": 16,
+     "cost_of_living": 0,
+     "governance": 0,
+     "culture": 2,
+     "technology": 0,
+     "community": 0,
+     "not_civic": 3
+    },
+    "cost_of_living": {
+     "safety": 1,
+     "economy": 1,
+     "housing": 0,
+     "transport": 1,
+     "environment": 0,
+     "health": 0,
+     "education": 0,
+     "cost_of_living": 13,
+     "governance": 2,
+     "culture": 0,
+     "technology": 0,
+     "community": 0,
+     "not_civic": 2
+    },
+    "governance": {
+     "safety": 4,
+     "economy": 1,
+     "housing": 2,
+     "transport": 0,
+     "environment": 1,
+     "health": 0,
+     "education": 0,
+     "cost_of_living": 0,
+     "governance": 13,
+     "culture": 0,
+     "technology": 1,
+     "community": 0,
+     "not_civic": 2
+    },
+    "culture": {
+     "safety": 1,
+     "economy": 1,
+     "housing": 2,
+     "transport": 0,
+     "environment": 1,
+     "health": 0,
+     "education": 0,
+     "cost_of_living": 0,
+     "governance": 3,
+     "culture": 8,
+     "technology": 0,
+     "community": 1,
+     "not_civic": 4
+    },
+    "technology": {
+     "safety": 1,
+     "economy": 0,
+     "housing": 0,
+     "transport": 0,
+     "environment": 1,
+     "health": 0,
+     "education": 0,
+     "cost_of_living": 3,
+     "governance": 0,
+     "culture": 0,
+     "technology": 14,
+     "community": 0,
+     "not_civic": 1
+    },
+    "community": {
+     "safety": 4,
+     "economy": 0,
+     "housing": 0,
+     "transport": 0,
+     "environment": 0,
+     "health": 0,
+     "education": 0,
+     "cost_of_living": 0,
+     "governance": 7,
+     "culture": 0,
+     "technology": 0,
+     "community": 8,
+     "not_civic": 2
+    },
+    "not_civic": {
+     "safety": 0,
+     "economy": 1,
+     "housing": 0,
+     "transport": 0,
+     "environment": 0,
+     "health": 0,
+     "education": 0,
+     "cost_of_living": 1,
+     "governance": 1,
+     "culture": 3,
+     "technology": 0,
+     "community": 1,
+     "not_civic": 26
+    }
+   },
+   "not_about_city_share": 0.08784062954960548,
+   "not_about_city_share_unweighted": 0.10367892976588629,
+   "not_about_city_by_category": {
+    "safety": {
+     "n": 28,
+     "share_not_about_city": 0.03571428571428571
+    },
+    "economy": {
+     "n": 21,
+     "share_not_about_city": 0.14285714285714285
+    },
+    "housing": {
+     "n": 21,
+     "share_not_about_city": 0.0
+    },
+    "transport": {
+     "n": 24,
+     "share_not_about_city": 0.0
+    },
+    "environment": {
+     "n": 22,
+     "share_not_about_city": 0.045454545454545456
+    },
+    "health": {
+     "n": 23,
+     "share_not_about_city": 0.0
+    },
+    "education": {
+     "n": 21,
+     "share_not_about_city": 0.14285714285714285
+    },
+    "cost_of_living": {
+     "n": 20,
+     "share_not_about_city": 0.25
+    },
+    "governance": {
+     "n": 24,
+     "share_not_about_city": 0.08333333333333333
+    },
+    "culture": {
+     "n": 21,
+     "share_not_about_city": 0.047619047619047616
+    },
+    "technology": {
+     "n": 20,
+     "share_not_about_city": 0.3
+    },
+    "community": {
+     "n": 21,
+     "share_not_about_city": 0.09523809523809523
+    },
+    "not_civic": {
+     "n": 33,
+     "share_not_about_city": 0.21212121212121213
+    }
+   },
+   "not_about_city_by_outlet": {
+    "ealingtimes": {
+     "n": 26,
+     "share_not_about_city": 0.15384615384615385
+    },
+    "eastlondonadvertiser": {
+     "n": 14,
+     "share_not_about_city": 0.14285714285714285
+    },
+    "enfieldindependent": {
+     "n": 24,
+     "share_not_about_city": 0.16666666666666666
+    },
+    "guardianseries": {
+     "n": 23,
+     "share_not_about_city": 0.2608695652173913
+    },
+    "hackneygazette": {
+     "n": 11,
+     "share_not_about_city": 0.09090909090909091
+    },
+    "hamhigh": {
+     "n": 15,
+     "share_not_about_city": 0.0
+    },
+    "harrowtimes": {
+     "n": 28,
+     "share_not_about_city": 0.21428571428571427
+    },
+    "ilfordrecorder": {
+     "n": 18,
+     "share_not_about_city": 0.1111111111111111
+    },
+    "islingtongazette": {
+     "n": 19,
+     "share_not_about_city": 0.0
+    },
+    "kilburntimes": {
+     "n": 15,
+     "share_not_about_city": 0.0
+    },
+    "newsshopper": {
+     "n": 18,
+     "share_not_about_city": 0.0
+    },
+    "richmondtwickenham": {
+     "n": 25,
+     "share_not_about_city": 0.04
+    },
+    "romfordrecorder": {
+     "n": 15,
+     "share_not_about_city": 0.0
+    },
+    "timesseries": {
+     "n": 22,
+     "share_not_about_city": 0.09090909090909091
+    },
+    "wandsworthguardian": {
+     "n": 26,
+     "share_not_about_city": 0.11538461538461539
+    }
+   },
+   "spread": {
+    "by_outlet": {
+     "harrowtimes": 28,
+     "ealingtimes": 26,
+     "wandsworthguardian": 26,
+     "richmondtwickenham": 25,
+     "enfieldindependent": 24,
+     "guardianseries": 23,
+     "timesseries": 22,
+     "islingtongazette": 19,
+     "newsshopper": 18,
+     "ilfordrecorder": 18,
+     "hamhigh": 15,
+     "kilburntimes": 15,
+     "romfordrecorder": 15,
+     "eastlondonadvertiser": 14,
+     "hackneygazette": 11
+    },
+    "by_period": {
+     "2023-2026": 118,
+     "2019-2022": 113,
+     "2015-2018": 68
+    },
+    "by_language": {
+     "eng": 299
+    },
+    "by_page_source": {
+     "live": 276,
+     "gdelt_title": 16,
+     "archive": 7
+    }
+   },
+   "fetch": {
+    "tried": 617,
+    "fetched": 509,
+    "by_source": {
+     "live": 474,
+     "none": 108,
+     "gdelt_title": 24,
+     "archive": 11
+    },
+    "short_categories": {},
+    "fetch_rate_by_outlet_period": {
+     "ealingtimes|2015-2018": 0.933,
+     "ealingtimes|2019-2022": 1.0,
+     "ealingtimes|2023-2026": 1.0,
+     "eastlondonadvertiser|2015-2018": 0.0,
+     "eastlondonadvertiser|2019-2022": 0.846,
+     "eastlondonadvertiser|2023-2026": 1.0,
+     "enfieldindependent|2015-2018": 0.929,
+     "enfieldindependent|2019-2022": 1.0,
+     "enfieldindependent|2023-2026": 1.0,
+     "guardianseries|2015-2018": 0.846,
+     "guardianseries|2019-2022": 1.0,
+     "guardianseries|2023-2026": 1.0,
+     "hackneygazette|2015-2018": 0.0,
+     "hackneygazette|2019-2022": 0.923,
+     "hackneygazette|2023-2026": 1.0,
+     "hamhigh|2015-2018": 0.143,
+     "hamhigh|2019-2022": 0.867,
+     "hamhigh|2023-2026": 1.0,
+     "harrowtimes|2015-2018": 1.0,
+     "harrowtimes|2019-2022": 1.0,
+     "harrowtimes|2023-2026": 1.0,
+     "ilfordrecorder|2015-2018": 0.0,
+     "ilfordrecorder|2019-2022": 0.857,
+     "ilfordrecorder|2023-2026": 1.0,
+     "islingtongazette|2015-2018": 0.308,
+     "islingtongazette|2019-2022": 0.938,
+     "islingtongazette|2023-2026": 1.0,
+     "kilburntimes|2015-2018": 0.0,
+     "kilburntimes|2019-2022": 0.833,
+     "kilburntimes|2023-2026": 1.0,
+     "newsshopper|2015-2018": 1.0,
+     "newsshopper|2019-2022": 1.0,
+     "newsshopper|2023-2026": 1.0,
+     "richmondtwickenham|2015-2018": 0.909,
+     "richmondtwickenham|2019-2022": 0.929,
+     "richmondtwickenham|2023-2026": 1.0,
+     "romfordrecorder|2015-2018": 0.0,
+     "romfordrecorder|2019-2022": 0.786,
+     "romfordrecorder|2023-2026": 1.0,
+     "timesseries|2015-2018": 1.0,
+     "timesseries|2019-2022": 1.0,
+     "timesseries|2023-2026": 1.0,
+     "wandsworthguardian|2015-2018": 1.0,
+     "wandsworthguardian|2019-2022": 1.0,
+     "wandsworthguardian|2023-2026": 1.0
+    }
+   },
+   "failed_first_test": [
+    "cost_of_living",
+    "governance",
+    "culture",
+    "technology",
+    "community"
+   ],
+   "rule_variants": {
+    "plan_as_written": {
+     "label": "Every validation item, weights by category only (the plan as written)",
+     "n": 299,
+     "overall_kappa": 0.7180189340763334,
+     "failed": [
+      "environment",
+      "cost_of_living",
+      "governance",
+      "culture",
+      "technology",
+      "community"
+     ]
+    },
+    "retained_category_only": {
+     "label": "Items that remain in the main series, weights by category only",
+     "n": 299,
+     "overall_kappa": 0.7180189340763334,
+     "failed": [
+      "environment",
+      "cost_of_living",
+      "governance",
+      "culture",
+      "technology",
+      "community"
+     ]
+    },
+    "rule_used": {
+     "label": "Items that remain in the main series, weights by category and outlet (the rule used)",
+     "n": 299,
+     "overall_kappa": 0.7101913091911864,
+     "failed": [
+      "cost_of_living",
+      "governance",
+      "culture",
+      "technology",
+      "community"
+     ]
+    }
+   },
+   "revised": {},
+   "kept": [
+    "safety",
+    "economy",
+    "housing",
+    "transport",
+    "environment",
+    "health",
+    "education"
+   ],
+   "dropped": [
+    "cost_of_living",
+    "governance",
+    "culture",
+    "technology",
+    "community"
+   ]
+  }
+ },
+ "rule_variants": {
+  "hk": {
+   "plan_as_written": {
+    "label": "Every validation item, weights by category only (the plan as written)",
+    "n": 299,
+    "overall_kappa": 0.5553457357933678,
+    "failed": [
+     "safety",
+     "economy",
+     "housing",
+     "transport",
+     "cost_of_living",
+     "governance",
+     "culture",
+     "technology",
+     "community"
+    ]
+   },
+   "retained_category_only": {
+    "label": "Items that remain in the main series, weights by category only",
+    "n": 228,
+    "overall_kappa": 0.6376463194575703,
+    "failed": [
+     "housing",
+     "transport",
+     "cost_of_living",
+     "culture",
+     "technology",
+     "community"
+    ]
+   },
+   "rule_used": {
+    "label": "Items that remain in the main series, weights by category and outlet (the rule used)",
+    "n": 228,
+    "overall_kappa": 0.6490746256052761,
+    "failed": [
+     "housing",
+     "transport",
+     "cost_of_living",
+     "culture",
+     "technology",
+     "community"
+    ]
+   }
+  },
+  "nyc": {
+   "plan_as_written": {
+    "label": "Every validation item, weights by category only (the plan as written)",
+    "n": 300,
+    "overall_kappa": 0.759746473951351,
+    "failed": [
+     "culture",
+     "community"
+    ]
+   },
+   "retained_category_only": {
+    "label": "Items that remain in the main series, weights by category only",
+    "n": 300,
+    "overall_kappa": 0.759746473951351,
+    "failed": [
+     "culture",
+     "community"
+    ]
+   },
+   "rule_used": {
+    "label": "Items that remain in the main series, weights by category and outlet (the rule used)",
+    "n": 300,
+    "overall_kappa": 0.7614448266995036,
+    "failed": [
+     "culture",
+     "community"
+    ]
+   }
+  },
+  "london": {
+   "plan_as_written": {
+    "label": "Every validation item, weights by category only (the plan as written)",
+    "n": 299,
+    "overall_kappa": 0.7180189340763334,
+    "failed": [
+     "environment",
+     "cost_of_living",
+     "governance",
+     "culture",
+     "technology",
+     "community"
+    ]
+   },
+   "retained_category_only": {
+    "label": "Items that remain in the main series, weights by category only",
+    "n": 299,
+    "overall_kappa": 0.7180189340763334,
+    "failed": [
+     "environment",
+     "cost_of_living",
+     "governance",
+     "culture",
+     "technology",
+     "community"
+    ]
+   },
+   "rule_used": {
+    "label": "Items that remain in the main series, weights by category and outlet (the rule used)",
+    "n": 299,
+    "overall_kappa": 0.7101913091911864,
+    "failed": [
+     "cost_of_living",
+     "governance",
+     "culture",
+     "technology",
+     "community"
+    ]
+   }
+  }
+ },
+ "headline_check": {
+  "hk": {
+   "with_headline_words": {
+    "n": 1467,
+    "kappa": 0.7978285728660749,
+    "ci_low": 0.7758853618037259,
+    "ci_high": 0.8182169480477491
+   },
+   "theme_tags_only": {
+    "n": 1026,
+    "kappa": 0.42254819951619027,
+    "ci_low": 0.3853330560231513,
+    "ci_high": 0.45774961448904417
+   }
+  },
+  "london": {
+   "with_headline_words": {
+    "n": 898,
+    "kappa": 0.8368126360130542,
+    "ci_low": 0.8086369686295283,
+    "ci_high": 0.8623900695650392
+   },
+   "theme_tags_only": {
+    "n": 2,
+    "kappa": null,
+    "ci_low": null,
+    "ci_high": null
+   }
+  },
+  "nyc": {
+   "with_headline_words": {
+    "n": 900,
+    "kappa": 0.7918421965604401,
+    "ci_low": 0.7625975246901177,
+    "ci_high": 0.8207598859816166
+   },
+   "theme_tags_only": {
+    "n": 0,
+    "kappa": null,
+    "ci_low": null,
+    "ci_high": null
+   }
+  },
+  "rule": {
+   "applied": true,
+   "text": "Theme-tag-only labels agreed with real-headline labels at kappa 0.42, below 0.61. HK China News Agency and Oriental Daily, whose addresses were number-only before 2020, are left out of 2015 to 2019. Hong Kong's news series for those years rests on the South China Morning Post alone."
+  }
+ },
+ "consistency": {
+  "first_coder_vs_larger_model": {
+   "n": 300,
+   "kappa": 0.8053,
+   "agreement": 0.8333,
+   "tone_kappa": 0.6288
+  },
+  "gemini_repeat": true,
+  "third_pass": {
+   "model_note": "a different AI model from the second coder, reading the same real headlines and opening lines",
+   "n": 150,
+   "kappa_vs_first": 0.6421267893660532,
+   "n_all": 898,
+   "kappa_vs_first_all": 0.6263933389886371,
+   "kappa_vs_second": 0.7629395495851442,
+   "kappa_vs_second_all": 0.7511405863064116,
+   "n_vs_second": 150,
+   "about_city_agreement_all": 0.9487750556792873
+  },
+  "relabel": {
+   "n": 50,
+   "kappa": 0.8029772329246935,
+   "agreement": 0.82,
+   "tone_agreement": 0.9
+  }
+ }
+}

@@ -1,0 +1,69 @@
+key,name,city,domain,panel,number_only
+scmp,South China Morning Post,hk,scmp.com,main,False
+orientaldaily,Oriental Daily,hk,orientaldaily.on.cc,main,False
+hkcna,HK China News Agency,hk,hkcna.hk,main,True
+nowtv,Now TV News,hk,now.com,check,True
+stheadline,Sing Tao Headline,hk,stheadline.com,check,False
+hkcd,HK Commercial Daily,hk,hkcd.com,check,True
+wenweipo,Wen Wei Po,hk,wenweipo.com,check,True
+mingpao,Ming Pao,hk,mingpao.com,check,False
+takungpao,Ta Kung Pao,hk,takungpao.com.hk,check,False
+hkej,HKEJ,hk,hkej.com,check,False
+hket,HKET,hk,hket.com,check,False
+thestandard,The Standard,hk,thestandard.com.hk,check,False
+rthk,RTHK,hk,rthk.hk,check,False
+hk01,HK01,hk,hk01.com,check,False
+ejinsight,EJ Insight,hk,ejinsight.com,check,False
+inmedia,InMedia,hk,inmediahk.net,check,False
+hkfp,Hong Kong Free Press,hk,hongkongfp.com,check,False
+standnews,Stand News,hk,thestandnews.com,check,False
+appledaily,Apple Daily,hk,appledaily.com,check,False
+tvb,TVB News,hk,tvb.com,check,False
+metroradio,Metro Radio,hk,metrohk.com.hk,check,False
+am730,am730,hk,am730.com.hk,check,False
+chinadailyhk,China Daily Hong Kong,hk,chinadailyhk.com,check,False
+bastillepost,Bastille Post,hk,bastillepost.com,check,False
+nydailynews,Daily News,nyc,nydailynews.com,main,False
+nbcnewyork,NBC New York,nyc,nbcnewyork.com,main,False
+gothamist,Gothamist,nyc,gothamist.com,main,False
+nypost,New York Post,nyc,nypost.com,check,False
+amny,amNewYork,nyc,amny.com,check,False
+abc7ny,ABC7 New York,nyc,abc7ny.com,check,False
+pix11,PIX11,nyc,pix11.com,check,False
+ny1,NY1,nyc,ny1.com,check,False
+silive,Staten Island Advance,nyc,silive.com,check,False
+brooklyneagle,Brooklyn Eagle,nyc,brooklyneagle.com,check,False
+brooklynpaper,Brooklyn Paper,nyc,brooklynpaper.com,check,False
+qns,QNS,nyc,qns.com,check,False
+timesledger,TimesLedger,nyc,timesledger.com,check,False
+bkreader,BK Reader,nyc,bkreader.com,check,False
+riverdalepress,Riverdale Press,nyc,riverdalepress.com,check,False
+citylimits,City Limits,nyc,citylimits.org,check,False
+thecity,THE CITY,nyc,thecity.nyc,check,False
+wnyc,WNYC,nyc,wnyc.org,check,False
+nytimes,"New York Times, N.Y. region section",nyc,nytimes.com,check,False
+cbsnewyork,CBS New York,nyc,cbsnews.com,check,False
+newsshopper,News Shopper,london,newsshopper.co.uk,main,False
+wandsworthguardian,Wandsworth Guardian,london,wandsworthguardian.co.uk,main,False
+guardianseries,Guardian Series,london,guardian-series.co.uk,main,False
+richmondtwickenham,Richmond and Twickenham Times,london,richmondandtwickenhamtimes.co.uk,main,False
+timesseries,Times Series,london,times-series.co.uk,main,False
+harrowtimes,Harrow Times,london,harrowtimes.co.uk,main,False
+ealingtimes,Ealing Times,london,ealingtimes.co.uk,main,False
+enfieldindependent,Enfield Independent,london,enfieldindependent.co.uk,main,False
+hamhigh,Ham & High,london,hamhigh.co.uk,main,False
+romfordrecorder,Romford Recorder,london,romfordrecorder.co.uk,main,False
+ilfordrecorder,Ilford Recorder,london,ilfordrecorder.co.uk,main,False
+islingtongazette,Islington Gazette,london,islingtongazette.co.uk,main,False
+hackneygazette,Hackney Gazette,london,hackneygazette.co.uk,main,False
+kilburntimes,Kilburn Times,london,kilburntimes.co.uk,main,False
+eastlondonadvertiser,East London Advertiser,london,eastlondonadvertiser.co.uk,main,False
+standard,Evening Standard,london,standard.co.uk,check,False
+thisislocallondon,This Is Local London,london,thisislocallondon.co.uk,check,False
+mylondon,MyLondon,london,mylondon.news,check,False
+londonnow,London Now,london,london-now.co.uk,check,False
+getwestlondon,Get West London,london,getwestlondon.co.uk,check,False
+croydonguardian,Croydon Guardian,london,croydonguardian.co.uk,check,False
+croydonadvertiser,Croydon Advertiser,london,croydonadvertiser.co.uk,check,False
+bbclondon,BBC London section,london,bbc.co.uk,check,False
+itvlondon,ITV London section,london,itv.com,check,False

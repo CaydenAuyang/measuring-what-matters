@@ -1,4 +1,4 @@
-- **Validation is still provisional.** The blind second coder runs after its quota resets at about 3:07 AM. If this line is still here, that step did not finish: see `STATE.md`.
+- **The one allowed revision of category wording was not run.** The validation numbers are final, but the categories that failed the first test were dropped directly.
 - **The first model key hit a free-tier daily cap.** You switched the first coder to another provider's model. One model labeled everything.
 - **No London Health series** (the site blocked automated requests). **New York Health starts in 2020.**
 - **Hong Kong news for 2015 to 2019 rests on the South China Morning Post alone**, and no Hong Kong label from before 2020 was validated (scmp.com blocked automated requests).

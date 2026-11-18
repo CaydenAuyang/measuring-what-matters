@@ -1,0 +1,33 @@
+{
+ "series_that_move_together": {
+  "slope": 0.4995709144282634,
+  "ci_low": 0.4284670917398847,
+  "ci_high": 0.5755090202986408,
+  "interval_excludes_zero": true
+ },
+ "series_that_do_not": {
+  "slope": 0.009693733708432841,
+  "ci_low": -0.07079452512817064,
+  "ci_high": 0.08956724962557046,
+  "interval_includes_zero": true
+ },
+ "false_positive_check": {
+  "trials": 40,
+  "intervals_that_wrongly_excluded_zero": 7,
+  "rate": 0.175,
+  "nominal_rate": 0.05,
+  "setup": "8 unrelated pairs of 120 months each, both series with month-to-month persistence 0.8, 12-month blocks"
+ },
+ "asymmetry_built_in": {
+  "worse": 0.8269469097010559,
+  "better": 0.14880684338886577,
+  "diff_ci_low": 0.42604070149944046,
+  "diff_ci_high": 0.8688538800415695
+ },
+ "lead_lag_built_in_3_months": {
+  "best_lag": 3,
+  "r": 0.9939387255040507,
+  "p_perm": 0.004975124378109453
+ },
+ "all_passed": true
+}

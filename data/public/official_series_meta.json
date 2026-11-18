@@ -1,0 +1,1553 @@
+[
+ {
+  "series_id": "hk_safety_main",
+  "category": "safety",
+  "role": "main",
+  "indicator_name": "Overall reported crime, annual total",
+  "components": [],
+  "frequency": "A",
+  "window_months": 12,
+  "unit": "crimes",
+  "worse_when": "higher",
+  "change_rule": "pct_log",
+  "source_urls": [
+   "https://www.police.gov.hk/ppp_en/09_statistics/csc_2001_2013.html",
+   "https://www.police.gov.hk/info/doc/statistics_charts.xls",
+   "https://web.archive.org/web/20170623010845id_/http://www.police.gov.hk/info/doc/statistics_charts.xls"
+  ],
+  "first_period": "2001",
+  "last_period": "2025",
+  "n_obs": 25,
+  "release_lag_months": 2,
+  "status": "ok",
+  "fallback_used": "2014 and 2015 come from an Internet Archive copy of the police workbook; the live site no longer shows those years.",
+  "construction": "Hong Kong Police 'Overall Crime' count per calendar year. 2001-2013 from the police comparison page, 2014-2015 from the 2017 copy of the police chart workbook, 2016 onward from the current workbook. For a year in more than one file the newest file is used.",
+  "breaks": [
+   {
+    "start": "2023-01",
+    "end": "2025-12",
+    "kind": "event",
+    "note": "Online fraud drives the rise in reported crime from 2023 onward."
+   }
+  ],
+  "caveats": "Reported crime only. Three official files are joined: the 2001-2013 comparison page, the police chart workbook as published in 2017 (Internet Archive raw capture, used for 2014 and 2015), and the current chart workbook (2016 onward). Where years overlap the files agree unless the notes file says otherwise. The rise from 2023 is driven by online fraud."
+ },
+ {
+  "series_id": "hk_safety_main_monthly",
+  "category": "safety",
+  "role": "main",
+  "indicator_name": "Overall reported crime, monthly (extra series, latest months only)",
+  "components": [],
+  "frequency": "M",
+  "window_months": 1,
+  "unit": "crimes",
+  "worse_when": "higher",
+  "change_rule": "pct_log",
+  "source_urls": [
+   "https://www.police.gov.hk/info/doc/statistics_charts.xls"
+  ],
+  "first_period": "2024-10",
+  "last_period": "2026-06",
+  "n_obs": 21,
+  "release_lag_months": 2,
+  "status": "partial",
+  "fallback_used": "The 2022-2024 monthly file was not found; only the months in the current police workbook are included.",
+  "construction": "Sheet 'data' of the current police chart workbook: overall crime for each month of the two latest October-to-September blocks. Extra series. The annual series is the main indicator.",
+  "breaks": [
+   {
+    "start": "2023-01",
+    "end": "2026-06",
+    "kind": "event",
+    "note": "Online fraud drives the rise in reported crime from 2023 onward."
+   }
+  ],
+  "caveats": "Only the months printed in the current workbook (about 21). The separate monthly file for 2022-2024 named in the plan was not found tonight."
+ },
+ {
+  "series_id": "hk_safety_backup",
+  "category": "safety",
+  "role": "backup",
+  "indicator_name": "Violent crime, annual total",
+  "components": [],
+  "frequency": "A",
+  "window_months": 12,
+  "unit": "crimes",
+  "worse_when": "higher",
+  "change_rule": "pct_log",
+  "source_urls": [
+   "https://www.police.gov.hk/ppp_en/09_statistics/csc_2001_2013.html",
+   "https://www.police.gov.hk/info/doc/statistics_charts.xls",
+   "https://web.archive.org/web/20170623010845id_/http://www.police.gov.hk/info/doc/statistics_charts.xls"
+  ],
+  "first_period": "2001",
+  "last_period": "2025",
+  "n_obs": 25,
+  "release_lag_months": 2,
+  "status": "ok",
+  "fallback_used": "2014 and 2015 come from an Internet Archive copy of the police workbook; the live site no longer shows those years.",
+  "construction": "Hong Kong Police 'Violent Crime' count per calendar year, same three files and same rule as the main series.",
+  "breaks": [],
+  "caveats": "Reported crime only. Three official files are joined: the 2001-2013 comparison page, the police chart workbook as published in 2017 (Internet Archive raw capture, used for 2014 and 2015), and the current chart workbook (2016 onward). Where years overlap the files agree unless the notes file says otherwise."
+ },
+ {
+  "series_id": "hk_economy_main",
+  "category": "economy",
+  "role": "main",
+  "indicator_name": "Unemployment rate, seasonally adjusted, 3-month moving average",
+  "components": [],
+  "frequency": "M",
+  "window_months": 3,
+  "unit": "percent",
+  "worse_when": "higher",
+  "change_rule": "points",
+  "source_urls": [
+   "https://www.censtatd.gov.hk/api/get.php?id=210-06101&lang=en&full_series=1"
+  ],
+  "first_period": "1985-03",
+  "last_period": "2026-10",
+  "n_obs": 436,
+  "release_lag_months": 1,
+  "status": "ok",
+  "fallback_used": null,
+  "construction": "C&SD table 210-06101, series SAUR (seasonally adjusted unemployment rate), both sexes, frequency M3M. Each value is the published 3-month moving average; the period is the last month of the 3 months (checked: Dec 2020 to Feb 2021 is 7.2). Nothing is recomputed.",
+  "breaks": [
+   {
+    "start": "2007-01",
+    "end": "2007-12",
+    "kind": "method",
+    "note": "Seasonal adjustment moved from X-11 ARIMA to X-12 ARIMA. C&SD made the switch in May 2008 and revised the series back to Nov 2006-Jan 2007. In the published series the seam is at the period ending 2007-01, so the year-over-year comparisons that straddle it are the periods ending 2007-01 to 2007-12."
+   }
+  ],
+  "caveats": "Smoothing delays turning points. The latest figure is provisional in C&SD releases but the API carries no flag. The API series starts in 1985-86, not 1981 as the source inventory says."
+ },
+ {
+  "series_id": "hk_economy_backup",
+  "category": "economy",
+  "role": "backup",
+  "indicator_name": "Underemployment rate, 3-month moving average",
+  "components": [],
+  "frequency": "M",
+  "window_months": 3,
+  "unit": "percent",
+  "worse_when": "higher",
+  "change_rule": "points",
+  "source_urls": [
+   "https://www.censtatd.gov.hk/api/get.php?id=210-06101&lang=en&full_series=1"
+  ],
+  "first_period": "1985-03",
+  "last_period": "2026-10",
+  "n_obs": 436,
+  "release_lag_months": 1,
+  "status": "ok",
+  "fallback_used": null,
+  "construction": "C&SD table 210-06101, series UDR (underemployment rate), both sexes, frequency M3M, as published. The period is the last month of the 3-month window.",
+  "breaks": [],
+  "caveats": "Not seasonally adjusted (C&SD does not publish an adjusted underemployment rate)."
+ },
+ {
+  "series_id": "hk_housing_main",
+  "category": "housing",
+  "role": "main",
+  "indicator_name": "Private domestic rental index, all classes (1999 = 100)",
+  "components": [],
+  "frequency": "M",
+  "window_months": 1,
+  "unit": "index (1999=100)",
+  "worse_when": "faster",
+  "change_rule": "inflation_points",
+  "source_urls": [
+   "https://www.rvd.gov.hk/doc/en/statistics/his_data_3.xls"
+  ],
+  "first_period": "1993-01",
+  "last_period": "2026-09",
+  "n_obs": 405,
+  "release_lag_months": 1.5,
+  "status": "ok",
+  "fallback_used": null,
+  "construction": "Rating and Valuation Department file his_data_3.xls, sheet 'Monthly', column 'All Classes', as published. Rows marked * by RVD are provisional and carry provisional = 1.",
+  "breaks": [],
+  "caveats": "Leaves out subdivided flats. Nominal rents. Recent months are provisional and get revised."
+ },
+ {
+  "series_id": "hk_housing_backup",
+  "category": "housing",
+  "role": "backup",
+  "indicator_name": "Public rental housing: average waiting time for general applicants",
+  "components": [],
+  "frequency": "Q",
+  "window_months": 12,
+  "unit": "years",
+  "worse_when": "higher",
+  "change_rule": "pct_log",
+  "source_urls": [
+   "https://www.housingauthority.gov.hk/en/about-us/publications-and-statistics/prh-applications-average-waiting-time/index.html",
+   "https://www.hb.gov.hk/eng/publications/housing/cwt/index.html",
+   "https://web.archive.org/ (raw captures of the two pages above, listed in the manifest)",
+   "https://www.info.gov.hk/gia/ (press releases listed in the manifest)"
+  ],
+  "first_period": "2014-Q1",
+  "last_period": "2026-Q2",
+  "n_obs": 47,
+  "release_lag_months": 2,
+  "status": "partial",
+  "fallback_used": "No data file exists; values read from dated copies of the official page and press releases. Three quarters missing.",
+  "construction": "Read from the sentence 'As at end-<month> <year> ... the average waiting time for general applicants ... X years' on the Housing Authority page (live page and Internet Archive raw captures of it), the Housing Bureau page, and government press releases. One value per quarter end. Each value is the average wait of general applicants housed in the past 12 months, so window_months is 12. No machine-readable history exists.",
+  "breaks": [],
+  "caveats": "Built from dated copies of an official web page, not from one file. Quarters with no saved statement are missing, not filled. From 2024 the Housing Bureau also publishes a composite waiting time that counts Light Public Housing; it is not used here. Overlapping 12-month windows smooth out change."
+ },
+ {
+  "series_id": "hk_transport_main",
+  "category": "transport",
+  "role": "main",
+  "indicator_name": "Fatal and serious road traffic accidents",
+  "components": [],
+  "frequency": "M",
+  "window_months": 1,
+  "unit": "accidents",
+  "worse_when": "higher",
+  "change_rule": "pct_log",
+  "source_urls": [
+   "https://www.td.gov.hk/datagovhk_tis/mttd-csv/en/table71_eng.csv"
+  ],
+  "first_period": "2013-01",
+  "last_period": "2026-08",
+  "n_obs": 164,
+  "release_lag_months": 2.5,
+  "status": "partial",
+  "fallback_used": "CSV only; the 2003-2012 PDF digests were not extracted, so the series starts in 2013.",
+  "construction": "Transport Department monthly digest table 7.1 (CSV): SOA_FATAL + SOA_SERIOUS for each month, as published. Months that TD marks with # are provisional.",
+  "breaks": [],
+  "caveats": "Starts in 2013. The 2003-2012 months exist only in PDF digests and were not extracted tonight. Serious accidents fall steeply from 2022 (about 1,800 a year in 2019-2021, 1,046 in 2022, 467 in 2025) while slight accidents rise. The CSV gives no reason. This looks like a change in how severity is recorded and should be treated with care."
+ },
+ {
+  "series_id": "hk_transport_backup",
+  "category": "transport",
+  "role": "backup",
+  "indicator_name": "MTR incidents causing delays of 8 minutes or more",
+  "components": [],
+  "frequency": "A",
+  "window_months": 12,
+  "unit": "incidents",
+  "worse_when": "higher",
+  "change_rule": "pct_log",
+  "source_urls": [
+   "https://www.legco.gov.hk/research-publications/english/1718issh07-mtr-train-service-performance-20171220-e.pdf",
+   "https://www.tlb.gov.hk/eng/legislative/transport/replies/2025/20250514c_e.pdf"
+  ],
+  "first_period": "2008",
+  "last_period": "2024",
+  "n_obs": 14,
+  "release_lag_months": 5,
+  "status": "partial",
+  "fallback_used": "Two official documents joined; 2017-2019 and 2025 not found and left missing.",
+  "construction": "2008-2016: LegCo Research Office statistical highlight ISSH07/17-18, Figure 4, the 8-30 minute row plus the over-30-minute row (checked against the printed total where it could be read). 2020-2024: annex to the government reply to LegCo question 13 of 14 May 2025, sum of the three cause columns (equipment failure, human factors, passenger behaviour and external factors). 2017-2019 and 2025 were not found in an official document and are missing.",
+  "breaks": [],
+  "caveats": "Two documents with a gap between them. The 2025 reply covers heavy rail and Light Rail; the 2008-2016 figure does not say, but its 2008 and 2009 totals match a 2010 LegCo paper whose incident list includes Light Rail. Heavy-rail-only totals exist for 2021-2024 (194, 154, 174, 155) in other LegCo papers and are not used. The network grew over the period."
+ },
+ {
+  "series_id": "hk_environment_main",
+  "category": "environment",
+  "role": "main",
+  "indicator_name": "NO2 and PM10 (respirable suspended particulates), monthly mean across general stations running since 2005",
+  "components": [
+   "no2",
+   "pm10"
+  ],
+  "frequency": "M",
+  "window_months": 1,
+  "unit": "micrograms per cubic metre",
+  "worse_when": "higher",
+  "change_rule": "pct_log",
+  "source_urls": [
+   "https://cd.epic.epd.gov.hk/EPICDI/air/station/?lang=en"
+  ],
+  "first_period": "2000-01",
+  "last_period": "2026-05",
+  "n_obs": 634,
+  "release_lag_months": 5,
+  "status": "ok",
+  "fallback_used": "EPD's published station monthly averages used instead of averaging hourly readings; the hourly export is limited to 5 years a request.",
+  "construction": "EPD's own monthly average concentration for each general station (EPIC air data export, 'Monthly Average'), for nitrogen dioxide and respirable suspended particulates. The panel is the general stations with readings in 2005 and in 2025. Each value is the plain mean across the panel stations that have a monthly figure that month. Two components, no2 and pm10; the yearly changes are averaged later.",
+  "breaks": [],
+  "caveats": "Station monthly averages come rounded to whole micrograms. A few months have fewer panel stations because a station has no figure (listed in hk_build_log.txt). Roadside stations are left out. EPD had published monthly averages only up to May 2026 on 17 November 2026, a lag of about five months."
+ },
+ {
+  "series_id": "hk_environment_backup",
+  "category": "environment",
+  "role": "backup",
+  "indicator_name": "Very hot days per year, Hong Kong Observatory",
+  "components": [],
+  "frequency": "A",
+  "window_months": 12,
+  "unit": "days",
+  "worse_when": "higher",
+  "change_rule": "pct_log",
+  "source_urls": [
+   "https://www.hko.gov.hk/en/cis/statistic/vhotday_statistic.htm",
+   "https://www.hko.gov.hk/cis/statistic/vhotday_statistic_e_html.json"
+  ],
+  "first_period": "1990",
+  "last_period": "2025",
+  "n_obs": 36,
+  "release_lag_months": 0,
+  "status": "ok",
+  "fallback_used": null,
+  "construction": "HKO table 'Number of Very Hot days observed at the Hong Kong Observatory', column Annual Total, complete years from 1990. The current year is left out until HKO prints its annual total.",
+  "breaks": [],
+  "caveats": "A very hot day is a day with a maximum temperature of 33.0 C or above at the Observatory headquarters, one site only. In the HKO table a dash means no very hot day; this reading is checked by adding the months up to the printed annual total."
+ },
+ {
+  "series_id": "hk_environment_backup_monthly",
+  "category": "environment",
+  "role": "backup",
+  "indicator_name": "Very hot days per month, Hong Kong Observatory (extra series)",
+  "components": [],
+  "frequency": "M",
+  "window_months": 1,
+  "unit": "days",
+  "worse_when": "higher",
+  "change_rule": "points",
+  "source_urls": [
+   "https://www.hko.gov.hk/en/cis/statistic/vhotday_statistic.htm",
+   "https://www.hko.gov.hk/cis/statistic/vhotday_statistic_e_html.json"
+  ],
+  "first_period": "1990-01",
+  "last_period": "2026-10",
+  "n_obs": 442,
+  "release_lag_months": 0,
+  "status": "ok",
+  "fallback_used": null,
+  "construction": "Same HKO table, one value per month from 1990. A dash is read as zero days. Blank months (not yet published) are left out. Extra series: the annual series hk_environment_backup is the backup named in the plan.",
+  "breaks": [],
+  "caveats": "A very hot day is a day with a maximum temperature of 33.0 C or above at the Observatory headquarters, one site only. In the HKO table a dash means no very hot day; this reading is checked by adding the months up to the printed annual total. Most winter months are zero, so a log change is undefined; change_rule is points (difference in days)."
+ },
+ {
+  "series_id": "hk_health_main",
+  "category": "health",
+  "role": "main",
+  "indicator_name": "Median waiting time for stable new specialist outpatient cases, mean over cluster and specialty pairs",
+  "components": [],
+  "frequency": "Q",
+  "window_months": 12,
+  "unit": "weeks",
+  "worse_when": "higher",
+  "change_rule": "pct_log",
+  "source_urls": [
+   "https://data.gov.hk/en-data/dataset/hospital-hadata-sop-waiting-time",
+   "https://www.ha.org.hk/opendata/sop/sop-waiting-time-en.json",
+   "https://api.data.gov.hk/v1/historical-archive/list-file-versions (archived versions of the HA file)"
+  ],
+  "first_period": "2018-Q3",
+  "last_period": "2026-Q3",
+  "n_obs": 33,
+  "release_lag_months": 1,
+  "status": "partial",
+  "fallback_used": "data.gov.hk archive of the Hospital Authority file used; it starts with the window ending September 2018. For 2015 to mid-2018 only the backup (hk_health_backup) is available.",
+  "construction": "Hospital Authority open-data file 'SOP waiting time', category 'Stable Case - Median', by cluster and specialty. Each quarterly release covers a 12-month window; every archived version of the file kept by data.gov.hk was read and the newest version per window kept. The value is the plain mean of the median wait (weeks) over the cluster and specialty pairs that have a number in every window in the series.",
+  "breaks": [],
+  "caveats": "The data.gov.hk archive starts with the window ending September 2018, so the series starts at 2018-Q3, not 2015 as planned. Earlier quarters exist only as old web pages. Overlapping 12-month windows smooth out change. A mean of medians is not a system-wide median."
+ },
+ {
+  "series_id": "hk_health_backup",
+  "category": "health",
+  "role": "backup",
+  "indicator_name": "Notifiable infectious disease notifications, monthly total",
+  "components": [],
+  "frequency": "M",
+  "window_months": 1,
+  "unit": "notifications",
+  "worse_when": "higher",
+  "change_rule": "pct_log",
+  "source_urls": [
+   "https://www.chp.gov.hk/en/static/24012.html"
+  ],
+  "first_period": "1997-01",
+  "last_period": "2026-09",
+  "n_obs": 357,
+  "release_lag_months": 1,
+  "status": "ok",
+  "fallback_used": null,
+  "construction": "Centre for Health Protection yearly pages 'Number of notifiable infectious diseases by month', row Total, one value per month, as published.",
+  "breaks": [],
+  "caveats": "The list of notifiable diseases changes over time, so the total is not like-for-like across decades. COVID-19 cases are in the total for the months CHP counted them (2020 to early 2023), which makes those months enormous. Current-year figures are provisional."
+ },
+ {
+  "series_id": "hk_education_main",
+  "category": "education",
+  "role": "main",
+  "indicator_name": "Share of day-school HKDSE candidates with core subjects at 3322 or better (332A from 2024)",
+  "components": [],
+  "frequency": "A",
+  "window_months": 12,
+  "unit": "percent",
+  "worse_when": "lower",
+  "change_rule": "points",
+  "source_urls": [
+   "https://www.hkeaa.edu.hk/DocLibrary/HKDSE/Exam_Report/Examination_Statistics/dseexamstatYY_3.pdf (YY = 12 to 25)"
+  ],
+  "first_period": "2012",
+  "last_period": "2025",
+  "n_obs": 14,
+  "release_lag_months": 0,
+  "status": "ok",
+  "fallback_used": "2012 read by OCR from a scanned PDF; 2026 statistics not found at the usual address.",
+  "construction": "HKEAA examination statistics, one PDF per year, Table 3d 'Statistics related to university admission', row (a) 'Core subjects at 3322 or better' (from 2024 'Core subjects at 332A or better'), day school candidates, Total, the printed percentage. The period is the exam year, treated as the school year ending 31 August. The 2012 PDF is a scanned image, so its page text comes from OCR (saved as a derived text file) and the 2012 row was checked by hand against the printed counts (26,515 of 70,109 is 37.8 percent).",
+  "breaks": [
+   {
+    "start": "2024-01",
+    "end": "2024-12",
+    "kind": "method",
+    "note": "Entrance requirement changed from 3322 to 332A in 2024; the 2024 against 2023 comparison straddles it."
+   }
+  ],
+  "caveats": "HKEAA calls this the general minimum requirement for first-degree courses. The requirement changed in 2024 when Liberal Studies (level 2) was replaced by Citizenship and Social Development (Attained), so 2024 is not like 2023."
+ },
+ {
+  "series_id": "hk_education_backup",
+  "category": "education",
+  "role": "backup",
+  "indicator_name": "Teacher wastage rate, local primary and secondary schools",
+  "components": [
+   "primary",
+   "secondary"
+  ],
+  "frequency": "A",
+  "window_months": 12,
+  "unit": "percent",
+  "worse_when": "higher",
+  "change_rule": "points",
+  "source_urls": [
+   "https://www.edb.gov.hk/attachment/en/about-edb/publication-stat/figures/pri.xlsx",
+   "https://www.edb.gov.hk/attachment/en/about-edb/publication-stat/figures/sec.xlsx",
+   "https://www.info.gov.hk/gia/general/202110/27/P2021102700368.htm"
+  ],
+  "first_period": "2018",
+  "last_period": "2026",
+  "n_obs": 18,
+  "release_lag_months": 6,
+  "status": "ok",
+  "fallback_used": null,
+  "construction": "Education Bureau 'figures and statistics' workbooks for primary and secondary education, row 'Wastage rate of teachers (%)' (2020/21 onward), and the government reply to LegCo question 11 of 27 October 2021 (2017/18 to 2020/21). Two components, primary and secondary; where both sources give a year the workbook is used. The period is the year in which the labelled school year ends.",
+  "breaks": [],
+  "caveats": "The rate labelled with a school year counts teachers who left between the previous autumn and that autumn, as a share of the previous year's teachers, so it mostly describes the year before. 2020/21 is as at mid-October, other years mid-September. Covers government, aided, Direct Subsidy Scheme and private local schools; special and international schools are left out. The latest year is marked * in the workbook (teacher figures revised) and carries provisional = 1."
+ },
+ {
+  "series_id": "hk_cost_of_living_main",
+  "category": "cost_of_living",
+  "role": "main",
+  "indicator_name": "Composite CPI excluding the housing section (Oct 2019 to Sep 2020 = 100)",
+  "components": [],
+  "frequency": "M",
+  "window_months": 1,
+  "unit": "index (Oct 2019-Sep 2020=100)",
+  "worse_when": "faster",
+  "change_rule": "inflation_points",
+  "source_urls": [
+   "https://www.censtatd.gov.hk/api/get.php?id=510-60001A&lang=en&full_series=1",
+   "https://www.censtatd.gov.hk/en/data/stat_report/product/B1060003/att/B10600082010XXXXB0100.pdf",
+   "https://www.censtatd.gov.hk/en/data/stat_report/product/B1060003/att/B10600082015XXXXB0100.pdf",
+   "https://www.censtatd.gov.hk/en/data/stat_report/product/B1060003/att/B10600082020XXXXB0100.pdf"
+  ],
+  "first_period": "2004-10",
+  "last_period": "2026-09",
+  "n_obs": 264,
+  "release_lag_months": 1,
+  "status": "partial",
+  "fallback_used": "Section table 510-60001A used in place of 510-60001; starts October 2004 because earlier weights were not found.",
+  "construction": "From C&SD table 510-60001A (Composite CPI, all items and the Housing section, monthly). For each base period b (2004/05, 2009/10, 2014/15, 2019/20) both indices are re-expressed so that they average 100 over that base period, and E_b = (All - w_b x Housing) / (1 - w_b), with w_b the Housing section weight of the Composite CPI published for that base period (2004/05: 29.17, 2009/10: 31.66, 2014/15: 34.29, 2019/20: 40.25 percent). The weights of base period b are used from October of its first year. Month-to-month growth of E_b is chained into one index, scaled to average 100 over Oct 2019 to Sep 2020.",
+  "breaks": [],
+  "caveats": "Starts October 2004 because the 1999/2000 weights were not found. Built from indices rounded to one decimal, so the 12-month rate carries rounding noise of roughly 0.1 point. Since 2021 C&SD updates the weights every April; those yearly weights are published only for reference years 2024 and 2025, so the 2019/20 weight is used for every month from October 2019. Table 510-60001 named in the plan holds only the all-items index; the section indices are in table 510-60001A. The Housing section holds private and public rent plus management fees and other housing charges. Government one-off relief (public rent waivers) sits in Housing, so removing Housing also removes most of that distortion."
+ },
+ {
+  "series_id": "hk_cost_of_living_backup",
+  "category": "cost_of_living",
+  "role": "backup",
+  "indicator_name": "Underlying Composite CPI (Oct 2019 to Sep 2020 = 100)",
+  "components": [],
+  "frequency": "M",
+  "window_months": 1,
+  "unit": "index (Oct 2019-Sep 2020=100)",
+  "worse_when": "faster",
+  "change_rule": "inflation_points",
+  "source_urls": [
+   "https://www.censtatd.gov.hk/api/get.php?id=510-60002&lang=en&full_series=1"
+  ],
+  "first_period": "2007-01",
+  "last_period": "2026-09",
+  "n_obs": 237,
+  "release_lag_months": 1,
+  "status": "ok",
+  "fallback_used": null,
+  "construction": "C&SD table 510-60002, series UCC_CM_1920 (underlying Composite CPI, which nets out the Government's one-off relief measures), monthly index as published.",
+  "breaks": [],
+  "caveats": "Starts January 2007. Includes rent, so it overlaps with the Housing category."
+ },
+ {
+  "series_id": "nyc_safety_main",
+  "category": "safety",
+  "role": "main",
+  "indicator_name": "Felony complaints, NYPD, by report month",
+  "frequency": "M",
+  "window_months": 1,
+  "unit": "complaints",
+  "worse_when": "higher",
+  "change_rule": "pct_log",
+  "source_urls": [
+   "https://data.cityofnewyork.us/resource/qgea-i56i.json",
+   "https://data.cityofnewyork.us/resource/5uac-w243.json"
+  ],
+  "release_lag_months": 3,
+  "status": "ok",
+  "fallback_used": null,
+  "construction": "Count of NYPD complaint records with law_cat_cd = FELONY, grouped by the month of the report date (rpt_dt). The count was done on the NYC Open Data server. Months through the end of last year come from the historic file and this year's months from the current-year file.",
+  "breaks": [],
+  "caveats": "Reported crime only. All felony complaints, not only the seven major felonies, so the level is higher than CompStat's index-crime totals. The current-year file holds complete quarters only and is preliminary; those months are marked provisional. The two files are joined each January.",
+  "components": [],
+  "first_period": "2006-01",
+  "last_period": "2026-09",
+  "n_obs": 249,
+  "missing_months_inside_range": []
+ },
+ {
+  "series_id": "nyc_economy_main",
+  "category": "economy",
+  "role": "main",
+  "indicator_name": "Unemployment rate, seasonally adjusted, New York City",
+  "frequency": "M",
+  "window_months": 1,
+  "unit": "percent",
+  "worse_when": "higher",
+  "change_rule": "points",
+  "source_urls": [
+   "https://data.ny.gov/resource/dh9m-5v4d.json"
+  ],
+  "release_lag_months": 1,
+  "status": "ok",
+  "fallback_used": null,
+  "construction": "The unemployment_rate field for the area New York City in the NYS Department of Labor file of seasonally adjusted Local Area Unemployment Statistics. Used as published.",
+  "breaks": [],
+  "caveats": "Model-based estimate for the five counties, revised every year, so old months change between vintages. The newest month is preliminary and marked provisional. The file has no row for October 2025, so that month is missing and is not filled in.",
+  "components": [],
+  "first_period": "1976-01",
+  "last_period": "2026-09",
+  "n_obs": 608,
+  "missing_months_inside_range": [
+   "2025-10"
+  ]
+ },
+ {
+  "series_id": "nyc_housing_main",
+  "category": "housing",
+  "role": "main",
+  "indicator_name": "People in DHS shelters, monthly average of the daily census",
+  "frequency": "M",
+  "window_months": 1,
+  "unit": "people",
+  "worse_when": "higher",
+  "change_rule": "pct_log",
+  "source_urls": [
+   "https://data.cityofnewyork.us/resource/dwrg-kzni.json",
+   "https://data.cityofnewyork.us/resource/k46n-sa2m.json",
+   "https://www.coalitionforthehomeless.org/wp-content/uploads/2026/11/NYCHomelessShelterPopulationWorksheet1983Present_202611.pdf"
+  ],
+  "release_lag_months": 1,
+  "status": "ok",
+  "fallback_used": null,
+  "construction": "From the first full month of the DHS Daily Report on NYC Open Data, the value is the mean of the daily figure total_individuals_in_shelter over the days of the month, computed on the server from the historical file (to February 2021) and the current file (from March 2021). Before that month the value is the Total Population column of the Coalition for the Homeless worksheet, read from the PDF. Months where the worksheet has no total are left out.",
+  "breaks": [
+   {
+    "start": "2011-10",
+    "end": "2012-09",
+    "kind": "method",
+    "note": "Coalition worksheet: family figures are end-of-month counts through September 2011 and average daily counts after (found in the worksheet's own note)"
+   },
+   {
+    "start": "2013-09",
+    "end": "2014-08",
+    "kind": "method",
+    "note": "join: Coalition for the Homeless worksheet before this month, NYC Open Data DHS Daily Report from this month; the Coalition total covers more shelter systems than the DHS report"
+   },
+   {
+    "start": "2022-04",
+    "end": "2024-12",
+    "kind": "event",
+    "note": "asylum-seeker arrivals raise the shelter count"
+   }
+  ],
+  "caveats": "Three files joined. The Coalition total is a different, wider count than the DHS Daily Report (see notes for the measured gap), so the join is a level break. Early Coalition years have months with no total. DHS system only after the join: it leaves out people in shelters run by other agencies.",
+  "components": [],
+  "first_period": "1983-06",
+  "last_period": "2026-10",
+  "n_obs": 502,
+  "missing_months_inside_range": [
+   "1983-08",
+   "1983-09",
+   "1983-12",
+   "1984-04",
+   "1984-05",
+   "1984-06",
+   "1984-07",
+   "1984-08",
+   "1984-09",
+   "1984-11",
+   "1985-02",
+   "1985-03",
+   "1987-09",
+   "1987-10",
+   "1987-11",
+   "1991-11",
+   "1993-05",
+   "1996-08",
+   "2012-01"
+  ]
+ },
+ {
+  "series_id": "nyc_transport_main",
+  "category": "transport",
+  "role": "main",
+  "indicator_name": "Subway weekday terminal on-time performance, system-wide",
+  "frequency": "M",
+  "window_months": 1,
+  "unit": "percent of trains",
+  "worse_when": "lower",
+  "change_rule": "points",
+  "source_urls": [
+   "https://data.ny.gov/resource/cy9b-i9w9.json",
+   "https://data.ny.gov/resource/f6rf-2a3t.json"
+  ],
+  "release_lag_months": 1,
+  "status": "ok",
+  "fallback_used": "The file the methodology links starts in 2015; months from June 2009 to December 2014 come from the MTA Key Performance Indicators 2008-2021 file. No open file has months before June 2009.",
+  "construction": "Through December 2014 the value is the published monthly figure for NYC Transit On-Time Performance (Terminal), a weekday measure, from the MTA Key Performance Indicators file. From January 2015 the value is 100 times weekday on-time trips divided by weekday scheduled trips, summed over all lines on the server, from the MTA Subway Terminal On-Time Performance file. Weekday only in both, because the new file has weekend rows only from 2019.",
+  "breaks": [
+   {
+    "start": "2015-01",
+    "end": "2015-12",
+    "kind": "method",
+    "note": "subway performance files joined at January 2015 (archive KPI file before, line-level file after); in the 36 overlapping months the two differ by 0.016 points on average and 0.048 at most, so the join does not move the level"
+   }
+  ],
+  "caveats": "Better when higher. Weekday trains only. Schedule changes move the measure. The archive file has no figures before June 2009 and skips a few months.",
+  "components": [],
+  "first_period": "2009-06",
+  "last_period": "2026-10",
+  "n_obs": 207,
+  "missing_months_inside_range": [
+   "2010-10",
+   "2010-12"
+  ]
+ },
+ {
+  "series_id": "nyc_environment_main",
+  "category": "environment",
+  "role": "main",
+  "indicator_name": "PM2.5, monthly mean of daily readings across the five boroughs",
+  "frequency": "M",
+  "window_months": 1,
+  "unit": "micrograms per cubic meter",
+  "worse_when": "higher",
+  "change_rule": "pct_log",
+  "source_urls": [
+   "https://aqs.epa.gov/aqsweb/airdata/download_files.html",
+   "https://aqs.epa.gov/aqsweb/airdata/daily_88101_YYYY.zip"
+  ],
+  "release_lag_months": 6,
+  "status": "ok",
+  "fallback_used": null,
+  "construction": "From the EPA AirData daily files for parameter 88101 (PM2.5 by federal reference or equivalent methods), rows for Bronx, Kings, New York, Queens and Richmond counties. Each monitor's daily means are averaged to a site value, sites to a county value, and the counties that reported that day to one city value. The monthly value is the mean of the daily city values. Days flagged as exceptional events are kept in.",
+  "breaks": [
+   {
+    "start": "2023-06",
+    "end": "2023-06",
+    "kind": "event",
+    "note": "June 2023 Canadian wildfire smoke; a real spike"
+   },
+   {
+    "start": "2024-06",
+    "end": "2024-06",
+    "kind": "event",
+    "note": "base effect: this month's yearly change is measured against the June 2023 wildfire smoke month"
+   },
+   {
+    "start": "2025-01",
+    "end": "2025-12",
+    "kind": "method",
+    "note": "found in the data: from January 2025 all five counties have a reading every day; before, most days rest on two or three counties, so the mix of boroughs behind the city value changes"
+   }
+  ],
+  "caveats": "Monitors open, close and change method over time, and filter monitors sample every third or sixth day, so the number of counties behind a day varies (see nyc_environment_main_coverage.csv). Months with a city value on fewer than 75 percent of days are left out. Data for 2026 are not yet certified and are marked provisional. Non-reference monitors (parameter 88502) are not used.",
+  "components": [],
+  "first_period": "1999-08",
+  "last_period": "2026-05",
+  "n_obs": 318,
+  "missing_months_inside_range": [
+   "1999-11",
+   "2011-04",
+   "2011-06",
+   "2011-07"
+  ]
+ },
+ {
+  "series_id": "nyc_health_main",
+  "category": "health",
+  "role": "main",
+  "indicator_name": "Deaths from all causes occurring in New York City, by month",
+  "frequency": "M",
+  "window_months": 1,
+  "unit": "deaths",
+  "worse_when": "higher",
+  "change_rule": "pct_log",
+  "source_urls": [
+   "https://data.cdc.gov/resource/r8kw-7aab.json"
+  ],
+  "release_lag_months": 2,
+  "status": "partial",
+  "fallback_used": "CDC WONDER needs a data-use agreement form, which this run may not accept. The open CDC file that lists New York City by month starts in January 2020 and counts deaths by place of occurrence, not residence.",
+  "construction": "The total_deaths field (all causes) for the jurisdiction New York City in the By Month rows of the CDC NCHS file Provisional COVID-19 Death Counts by Week Ending Date and State. Used as published. The unfinished current month is dropped.",
+  "breaks": [],
+  "caveats": "Starts 2020, not 1999, so the first yearly changes are for 2021 and sit inside the COVID period. Deaths are counted where they happened, not where the person lived. Provisional death-certificate counts: recent months are incomplete and rise as certificates arrive; months ending less than 180 days before the file date are marked provisional.",
+  "components": [],
+  "first_period": "2020-01",
+  "last_period": "2026-10",
+  "n_obs": 82,
+  "missing_months_inside_range": []
+ },
+ {
+  "series_id": "nyc_education_main",
+  "category": "education",
+  "role": "main",
+  "indicator_name": "Four-year graduation rate as of June, NYC public schools",
+  "frequency": "A",
+  "window_months": 12,
+  "unit": "percent of cohort",
+  "worse_when": "lower",
+  "change_rule": "points",
+  "source_urls": [
+   "https://infohub.nyced.org/docs/default-source/default-document-library/2001-2011-graduation_rates_public_citywide.xlsx",
+   "https://infohub.nyced.org/docs/default-source/default-document-library/2025-graduation-rates-public-citywide.xlsx",
+   "https://infohub.nyced.org/reports-and-policies/citywide-information-and-data/graduation-results"
+  ],
+  "release_lag_months": 6,
+  "status": "ok",
+  "fallback_used": "June rate used, not August: the August rate is not in the DOE file for the classes of 2005 to 2007.",
+  "construction": "The published % Grads figure for All Students, cohort type 4 year June, from the All sheet of the two NYC DOE citywide graduation files (cohorts 2001 to 2011, and 2012 to 2021). The period is the graduation year, which is the cohort year plus four.",
+  "breaks": [
+   {
+    "start": "2020-01",
+    "end": "2022-12",
+    "kind": "method",
+    "note": "Regents exam waivers for the classes of 2020 to 2022 may have raised graduation rates; the class of 2023 is then compared with a waiver year"
+   }
+  ],
+  "caveats": "Better when higher. State cohort method. The June rate leaves out August graduates, so it runs a few points under the August rate the city usually quotes; the August series is in nyc_official_extra.csv. The two DOE files meet between the classes of 2015 and 2016 with no overlapping year to compare. The DOE notes say most Regents exams from June 2020 to August 2021 were cancelled and waived, and that the classes of 2020, 2021 and 2023 were revised and will not match state figures. Charter schools are not included.",
+  "components": [],
+  "first_period": "2005",
+  "last_period": "2025",
+  "n_obs": 21
+ },
+ {
+  "series_id": "nyc_cost_of_living_main",
+  "category": "cost_of_living",
+  "role": "main",
+  "indicator_name": "CPI all items less shelter, New York metro area",
+  "frequency": "M",
+  "window_months": 1,
+  "unit": "index 1982-84=100",
+  "worse_when": "faster",
+  "change_rule": "inflation_points",
+  "source_urls": [
+   "https://fred.stlouisfed.org/graph/fredgraph.csv?id=CUURA101SA0L2"
+  ],
+  "release_lag_months": 1,
+  "status": "ok",
+  "fallback_used": null,
+  "construction": "FRED series CUURA101SA0L2, the BLS Consumer Price Index for All Urban Consumers for New York-Newark-Jersey City, not seasonally adjusted. Index level as published; months FRED lists with no value are left out.",
+  "breaks": [
+   {
+    "start": "2018-01",
+    "end": "2018-12",
+    "kind": "method",
+    "note": "BLS redrew CPI area boundaries in January 2018 (New York-Newark-Jersey City area). Flagged for the 12 months whose 12-month rate straddles the change; the yearly change in that rate straddles it through 2019-12."
+   }
+  ],
+  "caveats": "Metro area, not the five boroughs. Not seasonally adjusted, which is fine for 12-month rates. October 2025 has no published value, so 12-month rates for 2025-10 and 2026-10 cannot be computed. Before 1978 the index was not published every month.",
+  "components": [],
+  "first_period": "1975-12",
+  "last_period": "2026-10",
+  "n_obs": 594,
+  "missing_months_inside_range": [
+   "1976-01",
+   "1976-02",
+   "1976-04",
+   "1976-05",
+   "1976-07",
+   "1976-08",
+   "1976-10",
+   "1976-11",
+   "1977-01",
+   "1977-02",
+   "1977-04",
+   "1977-05",
+   "1977-07",
+   "1977-08",
+   "1977-10",
+   "1977-11",
+   "2025-10"
+  ]
+ },
+ {
+  "series_id": "nyc_safety_backup",
+  "category": "safety",
+  "role": "backup",
+  "indicator_name": "Shooting incidents, NYPD, by occurrence month",
+  "frequency": "M",
+  "window_months": 1,
+  "unit": "incidents",
+  "worse_when": "higher",
+  "change_rule": "pct_log",
+  "source_urls": [
+   "https://data.cityofnewyork.us/resource/833y-fsy8.json",
+   "https://data.cityofnewyork.us/resource/5ucz-vwe8.json"
+  ],
+  "release_lag_months": 3,
+  "status": "ok",
+  "fallback_used": null,
+  "construction": "Count of distinct shooting incidents (incident_key) by the month the shooting happened, counted on the NYC Open Data server. Months through the last month of the archived historic file come from that file and later months from the 2006-present file, which replaced the year-to-date file.",
+  "breaks": [],
+  "caveats": "Incidents, not victims: one shooting with three victims counts once. NYPD restructured this data in 2025 into shootings, victims and offenders; the dataset id the methodology names as year-to-date now holds every year. Current-year months are marked provisional.",
+  "components": [],
+  "first_period": "2006-01",
+  "last_period": "2026-09",
+  "n_obs": 249,
+  "missing_months_inside_range": []
+ },
+ {
+  "series_id": "nyc_economy_backup",
+  "category": "economy",
+  "role": "backup",
+  "indicator_name": "Total nonfarm jobs, seasonally adjusted, New York City",
+  "frequency": "M",
+  "window_months": 1,
+  "unit": "thousand jobs",
+  "worse_when": "lower",
+  "change_rule": "pct_log",
+  "source_urls": [
+   "https://fred.stlouisfed.org/graph/fredgraph.csv?id=SMS36935610000000001",
+   "https://fred.stlouisfed.org/series/SMS36935610000000001"
+  ],
+  "release_lag_months": 1,
+  "status": "ok",
+  "fallback_used": "FRED copy of the BLS state and area series starts in 1990; the methodology lists 1950.",
+  "construction": "FRED series SMS36935610000000001, All Employees: Total Nonfarm in New York City, NY, seasonally adjusted, from the BLS Current Employment Statistics state and area program. Used as published, in thousands of jobs.",
+  "breaks": [],
+  "caveats": "Better when higher. Starts 1990, not 1950. Benchmarked every March, so recent months get revised. The newest month is preliminary and marked provisional.",
+  "components": [],
+  "first_period": "1990-01",
+  "last_period": "2026-09",
+  "n_obs": 441,
+  "missing_months_inside_range": []
+ },
+ {
+  "series_id": "nyc_housing_backup",
+  "category": "housing",
+  "role": "backup",
+  "indicator_name": "CPI rent of primary residence, New York metro area",
+  "frequency": "M",
+  "window_months": 1,
+  "unit": "index 1982-84=100",
+  "worse_when": "faster",
+  "change_rule": "inflation_points",
+  "source_urls": [
+   "https://fred.stlouisfed.org/graph/fredgraph.csv?id=CUURA101SEHA"
+  ],
+  "release_lag_months": 1,
+  "status": "ok",
+  "fallback_used": null,
+  "construction": "FRED series CUURA101SEHA, the BLS Consumer Price Index for All Urban Consumers, rent of primary residence, New York-Newark-Jersey City, not seasonally adjusted. Index level as published.",
+  "breaks": [
+   {
+    "start": "2018-01",
+    "end": "2018-12",
+    "kind": "method",
+    "note": "BLS redrew CPI area boundaries in January 2018 (New York-Newark-Jersey City area). Flagged for the 12 months whose 12-month rate straddles the change; the yearly change in that rate straddles it through 2019-12."
+   }
+  ],
+  "caveats": "Metro area, not the five boroughs. Rents of sitting tenants move slowly, so the index lags market rents. Months FRED lists with no value are left out: every other month before 1978, and October 2025, which has no published value.",
+  "components": [],
+  "first_period": "1914-12",
+  "last_period": "2026-10",
+  "n_obs": 872,
+  "missing_months_inside_range": "471 months (see notes)"
+ },
+ {
+  "series_id": "nyc_transport_backup",
+  "category": "transport",
+  "role": "backup",
+  "indicator_name": "People killed or injured in motor-vehicle crashes, NYPD",
+  "frequency": "M",
+  "window_months": 1,
+  "unit": "people",
+  "worse_when": "higher",
+  "change_rule": "pct_log",
+  "source_urls": [
+   "https://data.cityofnewyork.us/resource/h9gi-nx95.json"
+  ],
+  "release_lag_months": 1,
+  "status": "ok",
+  "fallback_used": null,
+  "construction": "Sum of number_of_persons_injured and number_of_persons_killed over all police-reported crashes, grouped by the month of the crash date, computed on the NYC Open Data server.",
+  "breaks": [
+   {
+    "start": "2016-03",
+    "end": "2017-02",
+    "kind": "method",
+    "note": "NYPD crash recording system changed in March 2016"
+   }
+  ],
+  "caveats": "Police-reported crashes only. Injury counts depend on what officers record. The number of crash records in the file falls from about 18,000 a month in 2015 to about 7,000 in 2025 while the injured and killed counts do not fall the same way, which points to a change in which crashes get a report; that is why this series counts people hurt, not crashes. The portal says the data are preliminary and change when reports are amended, so the two newest months are marked provisional.",
+  "components": [],
+  "first_period": "2012-07",
+  "last_period": "2026-10",
+  "n_obs": 172,
+  "missing_months_inside_range": []
+ },
+ {
+  "series_id": "nyc_environment_backup",
+  "category": "environment",
+  "role": "backup",
+  "indicator_name": "Air quality index, monthly mean of daily county values across the five boroughs",
+  "frequency": "M",
+  "window_months": 1,
+  "unit": "AQI",
+  "worse_when": "higher",
+  "change_rule": "pct_log",
+  "source_urls": [
+   "https://aqs.epa.gov/aqsweb/airdata/download_files.html",
+   "https://aqs.epa.gov/aqsweb/airdata/daily_aqi_by_county_YYYY.zip"
+  ],
+  "release_lag_months": 6,
+  "status": "ok",
+  "fallback_used": "Built from 1999, not 1989, so the whole series sits inside the years with PM2.5 monitoring.",
+  "construction": "From the EPA AirData daily AQI by county files, rows for the five New York City counties. The daily city value is the mean of the counties that have an AQI that day, and the monthly value is the mean of the daily city values.",
+  "breaks": [
+   {
+    "start": "2023-06",
+    "end": "2023-06",
+    "kind": "event",
+    "note": "June 2023 Canadian wildfire smoke; a real spike"
+   },
+   {
+    "start": "2024-06",
+    "end": "2024-06",
+    "kind": "event",
+    "note": "base effect: this month's yearly change is measured against the June 2023 wildfire smoke month"
+   },
+   {
+    "start": "1999-07",
+    "end": "2000-06",
+    "kind": "method",
+    "note": "found in the data: PM2.5 monitoring starts in July 1999, so AQI values before then leave out fine particles"
+   }
+  ],
+  "caveats": "The AQI is the highest of several pollutant sub-indices, so it mixes ozone in summer with particles in winter, and EPA recomputes it when breakpoints change. Data for 2026 are not yet certified and are marked provisional.",
+  "components": [],
+  "first_period": "1999-01",
+  "last_period": "2026-05",
+  "n_obs": 329,
+  "missing_months_inside_range": []
+ },
+ {
+  "series_id": "nyc_health_backup",
+  "category": "health",
+  "role": "backup",
+  "indicator_name": "Drug overdose deaths, 12 months ending, New York City",
+  "frequency": "M",
+  "window_months": 12,
+  "unit": "deaths",
+  "worse_when": "higher",
+  "change_rule": "pct_log",
+  "source_urls": [
+   "https://data.cdc.gov/resource/xkb8-kh2a.json"
+  ],
+  "release_lag_months": 5,
+  "status": "ok",
+  "fallback_used": null,
+  "construction": "The reported count (data_value) for the indicator Number of Drug Overdose Deaths, jurisdiction New York City, in the CDC VSRR Provisional Drug Overdose Death Counts file. Each value is the number of deaths in the 12 months ending in that month. The period is the end month.",
+  "breaks": [],
+  "caveats": "Each value covers 12 months, so neighboring months overlap. Reported counts, not CDC's predicted counts; recent months are underreported while investigations finish, and months CDC footnotes as incomplete are marked provisional. Deaths are counted where they happened.",
+  "components": [],
+  "first_period": "2015-01",
+  "last_period": "2026-06",
+  "n_obs": 138,
+  "missing_months_inside_range": []
+ },
+ {
+  "series_id": "nyc_education_backup",
+  "category": "education",
+  "role": "backup",
+  "indicator_name": "Average daily attendance rate, NYC public schools, by school year",
+  "frequency": "A",
+  "window_months": 12,
+  "unit": "percent of student days",
+  "worse_when": "lower",
+  "change_rule": "points",
+  "source_urls": [
+   "https://data.cityofnewyork.us/resource/xwxx-rnki.json",
+   "https://data.cityofnewyork.us/resource/wpqj-3buw.json",
+   "https://data.cityofnewyork.us/resource/pffu-gbfi.json",
+   "https://data.cityofnewyork.us/resource/3y5p-x48f.json",
+   "https://data.cityofnewyork.us/resource/xc44-2jrh.json"
+  ],
+  "release_lag_months": 6,
+  "status": "ok",
+  "fallback_used": null,
+  "construction": "From the five NYC DOE daily attendance by school files, the server summed students present and students absent over every school and school day in each school year. The value is 100 times present divided by present plus absent. The period is the year the school year ends.",
+  "breaks": [
+   {
+    "start": "2020-01",
+    "end": "2021-12",
+    "kind": "method",
+    "note": "found in the data: the 2019-20 school year has attendance records for far fewer school days (buildings closed in March 2020), and 2020-21 was a remote and blended year"
+   }
+  ],
+  "caveats": "Better when higher. Built from school-day records, so it differs a little from the rate DOE prints in its end-of-year report (cross-check in notes). Series ends with school year 2020-21, as planned.",
+  "components": [],
+  "first_period": "2007",
+  "last_period": "2021",
+  "n_obs": 15
+ },
+ {
+  "series_id": "nyc_cost_of_living_backup",
+  "category": "cost_of_living",
+  "role": "backup",
+  "indicator_name": "CPI food, New York metro area",
+  "frequency": "M",
+  "window_months": 1,
+  "unit": "index 1982-84=100",
+  "worse_when": "faster",
+  "change_rule": "inflation_points",
+  "source_urls": [
+   "https://fred.stlouisfed.org/graph/fredgraph.csv?id=CUURA101SAF1"
+  ],
+  "release_lag_months": 1,
+  "status": "ok",
+  "fallback_used": null,
+  "construction": "FRED series CUURA101SAF1, the BLS Consumer Price Index for All Urban Consumers for New York-Newark-Jersey City, not seasonally adjusted. Index level as published; months FRED lists with no value are left out.",
+  "breaks": [
+   {
+    "start": "2018-01",
+    "end": "2018-12",
+    "kind": "method",
+    "note": "BLS redrew CPI area boundaries in January 2018 (New York-Newark-Jersey City area). Flagged for the 12 months whose 12-month rate straddles the change; the yearly change in that rate straddles it through 2019-12."
+   }
+  ],
+  "caveats": "Metro area, not the five boroughs. Not seasonally adjusted, which is fine for 12-month rates. October 2025 has no published value, so 12-month rates for 2025-10 and 2026-10 cannot be computed. Before 1978 the index was not published every month.",
+  "components": [],
+  "first_period": "1914-12",
+  "last_period": "2026-10",
+  "n_obs": 1099,
+  "missing_months_inside_range": "244 months (see notes)"
+ },
+ {
+  "series_id": "london_safety_main",
+  "category": "safety",
+  "role": "main",
+  "indicator_name": "Recorded crime, all offences, Metropolitan Police",
+  "components": [],
+  "frequency": "M",
+  "window_months": 1,
+  "unit": "offences per month",
+  "worse_when": "higher",
+  "change_rule": "pct_log",
+  "source_urls": [
+   "https://data.london.gov.uk/dataset/mps-recorded-crime-geographic-breakdown-exy3m",
+   "https://data.london.gov.uk/download/exy3m/3kv/MPS%20Borough%20Level%20Crime%20(Historical).csv",
+   "https://data.london.gov.uk/download/exy3m/bkb/MPS%20Borough%20Level%20Crime%20(Historical).csv",
+   "https://data.london.gov.uk/download/exy3m/3xb/MPS%20Borough%20Level%20Crime%20(most%20recent%2024%20months).csv"
+  ],
+  "first_period": "2010-04",
+  "last_period": "2026-10",
+  "n_obs": 199,
+  "release_lag_months": 1,
+  "status": "ok",
+  "fallback_used": null,
+  "construction": "Sum of every offence row (all categories, all boroughs, plus the airport and 'Unknown' rows) in the Met's borough-level files on the London Datastore, by month. Three files are joined: the historical file published 5 May 2026 (the last one carrying the full history) for April 2010 to October 2020, the historical file published 6 November 2026 for November 2020 to October 2024, and the last-24-months file published the same day for November 2024 to October 2026. Where the May and November vintages overlap they were compared month by month.",
+  "breaks": [
+   {
+    "start": "2013-02",
+    "end": "2014-01",
+    "kind": "method",
+    "note": "fraud offences moved from police forces to Action Fraud; the source note says March 2013 and the counts fall in February 2013 (found tonight; not in the methodology's breaks table)"
+   },
+   {
+    "start": "2019-03",
+    "end": "2020-02",
+    "kind": "method",
+    "note": "Metropolitan Police crime categories changed"
+   },
+   {
+    "start": "2024-02",
+    "end": "2025-01",
+    "kind": "method",
+    "note": "Metropolitan Police recording system changed (CONNECT)"
+   }
+  ],
+  "caveats": "Starts April 2010, not 2008: no file with the older categories is on the Datastore now. Excludes the City of London. Counts are revised every month, so the join mixes a May 2026 vintage with a November 2026 vintage. Fraud offences left the count in 2013. Since June 2026 the historical file only keeps a rolling 48 months."
+ },
+ {
+  "series_id": "london_economy_main",
+  "category": "economy",
+  "role": "main",
+  "indicator_name": "Unemployment rate, London, aged 16 and over, seasonally adjusted (ONS YCNI)",
+  "components": [],
+  "frequency": "M",
+  "window_months": 3,
+  "unit": "percent",
+  "worse_when": "higher",
+  "change_rule": "points",
+  "source_urls": [
+   "https://www.ons.gov.uk/generator?format=csv&uri=/employmentandlabourmarket/peoplenotinwork/unemployment/timeseries/ycni/lms"
+  ],
+  "first_period": "1992-05",
+  "last_period": "2026-09",
+  "n_obs": 413,
+  "release_lag_months": 2,
+  "status": "ok",
+  "fallback_used": null,
+  "construction": "Monthly rolling three-month observations of ONS series YCNI from the time series generator. ONS labels each one with the middle month of the three, so the period here is the label plus one month (the end month). The build checks that every quarterly value equals the monthly value labelled with the quarter's middle month.",
+  "breaks": [
+   {
+    "start": "2019-01",
+    "end": "2019-12",
+    "kind": "method",
+    "note": "Labour Force Survey reweighted"
+   },
+   {
+    "start": "2023-01",
+    "end": "2024-12",
+    "kind": "method",
+    "note": "Labour Force Survey response problems"
+   }
+  ],
+  "caveats": "Regional Labour Force Survey estimates are noisy. Response problems in 2023 and 2024. Each value covers three months, so neighbouring values share two months of data."
+ },
+ {
+  "series_id": "london_housing_main",
+  "category": "housing",
+  "role": "main",
+  "indicator_name": "Private rents index, London (ONS PIPR, with IPHRP joined on before 2015)",
+  "components": [],
+  "frequency": "M",
+  "window_months": 1,
+  "unit": "index (PIPR reference scale)",
+  "worse_when": "faster",
+  "change_rule": "inflation_points",
+  "source_urls": [
+   "https://www.ons.gov.uk/file?uri=/economy/inflationandpriceindices/datasets/priceindexofprivaterentsukmonthlypricestatistics/21october2026/priceindexofprivaterentsukmonthlypricestatistics.xlsx",
+   "https://www.ons.gov.uk/file?uri=/economy/inflationandpriceindices/datasets/indexofprivatehousingrentalpricesreferencetables/current/iphrpreferencetablejanuary2024accessible1.xlsx"
+  ],
+  "first_period": "2005-01",
+  "last_period": "2026-09",
+  "n_obs": 261,
+  "release_lag_months": 1,
+  "status": "ok",
+  "fallback_used": null,
+  "construction": "January 2015 onward is the London index from the ONS Price Index of Private Rents, as published. January 2005 to December 2014 is the London index from the discontinued ONS Index of Private Housing Rental Prices, multiplied by one constant so the two indices are equal in January 2015 (the first month both exist). The source_note column says which index each month came from.",
+  "breaks": [
+   {
+    "start": "2015-01",
+    "end": "2016-12",
+    "kind": "method",
+    "note": "older rent index (IPHRP) joined to the current one (PIPR) at January 2015; 24 months are flagged because the 12-month rent increase through December 2015 mixes the two indices and its yearly change runs through December 2016"
+   }
+  ],
+  "caveats": "Two methods joined. The older index tracked the stock of rents more smoothly than the current one. Covers existing tenancies as well as new lets, so it lags the market for new lets."
+ },
+ {
+  "series_id": "london_transport_main",
+  "category": "transport",
+  "role": "main",
+  "indicator_name": "Killed or seriously injured road casualties, London, severity-adjusted (DfT)",
+  "components": [],
+  "frequency": "M",
+  "window_months": 1,
+  "unit": "casualties per month (adjusted)",
+  "worse_when": "higher",
+  "change_rule": "pct_log",
+  "source_urls": [
+   "https://data.dft.gov.uk/road-accidents-safety-data/dft-road-casualty-statistics-collision-1979-latest-published-year.csv",
+   "https://data.dft.gov.uk/road-accidents-safety-data/dft-road-casualty-statistics-casualty-1979-latest-published-year.csv",
+   "https://www.gov.uk/government/statistics/road-safety-data"
+  ],
+  "first_period": "2004-01",
+  "last_period": "2025-12",
+  "n_obs": 264,
+  "release_lag_months": 9,
+  "status": "ok",
+  "fallback_used": null,
+  "construction": "From the DfT open data casualty and collision files: casualties in collisions recorded by the Metropolitan Police (force 1) or the City of London Police (force 48), counted in the month of the collision date. The value is the number of fatal casualties plus the sum of DfT's adjusted probability of being serious for every non-fatal casualty.",
+  "breaks": [],
+  "caveats": "Starts 2004 because the adjusted figures do not exist before then (the methodology says 1979). Ends December 2025: DfT releases a full year once a year, so the lag runs from 9 to 20 months. The Met moved to injury-based reporting in November 2016; the adjustment is DfT's model of what earlier years would have shown, so it is an estimate made by DfT."
+ },
+ {
+  "series_id": "london_environment_main",
+  "category": "environment",
+  "role": "main",
+  "indicator_name": "Nitrogen dioxide, mean of Marylebone Road and Bloomsbury (London Air Quality Network)",
+  "components": [],
+  "frequency": "M",
+  "window_months": 1,
+  "unit": "micrograms per cubic metre",
+  "worse_when": "higher",
+  "change_rule": "pct_log",
+  "source_urls": [
+   "https://api.erg.ic.ac.uk/AirQuality/Data/SiteSpecies/SiteCode=MY1/SpeciesCode=NO2/StartDate=YYYY-01-01/EndDate=YYYY-01-01/Json",
+   "https://api.erg.ic.ac.uk/AirQuality/Data/SiteSpecies/SiteCode=BL0/SpeciesCode=NO2/StartDate=YYYY-01-01/EndDate=YYYY-01-01/Json"
+  ],
+  "first_period": "2004-01",
+  "last_period": "2026-05",
+  "n_obs": 239,
+  "release_lag_months": 0,
+  "status": "partial",
+  "fallback_used": null,
+  "construction": "Hourly readings for site codes MY1 and BL0 were fetched year by year. Each site's monthly mean is the mean of its hours with a reading, kept only if at least half the hours in the month have one. The value is the plain mean of the two site means. If either site fails the test the month is left empty.",
+  "breaks": [
+   {
+    "start": "2019-04",
+    "end": "2020-03",
+    "kind": "event",
+    "note": "Ultra Low Emission Zone started in central London"
+   },
+   {
+    "start": "2021-10",
+    "end": "2022-09",
+    "kind": "event",
+    "note": "Ultra Low Emission Zone expanded to the North and South Circular roads"
+   },
+   {
+    "start": "2023-08",
+    "end": "2024-07",
+    "kind": "event",
+    "note": "Ultra Low Emission Zone expanded to all London boroughs"
+   }
+  ],
+  "caveats": "Two sites stand in for the city. Fetched from 2004 (the sites go back to 1997 and 1992). Recent months may not be ratified yet. The API's site list gives a wrong start date for Bloomsbury NO2."
+ },
+ {
+  "series_id": "london_health_main",
+  "category": "health",
+  "role": "main",
+  "indicator_name": "Waiting list: share waiting under 18 weeks, London region (NHS England RTT)",
+  "components": [],
+  "frequency": "M",
+  "window_months": 1,
+  "unit": "percent",
+  "worse_when": "lower",
+  "change_rule": "points",
+  "source_urls": [
+   "https://www.england.nhs.uk/statistics/statistical-work-areas/rtt-waiting-times/"
+  ],
+  "first_period": null,
+  "last_period": null,
+  "n_obs": 0,
+  "release_lag_months": 2,
+  "status": "missing",
+  "fallback_used": "None possible: the backup is published on the same site and is also missing.",
+  "construction": "Not built. The plan was total incomplete pathways within 18 weeks divided by total incomplete pathways for the London region row of each monthly commissioner workbook.",
+  "breaks": [],
+  "caveats": "NHS England's statistics pages answer scripted requests with a browser challenge, so the collection stopped there. The backup comes from the same site, so London has no official Health series tonight."
+ },
+ {
+  "series_id": "london_education_main",
+  "category": "education",
+  "role": "main",
+  "indicator_name": "Attainment 8 average score, London region, state-funded schools (DfE)",
+  "components": [],
+  "frequency": "A",
+  "window_months": 12,
+  "unit": "score points",
+  "worse_when": "lower",
+  "change_rule": "points",
+  "source_urls": [
+   "https://explore-education-statistics.service.gov.uk/data-catalogue/data-set/9e761bdf-fe02-4e1e-9d3d-b32dac9fa6ef",
+   "https://explore-education-statistics.service.gov.uk/data-catalogue/data-set/9e761bdf-fe02-4e1e-9d3d-b32dac9fa6ef/csv",
+   "https://api.education.gov.uk/statistics/v1/data-sets/b3e19901-5d2b-b676-bb4c-e60937d74725/csv",
+   "https://data.london.gov.uk/dataset/gcse-results-by-borough-20pd9"
+  ],
+  "first_period": "2016",
+  "last_period": "2026",
+  "n_obs": 11,
+  "release_lag_months": 6,
+  "status": "ok",
+  "fallback_used": "School years 2015/16 to 2017/18 come from the Greater London Authority's London Datastore workbook of DfE figures, because the DfE data set starts at 2018/19. 2025/26 comes from the newer release of the same DfE data set.",
+  "construction": "2018/19 to 2024/25: the London regional row for all pupils (breakdown Total, sex Total, all state-funded schools), column attainment8_average, in the DfE key stage 4 data set named in the methodology. 2025/26: the same row in the 2025/26 release of that data set. 2015/16 to 2017/18: the London row of the 'Average Attainment 8 score' column for all pupils in the London Datastore workbook, whose figures equal the DfE file in every year both cover. The period is the year the school year ends.",
+  "breaks": [
+   {
+    "start": "2016-09",
+    "end": "2017-08",
+    "kind": "method",
+    "note": "GCSE grading changed (2017)"
+   },
+   {
+    "start": "2019-09",
+    "end": "2021-08",
+    "kind": "method",
+    "note": "teacher-assessed grades (2020 and 2021)"
+   },
+   {
+    "start": "2021-09",
+    "end": "2022-08",
+    "kind": "method",
+    "note": "exams returned: the 2022 comparison is against a teacher-assessed year"
+   }
+  ],
+  "caveats": "Three sources stand behind ten or eleven points. 2025/26 is provisional. 2024/25 is the revised figure. The 2015/16 score was computed on the old A* to G point scale, so 2016 and 2017 are not on the same footing. In the Datastore workbook the title cell of the older sheets wrongly reads 2023/24; the sheet names carry the year."
+ },
+ {
+  "series_id": "london_cost_of_living_main",
+  "category": "cost_of_living",
+  "role": "main",
+  "indicator_name": "CPI 12-month rate, all items, UK (ONS D7G7)",
+  "components": [],
+  "frequency": "M",
+  "window_months": 1,
+  "unit": "percent",
+  "worse_when": "higher",
+  "change_rule": "points",
+  "source_urls": [
+   "https://www.ons.gov.uk/generator?format=csv&uri=/economy/inflationandpriceindices/timeseries/d7g7/mm23"
+  ],
+  "first_period": "1989-01",
+  "last_period": "2026-09",
+  "n_obs": 453,
+  "release_lag_months": 1,
+  "status": "ok",
+  "fallback_used": null,
+  "construction": "Monthly observations of ONS series D7G7 from the time series generator, as published. It is already a 12-month rate, so the yearly change is taken in points.",
+  "breaks": [],
+  "caveats": "UK-wide, not London: no London price index exists. Includes some rent. The October 2026 figure was due on 18 November 2026, after this run."
+ },
+ {
+  "series_id": "london_safety_backup",
+  "category": "safety",
+  "role": "backup",
+  "indicator_name": "Police recorded crime, all offences, Metropolitan Police force area (Home Office)",
+  "components": [],
+  "frequency": "Q",
+  "window_months": 3,
+  "unit": "offences per quarter",
+  "worse_when": "higher",
+  "change_rule": "pct_log",
+  "source_urls": [
+   "https://www.gov.uk/government/statistical-data-sets/police-recorded-crime-and-outcomes-open-data-tables",
+   "https://assets.publishing.service.gov.uk/media/6ad234c767af5c09d047971d/prc-pfa-mar2013-onwards-tables-221026.ods",
+   "https://assets.publishing.service.gov.uk/media/680799ed8c1316be7978e6cd/prc-pfa-mar2008-mar2012-tabs.ods",
+   "https://assets.publishing.service.gov.uk/media/68079a4f3bdfd1243078e6d2/prc-pfa-0203-to-0607-tabs.ods"
+  ],
+  "first_period": "2002-Q2",
+  "last_period": "2026-Q2",
+  "n_obs": 97,
+  "release_lag_months": 4,
+  "status": "ok",
+  "fallback_used": null,
+  "construction": "Sum of 'Number of Offences' over every offence code for the force 'Metropolitan Police' in the three Home Office police force area open data workbooks, by financial quarter, relabelled to calendar quarters (financial quarter 1 is April to June).",
+  "breaks": [
+   {
+    "start": "2013-02",
+    "end": "2014-01",
+    "kind": "method",
+    "note": "fraud offences moved from police forces to Action Fraud; the source note says March 2013 and the counts fall in February 2013 (found tonight; not in the methodology's breaks table)"
+   },
+   {
+    "start": "2019-03",
+    "end": "2020-02",
+    "kind": "method",
+    "note": "Metropolitan Police crime categories changed"
+   },
+   {
+    "start": "2024-02",
+    "end": "2025-01",
+    "kind": "method",
+    "note": "Metropolitan Police recording system changed (CONNECT)"
+   }
+  ],
+  "caveats": "Includes fraud until it moved to Action Fraud. Quarters can be revised and can hold negative counts for single offence codes. The March 2019 category change belongs to the Met's own publication and is marked here only because the breaks table lists it under Safety. The Home Office notes say the 2024 system change closed dormant records and revised 2023/24."
+ },
+ {
+  "series_id": "london_economy_backup",
+  "category": "economy",
+  "role": "backup",
+  "indicator_name": "Claimant count, London, seasonally adjusted (ONS DPDK)",
+  "components": [],
+  "frequency": "M",
+  "window_months": 1,
+  "unit": "thousand people",
+  "worse_when": "higher",
+  "change_rule": "pct_log",
+  "source_urls": [
+   "https://www.ons.gov.uk/generator?format=csv&uri=/employmentandlabourmarket/peoplenotinwork/outofworkbenefits/timeseries/dpdk/unem"
+  ],
+  "first_period": "1974-04",
+  "last_period": "2026-10",
+  "n_obs": 631,
+  "release_lag_months": 1,
+  "status": "ok",
+  "fallback_used": null,
+  "construction": "Monthly observations of ONS series DPDK in dataset UNEM from the time series generator, as published: claimant count, London, people, seasonally adjusted, in thousands.",
+  "breaks": [],
+  "caveats": "An administrative count of people claiming unemployment-related benefits, not a survey. The move to Universal Credit widened who is counted; that is general knowledge about the series and was not checked against ONS documentation tonight, so no break is marked."
+ },
+ {
+  "series_id": "london_housing_backup",
+  "category": "housing",
+  "role": "backup",
+  "indicator_name": "Households in temporary accommodation, London, end of quarter (MHCLG)",
+  "components": [],
+  "frequency": "Q",
+  "window_months": 3,
+  "unit": "households",
+  "worse_when": "higher",
+  "change_rule": "pct_log",
+  "source_urls": [
+   "https://www.gov.uk/government/statistical-data-sets/live-tables-on-homelessness",
+   "https://assets.publishing.service.gov.uk/media/5d00bd40e5274a3d4b416479/Temporary_accommodation2018Q1.xlsx",
+   "https://assets.publishing.service.gov.uk/media/6a82eee63bd75b81e2329a7b/Statutory_Homelessness_England_Time_Series_202603.ods"
+  ],
+  "first_period": "2004-Q1",
+  "last_period": "2026-Q1",
+  "n_obs": 84,
+  "release_lag_months": 5,
+  "status": "partial",
+  "fallback_used": null,
+  "construction": "To the first quarter of 2018: the London total in MHCLG live table 775 (households in temporary accommodation at the end of each quarter), from the final edition of that table. From the third quarter of 2019: the London row of table TA1 in each quarter's detailed local authority workbook, taking the revised edition where one is listed. The England total read from the same column is checked against MHCLG's national time series.",
+  "breaks": [
+   {
+    "start": "2018-04",
+    "end": "2020-06",
+    "kind": "method",
+    "note": "council returns (P1E) replaced by case-level records (H-CLIC) from April 2018; found in the source tonight, not in the methodology's breaks table"
+   }
+  ],
+  "caveats": "Five quarters are missing (April 2018 to June 2019): MHCLG lists no quarterly workbook with a London total for them. The two halves come from different collection systems. A snapshot at quarter end, not a flow. Totals include MHCLG's estimates for councils that did not report. The latest quarter is marked provisional by MHCLG."
+ },
+ {
+  "series_id": "london_transport_backup",
+  "category": "transport",
+  "role": "backup",
+  "indicator_name": "London Underground lost customer hours per day (TfL)",
+  "components": [],
+  "frequency": "M",
+  "window_months": 1,
+  "unit": "lost customer hours per day",
+  "worse_when": "higher",
+  "change_rule": "pct_log",
+  "source_urls": [
+   "https://data.london.gov.uk/dataset/london-underground-performance-reports-em8qy",
+   "https://data.london.gov.uk/download/em8qy/c3ecab2b-5acf-4124-8dd5-fb4ae7c016e5/tfl-tube-performance.xlsx"
+  ],
+  "first_period": "2011-05",
+  "last_period": "2020-02",
+  "n_obs": 106,
+  "release_lag_months": 2,
+  "status": "ok",
+  "fallback_used": null,
+  "construction": "TfL reports lost customer hours for 13 four-week periods a year. Each period is assigned to the calendar month that holds its midpoint, and the value is the period's lost customer hours divided by its days. In the one month a year that holds two periods, both are pooled (total hours over total days).",
+  "breaks": [],
+  "caveats": "Four-week periods mapped to months, so a month's value can include days from the months either side. The file stops in March 2020 and TfL marks the last period as not valid. Not updated since. Figures are modelled by TfL from delays and passenger demand."
+ },
+ {
+  "series_id": "london_environment_backup",
+  "category": "environment",
+  "role": "backup",
+  "indicator_name": "PM2.5, mean of Marylebone Road and Bloomsbury (London Air Quality Network)",
+  "components": [],
+  "frequency": "M",
+  "window_months": 1,
+  "unit": "micrograms per cubic metre",
+  "worse_when": "higher",
+  "change_rule": "pct_log",
+  "source_urls": [
+   "https://api.erg.ic.ac.uk/AirQuality/Data/SiteSpecies/SiteCode=BL0/SpeciesCode=PM25/StartDate=YYYY-01-01/EndDate=YYYY-01-01/Json",
+   "https://api.erg.ic.ac.uk/AirQuality/Data/SiteSpecies/SiteCode=MY7/SpeciesCode=PM25/StartDate=YYYY-01-01/EndDate=YYYY-01-01/Json",
+   "https://api.erg.ic.ac.uk/AirQuality/Data/SiteSpecies/SiteCode=MR8/SpeciesCode=PM25/StartDate=YYYY-01-01/EndDate=YYYY-01-01/Json",
+   "https://api.erg.ic.ac.uk/AirQuality/Data/SiteSpecies/SiteCode=MY1/SpeciesCode=PM25/StartDate=YYYY-01-01/EndDate=YYYY-01-01/Json"
+  ],
+  "first_period": "2009-05",
+  "last_period": "2021-04",
+  "n_obs": 131,
+  "release_lag_months": 0,
+  "status": "partial",
+  "fallback_used": "Marylebone Road PM2.5 is read from site code MY7, because MY1 carries no PM2.5.",
+  "construction": "Same construction as the NO2 series, with one change. Site code MY1 carries no PM2.5, so Marylebone Road uses the co-located code MY7. Each site's monthly mean needs readings for at least half the hours in the month; the value is the mean of the two sites, and it is empty if either is missing.",
+  "breaks": [
+   {
+    "start": "2019-04",
+    "end": "2020-03",
+    "kind": "event",
+    "note": "Ultra Low Emission Zone started in central London"
+   },
+   {
+    "start": "2021-10",
+    "end": "2022-09",
+    "kind": "event",
+    "note": "Ultra Low Emission Zone expanded to the North and South Circular roads"
+   },
+   {
+    "start": "2023-08",
+    "end": "2024-07",
+    "kind": "event",
+    "note": "Ultra Low Emission Zone expanded to all London boroughs"
+   }
+  ],
+  "caveats": "Runs only from 2009 to 2021: MY7 started PM2.5 in March 2009 and closed in December 2021. The newer Marylebone Road code MR8 was not joined on: in the months both passed the capture rule it read about a third higher than MY7, and it has almost no readings after November 2022. Instruments at Bloomsbury also changed over the years."
+ },
+ {
+  "series_id": "london_health_backup",
+  "category": "health",
+  "role": "backup",
+  "indicator_name": "A&E four-hour performance, London region (NHS England)",
+  "components": [],
+  "frequency": "M",
+  "window_months": 1,
+  "unit": "percent",
+  "worse_when": "lower",
+  "change_rule": "points",
+  "source_urls": [
+   "https://www.england.nhs.uk/statistics/statistical-work-areas/ae-waiting-times-and-activity/"
+  ],
+  "first_period": null,
+  "last_period": null,
+  "n_obs": 0,
+  "release_lag_months": 1,
+  "status": "missing",
+  "fallback_used": null,
+  "construction": "Not built. The plan was attendances seen within four hours divided by all attendances for providers in the London region, from the monthly provider files.",
+  "breaks": [],
+  "caveats": "Same site and same browser challenge as the main Health indicator."
+ },
+ {
+  "series_id": "london_education_backup",
+  "category": "education",
+  "role": "backup",
+  "indicator_name": "Overall absence rate, London, state-funded primary, secondary and special schools (DfE)",
+  "components": [],
+  "frequency": "A",
+  "window_months": 12,
+  "unit": "percent of possible sessions",
+  "worse_when": "higher",
+  "change_rule": "points",
+  "source_urls": [
+   "https://explore-education-statistics.service.gov.uk/find-statistics/pupil-absence-in-schools-in-england",
+   "https://api.education.gov.uk/statistics/v1/data-sets/019d209b-b031-7497-8205-af255b581d91/csv"
+  ],
+  "first_period": "2007",
+  "last_period": "2025",
+  "n_obs": 18,
+  "release_lag_months": 7,
+  "status": "partial",
+  "fallback_used": null,
+  "construction": "The London regional row of the DfE data set 'Absence sessions by reason' with school type Total, attendance status Absence, attendance type Overall absence and reason Overall absence, column session_percent. The period is the year the school year ends.",
+  "breaks": [],
+  "caveats": "The data set has no 2019/20 school year, so that year is missing. How absence linked to COVID was recorded in 2020/21 and 2021/22 was not checked against DfE documentation tonight."
+ }
+]
