@@ -41,3 +41,4 @@
 
 ## 2026-11-18, Cayden's second poster message
 - His four sentences go in the "What surprised me" piece word for word (`SURPRISED` in `src/poster_board.py`), at 15 px, the size of the reference's other body text. They did not fit in 82 mm. The code measures the text and resizes: the piece is 48 mm taller (130 mm) and the case study piece 48 mm shorter (142 mm). The case chart's plot is drawn shorter to fit. Both pieces still fit one A4 sheet each. No other piece moved.
+- Later the same night, on Cayden's instruction: the "What surprised me" label sits on top, the text uses the full width with no dashed box, and the piece is only as tall as the text needs (102 mm, 20 mm more than the reference). The case study piece is 170 mm and its plot is about two thirds of the reference height.

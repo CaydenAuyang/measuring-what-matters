@@ -219,7 +219,7 @@ ICONS = {
 
 def surprised_text_height():
     """Height in reference pixels of Cayden's two paragraphs at the box's text width, measured in Chrome."""
-    w = 594 - 2 - 56 - 120 - 22 - 4 - 32               # piece, border, padding, label column, gap, box border, box padding
+    w = 594 - 2 - 56                                   # piece width less its border and padding: the text uses the full width
     paras = "".join(f'<p style="margin:0 0 {0 if i == len(SURPRISED) - 1 else 10}px 0">{t}</p>' for i, t in enumerate(SURPRISED))
     html = (f'<!doctype html><html><head><meta charset="utf-8"><style>{font_css("file://" + FONTS)}{BASE_CSS}</style></head><body>'
             f'<div id="t" style="width:{w}px;{SURPRISED_STYLE}">{paras}</div>'
@@ -238,11 +238,11 @@ def surprised_text_height():
 def fit_surprised():
     """Make the What surprised me piece tall enough for the text, and the case study piece shorter by the same amount.
     Every other piece stays where it is. Returns the plot half-height for the case chart."""
-    need_px = surprised_text_height() + 20 + 4 + 48 + 2          # box padding, box border, piece padding, piece border
+    need_px = surprised_text_height() + 25 + 48 + 2 + 1         # label line above the text, piece padding, piece border, rounding room
     need_mm = math.ceil(need_px / PX_PER_MM)
     i_case = next(i for i, p in enumerate(PIECES) if p[0] == "case"); i_sur = next(i for i, p in enumerate(PIECES) if p[0] == "surprised")
     k, n, x, y, w, h, cls = PIECES[i_sur]
-    extra = max(0, need_mm - h)
+    extra = need_mm - h                                    # the piece is only as tall as the text needs
     if extra:
         PIECES[i_sur] = (k, n, x, y - extra, w, h + extra, cls)
         k, n, x, y, w, h, cls = PIECES[i_case]
@@ -289,8 +289,8 @@ def build_pieces(R, Y):
                    f'<div style="margin-top:6px">{svg}</div>')
     man["case"] = {"title": [t1, t2], "picked_by": why, "city": cs["city"], "category": cs["category"], "start": cs["start"], "end": cs["end"], "months": cs["months"],
                    "official_direction": cs["official_direction"], "attention_direction": cs["attention_direction"], **info}
-    out["surprised"] = ('<div style="display:flex;gap:22px;align-items:center;height:100%"><div class="kicker" style="margin:0;flex:none;width:120px;line-height:1.5">What<br>surprised<br>me</div>'
-                        '<div style="flex:1;border:2px dashed #D8D2C6;border-radius:8px;padding:10px 16px;' + SURPRISED_STYLE + '">' + "".join(f'<p style="margin:0 0 {0 if i == len(SURPRISED) - 1 else 10}px 0">{t}</p>' for i, t in enumerate(SURPRISED)) + '</div></div>')
+    out["surprised"] = ('<div class="kicker">What surprised me</div><div style="' + SURPRISED_STYLE + '">'
+                        + "".join(f'<p style="margin:0 0 {0 if i == len(SURPRISED) - 1 else 10}px 0">{t}</p>' for i, t in enumerate(SURPRISED)) + '</div>')
     man["surprised"] = {"text": SURPRISED, "made_taller_by_mm": extra}
     y1, y2 = need(c.get("news_first_month"), "news_first_month")[:4], need(c.get("news_last_month"), "news_last_month")[:4]
     nums = [(str(need(c.get("cities"), "cities")), "cities", NAVY),
