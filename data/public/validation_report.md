@@ -26,20 +26,38 @@ A category is analyzed in a city only if its kappa is at least 0.61. A category 
 | :-- | --: | :-- | --: | --: | :-- |
 | Safety | 0.72 | 0.44 to 0.90 | 15 | 17 | kept |
 | Economy | 0.65 | 0.46 to 0.80 | 18 | 31 | kept |
-| Housing | 0.46 | 0.25 to 0.71 | 15 | 24 | dropped |
-| Transport | 0.36 | 0.13 to 0.68 | 16 | 11 | dropped |
+| Housing | 0.46 | 0.25 to 0.71 | 15 | 24 | kept (after revision: 0.88 on 243 fresh items) |
+| Transport | 0.36 | 0.13 to 0.68 | 16 | 11 | kept (after revision: 0.62 on 243 fresh items) |
 | Environment | 0.79 | 0.59 to 0.96 | 17 | 19 | kept |
 | Health | 0.76 | 0.58 to 0.90 | 20 | 19 | kept |
 | Education | 0.82 | 0.63 to 0.94 | 17 | 12 | kept |
-| Cost of Living | 0.44 | 0.13 to 0.69 | 15 | 5 | dropped |
+| Cost of Living | 0.44 | 0.13 to 0.69 | 15 | 5 | dropped (after revision: 0.33 on 243 fresh items) |
 | Governance | 0.73 | 0.55 to 0.85 | 24 | 36 | kept |
-| Culture | 0.18 | 0.06 to 0.55 | 20 | 17 | dropped |
-| Technology | 0.11 | 0.02 to 0.39 | 16 | 8 | dropped |
-| Community | 0.36 | 0.14 to 0.68 | 15 | 9 | dropped |
+| Culture | 0.18 | 0.06 to 0.55 | 20 | 17 | dropped (after revision: 0.14 on 243 fresh items) |
+| Technology | 0.11 | 0.02 to 0.39 | 16 | 8 | dropped (after revision: 0.39 on 243 fresh items) |
+| Community | 0.36 | 0.14 to 0.68 | 15 | 9 | dropped (after revision: 0.48 on 243 fresh items) |
 | Not a civic problem | 0.62 | 0.37 to 0.82 | 20 | 20 | reported only |
 
-Kept: Safety, Economy, Environment, Health, Education, Governance.
-Dropped: Housing, Transport, Cost of Living, Culture, Technology, Community.
+Kept: Safety, Economy, Housing, Transport, Environment, Health, Education, Governance.
+Dropped: Cost of Living, Culture, Technology, Community.
+
+The retest. The wording of the categories that failed in any city was revised once. Both coders then labeled a fresh sample with the revised codebook. The table shows every label on that fresh sample. A category that passed the first test stays kept, a rule set before the retest was scored. Its row here is a second reading on about 300 new items, with about 20 items per label, so single values move a lot.
+
+| Category | Kappa on the first sample (first codebook) | Kappa on the fresh sample (revised codebook) | Result |
+| :-- | --: | --: | :-- |
+| Safety | 0.72 | 0.57 | kept, caution: under 0.61 on the fresh sample |
+| Economy | 0.65 | 0.67 | kept |
+| Housing | 0.46 | 0.88 | kept (decided by this retest) |
+| Transport | 0.36 | 0.62 | kept (decided by this retest) |
+| Environment | 0.79 | 0.77 | kept |
+| Health | 0.76 | 0.61 | kept |
+| Education | 0.82 | 0.58 | kept, caution: under 0.61 on the fresh sample |
+| Cost of Living | 0.44 | 0.33 | dropped (decided by this retest) |
+| Governance | 0.73 | 0.59 | kept, caution: under 0.61 on the fresh sample |
+| Culture | 0.18 | 0.14 | dropped (decided by this retest) |
+| Technology | 0.11 | 0.39 | dropped (decided by this retest) |
+| Community | 0.36 | 0.48 | dropped (decided by this retest) |
+| Not a civic problem | 0.62 | 0.43 | reported only |
 
 City filter error by outlet (share of validation items the second coder judged not about the city):
 
@@ -118,13 +136,31 @@ The same test under simpler rules. Three rules were set during the run, after pr
 | Education | 0.74 | 0.56 to 0.89 | 21 | 14 | kept |
 | Cost of Living | 0.67 | 0.46 to 0.82 | 20 | 10 | kept |
 | Governance | 0.77 | 0.65 to 0.87 | 29 | 46 | kept |
-| Culture | 0.20 | 0.10 to 0.44 | 20 | 18 | dropped |
+| Culture | 0.20 | 0.10 to 0.44 | 20 | 18 | dropped (after revision: 0.15 on 299 fresh items) |
 | Technology | 0.68 | 0.44 to 0.95 | 20 | 16 | kept |
-| Community | 0.46 | 0.26 to 0.68 | 21 | 15 | dropped |
+| Community | 0.46 | 0.26 to 0.68 | 21 | 15 | dropped (after revision: 0.30 on 299 fresh items) |
 | Not a civic problem | 0.72 | 0.57 to 0.86 | 27 | 22 | reported only |
 
 Kept: Safety, Economy, Housing, Transport, Environment, Health, Education, Cost of Living, Governance, Technology.
 Dropped: Culture, Community.
+
+The retest. The wording of the categories that failed in any city was revised once. Both coders then labeled a fresh sample with the revised codebook. The table shows every label on that fresh sample. A category that passed the first test stays kept, a rule set before the retest was scored. Its row here is a second reading on about 300 new items, with about 20 items per label, so single values move a lot.
+
+| Category | Kappa on the first sample (first codebook) | Kappa on the fresh sample (revised codebook) | Result |
+| :-- | --: | --: | :-- |
+| Safety | 0.80 | 0.76 | kept |
+| Economy | 0.77 | 0.58 | kept, caution: under 0.61 on the fresh sample |
+| Housing | 0.98 | 0.55 | kept, caution: under 0.61 on the fresh sample |
+| Transport | 0.82 | 0.87 | kept |
+| Environment | 0.65 | 0.80 | kept |
+| Health | 0.86 | 0.81 | kept |
+| Education | 0.74 | 0.84 | kept |
+| Cost of Living | 0.67 | 0.64 | kept |
+| Governance | 0.77 | 0.79 | kept |
+| Culture | 0.20 | 0.15 | dropped (decided by this retest) |
+| Technology | 0.68 | 0.50 | kept, caution: under 0.61 on the fresh sample |
+| Community | 0.46 | 0.30 | dropped (decided by this retest) |
+| Not a civic problem | 0.72 | 0.56 | reported only |
 
 City filter error by outlet (share of validation items the second coder judged not about the city):
 
@@ -201,15 +237,33 @@ The same test under simpler rules. Three rules were set during the run, after pr
 | Environment | 0.61 | 0.44 to 0.80 | 22 | 26 | kept |
 | Health | 0.81 | 0.64 to 0.94 | 23 | 17 | kept |
 | Education | 0.88 | 0.75 to 0.96 | 21 | 16 | kept |
-| Cost of Living | 0.41 | 0.20 to 0.80 | 20 | 18 | dropped |
-| Governance | 0.52 | 0.32 to 0.71 | 24 | 30 | dropped |
-| Culture | 0.20 | 0.07 to 0.48 | 21 | 13 | dropped |
-| Technology | 0.45 | 0.22 to 0.87 | 20 | 16 | dropped |
-| Community | 0.34 | 0.15 to 0.61 | 21 | 12 | dropped |
+| Cost of Living | 0.41 | 0.20 to 0.80 | 20 | 18 | dropped (after revision: 0.25 on 301 fresh items) |
+| Governance | 0.52 | 0.32 to 0.71 | 24 | 30 | kept (after revision: 0.69 on 301 fresh items) |
+| Culture | 0.20 | 0.07 to 0.48 | 21 | 13 | dropped (after revision: 0.23 on 301 fresh items) |
+| Technology | 0.45 | 0.22 to 0.87 | 20 | 16 | dropped (after revision: 0.13 on 301 fresh items) |
+| Community | 0.34 | 0.15 to 0.61 | 21 | 12 | dropped (after revision: 0.47 on 301 fresh items) |
 | Not a civic problem | 0.75 | 0.62 to 0.87 | 33 | 45 | reported only |
 
-Kept: Safety, Economy, Housing, Transport, Environment, Health, Education.
-Dropped: Cost of Living, Governance, Culture, Technology, Community.
+Kept: Safety, Economy, Housing, Transport, Environment, Health, Education, Governance.
+Dropped: Cost of Living, Culture, Technology, Community.
+
+The retest. The wording of the categories that failed in any city was revised once. Both coders then labeled a fresh sample with the revised codebook. The table shows every label on that fresh sample. A category that passed the first test stays kept, a rule set before the retest was scored. Its row here is a second reading on about 300 new items, with about 20 items per label, so single values move a lot.
+
+| Category | Kappa on the first sample (first codebook) | Kappa on the fresh sample (revised codebook) | Result |
+| :-- | --: | --: | :-- |
+| Safety | 0.83 | 0.81 | kept |
+| Economy | 0.64 | 0.62 | kept |
+| Housing | 0.81 | 0.78 | kept |
+| Transport | 0.80 | 0.74 | kept |
+| Environment | 0.61 | 0.66 | kept |
+| Health | 0.81 | 0.75 | kept |
+| Education | 0.88 | 0.51 | kept, caution: under 0.61 on the fresh sample |
+| Cost of Living | 0.41 | 0.25 | dropped (decided by this retest) |
+| Governance | 0.52 | 0.69 | kept (decided by this retest) |
+| Culture | 0.20 | 0.23 | dropped (decided by this retest) |
+| Technology | 0.45 | 0.13 | dropped (decided by this retest) |
+| Community | 0.34 | 0.47 | dropped (decided by this retest) |
+| Not a civic problem | 0.75 | 0.59 | reported only |
 
 City filter error by outlet (share of validation items the second coder judged not about the city):
 

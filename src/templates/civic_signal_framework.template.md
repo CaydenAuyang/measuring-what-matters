@@ -97,7 +97,7 @@ Look at that list before you copy the codebook, and tighten those boundaries fir
 
 **What it produced in this study.** {{run.items_sampled_total|comma}} items were sampled, and {{run.items_labeled_total|comma}} were labeled when this file was built. {{run.items_no_input|comma}} had no headline words and no topic tags, so the model had nothing to read and they were left out. {{counts.articles_labeled_main_panel_total|comma}} of the labeled articles are from the main panels, and the main attention index is built from those, less the Hong Kong outlet-years that the headline check leaves out (Step 3). The rest are from the other listed outlets and feed one check. Labeling round reached: {{text.labeling_round_label}}.
 
-**What it cost here.** About {{calc.cost_per_1000_items_usd|money}} per 1,000 items, or {{calc.cost_per_100k_items_usd|money}} per 100,000, measured on the first batch. Fees for the first coder came to {{run.anthropic_cost_usd|money}} in all, against a cap of {{run.language_model_cap_usd|money}}. Each request held 50 items from one city (`data/public/labeling_card.md`). The largest request was {{run.largest_request_tokens|comma}} input tokens in the cost test and {{run.full_run_largest_request_tokens|comma}} in the full run.
+**What it cost here.** About {{calc.cost_per_1000_items_usd|money}} per 1,000 items, or {{calc.cost_per_100k_items_usd|money}} per 100,000, measured on the first batch. Fees for the first coder came to {{run.anthropic_cost_usd|money}} in all, against a cap of {{run.language_model_cap_usd|money}}. {{run.cost_twice_note}} Each request held 50 items from one city (`data/public/labeling_card.md`). The largest request was {{run.largest_request_tokens|comma}} input tokens in the cost test and {{run.full_run_largest_request_tokens|comma}} in the full run.
 
 **What can go wrong.**
 
@@ -116,7 +116,6 @@ Look at that list before you copy the codebook, and tighten those boundaries fir
 
 The first coder was also compared with a larger model on the same inputs: kappa {{v.consistency.first_coder_vs_larger_model.kappa}} on {{v.consistency.first_coder_vs_larger_model.n}} items.
 
-<!-- FINAL PASS: the two tokens on the next line resolve only after the second-coder step writes its consistency results. If they still read "[not available]" at the end of the run, delete the line. -->
 Two more consistency checks: a third AI pass against the second coder gave kappa {{v.consistency.third_pass.kappa_vs_second}}, and the second coder against itself on a fresh request gave kappa {{v.consistency.relabel.kappa}}.
 
 **What it cost here.** {{run.pages_tried_total|comma}} article pages were tried and {{run.pages_fetched_total|comma}} were fetched ({{calc.pages_fetch_rate|pct}}). The second coder ran on its provider's free tier, logged as {{run.gemini_cost_usd|money}}, so this study cannot tell you what a paid second coder costs.

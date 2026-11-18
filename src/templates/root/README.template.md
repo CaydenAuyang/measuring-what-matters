@@ -8,7 +8,7 @@ A fall 2026 independent study by Cayden Auyang at Pomfret School. It compares of
 
 ## Read this first
 
-An AI agent ran every stage of this study in one unattended session on November 17 and 18, 2026. An AI language model labeled the news articles. A second AI language model from a different model family checked a sample of the labels. No person hand-coded any article, and no person reviewed the numbers before they were posted here. `deliverables/deviations.md` lists every difference from the plan. `deliverables/ai_use_log.md` says what AI did.
+An AI agent ran every stage of this study in one unattended session on November 17 and 18, 2026. An AI language model labeled the news articles. A second AI language model from a different model family checked a sample of the labels. No person hand-coded any article, and no person reviewed the numbers before they were posted here. {{run.relabel_short_note}} `deliverables/deviations.md` lists every difference from the plan. `deliverables/ai_use_log.md` says what AI did.
 
 ## The pre-registration
 

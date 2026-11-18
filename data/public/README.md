@@ -16,6 +16,7 @@ The whole dataset was produced in one automated run on November 17 and 18, 2026.
 | `official_series_meta.json` | One entry per official series: source addresses, how it was built, coverage, breaks, caveats. |
 | `yearly_changes.csv` | The matched year-over-year changes that the analysis uses, for every city, category and source. |
 | `results.json` | Every number reported in the paper and on the poster. |
+| `results_first_codebook.json` | The results file as it stood before the one wording revision, built from the first set of labels with failed categories dropped and no retest. Kept for comparison. Exploratory. |
 | `validation_summary.json`, `validation_report.md` | Agreement between the two AI coders, by city and category. |
 | `labeling_card.md` | The exact model, settings and prompt used to label the news. |
 | `data_card.md` | What the dataset is, how it was made, and its limits. |
@@ -36,7 +37,7 @@ There is no article-level text in this dataset. It holds monthly shares, officia
 | GDELT records pulled for the listed outlets | 6,363,992 |
 | Articles left after the city filters and duplicate removal | 2,466,900 |
 | Articles labeled, main panels | 286,155 |
-| Articles labeled, main panels and check lists | 429,082 |
+| Articles labeled, main panels and check lists | 429,081 |
 | Months of news | 141 (2015-02 to 2026-10) |
 | Official series (main and backup) | 45 |
 | Official values | 11,948 |

@@ -159,7 +159,10 @@ def render(R):
                 if c not in vc: continue
                 d = vc[c]["categories"][k]
                 mark = "" if k == "not_civic" else (" kept" if k in vc[c]["kept"] else " dropped")
-                cells.append(f"{f2(d['kappa'])}{mark}")
+                rv_ = (vc[c].get("revised") or {}).get(k); ca_ = (vc[c].get("kept_but_under_threshold_on_fresh_sample") or {}).get(k)
+                if rv_: cells.append(f"{f2(d['kappa'])}, retest {f2(rv_['kappa_after_revision'])}:{mark}")
+                elif ca_ is not None: cells.append(f"{f2(d['kappa'])}{mark}, caution (fresh sample {f2(ca_)})")
+                else: cells.append(f"{f2(d['kappa'])}{mark}")
             rows.append(f"| {KN[k]} | " + " | ".join(cells) + " |")
         rows.append("| **Overall** | " + " | ".join(f"**{f2(vc[c]['overall_kappa'])}**" for c in outlets.CITIES if c in vc) + " |")
         rows.append("| Items | " + " | ".join(str(vc[c]["n_items"]) for c in outlets.CITIES if c in vc) + " |")

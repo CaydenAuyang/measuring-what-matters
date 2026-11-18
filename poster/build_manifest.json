@@ -1,7 +1,7 @@
 {
- "generated_utc": "2026-11-18T08:23:11Z",
+ "generated_utc": "2026-11-18T09:22:09Z",
  "pdf": "print_me.pdf",
- "pdf_sha256": "ac2f4a44ae6d644e2d25a3e7d3a2226384a39f58d9751c7a75a83447a9f7cf8f",
+ "pdf_sha256": "fa473fa44183cc80e39aaee77740aebfc81ae41ab1ce4508b87d4674c840793d",
  "page_size_pt": [
   792.0,
   612.0
@@ -17,7 +17,7 @@
  },
  "inputs": {
   "results": "/Users/caydenauyang/Code/measuring-what-matters/data/public/results.json",
-  "results_generated_utc": "2026-11-18T08:21:14Z",
+  "results_generated_utc": "2026-11-18T09:20:01Z",
   "changes": "/Users/caydenauyang/Code/measuring-what-matters/data/public/yearly_changes.csv",
   "validation": "/Users/caydenauyang/Code/measuring-what-matters/data/public/validation_summary.json",
   "validation_status": "final",
@@ -59,7 +59,7 @@
    "missing": false
   },
   "articles_labeled_all": {
-   "value": "429,082",
+   "value": "429,081",
    "from": "counts.articles_labeled_all",
    "missing": false
   },
@@ -134,7 +134,7 @@
    "missing": false
   },
   "h1_bottom_est": {
-   "value": "-0.22",
+   "value": "-0.25",
    "from": "h1_by_category.news",
    "missing": false
   },
@@ -189,22 +189,22 @@
    "missing": false
   },
   "h1_news_n_obs": {
-   "value": "1,739",
+   "value": "1,994",
    "from": "main.news.h1.n_obs",
    "missing": false
   },
   "h1_news_p": {
-   "value": "p = 0.009",
+   "value": "p = 0.006",
    "from": "main.news.h1.p_boot",
    "missing": false
   },
   "h1_news_pairs": {
-   "value": "19",
+   "value": "21",
    "from": "main.news.h1.n_pairs",
    "missing": false
   },
   "h1_news_years": {
-   "value": "185",
+   "value": "206",
    "from": "main.news.h1.n_eff_years",
    "missing": false
   },
@@ -254,22 +254,22 @@
    "missing": false
   },
   "h1_top_clear_est": {
-   "value": "0.13",
+   "value": "0.17",
    "from": "h1_by_category.news",
    "missing": false
   },
   "h1_top_est": {
-   "value": "0.45",
+   "value": "0.46",
    "from": "h1_by_category.news",
    "missing": false
   },
   "h2_news_better_ci_high": {
-   "value": "0.18",
+   "value": "0.17",
    "from": "main.news.h2.better.ci_high",
    "missing": false
   },
   "h2_news_better_ci_low": {
-   "value": "-0.05",
+   "value": "-0.04",
    "from": "main.news.h2.better.ci_low",
    "missing": false
   },
@@ -279,7 +279,7 @@
    "missing": false
   },
   "h2_news_diff_ci_high": {
-   "value": "0.12",
+   "value": "0.11",
    "from": "main.news.h2.diff.ci_high",
    "missing": false
   },
@@ -294,7 +294,7 @@
    "missing": false
   },
   "h2_news_diff_p": {
-   "value": "p = 0.974",
+   "value": "p = 0.978",
    "from": "main.news.h2.diff.p_boot",
    "missing": false
   },
@@ -309,7 +309,7 @@
    "missing": false
   },
   "h2_news_worse_est": {
-   "value": "0.06",
+   "value": "0.05",
    "from": "main.news.h2.worse.est",
    "missing": false
   },
@@ -379,17 +379,17 @@
    "missing": false
   },
   "h3_min_share": {
-   "value": "35%",
+   "value": "34%",
    "from": "h3.opposite_share.news",
    "missing": false
   },
   "h3_n_pairs": {
-   "value": "19",
+   "value": "21",
    "from": "h3.opposite_share.news",
    "missing": false
   },
   "h3_n_runs": {
-   "value": "23",
+   "value": "24",
    "from": "h3.runs",
    "missing": false
   },
@@ -419,7 +419,7 @@
    "missing": false
   },
   "lead_pairs_tested": {
-   "value": "19",
+   "value": "21",
    "from": "pair_level",
    "missing": false
   },
@@ -509,7 +509,7 @@
    "missing": false
   },
   "val_dropped_list": {
-   "value": "Hong Kong: Housing, Transport, Cost of Living, Culture, Technology, Community. New York City: Culture, Community. London: Cost of Living, Governance, Culture, Technology, Community.",
+   "value": "Hong Kong: Cost of Living, Culture, Technology, Community. New York City: Culture, Community. London: Cost of Living, Culture, Technology, Community.",
    "from": "validation_summary.json: cities.*.dropped",
    "missing": false
   },
@@ -554,7 +554,7 @@
    "missing": false
   },
   "val_n_pass": {
-   "value": "23",
+   "value": "26",
    "from": "validation_summary.json: cities.*.categories.*.pass",
    "missing": false
   },
@@ -1447,7 +1447,7 @@
     },
     {
      "role": "numeral",
-     "text": "429,082",
+     "text": "429,081",
      "size": 97,
      "font": "MWM-Head",
      "bbox": [
@@ -1528,7 +1528,7 @@
    "kind": "card",
    "width_pt": 792.0,
    "height_pt": 612.0,
-   "word_count": 35,
+   "word_count": 32,
    "items": [
     {
      "role": "code",
@@ -1544,7 +1544,7 @@
     },
     {
      "role": "chart_title",
-     "text": "23 of 36 category checks reached",
+     "text": "26 of 36 category checks reached",
      "size": 54,
      "font": "MWM-Head",
      "bbox": [
@@ -1568,61 +1568,61 @@
     },
     {
      "role": "body",
-     "text": "Dropped. Hong Kong:",
+     "text": "Dropped. Hong",
      "size": 26,
      "font": "MWM-Body",
      "bbox": [
-      469.4,
+      520.8,
       420.2,
-      720.9,
+      697.2,
       444.6
      ]
     },
     {
      "role": "body",
-     "text": "Housing, Transport, Cost",
+     "text": "Kong: Cost of Living,",
      "size": 26,
      "font": "MWM-Body",
      "bbox": [
-      469.4,
+      520.8,
       389.8,
-      758.4,
+      760.8,
       414.2
      ]
     },
     {
      "role": "body",
-     "text": "of Living, Culture,",
+     "text": "Culture, Technology,",
      "size": 26,
      "font": "MWM-Body",
      "bbox": [
-      469.4,
+      520.8,
       359.4,
-      671.8,
+      760.8,
       383.8
      ]
     },
     {
      "role": "body",
-     "text": "Technology, Community.",
+     "text": "Community. New",
      "size": 26,
      "font": "MWM-Body",
      "bbox": [
-      469.4,
+      520.8,
       329.0,
-      757.0,
+      718.8,
       353.4
      ]
     },
     {
      "role": "body",
-     "text": "New York City: Culture,",
+     "text": "York City: Culture,",
      "size": 26,
      "font": "MWM-Body",
      "bbox": [
-      469.4,
+      520.8,
       298.6,
-      739.6,
+      731.8,
       323.0
      ]
     },
@@ -1632,9 +1632,9 @@
      "size": 26,
      "font": "MWM-Body",
      "bbox": [
-      469.4,
+      520.8,
       268.1,
-      709.3,
+      760.8,
       292.5
      ]
     },
@@ -1644,57 +1644,57 @@
      "size": 26,
      "font": "MWM-Body",
      "bbox": [
-      469.4,
+      520.8,
       237.7,
-      634.2,
+      685.6,
       262.1
      ]
     },
     {
      "role": "body",
-     "text": "Governance, Culture,",
+     "text": "Culture, Technology,",
      "size": 26,
      "font": "MWM-Body",
      "bbox": [
-      469.4,
+      520.8,
       207.3,
-      716.6,
+      760.8,
       231.7
      ]
     },
     {
      "role": "body",
-     "text": "Technology, Community.",
+     "text": "Community. Two AI",
      "size": 26,
      "font": "MWM-Body",
      "bbox": [
-      469.4,
+      520.8,
       176.9,
-      757.0,
+      747.7,
       201.3
      ]
     },
     {
      "role": "body",
-     "text": "Two AI coders agreed",
+     "text": "coders agreed this",
      "size": 26,
      "font": "MWM-Body",
      "bbox": [
-      469.4,
+      520.8,
       146.5,
-      723.8,
+      734.8,
       170.9
      ]
     },
     {
      "role": "body",
-     "text": "this much. No human",
+     "text": "much. No human",
      "size": 26,
      "font": "MWM-Body",
      "bbox": [
-      469.4,
+      520.8,
       116.0,
-      715.1,
+      718.8,
       140.4
      ]
     },
@@ -1704,9 +1704,9 @@
      "size": 26,
      "font": "MWM-Body",
      "bbox": [
-      469.4,
+      520.8,
       85.6,
-      692.0,
+      743.4,
       110.0
      ]
     }
@@ -1717,10 +1717,10 @@
      "bbox": [
       28.8,
       44.8,
-      451.4,
+      502.8,
       444.6
      ],
-     "scale": 1.0,
+     "scale": 1.0001,
      "texts": [
       {
        "text": "Dashed: kappa 0.61. Hollow: dropped.",
@@ -1908,7 +1908,7 @@
     },
     {
      "role": "body",
-     "text": "p = 0.009, 19 city",
+     "text": "p = 0.006, 21 city",
      "size": 26,
      "font": "MWM-Body",
      "bbox": [
@@ -1980,7 +1980,7 @@
     },
     {
      "role": "body",
-     "text": "0.02 (-0.04 to",
+     "text": "0.02 (-0.05 to",
      "size": 26,
      "font": "MWM-Body",
      "bbox": [
@@ -2152,7 +2152,7 @@
     },
     {
      "role": "chart_title",
-     "text": "worsening 0.06, improving 0.10,",
+     "text": "worsening 0.05, improving 0.10,",
      "size": 54,
      "font": "MWM-Head",
      "bbox": [
@@ -2200,7 +2200,7 @@
     },
     {
      "role": "body",
-     "text": "-0.14 to 0.12,",
+     "text": "-0.14 to 0.11,",
      "size": 26,
      "font": "MWM-Body",
      "bbox": [
@@ -2236,7 +2236,7 @@
     },
     {
      "role": "body",
-     "text": "= 0.974). Search",
+     "text": "= 0.978). Search",
      "size": 26,
      "font": "MWM-Body",
      "bbox": [
@@ -2287,7 +2287,7 @@
        "size": 20.0
       },
       {
-       "text": "0.06",
+       "text": "0.05",
        "size": 22.0
       },
       {
@@ -2563,43 +2563,11 @@
        "size": 23.0
       },
       {
-       "text": "35%",
+       "text": "34%",
        "size": 23.0
       },
       {
        "text": "59%",
-       "size": 23.0
-      },
-      {
-       "text": "43%",
-       "size": 23.0
-      },
-      {
-       "text": "42%",
-       "size": 23.0
-      },
-      {
-       "text": "n/a",
-       "size": 20.0
-      },
-      {
-       "text": "53%",
-       "size": 23.0
-      },
-      {
-       "text": "58%",
-       "size": 23.0
-      },
-      {
-       "text": "n/a",
-       "size": 20.0
-      },
-      {
-       "text": "40%",
-       "size": 23.0
-      },
-      {
-       "text": "43%",
        "size": 23.0
       },
       {
@@ -2607,11 +2575,15 @@
        "size": 23.0
       },
       {
-       "text": "38%",
+       "text": "44%",
        "size": 23.0
       },
       {
-       "text": "51%",
+       "text": "37%",
+       "size": 23.0
+      },
+      {
+       "text": "56%",
        "size": 23.0
       },
       {
@@ -2619,7 +2591,35 @@
        "size": 23.0
       },
       {
+       "text": "54%",
+       "size": 23.0
+      },
+      {
+       "text": "34%",
+       "size": 23.0
+      },
+      {
+       "text": "43%",
+       "size": 23.0
+      },
+      {
+       "text": "46%",
+       "size": 23.0
+      },
+      {
        "text": "41%",
+       "size": 23.0
+      },
+      {
+       "text": "48%",
+       "size": 23.0
+      },
+      {
+       "text": "59%",
+       "size": 23.0
+      },
+      {
+       "text": "44%",
        "size": 23.0
       },
       {
@@ -2643,7 +2643,7 @@
        "size": 20.0
       },
       {
-       "text": "45%",
+       "text": "42%",
        "size": 23.0
       },
       {

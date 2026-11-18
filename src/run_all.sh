@@ -27,6 +27,7 @@ $PY -W ignore src/analysis.py | tail -3
 echo "== 7. Dataset package, run facts and documents"
 $PY -W ignore src/package_dataset.py > logs/package_rebuild.out 2>&1
 $PY -W ignore src/run_facts.py > /dev/null
+$PY -W ignore src/labeling_card_revision.py
 $PY -W ignore src/build_public_docs.py
 $PY -W ignore src/build_root_docs.py
 $PY -W ignore src/build_manifest.py

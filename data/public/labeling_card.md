@@ -2,7 +2,7 @@
 
 This card records the model and the prompt used to label every sampled news article.
 
-The prompt has not changed since 2026-11-17T21:00:35Z. Two test runs, of 200 and 2,000 Hong Kong items, used it before the first full run. One earlier test with a different output instruction failed on a settings error and produced no labels. The model changed twice before the full run, for the reasons under "How the first coder was chosen". This version of the card was written at 2026-11-17T21:50:11Z. No index or result had been computed from any label at that point.
+The first prompt (`news-v1`) was fixed at 2026-11-17T21:00:35Z and did not change through the first full run. One revision followed on November 18, described in the section "The revised prompt" below. Two test runs, of 200 and 2,000 Hong Kong items, used it before the first full run. One earlier test with a different output instruction failed on a settings error and produced no labels. The model changed twice before the full run, for the reasons under "How the first coder was chosen". This version of the card was written at 2026-11-17T21:50:11Z. No index or result had been computed from any label at that point.
 
 ## First coder (labels every sampled article)
 
@@ -15,7 +15,7 @@ The prompt has not changed since 2026-11-17T21:00:35Z. Two test runs, of 200 and
 | Items per request | 50, all from one city |
 | Largest request | 23,856 input tokens in the first 2,000 items. Every request must stay under 100,000 tokens, and the runner stops if one does not. |
 | Request type | Normal requests. No Message Batches job was used. |
-| Prompt version | `news-v1` |
+| Prompt version | `news-v1` for the first full run. The labels in use come from `news-v2` (see "The revised prompt" below). |
 | SHA-256 of the system prompt | `5ca9781e7a0012e91f78cb8b940f49d5660fcf73947efbc7995cbdcb5f17be15` |
 | Code | `src/codebook.py` (prompt), `src/labeler_claude.py` (runner), `src/textprep.py` (headline words from addresses) |
 
@@ -29,6 +29,52 @@ The prompt has not changed since 2026-11-17T21:00:35Z. Two test runs, of 200 and
 | Cost of the full run | $26.71 |
 | Time | 27 minutes |
 | Refusals | 0 |
+
+<!-- revision section: start -->
+## The revised prompt (`news-v2`): the labels in use
+
+The plan allows one revision of a category's wording when it falls below 0.61. After the blind second coder scored the first validation sample on November 18, 2026, an AI agent read where the two coders disagreed and reworded 7 category lines (written 2026-11-18T08:24:26Z). No person reviewed the wording. Both coders labeled a fresh sample with the revised codebook. Some revised categories passed, so every article was labeled a second time with the revised prompt. The news series in the results use this second set of labels. The first set is kept, and the first validation test is scored on it.
+
+| Setting | Value |
+| :-- | :-- |
+| Prompt version | `news-v2` (the `news-v1` prompt with the lines below replaced; nothing else changed) |
+| SHA-256 of the system prompt | `9a7ecefade88bae160f634b1689fadef3f0ef32878af3b8ac3ef7282eeb20ab7` |
+| Model and settings | The same as the first full run: `claude-haiku-5-5`, provider defaults, 50 items per request |
+| Files | `src/codebook_revision.json` (the revised lines), `src/prompt_first_coder_revised.txt` (the full prompt), `src/revision.py`, `src/relabel_revised.sh`, `src/swap_revised_labels.py` |
+| Items labeled | 429,081 of 429,084 with something to read |
+| Requests | 8,607 |
+| Largest request | 27,159 input tokens |
+| Cost | $27.87 |
+| Time | 35 minutes |
+| Refusals | 0 |
+
+The lines that changed (category, what it covers, what goes elsewhere):
+
+| Category | First wording (`news-v1`) | Revised wording (`news-v2`) |
+| :-- | :-- | :-- |
+| Housing | Covers: Rent, home prices, supply, living conditions, subdivided flats, homelessness. Goes elsewhere: Other prices (cost_of_living). | Covers: Rent, home prices, the property market, land and housing supply, public housing, living conditions, subdivided flats, homelessness. Goes elsewhere: Other prices (cost_of_living); a property company's results or shares with no housing angle (economy). |
+| Transport | Covers: Transit reliability, congestion, commuting, fares, road safety. Goes elsewhere: nothing listed. | Covers: Transit, roads, airports, ferries and ports: reliability, congestion, commuting, fares, the cost of driving, crashes and safety incidents on any vehicle. Goes elsewhere: A story where travel is only a detail goes to its main problem. |
+| Cost of Living | Covers: Everyday prices other than housing: food, utilities, goods. Goes elsewhere: Rent and home prices (housing); fares (transport). | Covers: Everyday prices residents pay other than housing: food, utilities, goods, bills, inflation as households feel it. Goes elsewhere: Rent, home prices and housing costs (housing); fares (transport); markets, growth, trade and public finances (economy); shopping deals, product news and consumer tips (not_civic). |
+| Governance | Covers: Government decisions, trust in institutions, corruption, elections, national security cases. Goes elsewhere: nothing listed. | Covers: Government conduct in general: elections, budgets, corruption, misconduct by officials or police, trust in institutions, national security cases. Goes elsewhere: A government decision, plan or failure about one named problem goes to that problem's category. |
+| Culture | Covers: Arts, heritage, and nightlife as civic issues, such as venue closures or funding cuts. Goes elsewhere: Event listings and reviews (not_civic). | Covers: Arts, heritage, libraries, museums, nightlife and entertainment venues as civic issues: closures, funding cuts, heritage at risk, limits on what can be shown or performed. Goes elsewhere: Events, festivals, shows, openings, reviews, profiles, celebrity and television news (not_civic). |
+| Technology | Covers: Digital access, outages, cyberattacks on public services, privacy. Goes elsewhere: Tech industry and startup news (not_civic). | Covers: Digital access, outages, cyberattacks, data leaks and privacy failures, including at government bodies; payment system failures. Goes elsewhere: Tech industry, products, startups, television and broadcasting (not_civic); online scams against people (safety). |
+| Community | Covers: Relations between residents: cohesion, discrimination, neighborhood life. Goes elsewhere: Trust in government (governance). | Covers: Relations between groups of residents: cohesion, discrimination, racism and prejudice, neighborhood disputes, neighborhood life and local volunteering. Goes elsewhere: Hate crimes and attacks (safety); misconduct by officials or police (governance); human-interest and personal stories (not_civic); stray or wild animals (environment). |
+
+How far the two sets of labels agree, over every labeled article:
+
+| City | Articles | Same category | Kappa between the two sets |
+| :-- | --: | --: | --: |
+| Hong Kong | 175,354 | 85.2% | 0.82 |
+| New York City | 111,275 | 89.2% | 0.87 |
+| London | 142,450 | 89.0% | 0.87 |
+
+The largest moves between categories, by city (first label to revised label, articles):
+
+- Hong Kong: Not a civic problem to Economy 4,744; Governance to Economy 2,180; Safety to Governance 1,830; Not a civic problem to Governance 1,096; Governance to Not a civic problem 1,085; Governance to Safety 703.
+- New York City: Safety to Governance 2,044; Governance to Safety 605; Not a civic problem to Governance 509; Governance to Not a civic problem 496; Safety to Transport 479; Community to Safety 440.
+- London: Health to Not a civic problem 1,057; Safety to Governance 861; Not a civic problem to Community 700; Culture to Not a civic problem 568; Education to Not a civic problem 541; Safety to Transport 512.
+
+<!-- revision section: end -->
 
 ## How the first coder was chosen
 

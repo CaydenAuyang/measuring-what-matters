@@ -1,5 +1,5 @@
 {
- "generated_utc": "2026-11-18T08:21:14Z",
+ "generated_utc": "2026-11-18T09:20:01Z",
  "cities": [
   "hk",
   "nyc",
@@ -29,12 +29,12 @@
   "gdelt_rows_listed_outlets": 6363992,
   "articles_after_city_filter": 2466900,
   "articles_labeled_main_panel": {
-   "hk": 110750,
-   "nyc": 55732,
+   "hk": 110751,
+   "nyc": 55731,
    "london": 119673
   },
   "articles_labeled_main_panel_total": 286155,
-  "articles_labeled_all": 429082,
+  "articles_labeled_all": 429081,
   "labeling_round": "L5",
   "caps_hk_nyc_london": [
    333,
@@ -600,22 +600,83 @@
       ]
      }
     },
-    "revised": {},
+    "revised": {
+     "housing": {
+      "kappa_first": 0.462345,
+      "kappa_after_revision": 0.879533,
+      "n_fresh": 243,
+      "kept": true
+     },
+     "transport": {
+      "kappa_first": 0.357388,
+      "kappa_after_revision": 0.617579,
+      "n_fresh": 243,
+      "kept": true
+     },
+     "cost_of_living": {
+      "kappa_first": 0.435283,
+      "kappa_after_revision": 0.332713,
+      "n_fresh": 243,
+      "kept": false
+     },
+     "culture": {
+      "kappa_first": 0.182332,
+      "kappa_after_revision": 0.137759,
+      "n_fresh": 243,
+      "kept": false
+     },
+     "technology": {
+      "kappa_first": 0.108342,
+      "kappa_after_revision": 0.387339,
+      "n_fresh": 243,
+      "kept": false
+     },
+     "community": {
+      "kappa_first": 0.361795,
+      "kappa_after_revision": 0.483981,
+      "n_fresh": 243,
+      "kept": false
+     }
+    },
     "kept": [
      "safety",
      "economy",
+     "housing",
+     "transport",
      "environment",
      "health",
      "education",
      "governance"
     ],
     "dropped": [
-     "housing",
-     "transport",
      "cost_of_living",
      "culture",
      "technology",
      "community"
+    ],
+    "fresh_sample_kappa_revised_codebook": {
+     "safety": 0.566587,
+     "economy": 0.669368,
+     "housing": 0.879533,
+     "transport": 0.617579,
+     "environment": 0.771277,
+     "health": 0.611376,
+     "education": 0.584038,
+     "cost_of_living": 0.332713,
+     "governance": 0.59344,
+     "culture": 0.137759,
+     "technology": 0.387339,
+     "community": 0.483981,
+     "not_civic": 0.434877
+    },
+    "kept_but_under_threshold_on_fresh_sample": {
+     "safety": 0.566587,
+     "education": 0.584038,
+     "governance": 0.59344
+    },
+    "kept_after_revision": [
+     "housing",
+     "transport"
     ]
    },
    "nyc": {
@@ -1132,7 +1193,20 @@
       ]
      }
     },
-    "revised": {},
+    "revised": {
+     "culture": {
+      "kappa_first": 0.203844,
+      "kappa_after_revision": 0.154328,
+      "n_fresh": 299,
+      "kept": false
+     },
+     "community": {
+      "kappa_first": 0.464291,
+      "kappa_after_revision": 0.299728,
+      "n_fresh": 299,
+      "kept": false
+     }
+    },
     "kept": [
      "safety",
      "economy",
@@ -1148,7 +1222,28 @@
     "dropped": [
      "culture",
      "community"
-    ]
+    ],
+    "fresh_sample_kappa_revised_codebook": {
+     "safety": 0.758351,
+     "economy": 0.584432,
+     "housing": 0.553539,
+     "transport": 0.866336,
+     "environment": 0.803609,
+     "health": 0.812159,
+     "education": 0.844697,
+     "cost_of_living": 0.6428,
+     "governance": 0.787193,
+     "culture": 0.154328,
+     "technology": 0.498794,
+     "community": 0.299728,
+     "not_civic": 0.556444
+    },
+    "kept_but_under_threshold_on_fresh_sample": {
+     "economy": 0.584432,
+     "housing": 0.553539,
+     "technology": 0.498794
+    },
+    "kept_after_revision": []
    },
    "london": {
     "n_items": 299,
@@ -1846,7 +1941,38 @@
       ]
      }
     },
-    "revised": {},
+    "revised": {
+     "cost_of_living": {
+      "kappa_first": 0.411091,
+      "kappa_after_revision": 0.251781,
+      "n_fresh": 301,
+      "kept": false
+     },
+     "governance": {
+      "kappa_first": 0.521183,
+      "kappa_after_revision": 0.68642,
+      "n_fresh": 301,
+      "kept": true
+     },
+     "culture": {
+      "kappa_first": 0.199492,
+      "kappa_after_revision": 0.23362,
+      "n_fresh": 301,
+      "kept": false
+     },
+     "technology": {
+      "kappa_first": 0.451193,
+      "kappa_after_revision": 0.13459,
+      "n_fresh": 301,
+      "kept": false
+     },
+     "community": {
+      "kappa_first": 0.34414,
+      "kappa_after_revision": 0.47048,
+      "n_fresh": 301,
+      "kept": false
+     }
+    },
     "kept": [
      "safety",
      "economy",
@@ -1854,14 +1980,35 @@
      "transport",
      "environment",
      "health",
-     "education"
+     "education",
+     "governance"
     ],
     "dropped": [
      "cost_of_living",
-     "governance",
      "culture",
      "technology",
      "community"
+    ],
+    "fresh_sample_kappa_revised_codebook": {
+     "safety": 0.812159,
+     "economy": 0.615905,
+     "housing": 0.784666,
+     "transport": 0.738263,
+     "environment": 0.664573,
+     "health": 0.748278,
+     "education": 0.514728,
+     "cost_of_living": 0.251781,
+     "governance": 0.68642,
+     "culture": 0.23362,
+     "technology": 0.13459,
+     "community": 0.47048,
+     "not_civic": 0.592035
+    },
+    "kept_but_under_threshold_on_fresh_sample": {
+     "education": 0.514728
+    },
+    "kept_after_revision": [
+     "governance"
     ]
    }
   },
@@ -1980,6 +2127,23 @@
     }
    }
   },
+  "revision": {
+   "run": true,
+   "categories_reworded": [
+    "housing",
+    "transport",
+    "cost_of_living",
+    "governance",
+    "culture",
+    "technology",
+    "community"
+   ],
+   "categories_reworded_text": "Housing, Transport, Cost of Living, Governance, Culture, Technology, Community",
+   "whole_sample_labeled_again": true,
+   "kept_after_revision_text": "Hong Kong: Housing (0.88), Transport (0.62). London: Governance (0.69).",
+   "caution_text": "Hong Kong: Safety (0.57), Education (0.58), Governance (0.59). New York City: Economy (0.58), Housing (0.55), Technology (0.50). London: Education (0.51).",
+   "n_cautions": 7
+  },
   "headline_check": {
    "hk": {
     "with_headline_words": {
@@ -2058,38 +2222,38 @@
  "main": {
   "news": {
    "h1": {
-    "est": 0.071482,
-    "ci_low": 0.015963,
-    "ci_high": 0.098813,
-    "p_boot": 0.009,
-    "n_obs": 1739,
-    "n_pairs": 19,
-    "n_eff_years": 184.6,
-    "p_text": "p = 0.009"
+    "est": 0.070438,
+    "ci_low": 0.016832,
+    "ci_high": 0.102032,
+    "p_boot": 0.006,
+    "n_obs": 1994,
+    "n_pairs": 21,
+    "n_eff_years": 205.8,
+    "p_text": "p = 0.006"
    },
    "h2": {
     "worse": {
-     "est": 0.055109,
-     "ci_low": 0.014114,
-     "ci_high": 0.095599,
-     "p_boot": 0.019
+     "est": 0.053464,
+     "ci_low": 0.011215,
+     "ci_high": 0.095652,
+     "p_boot": 0.024
     },
     "better": {
-     "est": 0.104557,
-     "ci_low": -0.045627,
-     "ci_high": 0.178645,
-     "p_boot": 0.346
+     "est": 0.104015,
+     "ci_low": -0.038675,
+     "ci_high": 0.172827,
+     "p_boot": 0.267
     },
     "diff": {
-     "est": -0.049448,
-     "ci_low": -0.142853,
-     "ci_high": 0.117457,
-     "p_boot": 0.974,
-     "p_text": "p = 0.974"
+     "est": -0.050551,
+     "ci_low": -0.135754,
+     "ci_high": 0.113308,
+     "p_boot": 0.978,
+     "p_text": "p = 0.978"
     },
-    "n_obs": 1739,
-    "n_pairs": 19,
-    "n_eff_years": 184.6
+    "n_obs": 1994,
+    "n_pairs": 21,
+    "n_eff_years": 205.8
    }
   },
   "search": {
@@ -2158,7 +2322,7 @@
     "first": "2016-12",
     "last": "2025-12",
     "sd_official": 3.105362,
-    "sd_attention": 1.805536,
+    "sd_attention": 1.786826,
     "n_break": 7
    },
    {
@@ -2188,22 +2352,54 @@
     "first": "2016-04",
     "last": "2026-10",
     "sd_official": 0.64853,
-    "sd_attention": 2.369964,
+    "sd_attention": 2.693812,
     "n_break": 48
    },
    {
+    "series_id": "hk_housing_main",
+    "freq": "M",
+    "window": 1,
+    "rule": "inflation_points",
+    "worse_when": "faster",
+    "status": "ok",
+    "name": "Private domestic rental index, all classes (1999 = 100)",
+    "release_lag_months": 2,
+    "n_components": 1,
+    "breaks": [],
     "city": "hk",
     "category": "housing",
     "source": "news",
+    "role": "main",
     "pair": "hk|housing|news",
-    "excluded": "dropped: agreement between the two AI coders below 0.61"
+    "n": 128,
+    "first": "2016-02",
+    "last": "2026-09",
+    "sd_official": 7.389694,
+    "sd_attention": 1.975193,
+    "n_break": 48
    },
    {
+    "series_id": "hk_transport_main",
+    "freq": "M",
+    "window": 1,
+    "rule": "pct_log",
+    "worse_when": "higher",
+    "status": "partial",
+    "name": "Fatal and serious road traffic accidents",
+    "release_lag_months": 2,
+    "n_components": 1,
+    "breaks": [],
     "city": "hk",
     "category": "transport",
     "source": "news",
+    "role": "main",
     "pair": "hk|transport|news",
-    "excluded": "dropped: agreement between the two AI coders below 0.61"
+    "n": 127,
+    "first": "2016-02",
+    "last": "2026-08",
+    "sd_official": 21.340562,
+    "sd_attention": 2.458993,
+    "n_break": 48
    },
    {
     "series_id": "hk_environment_main",
@@ -2225,7 +2421,7 @@
     "first": "2016-02",
     "last": "2026-05",
     "sd_official": 18.389421,
-    "sd_attention": 3.205005,
+    "sd_attention": 3.279364,
     "n_break": 48
    },
    {
@@ -2248,7 +2444,7 @@
     "first": "2019-09",
     "last": "2026-09",
     "sd_official": 7.544015,
-    "sd_attention": 5.989691,
+    "sd_attention": 6.088311,
     "n_break": 14
    },
    {
@@ -2278,7 +2474,7 @@
     "first": "2017-08",
     "last": "2025-08",
     "sd_official": 1.05,
-    "sd_attention": 1.042918,
+    "sd_attention": 0.975178,
     "n_break": 5
    },
    {
@@ -2308,7 +2504,7 @@
     "first": "2016-02",
     "last": "2026-09",
     "sd_official": 4.419409,
-    "sd_attention": 7.977658,
+    "sd_attention": 7.231128,
     "n_break": 36
    },
    {
@@ -2331,7 +2527,7 @@
     "first": "2016-02",
     "last": "2026-09",
     "sd_official": 0.526896,
-    "sd_attention": 1.866979,
+    "sd_attention": 1.914079,
     "n_break": 36
    },
    {
@@ -2373,7 +2569,7 @@
     "first": "2016-02",
     "last": "2026-10",
     "sd_official": 2.083602,
-    "sd_attention": 3.129193,
+    "sd_attention": 3.025237,
     "n_break": 60
    },
    {
@@ -2403,7 +2599,7 @@
     "first": "2016-02",
     "last": "2026-10",
     "sd_official": 5.628145,
-    "sd_attention": 4.060127,
+    "sd_attention": 3.822898,
     "n_break": 36
    },
    {
@@ -2445,7 +2641,7 @@
     "first": "2016-02",
     "last": "2026-05",
     "sd_official": 21.583118,
-    "sd_attention": 3.209318,
+    "sd_attention": 3.264886,
     "n_break": 50
    },
    {
@@ -2468,7 +2664,7 @@
     "first": "2021-01",
     "last": "2026-10",
     "sd_official": 7.029539,
-    "sd_attention": 3.233132,
+    "sd_attention": 3.106525,
     "n_break": 24
    },
    {
@@ -2498,7 +2694,7 @@
     "first": "2017-08",
     "last": "2025-08",
     "sd_official": 1.40753,
-    "sd_attention": 0.469091,
+    "sd_attention": 0.38333,
     "n_break": 3
    },
    {
@@ -2528,7 +2724,7 @@
     "first": "2016-02",
     "last": "2026-09",
     "sd_official": 2.937333,
-    "sd_attention": 0.764491,
+    "sd_attention": 0.758696,
     "n_break": 60
    },
    {
@@ -2570,7 +2766,7 @@
     "first": "2016-02",
     "last": "2026-10",
     "sd_official": 4.878106,
-    "sd_attention": 7.451071,
+    "sd_attention": 7.11893,
     "n_break": 58
    },
    {
@@ -2606,7 +2802,7 @@
     "first": "2016-04",
     "last": "2026-09",
     "sd_official": 0.863872,
-    "sd_attention": 1.096204,
+    "sd_attention": 1.020619,
     "n_break": 72
    },
    {
@@ -2636,7 +2832,7 @@
     "first": "2016-02",
     "last": "2026-09",
     "sd_official": 4.339893,
-    "sd_attention": 1.78543,
+    "sd_attention": 1.737488,
     "n_break": 59
    },
    {
@@ -2659,7 +2855,7 @@
     "first": "2016-02",
     "last": "2025-12",
     "sd_official": 10.839996,
-    "sd_attention": 4.546394,
+    "sd_attention": 4.823172,
     "n_break": 36
    },
    {
@@ -2701,7 +2897,7 @@
     "first": "2016-02",
     "last": "2026-05",
     "sd_official": 11.820741,
-    "sd_attention": 1.70313,
+    "sd_attention": 1.711143,
     "n_break": 39
    },
    {
@@ -2752,7 +2948,7 @@
     "first": "2017-08",
     "last": "2026-08",
     "sd_official": 0.967471,
-    "sd_attention": 0.500096,
+    "sd_attention": 0.342327,
     "n_break": 4
    },
    {
@@ -3344,10 +3540,10 @@
  "h1_by_category": {
   "news": {
    "cost_of_living": {
-    "est": 0.103689,
-    "ci_low": -0.107821,
-    "ci_high": 0.223287,
-    "p_boot": 0.196,
+    "est": 0.078723,
+    "ci_low": -0.105862,
+    "ci_high": 0.19348,
+    "p_boot": 0.21,
     "n_obs": 127,
     "n_pairs": 1,
     "n_eff_years": 10.6,
@@ -3356,10 +3552,10 @@
     ]
    },
    "economy": {
-    "est": 0.079857,
-    "ci_low": 0.028147,
-    "ci_high": 0.133462,
-    "p_boot": 0.014,
+    "est": 0.071658,
+    "ci_low": 0.009178,
+    "ci_high": 0.113868,
+    "p_boot": 0.042,
     "n_obs": 380,
     "n_pairs": 3,
     "n_eff_years": 31.7,
@@ -3370,10 +3566,10 @@
     ]
    },
    "education": {
-    "est": -0.218217,
-    "ci_low": -0.779453,
-    "ci_high": 0.187005,
-    "p_boot": 0.266,
+    "est": -0.249262,
+    "ci_low": -0.847895,
+    "ci_high": 0.253823,
+    "p_boot": 0.272,
     "n_obs": 28,
     "n_pairs": 3,
     "n_eff_years": 28.0,
@@ -3384,10 +3580,10 @@
     ]
    },
    "environment": {
-    "est": 0.12796,
-    "ci_low": 0.030241,
-    "ci_high": 0.251003,
-    "p_boot": 0.02,
+    "est": 0.16523,
+    "ci_low": 0.074606,
+    "ci_high": 0.288676,
+    "p_boot": 0.002,
     "n_obs": 333,
     "n_pairs": 3,
     "n_eff_years": 27.8,
@@ -3398,10 +3594,10 @@
     ]
    },
    "health": {
-    "est": 0.451804,
-    "ci_low": -0.436275,
-    "ci_high": 0.50182,
-    "p_boot": 0.768,
+    "est": 0.456053,
+    "ci_low": -0.427366,
+    "ci_high": 0.503285,
+    "p_boot": 0.714,
     "n_obs": 99,
     "n_pairs": 2,
     "n_eff_years": 13.1,
@@ -3411,23 +3607,24 @@
     ]
    },
    "housing": {
-    "est": 0.024315,
-    "ci_low": -0.050302,
-    "ci_high": 0.05043,
-    "p_boot": 0.262,
-    "n_obs": 257,
-    "n_pairs": 2,
-    "n_eff_years": 21.4,
+    "est": 0.030932,
+    "ci_low": -0.030386,
+    "ci_high": 0.060439,
+    "p_boot": 0.182,
+    "n_obs": 385,
+    "n_pairs": 3,
+    "n_eff_years": 32.1,
     "pairs": [
+     "hk|housing|news",
      "london|housing|news",
      "nyc|housing|news"
     ]
    },
    "safety": {
-    "est": 0.049478,
-    "ci_low": -0.152411,
-    "ci_high": 0.184695,
-    "p_boot": 0.362,
+    "est": 0.057107,
+    "ci_low": -0.089923,
+    "ci_high": 0.171304,
+    "p_boot": 0.268,
     "n_obs": 267,
     "n_pairs": 3,
     "n_eff_years": 31.4,
@@ -3438,14 +3635,15 @@
     ]
    },
    "transport": {
-    "est": 0.126023,
-    "ci_low": -0.000153,
-    "ci_high": 0.247667,
-    "p_boot": 0.052,
-    "n_obs": 248,
-    "n_pairs": 2,
-    "n_eff_years": 20.7,
+    "est": 0.083319,
+    "ci_low": -0.030461,
+    "ci_high": 0.191265,
+    "p_boot": 0.146,
+    "n_obs": 375,
+    "n_pairs": 3,
+    "n_eff_years": 31.2,
     "pairs": [
+     "hk|transport|news",
      "london|transport|news",
      "nyc|transport|news"
     ]
@@ -3552,26 +3750,28 @@
  "h1_by_city": {
   "news": {
    "hk": {
-    "est": -0.048027,
-    "ci_low": -0.375287,
-    "ci_high": 0.099457,
-    "p_boot": 0.642,
-    "n_obs": 299,
-    "n_pairs": 5,
-    "n_eff_years": 47.2,
+    "est": -0.038592,
+    "ci_low": -0.260604,
+    "ci_high": 0.081669,
+    "p_boot": 0.49,
+    "n_obs": 554,
+    "n_pairs": 7,
+    "n_eff_years": 68.4,
     "pairs": [
      "hk|economy|news",
      "hk|education|news",
      "hk|environment|news",
      "hk|health|news",
-     "hk|safety|news"
+     "hk|housing|news",
+     "hk|safety|news",
+     "hk|transport|news"
     ]
    },
    "london": {
-    "est": 0.104191,
-    "ci_low": 0.004464,
-    "ci_high": 0.238752,
-    "p_boot": 0.044,
+    "est": 0.106566,
+    "ci_low": -0.013474,
+    "ci_high": 0.260547,
+    "p_boot": 0.086,
     "n_obs": 597,
     "n_pairs": 6,
     "n_eff_years": 58.9,
@@ -3585,10 +3785,10 @@
     ]
    },
    "nyc": {
-    "est": 0.082973,
-    "ci_low": 0.027186,
-    "ci_high": 0.111872,
-    "p_boot": 0.000999,
+    "est": 0.08218,
+    "ci_low": 0.026932,
+    "ci_high": 0.111881,
+    "p_boot": 0.002,
     "n_obs": 843,
     "n_pairs": 8,
     "n_eff_years": 78.5,
@@ -3671,14 +3871,14 @@
    "n_eff_years": 10.0,
    "first": "2016-12",
    "last": "2025-12",
-   "r": -0.102023,
-   "r_ci_low": -0.75635,
-   "r_ci_high": 0.367267,
-   "slope_sd": -0.067498,
-   "p": 0.572,
+   "r": -0.138157,
+   "r_ci_low": -0.734104,
+   "r_ci_high": 0.375914,
+   "slope_sd": -0.068863,
+   "p": 0.458,
    "opposite_share": 0.7,
    "opposite_n": 10.0,
-   "p_bh": 0.68271
+   "p_bh": 0.576194
   },
   {
    "pair": "hk|economy|news",
@@ -3692,56 +3892,56 @@
    "n_eff_years": 10.6,
    "first": "2016-04",
    "last": "2026-10",
-   "r": 0.218053,
-   "r_ci_low": -0.442088,
-   "r_ci_high": 0.595585,
-   "slope_sd": 0.11406,
-   "p": 0.374,
+   "r": 0.11121,
+   "r_ci_low": -0.441736,
+   "r_ci_high": 0.480677,
+   "slope_sd": 0.056914,
+   "p": 0.586,
    "opposite_share": 0.587719,
    "opposite_n": 114.0,
-   "p_bh": 0.477172
+   "p_bh": 0.692545
   },
   {
    "pair": "hk|housing|news",
    "city": "hk",
    "category": "housing",
    "source": "news",
-   "indicator": null,
-   "freq": null,
-   "excluded": "dropped: agreement between the two AI coders below 0.61",
-   "n": null,
-   "n_eff_years": null,
-   "first": null,
-   "last": null,
-   "r": null,
-   "r_ci_low": null,
-   "r_ci_high": null,
-   "slope_sd": null,
-   "p": null,
-   "opposite_share": null,
-   "opposite_n": null,
-   "p_bh": null
+   "indicator": "Private domestic rental index, all classes (1999 = 100)",
+   "freq": "M",
+   "excluded": null,
+   "n": 128.0,
+   "n_eff_years": 10.7,
+   "first": "2016-02",
+   "last": "2026-09",
+   "r": 0.346774,
+   "r_ci_low": 0.116611,
+   "r_ci_high": 0.536435,
+   "slope_sd": 0.401725,
+   "p": 0.002,
+   "opposite_share": 0.365079,
+   "opposite_n": 126.0,
+   "p_bh": 0.007091
   },
   {
    "pair": "hk|transport|news",
    "city": "hk",
    "category": "transport",
    "source": "news",
-   "indicator": null,
-   "freq": null,
-   "excluded": "dropped: agreement between the two AI coders below 0.61",
-   "n": null,
-   "n_eff_years": null,
-   "first": null,
-   "last": null,
-   "r": null,
-   "r_ci_low": null,
-   "r_ci_high": null,
-   "slope_sd": null,
-   "p": null,
-   "opposite_share": null,
-   "opposite_n": null,
-   "p_bh": null
+   "indicator": "Fatal and serious road traffic accidents",
+   "freq": "M",
+   "excluded": null,
+   "n": 127.0,
+   "n_eff_years": 10.6,
+   "first": "2016-02",
+   "last": "2026-08",
+   "r": -0.130575,
+   "r_ci_low": -0.397021,
+   "r_ci_high": 0.188307,
+   "slope_sd": -0.109254,
+   "p": 0.282,
+   "opposite_share": 0.544,
+   "opposite_n": 125.0,
+   "p_bh": 0.418889
   },
   {
    "pair": "hk|environment|news",
@@ -3755,14 +3955,14 @@
    "n_eff_years": 10.3,
    "first": "2016-02",
    "last": "2026-05",
-   "r": 0.003468,
-   "r_ci_low": -0.125856,
-   "r_ci_high": 0.10604,
-   "slope_sd": 0.003591,
-   "p": 0.972,
-   "opposite_share": 0.471545,
+   "r": 0.015606,
+   "r_ci_low": -0.114836,
+   "r_ci_high": 0.119809,
+   "slope_sd": 0.016254,
+   "p": 0.856,
+   "opposite_share": 0.455285,
    "opposite_n": 123.0,
-   "p_bh": 0.992
+   "p_bh": 0.90227
   },
   {
    "pair": "hk|health|news",
@@ -3776,14 +3976,14 @@
    "n_eff_years": 7.2,
    "first": "2019-09",
    "last": "2026-09",
-   "r": -0.251354,
-   "r_ci_low": -0.835515,
-   "r_ci_high": 0.357202,
-   "slope_sd": -0.316709,
-   "p": 0.344,
+   "r": -0.250069,
+   "r_ci_low": -0.828855,
+   "r_ci_high": 0.349308,
+   "slope_sd": -0.324252,
+   "p": 0.336,
    "opposite_share": 0.586207,
    "opposite_n": 29.0,
-   "p_bh": 0.477172
+   "p_bh": 0.451862
   },
   {
    "pair": "hk|education|news",
@@ -3797,14 +3997,14 @@
    "n_eff_years": 9.0,
    "first": "2017-08",
    "last": "2025-08",
-   "r": -0.196689,
-   "r_ci_low": -0.813158,
-   "r_ci_high": 0.330599,
-   "slope_sd": -0.222828,
-   "p": 0.366,
+   "r": -0.121148,
+   "r_ci_low": -0.745403,
+   "r_ci_high": 0.426261,
+   "slope_sd": -0.150592,
+   "p": 0.564,
    "opposite_share": 0.555556,
    "opposite_n": 9.0,
-   "p_bh": 0.477172
+   "p_bh": 0.687375
   },
   {
    "pair": "hk|cost_of_living|news",
@@ -3839,14 +4039,14 @@
    "n_eff_years": 10.7,
    "first": "2016-02",
    "last": "2026-09",
-   "r": 0.339272,
-   "r_ci_low": 0.051244,
-   "r_ci_high": 0.550982,
-   "slope_sd": 0.153572,
-   "p": 0.028,
+   "r": 0.381477,
+   "r_ci_low": 0.042275,
+   "r_ci_high": 0.591467,
+   "slope_sd": 0.182162,
+   "p": 0.032,
    "opposite_share": 0.445312,
    "opposite_n": 128.0,
-   "p_bh": 0.074
+   "p_bh": 0.078
   },
   {
    "pair": "nyc|economy|news",
@@ -3860,14 +4060,14 @@
    "n_eff_years": 10.6,
    "first": "2016-02",
    "last": "2026-09",
-   "r": 0.363592,
-   "r_ci_low": -0.124511,
-   "r_ci_high": 0.526552,
-   "slope_sd": 0.065455,
-   "p": 0.126,
-   "opposite_share": 0.432203,
+   "r": 0.347443,
+   "r_ci_low": -0.16703,
+   "r_ci_high": 0.537455,
+   "slope_sd": 0.060398,
+   "p": 0.156,
+   "opposite_share": 0.466102,
    "opposite_n": 118.0,
-   "p_bh": 0.2331
+   "p_bh": 0.276545
   },
   {
    "pair": "nyc|housing|news",
@@ -3881,14 +4081,14 @@
    "n_eff_years": 10.8,
    "first": "2016-02",
    "last": "2026-10",
-   "r": 0.192499,
-   "r_ci_low": -0.186046,
-   "r_ci_high": 0.38444,
-   "slope_sd": 0.026412,
+   "r": 0.198723,
+   "r_ci_low": -0.189146,
+   "r_ci_high": 0.385524,
+   "slope_sd": 0.027877,
    "p": 0.242,
-   "opposite_share": 0.527132,
+   "opposite_share": 0.55814,
    "opposite_n": 129.0,
-   "p_bh": 0.407
+   "p_bh": 0.37752
   },
   {
    "pair": "nyc|transport|news",
@@ -3902,14 +4102,14 @@
    "n_eff_years": 10.8,
    "first": "2016-02",
    "last": "2026-10",
-   "r": 0.288824,
-   "r_ci_low": 0.042932,
-   "r_ci_high": 0.562054,
-   "slope_sd": 0.274835,
-   "p": 0.022,
-   "opposite_share": 0.395349,
+   "r": 0.359904,
+   "r_ci_low": 0.15406,
+   "r_ci_high": 0.591994,
+   "slope_sd": 0.351389,
+   "p": 0.000999,
+   "opposite_share": 0.341085,
    "opposite_n": 129.0,
-   "p_bh": 0.067833
+   "p_bh": 0.003896
   },
   {
    "pair": "nyc|environment|news",
@@ -3923,14 +4123,14 @@
    "n_eff_years": 10.3,
    "first": "2016-02",
    "last": "2026-05",
-   "r": 0.317666,
-   "r_ci_low": 0.168969,
-   "r_ci_high": 0.450054,
-   "slope_sd": 0.276509,
+   "r": 0.333555,
+   "r_ci_low": 0.171526,
+   "r_ci_high": 0.502107,
+   "slope_sd": 0.298973,
    "p": 0.000999,
-   "opposite_share": 0.379032,
+   "opposite_share": 0.41129,
    "opposite_n": 124.0,
-   "p_bh": 0.004107
+   "p_bh": 0.003896
   },
   {
    "pair": "nyc|health|news",
@@ -3944,14 +4144,14 @@
    "n_eff_years": 5.8,
    "first": "2021-01",
    "last": "2026-10",
-   "r": 0.610949,
-   "r_ci_low": 0.001929,
-   "r_ci_high": 0.651201,
-   "slope_sd": 0.551444,
-   "p": 0.05,
-   "opposite_share": 0.414286,
+   "r": 0.587316,
+   "r_ci_low": 0.042014,
+   "r_ci_high": 0.619862,
+   "slope_sd": 0.557221,
+   "p": 0.008,
+   "opposite_share": 0.442857,
    "opposite_n": 70.0,
-   "p_bh": 0.123333
+   "p_bh": 0.024
   },
   {
    "pair": "nyc|education|news",
@@ -3965,14 +4165,14 @@
    "n_eff_years": 9.0,
    "first": "2017-08",
    "last": "2025-08",
-   "r": -0.246284,
-   "r_ci_low": -0.715636,
-   "r_ci_high": 0.536131,
-   "slope_sd": -0.41981,
-   "p": 0.288,
+   "r": -0.301636,
+   "r_ci_low": -0.764674,
+   "r_ci_high": 0.458253,
+   "slope_sd": -0.571547,
+   "p": 0.21,
    "opposite_share": 0.666667,
    "opposite_n": 9.0,
-   "p_bh": 0.447083
+   "p_bh": 0.35425
   },
   {
    "pair": "nyc|cost_of_living|news",
@@ -3986,14 +4186,14 @@
    "n_eff_years": 10.6,
    "first": "2016-02",
    "last": "2026-09",
-   "r": 0.104628,
-   "r_ci_low": -0.082829,
-   "r_ci_high": 0.263041,
-   "slope_sd": 0.103689,
-   "p": 0.204,
-   "opposite_share": 0.451923,
-   "opposite_n": 104.0,
-   "p_bh": 0.359429
+   "r": 0.086087,
+   "r_ci_low": -0.068909,
+   "r_ci_high": 0.266735,
+   "slope_sd": 0.078723,
+   "p": 0.218,
+   "opposite_share": 0.417582,
+   "opposite_n": 91.0,
+   "p_bh": 0.35425
   },
   {
    "pair": "london|safety|news",
@@ -4007,14 +4207,14 @@
    "n_eff_years": 10.8,
    "first": "2016-02",
    "last": "2026-10",
-   "r": 0.449936,
-   "r_ci_low": 0.273548,
-   "r_ci_high": 0.62519,
-   "slope_sd": 0.18566,
+   "r": 0.45466,
+   "r_ci_low": 0.274445,
+   "r_ci_high": 0.623569,
+   "slope_sd": 0.187881,
    "p": 0.000999,
-   "opposite_share": 0.348837,
+   "opposite_share": 0.341085,
    "opposite_n": 129.0,
-   "p_bh": 0.004107
+   "p_bh": 0.003896
   },
   {
    "pair": "london|economy|news",
@@ -4028,14 +4228,14 @@
    "n_eff_years": 10.5,
    "first": "2016-04",
    "last": "2026-09",
-   "r": 0.455545,
-   "r_ci_low": 0.07063,
-   "r_ci_high": 0.644202,
-   "slope_sd": 0.472179,
-   "p": 0.026,
-   "opposite_share": 0.416,
+   "r": 0.437775,
+   "r_ci_low": 0.085671,
+   "r_ci_high": 0.610001,
+   "slope_sd": 0.470382,
+   "p": 0.024,
+   "opposite_share": 0.44,
    "opposite_n": 125.0,
-   "p_bh": 0.074
+   "p_bh": 0.0624
   },
   {
    "pair": "london|housing|news",
@@ -4049,14 +4249,14 @@
    "n_eff_years": 10.7,
    "first": "2016-02",
    "last": "2026-09",
-   "r": -0.128457,
-   "r_ci_low": -0.44824,
-   "r_ci_high": 0.21662,
-   "slope_sd": -0.140685,
-   "p": 0.51,
-   "opposite_share": 0.578125,
+   "r": -0.178214,
+   "r_ci_low": -0.494178,
+   "r_ci_high": 0.17307,
+   "slope_sd": -0.203004,
+   "p": 0.35,
+   "opposite_share": 0.585938,
    "opposite_n": 128.0,
-   "p_bh": 0.629
+   "p_bh": 0.455
   },
   {
    "pair": "london|transport|news",
@@ -4070,14 +4270,14 @@
    "n_eff_years": 9.9,
    "first": "2016-02",
    "last": "2025-12",
-   "r": 0.170804,
-   "r_ci_low": -0.144572,
-   "r_ci_high": 0.525135,
-   "slope_sd": 0.08061,
+   "r": 0.166893,
+   "r_ci_low": -0.133226,
+   "r_ci_high": 0.517632,
+   "slope_sd": 0.07881,
    "p": 0.29,
    "opposite_share": 0.428571,
    "opposite_n": 119.0,
-   "p_bh": 0.447083
+   "p_bh": 0.418889
   },
   {
    "pair": "london|environment|news",
@@ -4091,14 +4291,14 @@
    "n_eff_years": 7.1,
    "first": "2016-02",
    "last": "2026-05",
-   "r": 0.103096,
-   "r_ci_low": -0.144567,
-   "r_ci_high": 0.408617,
-   "slope_sd": 0.091285,
-   "p": 0.356,
-   "opposite_share": 0.505882,
+   "r": 0.178973,
+   "r_ci_low": -0.050883,
+   "r_ci_high": 0.473586,
+   "slope_sd": 0.154873,
+   "p": 0.122,
+   "opposite_share": 0.482353,
    "opposite_n": 85.0,
-   "p_bh": 0.477172
+   "p_bh": 0.226571
   },
   {
    "pair": "london|health|news",
@@ -4133,14 +4333,14 @@
    "n_eff_years": 10.0,
    "first": "2017-08",
    "last": "2026-08",
-   "r": -0.153363,
-   "r_ci_low": -0.776651,
-   "r_ci_high": 0.742996,
-   "slope_sd": -0.125394,
-   "p": 0.67,
+   "r": -0.138179,
+   "r_ci_low": -0.774549,
+   "r_ci_high": 0.788518,
+   "slope_sd": -0.135799,
+   "p": 0.72,
    "opposite_share": 0.4,
    "opposite_n": 10.0,
-   "p_bh": 0.751212
+   "p_bh": 0.78
   },
   {
    "pair": "london|cost_of_living|news",
@@ -4203,7 +4403,7 @@
    "p": 0.000999,
    "opposite_share": 0.386266,
    "opposite_n": 233.0,
-   "p_bh": 0.004107
+   "p_bh": 0.003896
   },
   {
    "pair": "hk|housing|search",
@@ -4224,7 +4424,7 @@
    "p": 0.09,
    "opposite_share": 0.478599,
    "opposite_n": 257.0,
-   "p_bh": 0.195882
+   "p_bh": 0.195
   },
   {
    "pair": "hk|transport|search",
@@ -4266,7 +4466,7 @@
    "p": 0.000999,
    "opposite_share": 0.394531,
    "opposite_n": 256.0,
-   "p_bh": 0.004107
+   "p_bh": 0.003896
   },
   {
    "pair": "hk|health|search",
@@ -4287,7 +4487,7 @@
    "p": 0.108,
    "opposite_share": 0.517241,
    "opposite_n": 29.0,
-   "p_bh": 0.222
+   "p_bh": 0.221684
   },
   {
    "pair": "hk|education|search",
@@ -4329,7 +4529,7 @@
    "p": 0.004,
    "opposite_share": 0.45,
    "opposite_n": 240.0,
-   "p_bh": 0.0148
+   "p_bh": 0.013
   },
   {
    "pair": "nyc|safety|search",
@@ -4350,7 +4550,7 @@
    "p": 0.000999,
    "opposite_share": 0.410256,
    "opposite_n": 234.0,
-   "p_bh": 0.004107
+   "p_bh": 0.003896
   },
   {
    "pair": "nyc|economy|search",
@@ -4371,7 +4571,7 @@
    "p": 0.000999,
    "opposite_share": 0.275304,
    "opposite_n": 247.0,
-   "p_bh": 0.004107
+   "p_bh": 0.003896
   },
   {
    "pair": "nyc|housing|search",
@@ -4413,7 +4613,7 @@
    "p": 0.014,
    "opposite_share": 0.361257,
    "opposite_n": 191.0,
-   "p_bh": 0.047091
+   "p_bh": 0.039
   },
   {
    "pair": "nyc|environment|search",
@@ -4434,7 +4634,7 @@
    "p": 0.000999,
    "opposite_share": 0.473684,
    "opposite_n": 247.0,
-   "p_bh": 0.004107
+   "p_bh": 0.003896
   },
   {
    "pair": "nyc|health|search",
@@ -4455,7 +4655,7 @@
    "p": 0.694,
    "opposite_share": 0.428571,
    "opposite_n": 70.0,
-   "p_bh": 0.755235
+   "p_bh": 0.773314
   },
   {
    "pair": "nyc|education|search",
@@ -4497,7 +4697,7 @@
    "p": 0.000999,
    "opposite_share": 0.40856,
    "opposite_n": 257.0,
-   "p_bh": 0.004107
+   "p_bh": 0.003896
   },
   {
    "pair": "london|safety|search",
@@ -4518,7 +4718,7 @@
    "p": 0.114,
    "opposite_share": 0.411765,
    "opposite_n": 187.0,
-   "p_bh": 0.222
+   "p_bh": 0.2223
   },
   {
    "pair": "london|economy|search",
@@ -4539,7 +4739,7 @@
    "p": 0.662,
    "opposite_share": 0.395257,
    "opposite_n": 253.0,
-   "p_bh": 0.751212
+   "p_bh": 0.759353
   },
   {
    "pair": "london|housing|search",
@@ -4560,7 +4760,7 @@
    "p": 0.324,
    "opposite_share": 0.459916,
    "opposite_n": 237.0,
-   "p_bh": 0.477172
+   "p_bh": 0.451286
   },
   {
    "pair": "london|transport|search",
@@ -4581,7 +4781,7 @@
    "p": 0.08,
    "opposite_share": 0.488095,
    "opposite_n": 252.0,
-   "p_bh": 0.185
+   "p_bh": 0.183529
   },
   {
    "pair": "london|environment|search",
@@ -4665,7 +4865,7 @@
    "p": 0.000999,
    "opposite_share": 0.352713,
    "opposite_n": 258.0,
-   "p_bh": 0.004107
+   "p_bh": 0.003896
   }
  ],
  "h3": {
@@ -4682,8 +4882,18 @@
       "n": 114,
       "freq": "M"
      },
+     "housing": {
+      "share": 0.365079,
+      "n": 126,
+      "freq": "M"
+     },
+     "transport": {
+      "share": 0.544,
+      "n": 125,
+      "freq": "M"
+     },
      "environment": {
-      "share": 0.471545,
+      "share": 0.455285,
       "n": 123,
       "freq": "M"
      },
@@ -4705,27 +4915,27 @@
       "freq": "M"
      },
      "economy": {
-      "share": 0.432203,
+      "share": 0.466102,
       "n": 118,
       "freq": "M"
      },
      "housing": {
-      "share": 0.527132,
+      "share": 0.55814,
       "n": 129,
       "freq": "M"
      },
      "transport": {
-      "share": 0.395349,
+      "share": 0.341085,
       "n": 129,
       "freq": "M"
      },
      "environment": {
-      "share": 0.379032,
+      "share": 0.41129,
       "n": 124,
       "freq": "M"
      },
      "health": {
-      "share": 0.414286,
+      "share": 0.442857,
       "n": 70,
       "freq": "M"
      },
@@ -4735,24 +4945,24 @@
       "freq": "A"
      },
      "cost_of_living": {
-      "share": 0.451923,
-      "n": 104,
+      "share": 0.417582,
+      "n": 91,
       "freq": "M"
      }
     },
     "london": {
      "safety": {
-      "share": 0.348837,
+      "share": 0.341085,
       "n": 129,
       "freq": "M"
      },
      "economy": {
-      "share": 0.416,
+      "share": 0.44,
       "n": 125,
       "freq": "M"
      },
      "housing": {
-      "share": 0.578125,
+      "share": 0.585938,
       "n": 128,
       "freq": "M"
      },
@@ -4762,7 +4972,7 @@
       "freq": "M"
      },
      "environment": {
-      "share": 0.505882,
+      "share": 0.482353,
       "n": 85,
       "freq": "M"
      },
@@ -4877,7 +5087,7 @@
     "by_city": {
      "hk": {
       "safety_rank": 1,
-      "of": 5,
+      "of": 7,
       "largest": "safety",
       "largest_share": 0.7,
       "safety_share": 0.7,
@@ -4886,7 +5096,9 @@
        "economy",
        "health",
        "education",
-       "environment"
+       "transport",
+       "environment",
+       "housing"
       ]
      },
      "nyc": {
@@ -4898,25 +5110,25 @@
       "order": [
        "education",
        "housing",
-       "cost_of_living",
-       "safety",
        "economy",
+       "safety",
        "health",
-       "transport",
-       "environment"
+       "cost_of_living",
+       "environment",
+       "transport"
       ]
      },
      "london": {
       "safety_rank": 6,
       "of": 6,
       "largest": "housing",
-      "largest_share": 0.578125,
-      "safety_share": 0.348837,
+      "largest_share": 0.585938,
+      "safety_share": 0.341085,
       "order": [
        "housing",
        "environment",
-       "transport",
        "economy",
+       "transport",
        "education",
        "safety"
       ]
@@ -5021,7 +5233,7 @@
     "official_direction": "improving",
     "attention_direction": "rising",
     "mean_official_change_sd": -1.630061,
-    "mean_attention_change_sd": 1.302443,
+    "mean_attention_change_sd": 1.411087,
     "city": "hk",
     "category": "economy",
     "source": "news",
@@ -5030,13 +5242,13 @@
     "proposed_by": "AI, after reading a seeded sample of the period's coverage; for Cayden to confirm"
    },
    {
-    "start": "2018-02",
-    "end": "2019-03",
+    "start": "2018-01",
+    "end": "2019-02",
     "months": 14,
     "official_direction": "improving",
     "attention_direction": "rising",
-    "mean_official_change_sd": -0.603595,
-    "mean_attention_change_sd": 0.673401,
+    "mean_official_change_sd": -0.620131,
+    "mean_attention_change_sd": 0.749451,
     "city": "london",
     "category": "economy",
     "source": "news",
@@ -5066,7 +5278,7 @@
     "official_direction": "worsening",
     "attention_direction": "falling",
     "mean_official_change_sd": 0.846667,
-    "mean_attention_change_sd": -1.302476,
+    "mean_attention_change_sd": -1.298933,
     "city": "london",
     "category": "housing",
     "source": "news",
@@ -5118,21 +5330,6 @@
     "proposed_cause": "unclear",
     "evidence": "no marked break or named event overlaps this period",
     "proposed_by": "AI, from the breaks table and the list of named events; for Cayden to confirm"
-   },
-   {
-    "start": "2025-08",
-    "end": "2026-06",
-    "months": 11,
-    "official_direction": "worsening",
-    "attention_direction": "falling",
-    "mean_official_change_sd": 0.883117,
-    "mean_attention_change_sd": -1.061709,
-    "city": "hk",
-    "category": "economy",
-    "source": "news",
-    "proposed_cause": "attention followed a news cycle rather than conditions",
-    "evidence": "The unemployment rate rose while Economy's share of coverage fell from the year before. A seeded sample of eight Economy stories is about growth targets, exports, the minimum wage and markets, with mixed tone.",
-    "proposed_by": "AI, after reading a seeded sample of the period's coverage; for Cayden to confirm"
    },
    {
     "start": "2020-06",
@@ -5195,21 +5392,6 @@
     "proposed_by": "AI, from the breaks table and the list of named events; for Cayden to confirm"
    },
    {
-    "start": "2019-03",
-    "end": "2019-12",
-    "months": 10,
-    "official_direction": "improving",
-    "attention_direction": "rising",
-    "mean_official_change_sd": -2.445153,
-    "mean_attention_change_sd": 0.7965,
-    "city": "london",
-    "category": "environment",
-    "source": "news",
-    "proposed_cause": "the two measure different parts of the problem",
-    "evidence": "NO2 at the two sites fell after the Ultra Low Emission Zone began in April 2019. A seeded sample of ten Environment stories is about trees, plastic waste, climate change, a heatwave and flooding. The category is wider than the one pollutant the indicator tracks.",
-    "proposed_by": "AI, after reading a seeded sample of the period's coverage; for Cayden to confirm"
-   },
-   {
     "start": "2019-06",
     "end": "2020-03",
     "months": 10,
@@ -5255,13 +5437,28 @@
     "proposed_by": "AI, from the breaks table and the list of named events; for Cayden to confirm"
    },
    {
+    "start": "2025-10",
+    "end": "2026-06",
+    "months": 9,
+    "official_direction": "worsening",
+    "attention_direction": "falling",
+    "mean_official_change_sd": 0.80524,
+    "mean_attention_change_sd": -1.006622,
+    "city": "hk",
+    "category": "economy",
+    "source": "news",
+    "proposed_cause": "attention followed a news cycle rather than conditions",
+    "evidence": "the indicator kept worsening while attention's share fell (Downs's issue-attention cycle); no marked break or event overlaps",
+    "proposed_by": "AI, from the breaks table and the list of named events; for Cayden to confirm"
+   },
+   {
     "start": "2024-08",
     "end": "2025-04",
     "months": 9,
     "official_direction": "worsening",
     "attention_direction": "falling",
     "mean_official_change_sd": 0.501776,
-    "mean_attention_change_sd": -0.592949,
+    "mean_attention_change_sd": -0.613172,
     "city": "hk",
     "category": "environment",
     "source": "news",
@@ -5336,7 +5533,7 @@
     "official_direction": "worsening",
     "attention_direction": "falling",
     "mean_official_change_sd": 0.828798,
-    "mean_attention_change_sd": -0.691659,
+    "mean_attention_change_sd": -1.167999,
     "city": "hk",
     "category": "economy",
     "source": "news",
@@ -5345,13 +5542,43 @@
     "proposed_by": "AI, after reading a seeded sample of the period's coverage; for Cayden to confirm"
    },
    {
+    "start": "2022-01",
+    "end": "2022-08",
+    "months": 8,
+    "official_direction": "improving",
+    "attention_direction": "rising",
+    "mean_official_change_sd": -2.412262,
+    "mean_attention_change_sd": 0.286428,
+    "city": "nyc",
+    "category": "housing",
+    "source": "news",
+    "proposed_cause": "a real event drew coverage the indicator does not capture",
+    "evidence": "COVID-19 distorts nearly every series",
+    "proposed_by": "AI, from the breaks table and the list of named events; for Cayden to confirm"
+   },
+   {
     "start": "2017-10",
     "end": "2018-05",
     "months": 8,
     "official_direction": "improving",
     "attention_direction": "rising",
     "mean_official_change_sd": -0.809503,
-    "mean_attention_change_sd": 0.709678,
+    "mean_attention_change_sd": 0.846155,
+    "city": "london",
+    "category": "housing",
+    "source": "news",
+    "proposed_cause": "unclear",
+    "evidence": "no marked break or named event overlaps this period",
+    "proposed_by": "AI, from the breaks table and the list of named events; for Cayden to confirm"
+   },
+   {
+    "start": "2025-12",
+    "end": "2026-07",
+    "months": 8,
+    "official_direction": "improving",
+    "attention_direction": "rising",
+    "mean_official_change_sd": -1.592146,
+    "mean_attention_change_sd": 0.742866,
     "city": "london",
     "category": "housing",
     "source": "news",
@@ -5495,18 +5722,63 @@
     "proposed_by": "AI, from the breaks table and the list of named events; for Cayden to confirm"
    },
    {
+    "start": "2018-08",
+    "end": "2019-02",
+    "months": 7,
+    "official_direction": "improving",
+    "attention_direction": "rising",
+    "mean_official_change_sd": -0.286362,
+    "mean_attention_change_sd": 0.515708,
+    "city": "hk",
+    "category": "economy",
+    "source": "news",
+    "proposed_cause": "a real event drew coverage the indicator does not capture",
+    "evidence": "2019 protests and the 2020 National Security Law dominate coverage",
+    "proposed_by": "AI, from the breaks table and the list of named events; for Cayden to confirm"
+   },
+   {
+    "start": "2021-07",
+    "end": "2022-01",
+    "months": 7,
+    "official_direction": "improving",
+    "attention_direction": "rising",
+    "mean_official_change_sd": -3.083899,
+    "mean_attention_change_sd": 0.45552,
+    "city": "hk",
+    "category": "economy",
+    "source": "news",
+    "proposed_cause": "a real event drew coverage the indicator does not capture",
+    "evidence": "COVID-19 distorts nearly every series",
+    "proposed_by": "AI, from the breaks table and the list of named events; for Cayden to confirm"
+   },
+   {
     "start": "2023-08",
     "end": "2024-02",
     "months": 7,
     "official_direction": "improving",
     "attention_direction": "rising",
     "mean_official_change_sd": -1.23356,
-    "mean_attention_change_sd": 0.793451,
+    "mean_attention_change_sd": 0.920069,
     "city": "hk",
     "category": "economy",
     "source": "news",
     "proposed_cause": "unclear",
     "evidence": "no marked break or named event overlaps this period",
+    "proposed_by": "AI, from the breaks table and the list of named events; for Cayden to confirm"
+   },
+   {
+    "start": "2019-01",
+    "end": "2019-07",
+    "months": 7,
+    "official_direction": "worsening",
+    "attention_direction": "falling",
+    "mean_official_change_sd": 0.608494,
+    "mean_attention_change_sd": -1.724384,
+    "city": "hk",
+    "category": "transport",
+    "source": "news",
+    "proposed_cause": "attention followed a news cycle rather than conditions",
+    "evidence": "attention share fell while the indicator worsened; the period overlaps: 2019 protests and the 2020 National Security Law dominate coverage (a spike elsewhere lowers every other share)",
     "proposed_by": "AI, from the breaks table and the list of named events; for Cayden to confirm"
    },
    {
@@ -5516,42 +5788,12 @@
     "official_direction": "improving",
     "attention_direction": "rising",
     "mean_official_change_sd": -1.27431,
-    "mean_attention_change_sd": 0.78185,
+    "mean_attention_change_sd": 0.635149,
     "city": "nyc",
     "category": "economy",
     "source": "news",
     "proposed_cause": "unclear",
     "evidence": "no marked break or named event overlaps this period",
-    "proposed_by": "AI, from the breaks table and the list of named events; for Cayden to confirm"
-   },
-   {
-    "start": "2019-04",
-    "end": "2019-10",
-    "months": 7,
-    "official_direction": "improving",
-    "attention_direction": "rising",
-    "mean_official_change_sd": -0.406695,
-    "mean_attention_change_sd": 0.35836,
-    "city": "nyc",
-    "category": "economy",
-    "source": "news",
-    "proposed_cause": "unclear",
-    "evidence": "no marked break or named event overlaps this period",
-    "proposed_by": "AI, from the breaks table and the list of named events; for Cayden to confirm"
-   },
-   {
-    "start": "2022-10",
-    "end": "2023-04",
-    "months": 7,
-    "official_direction": "improving",
-    "attention_direction": "rising",
-    "mean_official_change_sd": -0.198579,
-    "mean_attention_change_sd": 0.4836,
-    "city": "nyc",
-    "category": "transport",
-    "source": "news",
-    "proposed_cause": "a real event drew coverage the indicator does not capture",
-    "evidence": "COVID-19 distorts nearly every series",
     "proposed_by": "AI, from the breaks table and the list of named events; for Cayden to confirm"
    },
    {
@@ -5561,7 +5803,7 @@
     "official_direction": "worsening",
     "attention_direction": "falling",
     "mean_official_change_sd": 3.049546,
-    "mean_attention_change_sd": -0.352471,
+    "mean_attention_change_sd": -0.33818,
     "city": "london",
     "category": "safety",
     "source": "news",
@@ -5570,33 +5812,18 @@
     "proposed_by": "AI, from the breaks table and the list of named events; for Cayden to confirm"
    },
    {
-    "start": "2026-01",
-    "end": "2026-07",
+    "start": "2019-08",
+    "end": "2020-02",
     "months": 7,
     "official_direction": "improving",
     "attention_direction": "rising",
-    "mean_official_change_sd": -1.512088,
-    "mean_attention_change_sd": 0.782573,
-    "city": "london",
-    "category": "housing",
-    "source": "news",
-    "proposed_cause": "unclear",
-    "evidence": "no marked break or named event overlaps this period",
-    "proposed_by": "AI, from the breaks table and the list of named events; for Cayden to confirm"
-   },
-   {
-    "start": "2017-05",
-    "end": "2017-11",
-    "months": 7,
-    "official_direction": "improving",
-    "attention_direction": "rising",
-    "mean_official_change_sd": -0.421688,
-    "mean_attention_change_sd": 0.593362,
+    "mean_official_change_sd": -1.881924,
+    "mean_attention_change_sd": 0.999798,
     "city": "london",
     "category": "environment",
     "source": "news",
-    "proposed_cause": "unclear",
-    "evidence": "no marked break or named event overlaps this period",
+    "proposed_cause": "a real event drew coverage the indicator does not capture",
+    "evidence": "COVID-19 distorts nearly every series",
     "proposed_by": "AI, from the breaks table and the list of named events; for Cayden to confirm"
    },
    {
@@ -5675,28 +5902,13 @@
     "proposed_by": "AI, from the breaks table and the list of named events; for Cayden to confirm"
    },
    {
-    "start": "2018-09",
-    "end": "2019-02",
-    "months": 6,
-    "official_direction": "improving",
-    "attention_direction": "rising",
-    "mean_official_change_sd": -0.256992,
-    "mean_attention_change_sd": 0.501507,
-    "city": "hk",
-    "category": "economy",
-    "source": "news",
-    "proposed_cause": "a real event drew coverage the indicator does not capture",
-    "evidence": "2019 protests and the 2020 National Security Law dominate coverage",
-    "proposed_by": "AI, from the breaks table and the list of named events; for Cayden to confirm"
-   },
-   {
     "start": "2023-09",
     "end": "2024-02",
     "months": 6,
     "official_direction": "worsening",
     "attention_direction": "falling",
     "mean_official_change_sd": 0.740741,
-    "mean_attention_change_sd": -0.564605,
+    "mean_attention_change_sd": -0.672881,
     "city": "nyc",
     "category": "safety",
     "source": "news",
@@ -5711,7 +5923,7 @@
     "official_direction": "improving",
     "attention_direction": "rising",
     "mean_official_change_sd": -5.440672,
-    "mean_attention_change_sd": 1.118627,
+    "mean_attention_change_sd": 1.414392,
     "city": "nyc",
     "category": "economy",
     "source": "news",
@@ -5726,7 +5938,7 @@
     "official_direction": "improving",
     "attention_direction": "rising",
     "mean_official_change_sd": -0.897038,
-    "mean_attention_change_sd": 0.520463,
+    "mean_attention_change_sd": 0.330091,
     "city": "nyc",
     "category": "housing",
     "source": "news",
@@ -5735,18 +5947,48 @@
     "proposed_by": "AI, from the breaks table and the list of named events; for Cayden to confirm"
    },
    {
-    "start": "2023-09",
-    "end": "2024-02",
+    "start": "2021-06",
+    "end": "2021-11",
     "months": 6,
-    "official_direction": "worsening",
-    "attention_direction": "falling",
-    "mean_official_change_sd": 14.820032,
-    "mean_attention_change_sd": -0.834003,
+    "official_direction": "improving",
+    "attention_direction": "rising",
+    "mean_official_change_sd": -8.507141,
+    "mean_attention_change_sd": 0.210769,
     "city": "nyc",
     "category": "housing",
     "source": "news",
-    "proposed_cause": "attention followed a news cycle rather than conditions",
-    "evidence": "attention share fell while the indicator worsened; the period overlaps: asylum-seeker arrivals raise the shelter count (a spike elsewhere lowers every other share)",
+    "proposed_cause": "a real event drew coverage the indicator does not capture",
+    "evidence": "COVID-19 distorts nearly every series",
+    "proposed_by": "AI, from the breaks table and the list of named events; for Cayden to confirm"
+   },
+   {
+    "start": "2025-04",
+    "end": "2025-09",
+    "months": 6,
+    "official_direction": "improving",
+    "attention_direction": "rising",
+    "mean_official_change_sd": -0.362404,
+    "mean_attention_change_sd": 0.124052,
+    "city": "nyc",
+    "category": "transport",
+    "source": "news",
+    "proposed_cause": "unclear",
+    "evidence": "no marked break or named event overlaps this period",
+    "proposed_by": "AI, from the breaks table and the list of named events; for Cayden to confirm"
+   },
+   {
+    "start": "2022-10",
+    "end": "2023-03",
+    "months": 6,
+    "official_direction": "improving",
+    "attention_direction": "rising",
+    "mean_official_change_sd": -0.52091,
+    "mean_attention_change_sd": 0.245171,
+    "city": "london",
+    "category": "economy",
+    "source": "news",
+    "proposed_cause": "the official measure changed how it counts",
+    "evidence": "at least half of these months fall in a counting break marked in the official series: Labour Force Survey response problems",
     "proposed_by": "AI, from the breaks table and the list of named events; for Cayden to confirm"
    },
    {
@@ -5756,22 +5998,7 @@
     "official_direction": "worsening",
     "attention_direction": "falling",
     "mean_official_change_sd": 0.771719,
-    "mean_attention_change_sd": -0.49276,
-    "city": "london",
-    "category": "economy",
-    "source": "news",
-    "proposed_cause": "the official measure changed how it counts",
-    "evidence": "at least half of these months fall in a counting break marked in the official series: Labour Force Survey response problems",
-    "proposed_by": "AI, from the breaks table and the list of named events; for Cayden to confirm"
-   },
-   {
-    "start": "2024-06",
-    "end": "2024-11",
-    "months": 6,
-    "official_direction": "worsening",
-    "attention_direction": "falling",
-    "mean_official_change_sd": 0.868184,
-    "mean_attention_change_sd": -0.247349,
+    "mean_attention_change_sd": -0.562856,
     "city": "london",
     "category": "economy",
     "source": "news",
@@ -5786,7 +6013,7 @@
     "official_direction": "worsening",
     "attention_direction": "falling",
     "mean_official_change_sd": 0.699937,
-    "mean_attention_change_sd": -1.120582,
+    "mean_attention_change_sd": -1.354997,
     "city": "london",
     "category": "housing",
     "source": "news",
@@ -6133,10 +6360,10 @@
     "city": "hk",
     "category": "economy",
     "source": "news",
-    "best_lag_months": 12,
-    "best_r": -0.329158,
-    "p_perm": 0.488511,
-    "r_at_lag0": 0.218053
+    "best_lag_months": -12,
+    "best_r": -0.42097,
+    "p_perm": 0.330669,
+    "r_at_lag0": 0.11121
    },
    {
     "pair": "hk|environment|news",
@@ -6144,9 +6371,29 @@
     "category": "environment",
     "source": "news",
     "best_lag_months": 3,
-    "best_r": 0.213262,
-    "p_perm": 0.64036,
-    "r_at_lag0": 0.003468
+    "best_r": 0.210809,
+    "p_perm": 0.490509,
+    "r_at_lag0": 0.015606
+   },
+   {
+    "pair": "hk|housing|news",
+    "city": "hk",
+    "category": "housing",
+    "source": "news",
+    "best_lag_months": -3,
+    "best_r": 0.364629,
+    "p_perm": 0.000999,
+    "r_at_lag0": 0.346774
+   },
+   {
+    "pair": "hk|transport|news",
+    "city": "hk",
+    "category": "transport",
+    "source": "news",
+    "best_lag_months": -3,
+    "best_r": -0.374844,
+    "p_perm": 0.104895,
+    "r_at_lag0": -0.130575
    },
    {
     "pair": "london|economy|news",
@@ -6154,9 +6401,9 @@
     "category": "economy",
     "source": "news",
     "best_lag_months": -4,
-    "best_r": 0.698589,
-    "p_perm": 0.000999,
-    "r_at_lag0": 0.455545
+    "best_r": 0.691252,
+    "p_perm": 0.042957,
+    "r_at_lag0": 0.437775
    },
    {
     "pair": "london|environment|news",
@@ -6164,9 +6411,9 @@
     "category": "environment",
     "source": "news",
     "best_lag_months": -12,
-    "best_r": -0.263212,
-    "p_perm": 0.892108,
-    "r_at_lag0": 0.103096
+    "best_r": -0.310199,
+    "p_perm": 0.712288,
+    "r_at_lag0": 0.178973
    },
    {
     "pair": "london|housing|news",
@@ -6174,9 +6421,9 @@
     "category": "housing",
     "source": "news",
     "best_lag_months": 12,
-    "best_r": -0.323326,
-    "p_perm": 0.428571,
-    "r_at_lag0": -0.128457
+    "best_r": -0.316118,
+    "p_perm": 0.40959,
+    "r_at_lag0": -0.178214
    },
    {
     "pair": "london|safety|news",
@@ -6184,9 +6431,9 @@
     "category": "safety",
     "source": "news",
     "best_lag_months": 0,
-    "best_r": 0.449936,
+    "best_r": 0.45466,
     "p_perm": 0.277722,
-    "r_at_lag0": 0.449936
+    "r_at_lag0": 0.45466
    },
    {
     "pair": "london|transport|news",
@@ -6194,9 +6441,9 @@
     "category": "transport",
     "source": "news",
     "best_lag_months": -12,
-    "best_r": -0.26158,
+    "best_r": -0.269182,
     "p_perm": 0.275724,
-    "r_at_lag0": 0.170804
+    "r_at_lag0": 0.166893
    },
    {
     "pair": "nyc|cost_of_living|news",
@@ -6204,9 +6451,9 @@
     "category": "cost_of_living",
     "source": "news",
     "best_lag_months": 3,
-    "best_r": 0.214907,
-    "p_perm": 0.414585,
-    "r_at_lag0": 0.104628
+    "best_r": 0.181612,
+    "p_perm": 0.702298,
+    "r_at_lag0": 0.086087
    },
    {
     "pair": "nyc|economy|news",
@@ -6214,9 +6461,9 @@
     "category": "economy",
     "source": "news",
     "best_lag_months": -1,
-    "best_r": 0.522924,
+    "best_r": 0.505339,
     "p_perm": 0.010989,
-    "r_at_lag0": 0.363592
+    "r_at_lag0": 0.347443
    },
    {
     "pair": "nyc|environment|news",
@@ -6224,9 +6471,9 @@
     "category": "environment",
     "source": "news",
     "best_lag_months": 0,
-    "best_r": 0.317666,
-    "p_perm": 0.233766,
-    "r_at_lag0": 0.317666
+    "best_r": 0.333555,
+    "p_perm": 0.162837,
+    "r_at_lag0": 0.333555
    },
    {
     "pair": "nyc|health|news",
@@ -6234,9 +6481,9 @@
     "category": "health",
     "source": "news",
     "best_lag_months": 0,
-    "best_r": 0.610949,
+    "best_r": 0.587316,
     "p_perm": 0.000999,
-    "r_at_lag0": 0.610949
+    "r_at_lag0": 0.587316
    },
    {
     "pair": "nyc|housing|news",
@@ -6244,29 +6491,29 @@
     "category": "housing",
     "source": "news",
     "best_lag_months": -7,
-    "best_r": 0.312772,
+    "best_r": 0.30943,
     "p_perm": 0.077922,
-    "r_at_lag0": 0.192499
+    "r_at_lag0": 0.198723
    },
    {
     "pair": "nyc|safety|news",
     "city": "nyc",
     "category": "safety",
     "source": "news",
-    "best_lag_months": 0,
-    "best_r": 0.339272,
-    "p_perm": 0.006993,
-    "r_at_lag0": 0.339272
+    "best_lag_months": -1,
+    "best_r": 0.383388,
+    "p_perm": 0.010989,
+    "r_at_lag0": 0.381477
    },
    {
     "pair": "nyc|transport|news",
     "city": "nyc",
     "category": "transport",
     "source": "news",
-    "best_lag_months": 9,
-    "best_r": 0.388397,
-    "p_perm": 0.112887,
-    "r_at_lag0": 0.288824
+    "best_lag_months": 7,
+    "best_r": 0.407906,
+    "p_perm": 0.033966,
+    "r_at_lag0": 0.359904
    },
    {
     "pair": "hk|cost_of_living|search",
@@ -6443,226 +6690,226 @@
    "news": {
     "economy": {
      "mean_r_by_lag": {
-      "-12": -0.104647,
-      "-11": -0.024345,
-      "-10": 0.03955,
-      "-9": 0.118593,
-      "-8": 0.192903,
-      "-7": 0.252986,
-      "-6": 0.286406,
-      "-5": 0.319002,
-      "-4": 0.35255,
-      "-3": 0.38304,
-      "-2": 0.409111,
-      "-1": 0.422335,
-      "0": 0.34573,
-      "1": 0.251787,
-      "2": 0.193376,
-      "3": 0.121932,
-      "4": 0.042896,
-      "5": -0.026565,
-      "6": -0.085757,
-      "7": -0.128363,
-      "8": -0.161259,
-      "9": -0.213039,
-      "10": -0.258112,
-      "11": -0.289496,
-      "12": -0.270403
+      "-12": -0.132514,
+      "-11": -0.056448,
+      "-10": 0.000631,
+      "-9": 0.075921,
+      "-8": 0.14605,
+      "-7": 0.199595,
+      "-6": 0.229665,
+      "-5": 0.260473,
+      "-4": 0.304699,
+      "-3": 0.329929,
+      "-2": 0.361536,
+      "-1": 0.368699,
+      "0": 0.298809,
+      "1": 0.21645,
+      "2": 0.166723,
+      "3": 0.105036,
+      "4": 0.022559,
+      "5": -0.046445,
+      "6": -0.101287,
+      "7": -0.134824,
+      "8": -0.163107,
+      "9": -0.198666,
+      "10": -0.240367,
+      "11": -0.259792,
+      "12": -0.23183
      },
      "best_lag_months": -1,
-     "best_mean_r": 0.422335,
+     "best_mean_r": 0.368699,
      "n_cities": 3
     },
     "environment": {
      "mean_r_by_lag": {
-      "-12": -0.140255,
-      "-11": -0.046063,
-      "-10": -0.038979,
-      "-9": -0.12968,
-      "-8": -0.074589,
-      "-7": 0.030842,
-      "-6": -0.00366,
-      "-5": -0.06768,
-      "-4": 0.079722,
-      "-3": 0.00715,
-      "-2": 0.015516,
-      "-1": 0.034909,
-      "0": 0.14141,
-      "1": 0.030478,
-      "2": 0.065786,
-      "3": 0.08786,
-      "4": 0.059621,
-      "5": -0.039191,
-      "6": 0.032259,
-      "7": 0.085429,
-      "8": -0.030401,
-      "9": 0.01085,
-      "10": 0.063956,
-      "11": 0.088274,
-      "12": -0.024228
+      "-12": -0.186123,
+      "-11": -0.066737,
+      "-10": -0.022501,
+      "-9": -0.140482,
+      "-8": -0.058266,
+      "-7": 0.031537,
+      "-6": -0.000668,
+      "-5": -0.072141,
+      "-4": 0.090282,
+      "-3": 0.014132,
+      "-2": 0.020329,
+      "-1": 0.060087,
+      "0": 0.176045,
+      "1": 0.034721,
+      "2": 0.092531,
+      "3": 0.078165,
+      "4": 0.059183,
+      "5": -0.027959,
+      "6": 0.027348,
+      "7": 0.095523,
+      "8": -0.019205,
+      "9": 0.016391,
+      "10": 0.090049,
+      "11": 0.095661,
+      "12": -0.020637
      },
-     "best_lag_months": 0,
-     "best_mean_r": 0.14141,
+     "best_lag_months": -12,
+     "best_mean_r": -0.186123,
      "n_cities": 3
     },
     "housing": {
      "mean_r_by_lag": {
-      "-12": 0.155405,
-      "-11": 0.151488,
-      "-10": 0.163315,
-      "-9": 0.161361,
-      "-8": 0.163368,
-      "-7": 0.153381,
-      "-6": 0.132952,
-      "-5": 0.114427,
-      "-4": 0.095082,
-      "-3": 0.070724,
-      "-2": 0.048673,
-      "-1": 0.047022,
-      "0": 0.032021,
-      "1": 0.010864,
-      "2": -0.01908,
-      "3": -0.044697,
-      "4": -0.081471,
-      "5": -0.115156,
-      "6": -0.139385,
-      "7": -0.157483,
-      "8": -0.17272,
-      "9": -0.19563,
-      "10": -0.222739,
-      "11": -0.255644,
-      "12": -0.281015
+      "-12": 0.081776,
+      "-11": 0.092712,
+      "-10": 0.118344,
+      "-9": 0.132439,
+      "-8": 0.156781,
+      "-7": 0.166313,
+      "-6": 0.171065,
+      "-5": 0.174973,
+      "-4": 0.164693,
+      "-3": 0.150097,
+      "-2": 0.126729,
+      "-1": 0.12982,
+      "0": 0.122428,
+      "1": 0.101612,
+      "2": 0.078838,
+      "3": 0.059245,
+      "4": 0.026621,
+      "5": 0.003952,
+      "6": -0.024632,
+      "7": -0.060781,
+      "8": -0.072339,
+      "9": -0.10025,
+      "10": -0.121955,
+      "11": -0.155012,
+      "12": -0.188935
      },
      "best_lag_months": 12,
-     "best_mean_r": -0.281015,
-     "n_cities": 2
-    },
-    "safety": {
-     "mean_r_by_lag": {
-      "-12": -0.197543,
-      "-11": -0.073138,
-      "-10": 0.01392,
-      "-9": 0.067831,
-      "-8": 0.06286,
-      "-7": 0.099416,
-      "-6": 0.144979,
-      "-5": 0.145864,
-      "-4": 0.230929,
-      "-3": 0.252472,
-      "-2": 0.30471,
-      "-1": 0.374031,
-      "0": 0.394604,
-      "1": 0.27699,
-      "2": 0.178765,
-      "3": 0.179486,
-      "4": 0.260969,
-      "5": 0.274354,
-      "6": 0.246627,
-      "7": 0.21727,
-      "8": 0.118474,
-      "9": 0.125336,
-      "10": 0.14478,
-      "11": 0.098444,
-      "12": 0.056548
-     },
-     "best_lag_months": 0,
-     "best_mean_r": 0.394604,
-     "n_cities": 2
+     "best_mean_r": -0.188935,
+     "n_cities": 3
     },
     "transport": {
      "mean_r_by_lag": {
-      "-12": -0.154921,
-      "-11": -0.065315,
-      "-10": -0.030734,
-      "-9": 0.024618,
-      "-8": 0.030406,
-      "-7": 0.101627,
-      "-6": 0.108161,
-      "-5": 0.123225,
-      "-4": 0.125378,
-      "-3": 0.0904,
-      "-2": 0.139283,
-      "-1": 0.185947,
-      "0": 0.229814,
-      "1": 0.203585,
-      "2": 0.213471,
-      "3": 0.210976,
-      "4": 0.189835,
-      "5": 0.173886,
-      "6": 0.158728,
-      "7": 0.15379,
-      "8": 0.169354,
-      "9": 0.247649,
-      "10": 0.250682,
-      "11": 0.217002,
-      "12": 0.213813
+      "-12": -0.164897,
+      "-11": -0.128014,
+      "-10": -0.066132,
+      "-9": -0.032361,
+      "-8": -0.04723,
+      "-7": -0.039096,
+      "-6": -0.014679,
+      "-5": -0.000345,
+      "-4": -0.028301,
+      "-3": -0.056891,
+      "-2": 0.031215,
+      "-1": 0.115284,
+      "0": 0.132074,
+      "1": 0.105323,
+      "2": 0.072064,
+      "3": 0.077633,
+      "4": 0.065567,
+      "5": 0.089181,
+      "6": 0.058916,
+      "7": 0.045911,
+      "8": 0.07965,
+      "9": 0.136356,
+      "10": 0.109665,
+      "11": 0.075151,
+      "12": 0.082437
      },
-     "best_lag_months": 10,
-     "best_mean_r": 0.250682,
+     "best_lag_months": -12,
+     "best_mean_r": -0.164897,
+     "n_cities": 3
+    },
+    "safety": {
+     "mean_r_by_lag": {
+      "-12": -0.202281,
+      "-11": -0.072637,
+      "-10": 0.010223,
+      "-9": 0.060156,
+      "-8": 0.056604,
+      "-7": 0.101142,
+      "-6": 0.156322,
+      "-5": 0.143365,
+      "-4": 0.231287,
+      "-3": 0.254787,
+      "-2": 0.325958,
+      "-1": 0.412486,
+      "0": 0.418068,
+      "1": 0.30371,
+      "2": 0.221985,
+      "3": 0.211843,
+      "4": 0.280122,
+      "5": 0.285342,
+      "6": 0.257716,
+      "7": 0.238782,
+      "8": 0.131377,
+      "9": 0.13518,
+      "10": 0.132105,
+      "11": 0.07274,
+      "12": 0.040329
+     },
+     "best_lag_months": 0,
+     "best_mean_r": 0.418068,
      "n_cities": 2
     },
     "cost_of_living": {
      "mean_r_by_lag": {
-      "-12": -0.160402,
-      "-11": -0.142463,
-      "-10": -0.145875,
-      "-9": -0.148975,
-      "-8": -0.10238,
-      "-7": -0.081272,
-      "-6": -0.029696,
-      "-5": 0.022922,
-      "-4": 0.076386,
-      "-3": 0.041295,
-      "-2": 0.054862,
-      "-1": 0.048641,
-      "0": 0.104628,
-      "1": 0.169536,
-      "2": 0.183044,
-      "3": 0.214907,
-      "4": 0.156243,
-      "5": 0.09599,
-      "6": 0.049279,
-      "7": 0.034146,
-      "8": 0.074595,
-      "9": 0.090419,
-      "10": 0.036678,
-      "11": -0.004969,
-      "12": -0.113467
+      "-12": -0.081925,
+      "-11": -0.074241,
+      "-10": -0.092332,
+      "-9": -0.097625,
+      "-8": -0.037464,
+      "-7": -0.02541,
+      "-6": 0.045108,
+      "-5": 0.081857,
+      "-4": 0.130145,
+      "-3": 0.10496,
+      "-2": 0.07429,
+      "-1": 0.059169,
+      "0": 0.086087,
+      "1": 0.150067,
+      "2": 0.160021,
+      "3": 0.181612,
+      "4": 0.109154,
+      "5": 0.027979,
+      "6": -0.029497,
+      "7": -0.033156,
+      "8": -0.003844,
+      "9": 0.007818,
+      "10": -0.028889,
+      "11": -0.082545,
+      "12": -0.167982
      },
      "best_lag_months": 3,
-     "best_mean_r": 0.214907,
+     "best_mean_r": 0.181612,
      "n_cities": 1
     },
     "health": {
      "mean_r_by_lag": {
-      "-12": 0.500011,
-      "-11": 0.576213,
-      "-10": 0.270406,
-      "-9": 0.030569,
-      "-8": 0.013964,
-      "-7": 0.05311,
-      "-6": 0.002075,
-      "-5": 0.066801,
-      "-4": -0.165257,
-      "-3": -0.393139,
-      "-2": -0.151944,
-      "-1": 0.500529,
-      "0": 0.610949,
-      "1": 0.252654,
-      "2": -0.178294,
-      "3": -0.347588,
-      "4": -0.267002,
-      "5": 0.10672,
-      "6": 0.478966,
-      "7": 0.356578,
-      "8": 0.042251,
-      "9": 0.249211,
-      "10": 0.342653,
-      "11": 0.142317,
-      "12": 0.059713
+      "-12": 0.483052,
+      "-11": 0.548082,
+      "-10": 0.260882,
+      "-9": 0.034417,
+      "-8": -0.010876,
+      "-7": 0.03122,
+      "-6": -0.009957,
+      "-5": 0.125017,
+      "-4": -0.109064,
+      "-3": -0.378639,
+      "-2": -0.138201,
+      "-1": 0.497589,
+      "0": 0.587316,
+      "1": 0.231681,
+      "2": -0.187092,
+      "3": -0.362064,
+      "4": -0.298095,
+      "5": 0.06742,
+      "6": 0.500175,
+      "7": 0.411772,
+      "8": 0.058894,
+      "9": 0.238261,
+      "10": 0.304946,
+      "11": 0.085587,
+      "12": 0.03062
      },
      "best_lag_months": 0,
-     "best_mean_r": 0.610949,
+     "best_mean_r": 0.587316,
      "n_cities": 1
     }
    },
@@ -6896,398 +7143,398 @@
   "news_vs_search": {
    "safety": {
     "mean_r_by_lag": {
-     "-12": -0.089839,
-     "-11": -0.068449,
-     "-10": -0.041465,
-     "-9": -0.019538,
-     "-8": -0.009482,
-     "-7": -0.011351,
-     "-6": -0.053403,
-     "-5": -0.01157,
-     "-4": 0.065133,
-     "-3": 0.173898,
-     "-2": 0.110445,
-     "-1": 0.068723,
-     "0": 0.127098,
-     "1": 0.10767,
-     "2": 0.087117,
-     "3": 0.051597,
-     "4": 0.117672,
-     "5": 0.159238,
-     "6": 0.230971,
-     "7": 0.188647,
-     "8": 0.093391,
-     "9": 0.069253,
-     "10": 0.072549,
-     "11": 0.078579,
-     "12": 0.031356
+     "-12": -0.127671,
+     "-11": -0.083533,
+     "-10": -0.040684,
+     "-9": -0.027688,
+     "-8": -0.009039,
+     "-7": -0.00132,
+     "-6": -0.032798,
+     "-5": 0.002824,
+     "-4": 0.084847,
+     "-3": 0.201905,
+     "-2": 0.139963,
+     "-1": 0.126733,
+     "0": 0.183183,
+     "1": 0.159674,
+     "2": 0.110583,
+     "3": 0.087006,
+     "4": 0.133553,
+     "5": 0.153603,
+     "6": 0.226534,
+     "7": 0.203043,
+     "8": 0.102468,
+     "9": 0.064673,
+     "10": 0.048195,
+     "11": 0.059076,
+     "12": 0.013057
     },
     "best_lag_months": 6,
-    "best_mean_r": 0.230971,
-    "r_at_lag0": 0.127098,
+    "best_mean_r": 0.226534,
+    "r_at_lag0": 0.183183,
     "n_cities": 3
    },
    "economy": {
     "mean_r_by_lag": {
-     "-12": -0.199245,
-     "-11": -0.199743,
-     "-10": -0.131949,
-     "-9": -0.078996,
-     "-8": -0.013017,
-     "-7": 0.02035,
-     "-6": 0.029994,
-     "-5": 0.091215,
-     "-4": 0.138013,
-     "-3": 0.194641,
-     "-2": 0.189894,
-     "-1": 0.232511,
-     "0": 0.316696,
-     "1": 0.273211,
-     "2": 0.213777,
-     "3": 0.155716,
-     "4": 0.10711,
-     "5": 0.065674,
-     "6": 0.057281,
-     "7": 0.010171,
-     "8": -0.002314,
-     "9": -0.058568,
-     "10": -0.055697,
-     "11": -0.074044,
-     "12": -0.132875
+     "-12": -0.202791,
+     "-11": -0.181807,
+     "-10": -0.153013,
+     "-9": -0.103238,
+     "-8": -0.023129,
+     "-7": 0.03653,
+     "-6": 0.024931,
+     "-5": 0.082731,
+     "-4": 0.124875,
+     "-3": 0.162254,
+     "-2": 0.179267,
+     "-1": 0.227219,
+     "0": 0.281536,
+     "1": 0.217763,
+     "2": 0.200415,
+     "3": 0.177694,
+     "4": 0.099711,
+     "5": 0.021718,
+     "6": 0.031619,
+     "7": 0.010676,
+     "8": -0.013474,
+     "9": -0.045948,
+     "10": -0.059079,
+     "11": -0.081022,
+     "12": -0.108933
     },
     "best_lag_months": 0,
-    "best_mean_r": 0.316696,
-    "r_at_lag0": 0.316696,
+    "best_mean_r": 0.281536,
+    "r_at_lag0": 0.281536,
     "n_cities": 3
    },
    "housing": {
     "mean_r_by_lag": {
-     "-12": -0.018766,
-     "-11": -0.015704,
-     "-10": 0.006678,
-     "-9": 0.030761,
-     "-8": 0.001945,
-     "-7": 0.019145,
-     "-6": 0.010049,
-     "-5": 0.079504,
-     "-4": 0.090501,
-     "-3": 0.078103,
-     "-2": 0.14553,
-     "-1": 0.091611,
-     "0": 0.102088,
-     "1": 0.090198,
-     "2": 0.088281,
-     "3": 0.071437,
-     "4": 0.084847,
-     "5": 0.067491,
-     "6": 0.081272,
-     "7": 0.085273,
-     "8": 0.086546,
-     "9": 0.039755,
-     "10": 0.019047,
-     "11": 0.042009,
-     "12": 0.010949
+     "-12": -0.004361,
+     "-11": 0.000138,
+     "-10": 0.025666,
+     "-9": 0.021804,
+     "-8": 0.001812,
+     "-7": 0.007831,
+     "-6": 0.007486,
+     "-5": 0.079427,
+     "-4": 0.067903,
+     "-3": 0.088808,
+     "-2": 0.140274,
+     "-1": 0.096676,
+     "0": 0.086343,
+     "1": 0.087905,
+     "2": 0.065321,
+     "3": 0.055476,
+     "4": 0.08592,
+     "5": 0.062098,
+     "6": 0.07933,
+     "7": 0.076939,
+     "8": 0.098019,
+     "9": 0.033136,
+     "10": 0.02176,
+     "11": 0.042176,
+     "12": 0.008079
     },
     "best_lag_months": -2,
-    "best_mean_r": 0.14553,
-    "r_at_lag0": 0.102088,
+    "best_mean_r": 0.140274,
+    "r_at_lag0": 0.086343,
     "n_cities": 3
    },
    "transport": {
     "mean_r_by_lag": {
-     "-12": -0.022165,
-     "-11": 0.03343,
-     "-10": 0.117924,
-     "-9": 0.117897,
-     "-8": 0.077246,
-     "-7": 0.110696,
-     "-6": 0.162726,
-     "-5": 0.19245,
-     "-4": 0.148173,
-     "-3": 0.143964,
-     "-2": 0.195764,
-     "-1": 0.28025,
-     "0": 0.265281,
-     "1": 0.147767,
-     "2": 0.086028,
-     "3": 0.091514,
-     "4": 0.11115,
-     "5": 0.055966,
-     "6": -0.010221,
-     "7": 0.018495,
-     "8": 0.082754,
-     "9": 0.081915,
-     "10": 0.030041,
-     "11": -0.040911,
-     "12": -0.052936
+     "-12": -0.022861,
+     "-11": 0.039154,
+     "-10": 0.099646,
+     "-9": 0.116845,
+     "-8": 0.089378,
+     "-7": 0.083529,
+     "-6": 0.148108,
+     "-5": 0.187789,
+     "-4": 0.118451,
+     "-3": 0.140781,
+     "-2": 0.215771,
+     "-1": 0.319653,
+     "0": 0.271849,
+     "1": 0.16327,
+     "2": 0.109362,
+     "3": 0.109054,
+     "4": 0.126444,
+     "5": 0.069994,
+     "6": 0.008307,
+     "7": 0.034571,
+     "8": 0.093499,
+     "9": 0.079362,
+     "10": 0.021405,
+     "11": -0.062913,
+     "12": -0.0498
     },
     "best_lag_months": -1,
-    "best_mean_r": 0.28025,
-    "r_at_lag0": 0.265281,
+    "best_mean_r": 0.319653,
+    "r_at_lag0": 0.271849,
     "n_cities": 3
    },
    "environment": {
     "mean_r_by_lag": {
-     "-12": 0.059896,
-     "-11": -0.00978,
-     "-10": 0.05775,
-     "-9": -0.159362,
-     "-8": -0.069404,
-     "-7": -0.033384,
-     "-6": 0.007732,
-     "-5": -0.069314,
-     "-4": 0.000846,
-     "-3": -0.038753,
-     "-2": -0.003315,
-     "-1": 0.085971,
-     "0": -0.021592,
-     "1": 0.035741,
-     "2": -0.042571,
-     "3": 0.192889,
-     "4": 0.058648,
-     "5": 0.00884,
-     "6": 0.034879,
-     "7": 0.140248,
-     "8": -0.000519,
-     "9": 0.073204,
-     "10": -0.007636,
-     "11": -0.023228,
-     "12": 0.062163
+     "-12": 0.05093,
+     "-11": -0.009685,
+     "-10": 0.072978,
+     "-9": -0.136944,
+     "-8": -0.0436,
+     "-7": -0.02473,
+     "-6": 0.028465,
+     "-5": -0.043616,
+     "-4": 0.01549,
+     "-3": -0.028585,
+     "-2": -0.011252,
+     "-1": 0.096792,
+     "0": 0.017072,
+     "1": 0.046602,
+     "2": -0.03212,
+     "3": 0.159044,
+     "4": 0.044193,
+     "5": 0.033382,
+     "6": 0.023437,
+     "7": 0.136542,
+     "8": -0.001163,
+     "9": 0.082955,
+     "10": -0.006389,
+     "11": -0.012543,
+     "12": 0.037039
     },
     "best_lag_months": 3,
-    "best_mean_r": 0.192889,
-    "r_at_lag0": -0.021592,
+    "best_mean_r": 0.159044,
+    "r_at_lag0": 0.017072,
     "n_cities": 3
    },
    "health": {
     "mean_r_by_lag": {
-     "-12": -0.202739,
-     "-11": -0.253842,
-     "-10": -0.191162,
-     "-9": -0.110821,
-     "-8": -0.076122,
-     "-7": -0.079741,
-     "-6": -0.080203,
-     "-5": -0.096541,
-     "-4": -0.132912,
-     "-3": -0.201244,
-     "-2": -0.228959,
-     "-1": -0.123963,
-     "0": 0.082087,
-     "1": 0.200966,
-     "2": 0.146773,
-     "3": 0.039367,
-     "4": -0.041251,
-     "5": -0.063433,
-     "6": -0.047897,
-     "7": -0.026991,
-     "8": -0.00343,
-     "9": 0.063971,
-     "10": 0.128645,
-     "11": 0.07314,
-     "12": -0.034612
+     "-12": -0.187549,
+     "-11": -0.233136,
+     "-10": -0.172465,
+     "-9": -0.090244,
+     "-8": -0.066382,
+     "-7": -0.07976,
+     "-6": -0.090967,
+     "-5": -0.098788,
+     "-4": -0.139896,
+     "-3": -0.206851,
+     "-2": -0.229513,
+     "-1": -0.123298,
+     "0": 0.079605,
+     "1": 0.182742,
+     "2": 0.130741,
+     "3": 0.019991,
+     "4": -0.047552,
+     "5": -0.06379,
+     "6": -0.041622,
+     "7": -0.024817,
+     "8": 0.009617,
+     "9": 0.069023,
+     "10": 0.125657,
+     "11": 0.064889,
+     "12": -0.046641
     },
     "best_lag_months": -11,
-    "best_mean_r": -0.253842,
-    "r_at_lag0": 0.082087,
+    "best_mean_r": -0.233136,
+    "r_at_lag0": 0.079605,
     "n_cities": 3
    },
    "education": {
     "mean_r_by_lag": {
-     "-12": -0.037664,
-     "-11": -0.044754,
-     "-10": -0.017555,
-     "-9": 0.031634,
-     "-8": -0.006469,
-     "-7": 0.056832,
-     "-6": 0.06902,
-     "-5": 0.035532,
-     "-4": 0.063,
-     "-3": 0.022617,
-     "-2": 0.045395,
-     "-1": -0.001946,
-     "0": -0.085123,
-     "1": -0.089018,
-     "2": -0.151321,
-     "3": -0.185459,
-     "4": -0.136171,
-     "5": -0.205079,
-     "6": -0.141911,
-     "7": -0.165165,
-     "8": -0.123429,
-     "9": -0.123472,
-     "10": -0.136332,
-     "11": -0.116088,
-     "12": 0.006039
+     "-12": -0.040045,
+     "-11": -0.065437,
+     "-10": -0.023907,
+     "-9": 0.03434,
+     "-8": -0.02528,
+     "-7": 0.05139,
+     "-6": 0.032565,
+     "-5": 0.023813,
+     "-4": 0.046478,
+     "-3": -0.020856,
+     "-2": 0.01194,
+     "-1": -0.028866,
+     "0": -0.095352,
+     "1": -0.083388,
+     "2": -0.151006,
+     "3": -0.200429,
+     "4": -0.119432,
+     "5": -0.199846,
+     "6": -0.119245,
+     "7": -0.14553,
+     "8": -0.117466,
+     "9": -0.081901,
+     "10": -0.115108,
+     "11": -0.084699,
+     "12": 0.000842
     },
-    "best_lag_months": 5,
-    "best_mean_r": -0.205079,
-    "r_at_lag0": -0.085123,
+    "best_lag_months": 3,
+    "best_mean_r": -0.200429,
+    "r_at_lag0": -0.095352,
     "n_cities": 3
    },
    "cost_of_living": {
     "mean_r_by_lag": {
-     "-12": 0.079325,
-     "-11": 0.059458,
-     "-10": 0.110828,
-     "-9": 0.136292,
-     "-8": 0.138153,
-     "-7": 0.169841,
-     "-6": 0.227226,
-     "-5": 0.258501,
-     "-4": 0.233258,
-     "-3": 0.236372,
-     "-2": 0.205026,
-     "-1": 0.169543,
-     "0": 0.183222,
-     "1": 0.190014,
-     "2": 0.150338,
-     "3": 0.165522,
-     "4": 0.156476,
-     "5": 0.088203,
-     "6": 0.040455,
-     "7": 0.02579,
-     "8": 0.03116,
-     "9": 0.004503,
-     "10": -0.006516,
-     "11": -0.060508,
-     "12": -0.072112
+     "-12": 0.055017,
+     "-11": 0.056775,
+     "-10": 0.121614,
+     "-9": 0.118185,
+     "-8": 0.101575,
+     "-7": 0.172241,
+     "-6": 0.248721,
+     "-5": 0.243018,
+     "-4": 0.22748,
+     "-3": 0.248805,
+     "-2": 0.199628,
+     "-1": 0.187685,
+     "0": 0.182458,
+     "1": 0.161511,
+     "2": 0.141875,
+     "3": 0.124835,
+     "4": 0.114477,
+     "5": 0.067893,
+     "6": 0.008472,
+     "7": 0.022358,
+     "8": -0.000117,
+     "9": -0.04225,
+     "10": -0.032758,
+     "11": -0.072426,
+     "12": -0.08632
     },
-    "best_lag_months": -5,
-    "best_mean_r": 0.258501,
-    "r_at_lag0": 0.183222,
+    "best_lag_months": -3,
+    "best_mean_r": 0.248805,
+    "r_at_lag0": 0.182458,
     "n_cities": 3
    },
    "governance": {
     "mean_r_by_lag": {
-     "-12": -0.18566,
-     "-11": -0.058501,
-     "-10": -0.044797,
-     "-9": 0.089616,
-     "-8": 0.028851,
-     "-7": 0.090022,
-     "-6": 0.025802,
-     "-5": 0.071528,
-     "-4": 0.01967,
-     "-3": 0.048121,
-     "-2": 0.036229,
-     "-1": 0.142066,
-     "0": 0.305525,
-     "1": 0.136078,
-     "2": 0.117048,
-     "3": 0.022435,
-     "4": -0.001528,
-     "5": -0.039944,
-     "6": -0.003109,
-     "7": -0.075767,
-     "8": -0.046198,
-     "9": -0.007006,
-     "10": -0.014503,
-     "11": -0.032855,
-     "12": -0.074054
+     "-12": -0.217152,
+     "-11": -0.095866,
+     "-10": -0.056806,
+     "-9": 0.057981,
+     "-8": 0.017103,
+     "-7": 0.073097,
+     "-6": 0.01574,
+     "-5": 0.06268,
+     "-4": 0.02968,
+     "-3": 0.043426,
+     "-2": 0.041309,
+     "-1": 0.134705,
+     "0": 0.332095,
+     "1": 0.152825,
+     "2": 0.124086,
+     "3": 0.038938,
+     "4": 0.021333,
+     "5": -0.038022,
+     "6": -0.001563,
+     "7": -0.071634,
+     "8": -0.057752,
+     "9": -0.008504,
+     "10": -0.002785,
+     "11": -0.038992,
+     "12": -0.086335
     },
     "best_lag_months": 0,
-    "best_mean_r": 0.305525,
-    "r_at_lag0": 0.305525,
+    "best_mean_r": 0.332095,
+    "r_at_lag0": 0.332095,
     "n_cities": 3
    },
    "culture": {
     "mean_r_by_lag": {
-     "-12": -0.101437,
-     "-11": -0.069106,
-     "-10": -0.06027,
-     "-9": -0.060349,
-     "-8": -0.048836,
-     "-7": -0.023803,
-     "-6": -0.042997,
-     "-5": -0.042926,
-     "-4": 0.047691,
-     "-3": 0.022395,
-     "-2": 0.023274,
-     "-1": 0.083765,
-     "0": 0.208846,
-     "1": 0.134929,
-     "2": 0.009082,
-     "3": -0.038555,
-     "4": -0.061105,
-     "5": -0.057259,
-     "6": 0.000203,
-     "7": 0.043554,
-     "8": 0.01296,
-     "9": 0.049147,
-     "10": -0.036244,
-     "11": -0.09327,
-     "12": -0.196903
+     "-12": -0.065289,
+     "-11": 0.006594,
+     "-10": -0.014626,
+     "-9": -0.026878,
+     "-8": 3.2e-05,
+     "-7": -0.036059,
+     "-6": -0.07259,
+     "-5": -0.052558,
+     "-4": 0.046252,
+     "-3": 0.018142,
+     "-2": 0.034563,
+     "-1": 0.044002,
+     "0": 0.068465,
+     "1": 0.019157,
+     "2": -0.00391,
+     "3": -0.028563,
+     "4": -0.046006,
+     "5": -0.054347,
+     "6": -0.041123,
+     "7": -0.031335,
+     "8": -0.039847,
+     "9": -0.039167,
+     "10": -0.072945,
+     "11": -0.086685,
+     "12": -0.096896
     },
-    "best_lag_months": 0,
-    "best_mean_r": 0.208846,
-    "r_at_lag0": 0.208846,
+    "best_lag_months": 12,
+    "best_mean_r": -0.096896,
+    "r_at_lag0": 0.068465,
     "n_cities": 3
    },
    "technology": {
     "mean_r_by_lag": {
-     "-12": -0.163881,
-     "-11": -0.062354,
-     "-10": -0.02991,
-     "-9": -0.011645,
-     "-8": 0.070155,
-     "-7": 0.146256,
-     "-6": 0.188778,
-     "-5": 0.157587,
-     "-4": 0.103325,
-     "-3": 0.114294,
-     "-2": 0.174586,
-     "-1": 0.161343,
-     "0": 0.340955,
-     "1": 0.151694,
-     "2": 0.120192,
-     "3": 0.099881,
-     "4": 0.008856,
-     "5": -0.057855,
-     "6": -0.098396,
-     "7": -0.07692,
-     "8": -0.034457,
-     "9": -0.077305,
-     "10": -0.106906,
-     "11": -0.069449,
-     "12": -0.293206
+     "-12": -0.126264,
+     "-11": -0.038143,
+     "-10": -0.06413,
+     "-9": -0.040852,
+     "-8": 0.021075,
+     "-7": 0.117555,
+     "-6": 0.179541,
+     "-5": 0.144665,
+     "-4": 0.001814,
+     "-3": 0.075284,
+     "-2": 0.125984,
+     "-1": 0.131374,
+     "0": 0.338052,
+     "1": 0.117756,
+     "2": 0.085735,
+     "3": 0.089148,
+     "4": 0.019884,
+     "5": -0.04957,
+     "6": -0.088735,
+     "7": -0.118159,
+     "8": 0.007382,
+     "9": -0.03708,
+     "10": -0.077566,
+     "11": -0.049735,
+     "12": -0.290458
     },
     "best_lag_months": 0,
-    "best_mean_r": 0.340955,
-    "r_at_lag0": 0.340955,
+    "best_mean_r": 0.338052,
+    "r_at_lag0": 0.338052,
     "n_cities": 3
    },
    "community": {
     "mean_r_by_lag": {
-     "-12": -0.103721,
-     "-11": -0.094669,
-     "-10": -0.065771,
-     "-9": -0.094465,
-     "-8": -0.096199,
-     "-7": -0.09825,
-     "-6": -0.162567,
-     "-5": -0.134453,
-     "-4": -0.143553,
-     "-3": -0.125571,
-     "-2": -0.054485,
-     "-1": -0.070966,
-     "0": 0.06848,
-     "1": -0.021828,
-     "2": -0.081768,
-     "3": -0.055482,
-     "4": -0.041896,
-     "5": -0.034453,
-     "6": 0.066415,
-     "7": 0.081508,
-     "8": 0.065421,
-     "9": 0.064918,
-     "10": 0.010339,
-     "11": 0.046958,
-     "12": -0.060506
+     "-12": -0.131553,
+     "-11": -0.082233,
+     "-10": -0.048695,
+     "-9": -0.030591,
+     "-8": -0.089584,
+     "-7": -0.135327,
+     "-6": -0.175722,
+     "-5": -0.112398,
+     "-4": -0.138677,
+     "-3": -0.158946,
+     "-2": -0.070961,
+     "-1": -0.116338,
+     "0": 0.030676,
+     "1": -0.079258,
+     "2": -0.129597,
+     "3": -0.140488,
+     "4": -0.066263,
+     "5": -0.022517,
+     "6": 0.058675,
+     "7": 0.047699,
+     "8": 0.072878,
+     "9": 0.060351,
+     "10": 0.018862,
+     "11": 0.059515,
+     "12": 0.01351
     },
     "best_lag_months": -6,
-    "best_mean_r": -0.162567,
-    "r_at_lag0": 0.06848,
+    "best_mean_r": -0.175722,
+    "r_at_lag0": 0.030676,
     "n_cities": 3
    }
   }
@@ -7299,7 +7546,7 @@
   "official_direction": "improving",
   "attention_direction": "rising",
   "mean_official_change_sd": -1.630061,
-  "mean_attention_change_sd": 1.302443,
+  "mean_attention_change_sd": 1.411087,
   "city": "hk",
   "category": "economy",
   "source": "news",
@@ -7313,43 +7560,41 @@
    "label": "Backup indicators in place of the main ones",
    "news": {
     "h1": {
-     "est": 0.134119,
-     "ci_low": 0.073583,
-     "ci_high": 0.212564,
-     "p_boot": 0.002,
-     "n_obs": 1483,
-     "n_pairs": 19,
-     "n_eff_years": 172.2,
-     "p_text": "p = 0.002"
+     "est": 0.126915,
+     "ci_low": 0.062685,
+     "ci_high": 0.19966,
+     "p_boot": 0.000999,
+     "n_obs": 1524,
+     "n_pairs": 21,
+     "n_eff_years": 186.2,
+     "p_text": "p < 0.001"
     },
     "h2": {
      "worse": {
-      "est": 0.141098,
-      "ci_low": 0.021789,
-      "ci_high": 0.270993,
-      "p_boot": 0.024
+      "est": 0.133282,
+      "ci_low": 0.016617,
+      "ci_high": 0.263688,
+      "p_boot": 0.032
      },
      "better": {
-      "est": 0.118366,
-      "ci_low": 0.028151,
-      "ci_high": 0.218385,
-      "p_boot": 0.016
+      "est": 0.112547,
+      "ci_low": 0.02016,
+      "ci_high": 0.213067,
+      "p_boot": 0.022
      },
      "diff": {
-      "est": 0.022732,
-      "ci_low": -0.164846,
-      "ci_high": 0.207596,
-      "p_boot": 0.872,
-      "p_text": "p = 0.872"
+      "est": 0.020736,
+      "ci_low": -0.167128,
+      "ci_high": 0.197093,
+      "p_boot": 0.884,
+      "p_text": "p = 0.884"
      },
-     "n_obs": 1483,
-     "n_pairs": 19,
-     "n_eff_years": 172.2
+     "n_obs": 1524,
+     "n_pairs": 21,
+     "n_eff_years": 186.2
     }
    },
    "news_pairs_excluded": [
-    "hk|housing|news: dropped: agreement between the two AI coders below 0.61",
-    "hk|transport|news: dropped: agreement between the two AI coders below 0.61",
     "hk|cost_of_living|news: dropped: agreement between the two AI coders below 0.61",
     "london|health|news: no official series",
     "london|cost_of_living|news: dropped: agreement between the two AI coders below 0.61"
@@ -7404,43 +7649,41 @@
    "label": "Without 2020 to 2022",
    "news": {
     "h1": {
-     "est": 0.018322,
-     "ci_low": -0.043545,
-     "ci_high": 0.059892,
-     "p_boot": 0.348,
-     "n_obs": 1230,
-     "n_pairs": 19,
-     "n_eff_years": 129.2,
-     "p_text": "p = 0.348"
+     "est": 0.018863,
+     "ci_low": -0.049344,
+     "ci_high": 0.055337,
+     "p_boot": 0.414,
+     "n_obs": 1413,
+     "n_pairs": 21,
+     "n_eff_years": 144.4,
+     "p_text": "p = 0.414"
     },
     "h2": {
      "worse": {
-      "est": 0.027181,
-      "ci_low": -0.057261,
-      "ci_high": 0.090908,
-      "p_boot": 0.256
+      "est": 0.023523,
+      "ci_low": -0.083496,
+      "ci_high": 0.076246,
+      "p_boot": 0.292
      },
      "better": {
-      "est": -0.02236,
-      "ci_low": -0.168249,
-      "ci_high": 0.124722,
-      "p_boot": 0.756
+      "est": -0.001044,
+      "ci_low": -0.156372,
+      "ci_high": 0.116166,
+      "p_boot": 0.694
      },
      "diff": {
-      "est": 0.049542,
-      "ci_low": -0.138887,
-      "ci_high": 0.221276,
-      "p_boot": 0.55,
-      "p_text": "p = 0.550"
+      "est": 0.024566,
+      "ci_low": -0.158273,
+      "ci_high": 0.216746,
+      "p_boot": 0.534,
+      "p_text": "p = 0.534"
      },
-     "n_obs": 1230,
-     "n_pairs": 19,
-     "n_eff_years": 129.2
+     "n_obs": 1413,
+     "n_pairs": 21,
+     "n_eff_years": 144.4
     }
    },
    "news_pairs_excluded": [
-    "hk|housing|news: dropped: agreement between the two AI coders below 0.61",
-    "hk|transport|news: dropped: agreement between the two AI coders below 0.61",
     "hk|cost_of_living|news: dropped: agreement between the two AI coders below 0.61",
     "london|health|news: no official series",
     "london|cost_of_living|news: dropped: agreement between the two AI coders below 0.61"
@@ -7494,43 +7737,41 @@
    "label": "Without 2020 to 2022 and every other marked break month",
    "news": {
     "h1": {
-     "est": 0.032511,
-     "ci_low": -0.055318,
-     "ci_high": 0.146557,
-     "p_boot": 0.402,
-     "n_obs": 1044,
-     "n_pairs": 19,
-     "n_eff_years": 106.9,
-     "p_text": "p = 0.402"
+     "est": 0.058843,
+     "ci_low": -0.031258,
+     "ci_high": 0.157174,
+     "p_boot": 0.228,
+     "n_obs": 1203,
+     "n_pairs": 21,
+     "n_eff_years": 120.2,
+     "p_text": "p = 0.228"
     },
     "h2": {
      "worse": {
-      "est": 0.078426,
-      "ci_low": -0.077267,
-      "ci_high": 0.315773,
-      "p_boot": 0.262
+      "est": 0.083771,
+      "ci_low": -0.057928,
+      "ci_high": 0.312173,
+      "p_boot": 0.16
      },
      "better": {
-      "est": -0.000119,
-      "ci_low": -0.178156,
-      "ci_high": 0.174265,
-      "p_boot": 0.924
+      "est": 0.041691,
+      "ci_low": -0.144542,
+      "ci_high": 0.18494,
+      "p_boot": 0.868
      },
      "diff": {
-      "est": 0.078545,
-      "ci_low": -0.190698,
-      "ci_high": 0.424958,
-      "p_boot": 0.432,
-      "p_text": "p = 0.432"
+      "est": 0.04208,
+      "ci_low": -0.188932,
+      "ci_high": 0.397275,
+      "p_boot": 0.44,
+      "p_text": "p = 0.440"
      },
-     "n_obs": 1044,
-     "n_pairs": 19,
-     "n_eff_years": 106.9
+     "n_obs": 1203,
+     "n_pairs": 21,
+     "n_eff_years": 120.2
     }
    },
    "news_pairs_excluded": [
-    "hk|housing|news: dropped: agreement between the two AI coders below 0.61",
-    "hk|transport|news: dropped: agreement between the two AI coders below 0.61",
     "hk|cost_of_living|news: dropped: agreement between the two AI coders below 0.61",
     "london|health|news: no official series",
     "london|cost_of_living|news: dropped: agreement between the two AI coders below 0.61"
@@ -7584,43 +7825,41 @@
    "label": "Official series aligned by release date",
    "news": {
     "h1": {
-     "est": 0.024315,
-     "ci_low": -0.000842,
-     "ci_high": 0.059072,
-     "p_boot": 0.06,
-     "n_obs": 1761,
-     "n_pairs": 19,
-     "n_eff_years": 186.4,
-     "p_text": "p = 0.060"
+     "est": 0.024282,
+     "ci_low": -0.005393,
+     "ci_high": 0.061602,
+     "p_boot": 0.086,
+     "n_obs": 2019,
+     "n_pairs": 21,
+     "n_eff_years": 207.9,
+     "p_text": "p = 0.086"
     },
     "h2": {
      "worse": {
-      "est": 0.036731,
-      "ci_low": -1.3e-05,
-      "ci_high": 0.080763,
-      "p_boot": 0.052
+      "est": 0.040594,
+      "ci_low": 0.012813,
+      "ci_high": 0.087649,
+      "p_boot": 0.014
      },
      "better": {
-      "est": -0.000619,
-      "ci_low": -0.064477,
-      "ci_high": 0.076098,
-      "p_boot": 0.844
+      "est": -0.007748,
+      "ci_low": -0.082457,
+      "ci_high": 0.074846,
+      "p_boot": 0.994
      },
      "diff": {
-      "est": 0.037351,
-      "ci_low": -0.045224,
-      "ci_high": 0.128352,
-      "p_boot": 0.392,
-      "p_text": "p = 0.392"
+      "est": 0.048343,
+      "ci_low": -0.035832,
+      "ci_high": 0.15488,
+      "p_boot": 0.268,
+      "p_text": "p = 0.268"
      },
-     "n_obs": 1761,
-     "n_pairs": 19,
-     "n_eff_years": 186.4
+     "n_obs": 2019,
+     "n_pairs": 21,
+     "n_eff_years": 207.9
     }
    },
    "news_pairs_excluded": [
-    "hk|housing|news: dropped: agreement between the two AI coders below 0.61",
-    "hk|transport|news: dropped: agreement between the two AI coders below 0.61",
     "hk|cost_of_living|news: dropped: agreement between the two AI coders below 0.61",
     "london|health|news: no official series",
     "london|cost_of_living|news: dropped: agreement between the two AI coders below 0.61"
@@ -7674,43 +7913,41 @@
    "label": "All listed outlets in place of the fixed panel",
    "news": {
     "h1": {
-     "est": 0.097143,
-     "ci_low": 0.01364,
-     "ci_high": 0.143099,
-     "p_boot": 0.022,
-     "n_obs": 1739,
-     "n_pairs": 19,
-     "n_eff_years": 184.6,
-     "p_text": "p = 0.022"
+     "est": 0.082375,
+     "ci_low": 0.007227,
+     "ci_high": 0.12213,
+     "p_boot": 0.03,
+     "n_obs": 1994,
+     "n_pairs": 21,
+     "n_eff_years": 205.8,
+     "p_text": "p = 0.030"
     },
     "h2": {
      "worse": {
-      "est": 0.057662,
-      "ci_low": 0.008334,
-      "ci_high": 0.115548,
-      "p_boot": 0.026
+      "est": 0.050504,
+      "ci_low": 0.001887,
+      "ci_high": 0.113196,
+      "p_boot": 0.046
      },
      "better": {
-      "est": 0.176896,
-      "ci_low": -0.044507,
-      "ci_high": 0.288783,
-      "p_boot": 0.292
+      "est": 0.14542,
+      "ci_low": -0.077937,
+      "ci_high": 0.261775,
+      "p_boot": 0.454
      },
      "diff": {
-      "est": -0.119234,
-      "ci_low": -0.246648,
-      "ci_high": 0.131159,
-      "p_boot": 0.874,
-      "p_text": "p = 0.874"
+      "est": -0.094915,
+      "ci_low": -0.224098,
+      "ci_high": 0.155129,
+      "p_boot": 0.934,
+      "p_text": "p = 0.934"
      },
-     "n_obs": 1739,
-     "n_pairs": 19,
-     "n_eff_years": 184.6
+     "n_obs": 1994,
+     "n_pairs": 21,
+     "n_eff_years": 205.8
     }
    },
    "news_pairs_excluded": [
-    "hk|housing|news: dropped: agreement between the two AI coders below 0.61",
-    "hk|transport|news: dropped: agreement between the two AI coders below 0.61",
     "hk|cost_of_living|news: dropped: agreement between the two AI coders below 0.61",
     "london|health|news: no official series",
     "london|cost_of_living|news: dropped: agreement between the two AI coders below 0.61"
@@ -7720,43 +7957,41 @@
    "label": "Negative-tone share in place of all coverage",
    "news": {
     "h1": {
-     "est": 0.086469,
-     "ci_low": 0.016587,
-     "ci_high": 0.126354,
-     "p_boot": 0.014,
-     "n_obs": 1739,
-     "n_pairs": 19,
-     "n_eff_years": 184.6,
-     "p_text": "p = 0.014"
+     "est": 0.092099,
+     "ci_low": 0.025031,
+     "ci_high": 0.126715,
+     "p_boot": 0.002,
+     "n_obs": 1994,
+     "n_pairs": 21,
+     "n_eff_years": 205.8,
+     "p_text": "p = 0.002"
     },
     "h2": {
      "worse": {
-      "est": 0.054805,
-      "ci_low": 0.00756,
-      "ci_high": 0.115301,
-      "p_boot": 0.036
+      "est": 0.055353,
+      "ci_low": 0.004275,
+      "ci_high": 0.116853,
+      "p_boot": 0.032
      },
      "better": {
-      "est": 0.15043,
-      "ci_low": -0.071712,
-      "ci_high": 0.25402,
-      "p_boot": 0.434
+      "est": 0.164785,
+      "ci_low": -0.031673,
+      "ci_high": 0.268072,
+      "p_boot": 0.164
      },
      "diff": {
-      "est": -0.095625,
-      "ci_low": -0.224774,
-      "ci_high": 0.156802,
-      "p_boot": 0.924,
-      "p_text": "p = 0.924"
+      "est": -0.109432,
+      "ci_low": -0.224692,
+      "ci_high": 0.126168,
+      "p_boot": 0.9,
+      "p_text": "p = 0.900"
      },
-     "n_obs": 1739,
-     "n_pairs": 19,
-     "n_eff_years": 184.6
+     "n_obs": 1994,
+     "n_pairs": 21,
+     "n_eff_years": 205.8
     }
    },
    "news_pairs_excluded": [
-    "hk|housing|news: dropped: agreement between the two AI coders below 0.61",
-    "hk|transport|news: dropped: agreement between the two AI coders below 0.61",
     "hk|cost_of_living|news: dropped: agreement between the two AI coders below 0.61",
     "london|health|news: no official series",
     "london|cost_of_living|news: dropped: agreement between the two AI coders below 0.61"
@@ -7766,43 +8001,41 @@
    "label": "Hong Kong without HK China News Agency",
    "news": {
     "h1": {
-     "est": 0.070905,
-     "ci_low": 0.014295,
-     "ci_high": 0.101391,
+     "est": 0.069596,
+     "ci_low": 0.014461,
+     "ci_high": 0.098079,
      "p_boot": 0.01,
-     "n_obs": 1739,
-     "n_pairs": 19,
-     "n_eff_years": 184.6,
+     "n_obs": 1994,
+     "n_pairs": 21,
+     "n_eff_years": 205.8,
      "p_text": "p = 0.010"
     },
     "h2": {
      "worse": {
-      "est": 0.054412,
-      "ci_low": 0.010078,
-      "ci_high": 0.095981,
-      "p_boot": 0.022
+      "est": 0.053658,
+      "ci_low": 0.007497,
+      "ci_high": 0.097926,
+      "p_boot": 0.03
      },
      "better": {
-      "est": 0.104221,
-      "ci_low": -0.041381,
-      "ci_high": 0.178156,
-      "p_boot": 0.348
+      "est": 0.101121,
+      "ci_low": -0.045515,
+      "ci_high": 0.17437,
+      "p_boot": 0.28
      },
      "diff": {
-      "est": -0.04981,
-      "ci_low": -0.14182,
-      "ci_high": 0.116516,
-      "p_boot": 0.952,
-      "p_text": "p = 0.952"
+      "est": -0.047463,
+      "ci_low": -0.136132,
+      "ci_high": 0.121014,
+      "p_boot": 0.972,
+      "p_text": "p = 0.972"
      },
-     "n_obs": 1739,
-     "n_pairs": 19,
-     "n_eff_years": 184.6
+     "n_obs": 1994,
+     "n_pairs": 21,
+     "n_eff_years": 205.8
     }
    },
    "news_pairs_excluded": [
-    "hk|housing|news: dropped: agreement between the two AI coders below 0.61",
-    "hk|transport|news: dropped: agreement between the two AI coders below 0.61",
     "hk|cost_of_living|news: dropped: agreement between the two AI coders below 0.61",
     "london|health|news: no official series",
     "london|cost_of_living|news: dropped: agreement between the two AI coders below 0.61"
@@ -7812,43 +8045,41 @@
    "label": "London without the seven borough papers that jumped in volume",
    "news": {
     "h1": {
-     "est": 0.064683,
-     "ci_low": 0.004295,
-     "ci_high": 0.093002,
-     "p_boot": 0.03,
-     "n_obs": 1739,
-     "n_pairs": 19,
-     "n_eff_years": 184.6,
-     "p_text": "p = 0.030"
+     "est": 0.060838,
+     "ci_low": -0.001404,
+     "ci_high": 0.086237,
+     "p_boot": 0.052,
+     "n_obs": 1994,
+     "n_pairs": 21,
+     "n_eff_years": 205.8,
+     "p_text": "p = 0.052"
     },
     "h2": {
      "worse": {
-      "est": 0.050021,
-      "ci_low": 0.002138,
-      "ci_high": 0.090172,
-      "p_boot": 0.05
+      "est": 0.045644,
+      "ci_low": -0.011622,
+      "ci_high": 0.092708,
+      "p_boot": 0.08
      },
      "better": {
-      "est": 0.094301,
-      "ci_low": -0.052178,
-      "ci_high": 0.168446,
-      "p_boot": 0.464
+      "est": 0.090892,
+      "ci_low": -0.055466,
+      "ci_high": 0.1607,
+      "p_boot": 0.402
      },
      "diff": {
-      "est": -0.044281,
-      "ci_low": -0.138254,
-      "ci_high": 0.120269,
-      "p_boot": 0.956,
-      "p_text": "p = 0.956"
+      "est": -0.045248,
+      "ci_low": -0.13304,
+      "ci_high": 0.120244,
+      "p_boot": 0.918,
+      "p_text": "p = 0.918"
      },
-     "n_obs": 1739,
-     "n_pairs": 19,
-     "n_eff_years": 184.6
+     "n_obs": 1994,
+     "n_pairs": 21,
+     "n_eff_years": 205.8
     }
    },
    "news_pairs_excluded": [
-    "hk|housing|news: dropped: agreement between the two AI coders below 0.61",
-    "hk|transport|news: dropped: agreement between the two AI coders below 0.61",
     "hk|cost_of_living|news: dropped: agreement between the two AI coders below 0.61",
     "london|health|news: no official series",
     "london|cost_of_living|news: dropped: agreement between the two AI coders below 0.61"
@@ -7858,34 +8089,34 @@
    "label": "Categories kept or dropped by the validation rule as the plan words it (every validation item, weights by category only)",
    "news": {
     "h1": {
-     "est": 0.079398,
-     "ci_low": 0.027135,
-     "ci_high": 0.110467,
-     "p_boot": 0.000999,
+     "est": 0.078695,
+     "ci_low": 0.024284,
+     "ci_high": 0.107013,
+     "p_boot": 0.004,
      "n_obs": 1517,
      "n_pairs": 16,
      "n_eff_years": 156.9,
-     "p_text": "p < 0.001"
+     "p_text": "p = 0.004"
     },
     "h2": {
      "worse": {
-      "est": 0.050111,
-      "ci_low": 0.004352,
-      "ci_high": 0.087236,
-      "p_boot": 0.034
+      "est": 0.049898,
+      "ci_low": 0.002629,
+      "ci_high": 0.087557,
+      "p_boot": 0.046
      },
      "better": {
-      "est": 0.139282,
-      "ci_low": -0.005892,
-      "ci_high": 0.225178,
-      "p_boot": 0.062
+      "est": 0.137576,
+      "ci_low": -0.006714,
+      "ci_high": 0.226878,
+      "p_boot": 0.064
      },
      "diff": {
-      "est": -0.089172,
-      "ci_low": -0.186749,
-      "ci_high": 0.065864,
-      "p_boot": 0.636,
-      "p_text": "p = 0.636"
+      "est": -0.087677,
+      "ci_low": -0.187127,
+      "ci_high": 0.068333,
+      "p_boot": 0.648,
+      "p_text": "p = 0.648"
      },
      "n_obs": 1517,
      "n_pairs": 16,
@@ -7907,43 +8138,41 @@
    "label": "Description: Hong Kong pairs only, periods before 2021 (several major outlets closed in 2021)",
    "news": {
     "h1": {
-     "est": -0.229041,
-     "ci_low": -1.080035,
-     "ci_high": 0.265175,
-     "p_boot": 0.572,
-     "n_obs": 131,
-     "n_pairs": 5,
-     "n_eff_years": 20.2,
-     "p_text": "p = 0.572"
+     "est": -0.203102,
+     "ci_low": -0.675888,
+     "ci_high": 0.123269,
+     "p_boot": 0.296,
+     "n_obs": 249,
+     "n_pairs": 7,
+     "n_eff_years": 30.0,
+     "p_text": "p = 0.296"
     },
     "h2": {
      "worse": {
-      "est": 0.273799,
-      "ci_low": -2.418713,
-      "ci_high": 1.153772,
-      "p_boot": 0.678
+      "est": 0.159034,
+      "ci_low": -1.324349,
+      "ci_high": 0.568942,
+      "p_boot": 0.862
      },
      "better": {
-      "est": -0.939913,
-      "ci_low": -1.805524,
-      "ci_high": 0.299652,
-      "p_boot": 0.178
+      "est": -0.680244,
+      "ci_low": -1.156996,
+      "ci_high": 0.236771,
+      "p_boot": 0.19
      },
      "diff": {
-      "est": 1.213712,
-      "ci_low": -2.315751,
-      "ci_high": 2.539133,
-      "p_boot": 0.368,
-      "p_text": "p = 0.368"
+      "est": 0.839277,
+      "ci_low": -1.281451,
+      "ci_high": 1.521375,
+      "p_boot": 0.416,
+      "p_text": "p = 0.416"
      },
-     "n_obs": 131,
-     "n_pairs": 5,
-     "n_eff_years": 20.2
+     "n_obs": 249,
+     "n_pairs": 7,
+     "n_eff_years": 30.0
     }
    },
    "news_pairs_excluded": [
-    "hk|housing|news: dropped: agreement between the two AI coders below 0.61",
-    "hk|transport|news: dropped: agreement between the two AI coders below 0.61",
     "hk|cost_of_living|news: dropped: agreement between the two AI coders below 0.61",
     "london|health|news: no official series",
     "london|cost_of_living|news: dropped: agreement between the two AI coders below 0.61"
@@ -7953,43 +8182,41 @@
    "label": "Description: Hong Kong pairs only, periods from 2021 on",
    "news": {
     "h1": {
-     "est": 0.0221,
-     "ci_low": -0.308349,
-     "ci_high": 0.200368,
-     "p_boot": 0.952,
-     "n_obs": 168,
-     "n_pairs": 5,
-     "n_eff_years": 27.0,
-     "p_text": "p = 0.952"
+     "est": 0.038337,
+     "ci_low": -0.150719,
+     "ci_high": 0.203131,
+     "p_boot": 0.722,
+     "n_obs": 305,
+     "n_pairs": 7,
+     "n_eff_years": 38.4,
+     "p_text": "p = 0.722"
     },
     "h2": {
      "worse": {
-      "est": 0.153101,
-      "ci_low": -0.612477,
-      "ci_high": 0.258126,
-      "p_boot": 0.624
+      "est": 0.12643,
+      "ci_low": -0.286286,
+      "ci_high": 0.271089,
+      "p_boot": 0.422
      },
      "better": {
-      "est": -0.234652,
-      "ci_low": -0.491584,
-      "ci_high": 0.141205,
-      "p_boot": 0.326
+      "est": -0.108893,
+      "ci_low": -0.299557,
+      "ci_high": 0.182317,
+      "p_boot": 0.674
      },
      "diff": {
-      "est": 0.387753,
-      "ci_low": -0.65791,
-      "ci_high": 0.638319,
-      "p_boot": 0.466,
-      "p_text": "p = 0.466"
+      "est": 0.235323,
+      "ci_low": -0.30641,
+      "ci_high": 0.439569,
+      "p_boot": 0.398,
+      "p_text": "p = 0.398"
      },
-     "n_obs": 168,
-     "n_pairs": 5,
-     "n_eff_years": 27.0
+     "n_obs": 305,
+     "n_pairs": 7,
+     "n_eff_years": 38.4
     }
    },
    "news_pairs_excluded": [
-    "hk|housing|news: dropped: agreement between the two AI coders below 0.61",
-    "hk|transport|news: dropped: agreement between the two AI coders below 0.61",
     "hk|cost_of_living|news: dropped: agreement between the two AI coders below 0.61",
     "london|health|news: no official series",
     "london|cost_of_living|news: dropped: agreement between the two AI coders below 0.61"
@@ -7999,43 +8226,41 @@
    "label": "Exploratory: every main-panel outlet in every year (no outlets left out of 2015 to 2019)",
    "news": {
     "h1": {
-     "est": 0.068111,
-     "ci_low": 0.010582,
-     "ci_high": 0.095065,
+     "est": 0.068382,
+     "ci_low": 0.015204,
+     "ci_high": 0.093987,
      "p_boot": 0.012,
-     "n_obs": 1739,
-     "n_pairs": 19,
-     "n_eff_years": 184.6,
+     "n_obs": 1994,
+     "n_pairs": 21,
+     "n_eff_years": 205.8,
      "p_text": "p = 0.012"
     },
     "h2": {
      "worse": {
-      "est": 0.050981,
-      "ci_low": 0.010889,
-      "ci_high": 0.087832,
-      "p_boot": 0.02
+      "est": 0.050899,
+      "ci_low": 0.008415,
+      "ci_high": 0.091431,
+      "p_boot": 0.042
      },
      "better": {
-      "est": 0.102715,
-      "ci_low": -0.042508,
-      "ci_high": 0.175222,
-      "p_boot": 0.376
+      "est": 0.102967,
+      "ci_low": -0.041662,
+      "ci_high": 0.173249,
+      "p_boot": 0.272
      },
      "diff": {
-      "est": -0.051734,
-      "ci_low": -0.140307,
-      "ci_high": 0.112054,
-      "p_boot": 0.966,
-      "p_text": "p = 0.966"
+      "est": -0.052068,
+      "ci_low": -0.135783,
+      "ci_high": 0.110615,
+      "p_boot": 0.956,
+      "p_text": "p = 0.956"
      },
-     "n_obs": 1739,
-     "n_pairs": 19,
-     "n_eff_years": 184.6
+     "n_obs": 1994,
+     "n_pairs": 21,
+     "n_eff_years": 205.8
     }
    },
    "news_pairs_excluded": [
-    "hk|housing|news: dropped: agreement between the two AI coders below 0.61",
-    "hk|transport|news: dropped: agreement between the two AI coders below 0.61",
     "hk|cost_of_living|news: dropped: agreement between the two AI coders below 0.61",
     "london|health|news: no official series",
     "london|cost_of_living|news: dropped: agreement between the two AI coders below 0.61"
@@ -8045,43 +8270,41 @@
    "label": "Exploratory: Hong Kong from articles with headline words in the address only (no theme-tag-only labels in any year)",
    "news": {
     "h1": {
-     "est": 0.073197,
-     "ci_low": 0.019133,
-     "ci_high": 0.103404,
-     "p_boot": 0.008,
-     "n_obs": 1739,
-     "n_pairs": 19,
-     "n_eff_years": 184.6,
-     "p_text": "p = 0.008"
+     "est": 0.072222,
+     "ci_low": 0.020419,
+     "ci_high": 0.09778,
+     "p_boot": 0.004,
+     "n_obs": 1994,
+     "n_pairs": 21,
+     "n_eff_years": 205.8,
+     "p_text": "p = 0.004"
     },
     "h2": {
      "worse": {
-      "est": 0.052048,
-      "ci_low": 0.008574,
-      "ci_high": 0.090128,
-      "p_boot": 0.022
+      "est": 0.052162,
+      "ci_low": 0.009028,
+      "ci_high": 0.096116,
+      "p_boot": 0.026
      },
      "better": {
-      "est": 0.115921,
-      "ci_low": -0.030448,
-      "ci_high": 0.187498,
-      "p_boot": 0.212
+      "est": 0.111903,
+      "ci_low": -0.030643,
+      "ci_high": 0.17971,
+      "p_boot": 0.198
      },
      "diff": {
-      "est": -0.063873,
-      "ci_low": -0.157379,
-      "ci_high": 0.102964,
-      "p_boot": 0.824,
-      "p_text": "p = 0.824"
+      "est": -0.059741,
+      "ci_low": -0.148574,
+      "ci_high": 0.102486,
+      "p_boot": 0.852,
+      "p_text": "p = 0.852"
      },
-     "n_obs": 1739,
-     "n_pairs": 19,
-     "n_eff_years": 184.6
+     "n_obs": 1994,
+     "n_pairs": 21,
+     "n_eff_years": 205.8
     }
    },
    "news_pairs_excluded": [
-    "hk|housing|news: dropped: agreement between the two AI coders below 0.61",
-    "hk|transport|news: dropped: agreement between the two AI coders below 0.61",
     "hk|cost_of_living|news: dropped: agreement between the two AI coders below 0.61",
     "london|health|news: no official series",
     "london|cost_of_living|news: dropped: agreement between the two AI coders below 0.61"
@@ -8091,43 +8314,41 @@
    "label": "Exploratory: bootstrap with 24-month blocks (wider intervals if changes are persistent)",
    "news": {
     "h1": {
-     "est": 0.071482,
-     "ci_low": 0.028477,
-     "ci_high": 0.099269,
+     "est": 0.070438,
+     "ci_low": 0.029591,
+     "ci_high": 0.093145,
      "p_boot": 0.002,
-     "n_obs": 1739,
-     "n_pairs": 19,
-     "n_eff_years": 184.6,
+     "n_obs": 1994,
+     "n_pairs": 21,
+     "n_eff_years": 205.8,
      "p_text": "p = 0.002"
     },
     "h2": {
      "worse": {
-      "est": 0.055109,
-      "ci_low": 0.030214,
-      "ci_high": 0.116475,
-      "p_boot": 0.002
+      "est": 0.053464,
+      "ci_low": 0.030843,
+      "ci_high": 0.09788,
+      "p_boot": 0.004
      },
      "better": {
-      "est": 0.104557,
-      "ci_low": -0.030707,
-      "ci_high": 0.162574,
-      "p_boot": 0.228
+      "est": 0.104015,
+      "ci_low": -0.024791,
+      "ci_high": 0.153974,
+      "p_boot": 0.192
      },
      "diff": {
-      "est": -0.049448,
-      "ci_low": -0.113551,
-      "ci_high": 0.108458,
-      "p_boot": 0.682,
-      "p_text": "p = 0.682"
+      "est": -0.050551,
+      "ci_low": -0.101046,
+      "ci_high": 0.104432,
+      "p_boot": 0.79,
+      "p_text": "p = 0.790"
      },
-     "n_obs": 1739,
-     "n_pairs": 19,
-     "n_eff_years": 184.6
+     "n_obs": 1994,
+     "n_pairs": 21,
+     "n_eff_years": 205.8
     }
    },
    "news_pairs_excluded": [
-    "hk|housing|news: dropped: agreement between the two AI coders below 0.61",
-    "hk|transport|news: dropped: agreement between the two AI coders below 0.61",
     "hk|cost_of_living|news: dropped: agreement between the two AI coders below 0.61",
     "london|health|news: no official series",
     "london|cost_of_living|news: dropped: agreement between the two AI coders below 0.61"
@@ -8181,106 +8402,106 @@
  "hk_by_outlet": {
   "2015_2019": {
    "hkcna": {
-    "community": 0.005613,
-    "cost_of_living": 0.007251,
-    "culture": 0.000487,
-    "economy": 0.141373,
-    "education": 0.039209,
-    "environment": 0.06865,
-    "governance": 0.339235,
-    "health": 0.076614,
-    "housing": 0.012192,
-    "not_civic": 0.13102,
-    "safety": 0.127517,
-    "technology": 0.014022,
-    "transport": 0.036819
+    "community": 0.005599,
+    "cost_of_living": 0.005374,
+    "culture": 0.000162,
+    "economy": 0.174974,
+    "education": 0.03884,
+    "environment": 0.06989,
+    "governance": 0.338409,
+    "health": 0.073461,
+    "housing": 0.010978,
+    "not_civic": 0.105644,
+    "safety": 0.115411,
+    "technology": 0.014435,
+    "transport": 0.046822
    },
    "orientaldaily": {
-    "community": 0.004241,
-    "cost_of_living": 0.009449,
+    "community": 0.004413,
+    "cost_of_living": 0.00777,
     "culture": 0.000158,
-    "economy": 0.157281,
-    "education": 0.052248,
-    "environment": 0.074734,
-    "governance": 0.271678,
-    "health": 0.07977,
-    "housing": 0.033526,
-    "not_civic": 0.091059,
-    "safety": 0.165401,
-    "technology": 0.00593,
-    "transport": 0.054525
+    "economy": 0.183526,
+    "education": 0.050647,
+    "environment": 0.078862,
+    "governance": 0.264873,
+    "health": 0.075777,
+    "housing": 0.032541,
+    "not_civic": 0.070991,
+    "safety": 0.146372,
+    "technology": 0.00676,
+    "transport": 0.077309
    },
    "scmp": {
-    "community": 0.020736,
-    "cost_of_living": 0.006514,
-    "culture": 0.015283,
-    "economy": 0.077047,
-    "education": 0.044566,
-    "environment": 0.051619,
-    "governance": 0.336708,
-    "health": 0.071926,
-    "housing": 0.031797,
-    "not_civic": 0.119098,
-    "safety": 0.168483,
-    "technology": 0.009505,
-    "transport": 0.046716
+    "community": 0.018915,
+    "cost_of_living": 0.005124,
+    "culture": 0.014583,
+    "economy": 0.08678,
+    "education": 0.042893,
+    "environment": 0.055519,
+    "governance": 0.323123,
+    "health": 0.068314,
+    "housing": 0.033859,
+    "not_civic": 0.129998,
+    "safety": 0.154714,
+    "technology": 0.009172,
+    "transport": 0.057006
    }
   },
   "2020_2026": {
    "hkcna": {
-    "community": 0.00444,
-    "cost_of_living": 0.008145,
-    "culture": 0.00043,
-    "economy": 0.101679,
-    "education": 0.045673,
-    "environment": 0.050153,
-    "governance": 0.382162,
-    "health": 0.198024,
-    "housing": 0.004552,
-    "not_civic": 0.095525,
-    "safety": 0.062158,
-    "technology": 0.015822,
-    "transport": 0.031237
+    "community": 0.004699,
+    "cost_of_living": 0.006934,
+    "culture": 0.000116,
+    "economy": 0.124414,
+    "education": 0.046259,
+    "environment": 0.051978,
+    "governance": 0.375779,
+    "health": 0.195746,
+    "housing": 0.004512,
+    "not_civic": 0.078977,
+    "safety": 0.055201,
+    "technology": 0.015641,
+    "transport": 0.039745
    },
    "orientaldaily": {
-    "community": 0.003088,
-    "cost_of_living": 0.012703,
-    "culture": 0.002931,
-    "economy": 0.194601,
-    "education": 0.017455,
-    "environment": 0.037128,
-    "governance": 0.142375,
-    "health": 0.156236,
-    "housing": 0.056159,
-    "not_civic": 0.27398,
-    "safety": 0.06731,
-    "technology": 0.005673,
-    "transport": 0.030361
+    "community": 0.00282,
+    "cost_of_living": 0.010221,
+    "culture": 0.002896,
+    "economy": 0.2513,
+    "education": 0.017003,
+    "environment": 0.042994,
+    "governance": 0.124202,
+    "health": 0.156444,
+    "housing": 0.058571,
+    "not_civic": 0.227702,
+    "safety": 0.063441,
+    "technology": 0.005337,
+    "transport": 0.03707
    },
    "scmp": {
-    "community": 0.011997,
-    "cost_of_living": 0.010957,
-    "culture": 0.013162,
-    "economy": 0.102181,
-    "education": 0.055858,
-    "environment": 0.051098,
-    "governance": 0.267322,
-    "health": 0.167682,
-    "housing": 0.028267,
-    "not_civic": 0.102862,
-    "safety": 0.154458,
-    "technology": 0.012097,
-    "transport": 0.02206
+    "community": 0.010648,
+    "cost_of_living": 0.008774,
+    "culture": 0.012311,
+    "economy": 0.117277,
+    "education": 0.056327,
+    "environment": 0.055519,
+    "governance": 0.244092,
+    "health": 0.16587,
+    "housing": 0.030985,
+    "not_civic": 0.10549,
+    "safety": 0.150581,
+    "technology": 0.01075,
+    "transport": 0.031376
    }
   }
  },
  "verdicts": {
   "h1_news": "supported",
-  "h1_news_sentence": "For news coverage, attention rose 0.07 standard deviations for each standard deviation the official measure worsened (95% interval 0.02 to 0.10, 19 city and category pairs, about 185 independent pair-years). That is a weak link, and the interval excludes zero, so H1 is supported for news coverage.",
+  "h1_news_sentence": "For news coverage, attention rose 0.07 standard deviations for each standard deviation the official measure worsened (95% interval 0.02 to 0.10, 21 city and category pairs, about 206 independent pair-years). That is a weak link, and the interval excludes zero, so H1 is supported for news coverage.",
   "h2_news": "not supported",
-  "h2_news_sentence": "For news coverage, the reaction to worsening and to improving could not be told apart. The slope was 0.06 when the problem worsened and 0.10 when it improved. The difference was -0.05 (95% interval -0.14 to 0.12). The interval includes zero, so H2 is not supported for news coverage.",
+  "h2_news_sentence": "For news coverage, the reaction to worsening and to improving could not be told apart. The slope was 0.05 when the problem worsened and 0.10 when it improved. The difference was -0.05 (95% interval -0.14 to 0.11). The interval includes zero, so H2 is not supported for news coverage.",
   "h3_news": "not supported",
-  "h3_news_sentence": "For news coverage, Safety showed the largest gap in 1 of 3 cities. Hong Kong: Safety ranked 1 of 5 (70% of periods moved in opposite directions; the largest was Safety at 70%). New York City: Safety ranked 4 of 8 (45% of periods moved in opposite directions; the largest was Education at 67%). London: Safety ranked 6 of 6 (35% of periods moved in opposite directions; the largest was Housing at 58%). H3 predicted the largest gap in at least two cities, so it is not supported.",
+  "h3_news_sentence": "For news coverage, Safety showed the largest gap in 1 of 3 cities. Hong Kong: Safety ranked 1 of 7 (70% of periods moved in opposite directions; the largest was Safety at 70%). New York City: Safety ranked 4 of 8 (45% of periods moved in opposite directions; the largest was Education at 67%). London: Safety ranked 6 of 6 (34% of periods moved in opposite directions; the largest was Housing at 59%). H3 predicted the largest gap in at least two cities, so it is not supported.",
   "h1_search": "supported",
   "h1_search_sentence": "For search interest, attention rose 0.26 standard deviations for each standard deviation the official measure worsened (95% interval 0.19 to 0.42, 18 city and category pairs, about 336 independent pair-years). That is a weak link, and the interval excludes zero, so H1 is supported for search interest.",
   "h2_search": "not supported",
@@ -8296,7 +8517,7 @@
      "official_z_vs_2015_2019": 6.312037,
      "official_latest_period": "2025-12",
      "baseline_points": 5,
-     "news_share_pct_latest_12m": 10.388104,
+     "news_share_pct_latest_12m": 10.181624,
      "official_rank": 1,
      "attention_rank": 2
     },
@@ -8305,7 +8526,7 @@
      "official_z_vs_2015_2019": 2.809429,
      "official_latest_period": "2026-10",
      "baseline_points": 60,
-     "news_share_pct_latest_12m": 14.711428,
+     "news_share_pct_latest_12m": 20.108459,
      "official_rank": 2,
      "attention_rank": 1
     },
@@ -8314,7 +8535,7 @@
      "official_z_vs_2015_2019": 0.117057,
      "official_latest_period": "2026-09",
      "baseline_points": 60,
-     "news_share_pct_latest_12m": 3.574983,
+     "news_share_pct_latest_12m": 3.691281,
      "official_rank": 4,
      "attention_rank": 7
     },
@@ -8323,16 +8544,16 @@
      "official_z_vs_2015_2019": -4.233423,
      "official_latest_period": "2026-08",
      "baseline_points": 60,
-     "news_share_pct_latest_12m": 3.798618,
+     "news_share_pct_latest_12m": 4.822664,
      "official_rank": 7,
-     "attention_rank": 6
+     "attention_rank": 5
     },
     {
      "category": "environment",
      "official_z_vs_2015_2019": -1.192296,
      "official_latest_period": "2026-05",
      "baseline_points": 60,
-     "news_share_pct_latest_12m": 4.89352,
+     "news_share_pct_latest_12m": 5.453724,
      "official_rank": 5,
      "attention_rank": 4
     },
@@ -8341,7 +8562,7 @@
      "official_z_vs_2015_2019": -10.448433,
      "official_latest_period": "2026-09",
      "baseline_points": 6,
-     "news_share_pct_latest_12m": 6.244767,
+     "news_share_pct_latest_12m": 5.944296,
      "official_rank": 8,
      "attention_rank": 3
     },
@@ -8350,21 +8571,21 @@
      "official_z_vs_2015_2019": -3.345334,
      "official_latest_period": "2025-08",
      "baseline_points": 5,
-     "news_share_pct_latest_12m": 4.231992,
+     "news_share_pct_latest_12m": 4.331815,
      "official_rank": 6,
-     "attention_rank": 5
+     "attention_rank": 6
     },
     {
      "category": "cost_of_living",
      "official_z_vs_2015_2019": 0.12935,
      "official_latest_period": "2026-09",
      "baseline_points": 60,
-     "news_share_pct_latest_12m": 1.616927,
+     "news_share_pct_latest_12m": 1.278515,
      "official_rank": 3,
      "attention_rank": 8
     }
    ],
-   "spearman_rank_correlation": 0.238095,
+   "spearman_rank_correlation": 0.214286,
    "n_categories": 8
   },
   "nyc": {
@@ -8374,7 +8595,7 @@
      "official_z_vs_2015_2019": 3.102187,
      "official_latest_period": "2026-09",
      "baseline_points": 60,
-     "news_share_pct_latest_12m": 25.363909,
+     "news_share_pct_latest_12m": 24.563631,
      "official_rank": 2,
      "attention_rank": 1
     },
@@ -8383,7 +8604,7 @@
      "official_z_vs_2015_2019": 1.14203,
      "official_latest_period": "2026-09",
      "baseline_points": 60,
-     "news_share_pct_latest_12m": 2.162909,
+     "news_share_pct_latest_12m": 2.238696,
      "official_rank": 4,
      "attention_rank": 7
     },
@@ -8392,7 +8613,7 @@
      "official_z_vs_2015_2019": 19.29131,
      "official_latest_period": "2026-10",
      "baseline_points": 60,
-     "news_share_pct_latest_12m": 4.198612,
+     "news_share_pct_latest_12m": 4.418044,
      "official_rank": 1,
      "attention_rank": 4
     },
@@ -8401,7 +8622,7 @@
      "official_z_vs_2015_2019": -2.007267,
      "official_latest_period": "2026-10",
      "baseline_points": 60,
-     "news_share_pct_latest_12m": 9.326893,
+     "news_share_pct_latest_12m": 10.290763,
      "official_rank": 6,
      "attention_rank": 2
     },
@@ -8410,7 +8631,7 @@
      "official_z_vs_2015_2019": 0.694941,
      "official_latest_period": "2026-05",
      "baseline_points": 60,
-     "news_share_pct_latest_12m": 5.720132,
+     "news_share_pct_latest_12m": 5.996457,
      "official_rank": 5,
      "attention_rank": 3
     },
@@ -8419,25 +8640,25 @@
      "official_z_vs_2015_2019": null,
      "official_latest_period": null,
      "baseline_points": 0,
-     "news_share_pct_latest_12m": 3.392575,
+     "news_share_pct_latest_12m": 3.103103,
      "official_rank": null,
-     "attention_rank": 5
+     "attention_rank": 6
     },
     {
      "category": "education",
      "official_z_vs_2015_2019": -2.890387,
      "official_latest_period": "2025-08",
      "baseline_points": 5,
-     "news_share_pct_latest_12m": 3.043384,
+     "news_share_pct_latest_12m": 3.244054,
      "official_rank": 7,
-     "attention_rank": 6
+     "attention_rank": 5
     },
     {
      "category": "cost_of_living",
      "official_z_vs_2015_2019": 2.457741,
      "official_latest_period": "2026-09",
      "baseline_points": 60,
-     "news_share_pct_latest_12m": 0.545819,
+     "news_share_pct_latest_12m": 0.669342,
      "official_rank": 3,
      "attention_rank": 8
     }
@@ -8452,7 +8673,7 @@
      "official_z_vs_2015_2019": 1.251922,
      "official_latest_period": "2026-10",
      "baseline_points": 60,
-     "news_share_pct_latest_12m": 18.460936,
+     "news_share_pct_latest_12m": 18.151291,
      "official_rank": 3,
      "attention_rank": 1
     },
@@ -8461,7 +8682,7 @@
      "official_z_vs_2015_2019": 2.222151,
      "official_latest_period": "2026-09",
      "baseline_points": 60,
-     "news_share_pct_latest_12m": 3.258712,
+     "news_share_pct_latest_12m": 3.360307,
      "official_rank": 1,
      "attention_rank": 7
     },
@@ -8470,16 +8691,16 @@
      "official_z_vs_2015_2019": 0.216261,
      "official_latest_period": "2026-09",
      "baseline_points": 60,
-     "news_share_pct_latest_12m": 3.824863,
+     "news_share_pct_latest_12m": 4.17118,
      "official_rank": 4,
-     "attention_rank": 5
+     "attention_rank": 4
     },
     {
      "category": "transport",
      "official_z_vs_2015_2019": 0.18854,
      "official_latest_period": "2025-12",
      "baseline_points": 60,
-     "news_share_pct_latest_12m": 8.497693,
+     "news_share_pct_latest_12m": 8.849826,
      "official_rank": 5,
      "attention_rank": 2
     },
@@ -8488,16 +8709,16 @@
      "official_z_vs_2015_2019": -3.584166,
      "official_latest_period": "2026-05",
      "baseline_points": 60,
-     "news_share_pct_latest_12m": 3.82434,
+     "news_share_pct_latest_12m": 4.125526,
      "official_rank": 7,
-     "attention_rank": 6
+     "attention_rank": 5
     },
     {
      "category": "health",
      "official_z_vs_2015_2019": null,
      "official_latest_period": null,
      "baseline_points": 0,
-     "news_share_pct_latest_12m": 4.946701,
+     "news_share_pct_latest_12m": 4.375773,
      "official_rank": null,
      "attention_rank": 3
     },
@@ -8506,21 +8727,21 @@
      "official_z_vs_2015_2019": -0.547137,
      "official_latest_period": "2026-08",
      "baseline_points": 4,
-     "news_share_pct_latest_12m": 4.050304,
+     "news_share_pct_latest_12m": 3.79615,
      "official_rank": 6,
-     "attention_rank": 4
+     "attention_rank": 6
     },
     {
      "category": "cost_of_living",
      "official_z_vs_2015_2019": 1.456726,
      "official_latest_period": "2026-09",
      "baseline_points": 60,
-     "news_share_pct_latest_12m": 1.447571,
+     "news_share_pct_latest_12m": 0.972868,
      "official_rank": 2,
      "attention_rank": 8
     }
    ],
-   "spearman_rank_correlation": -0.357143,
+   "spearman_rank_correlation": -0.321429,
    "n_categories": 7
   }
  },
@@ -8532,92 +8753,92 @@
      "peak_event_evidence": "A seeded sample of eight Governance stories from June 2019 is about the extradition bill rallies, the police response and the Chief Executive.",
      "peak_event_named_by": "AI, after reading a seeded sample of the month's coverage; for Cayden to confirm",
      "yearly_mean_share_pct": {
-      "2015": 31.771559,
-      "2016": 36.245583,
-      "2017": 33.458458,
-      "2018": 28.25951,
-      "2019": 38.460573,
-      "2020": 28.779099,
-      "2021": 32.311951,
-      "2022": 24.43778,
-      "2023": 24.920047,
-      "2024": 25.964039,
-      "2025": 24.299631,
-      "2026": 23.253358
+      "2015": 29.497502,
+      "2016": 34.684685,
+      "2017": 31.106106,
+      "2018": 26.609198,
+      "2019": 39.429424,
+      "2020": 28.651361,
+      "2021": 31.497016,
+      "2022": 22.281386,
+      "2023": 22.982746,
+      "2024": 24.042961,
+      "2025": 22.22433,
+      "2026": 21.108561
      },
      "peak_month": "2019-06",
-     "peak_share_pct": 53.333333,
-     "mean_2015_2019": 33.67079,
-     "mean_2023_2026": 24.668221
+     "peak_share_pct": 52.666667,
+     "mean_2015_2019": 32.312296,
+     "mean_2023_2026": 22.654045
     },
     "culture": {
      "peak_event": null,
      "peak_event_evidence": null,
      "peak_event_named_by": null,
      "yearly_mean_share_pct": {
-      "2015": 2.092529,
-      "2016": 1.952178,
-      "2017": 1.476476,
-      "2018": 1.300631,
-      "2019": 0.866833,
-      "2020": 0.174234,
-      "2021": 0.510087,
-      "2022": 0.296668,
-      "2023": 0.848849,
-      "2024": 0.863159,
-      "2025": 0.719043,
-      "2026": 0.377903
+      "2015": 1.956029,
+      "2016": 1.776777,
+      "2017": 1.626627,
+      "2018": 1.126126,
+      "2019": 0.847365,
+      "2020": 0.246405,
+      "2021": 0.543044,
+      "2022": 0.235799,
+      "2023": 0.802735,
+      "2024": 0.750104,
+      "2025": 0.587043,
+      "2026": 0.349158
      },
-     "peak_month": "2016-03",
-     "peak_share_pct": 4.204204,
-     "mean_2015_2019": 1.528326,
-     "mean_2023_2026": 0.71634
+     "peak_month": "2017-01",
+     "peak_share_pct": 4.504505,
+     "mean_2015_2019": 1.458289,
+     "mean_2023_2026": 0.634134
     },
     "technology": {
      "peak_event": null,
      "peak_event_evidence": null,
      "peak_event_named_by": null,
      "yearly_mean_share_pct": {
-      "2015": 0.864028,
-      "2016": 0.800952,
-      "2017": 1.176176,
-      "2018": 1.64897,
-      "2019": 0.254992,
-      "2020": 0.492851,
-      "2021": 0.566834,
-      "2022": 0.862055,
-      "2023": 1.512314,
-      "2024": 1.571262,
-      "2025": 1.43457,
-      "2026": 1.47381
+      "2015": 0.891328,
+      "2016": 0.700701,
+      "2017": 1.126126,
+      "2018": 1.599591,
+      "2019": 0.266096,
+      "2020": 0.500335,
+      "2021": 0.665511,
+      "2022": 0.770897,
+      "2023": 1.329811,
+      "2024": 1.560656,
+      "2025": 1.257017,
+      "2026": 1.384198
      },
-     "peak_month": "2018-08",
-     "peak_share_pct": 3.571429,
-     "mean_2015_2019": 0.950464,
-     "mean_2023_2026": 1.49904
+     "peak_month": "2018-11",
+     "peak_share_pct": 3.303303,
+     "mean_2015_2019": 0.917199,
+     "mean_2023_2026": 1.382865
     },
     "community": {
      "peak_event": null,
      "peak_event_evidence": null,
      "peak_event_named_by": null,
      "yearly_mean_share_pct": {
-      "2015": 2.36553,
-      "2016": 1.902279,
-      "2017": 1.876877,
-      "2018": 2.150812,
-      "2019": 2.096931,
-      "2020": 0.567373,
-      "2021": 0.921742,
-      "2022": 0.398253,
-      "2023": 0.873471,
-      "2024": 0.617192,
-      "2025": 0.618073,
-      "2026": 0.523579
+      "2015": 2.155993,
+      "2016": 1.726727,
+      "2017": 1.801802,
+      "2018": 1.901232,
+      "2019": 1.89374,
+      "2020": 0.474167,
+      "2021": 0.666226,
+      "2022": 0.447343,
+      "2023": 0.90999,
+      "2024": 0.525485,
+      "2025": 0.610694,
+      "2026": 0.60288
      },
      "peak_month": "2019-05",
-     "peak_share_pct": 7.142857,
-     "mean_2015_2019": 2.07362,
-     "mean_2023_2026": 0.663927
+     "peak_share_pct": 5.952381,
+     "mean_2015_2019": 1.89149,
+     "mean_2023_2026": 0.664844
     }
    },
    "nyc": {
@@ -8626,92 +8847,92 @@
      "peak_event_evidence": "A seeded sample of eight Governance stories from June 2025 is mostly about the mayoral primary: debates, endorsements and daily campaign updates.",
      "peak_event_named_by": "AI, after reading a seeded sample of the month's coverage; for Cayden to confirm",
      "yearly_mean_share_pct": {
-      "2015": 13.65096,
-      "2016": 17.013445,
-      "2017": 20.414073,
-      "2018": 24.313152,
-      "2019": 21.646557,
-      "2020": 22.165448,
-      "2021": 29.910275,
-      "2022": 24.749759,
-      "2023": 25.922892,
-      "2024": 26.190145,
-      "2025": 29.566839,
-      "2026": 23.879585
+      "2015": 16.813842,
+      "2016": 18.410585,
+      "2017": 21.95475,
+      "2018": 25.142055,
+      "2019": 22.467336,
+      "2020": 23.907198,
+      "2021": 30.593369,
+      "2022": 23.89079,
+      "2023": 26.525083,
+      "2024": 26.335125,
+      "2025": 28.925708,
+      "2026": 23.363881
      },
      "peak_month": "2025-06",
-     "peak_share_pct": 42.813608,
-     "mean_2015_2019": 19.505208,
-     "mean_2023_2026": 26.499008
+     "peak_share_pct": 43.184427,
+     "mean_2015_2019": 21.027949,
+     "mean_2023_2026": 26.414561
     },
     "culture": {
      "peak_event": null,
      "peak_event_evidence": null,
      "peak_event_named_by": null,
      "yearly_mean_share_pct": {
-      "2015": 0.900124,
-      "2016": 0.639566,
-      "2017": 0.885062,
-      "2018": 0.907143,
-      "2019": 1.285996,
-      "2020": 1.155804,
-      "2021": 1.501273,
-      "2022": 1.597747,
-      "2023": 0.790206,
-      "2024": 0.894803,
-      "2025": 0.979043,
-      "2026": 0.730632
+      "2015": 0.910499,
+      "2016": 0.925296,
+      "2017": 0.644919,
+      "2018": 0.915052,
+      "2019": 1.294047,
+      "2020": 1.067103,
+      "2021": 1.506566,
+      "2022": 1.145623,
+      "2023": 0.724986,
+      "2024": 0.694692,
+      "2025": 0.783955,
+      "2026": 0.706672
      },
-     "peak_month": "2022-10",
-     "peak_share_pct": 5.005214,
-     "mean_2015_2019": 0.923976,
-     "mean_2023_2026": 0.853803
+     "peak_month": "2018-04",
+     "peak_share_pct": 3.733734,
+     "mean_2015_2019": 0.938428,
+     "mean_2023_2026": 0.728485
     },
     "technology": {
      "peak_event": "the July 2019 power blackout in Manhattan",
      "peak_event_evidence": "All eight sampled Technology stories from July 2019 are about the Con Edison blackout and other power outages. Only 12 stories with headline words carry the label that month.",
      "peak_event_named_by": "AI, after reading a seeded sample of the month's coverage; for Cayden to confirm",
      "yearly_mean_share_pct": {
-      "2015": 0.220008,
-      "2016": 0.5386,
-      "2017": 0.46401,
-      "2018": 0.109768,
-      "2019": 0.684523,
-      "2020": 0.237521,
-      "2021": 0.067941,
-      "2022": 0.229761,
-      "2023": 0.356263,
-      "2024": 0.472679,
-      "2025": 0.248685,
-      "2026": 0.636658
+      "2015": 0.231855,
+      "2016": 0.661556,
+      "2017": 0.346258,
+      "2018": 0.172611,
+      "2019": 0.512856,
+      "2020": 0.188847,
+      "2021": 0.104061,
+      "2022": 0.276282,
+      "2023": 0.217296,
+      "2024": 0.267166,
+      "2025": 0.216155,
+      "2026": 0.587087
      },
      "peak_month": "2019-07",
-     "peak_share_pct": 4.182072,
-     "mean_2015_2019": 0.40649,
-     "mean_2023_2026": 0.419524
+     "peak_share_pct": 3.921606,
+     "mean_2015_2019": 0.387623,
+     "mean_2023_2026": 0.310398
     },
     "community": {
      "peak_event": null,
      "peak_event_evidence": null,
      "peak_event_named_by": null,
      "yearly_mean_share_pct": {
-      "2015": 1.979002,
-      "2016": 3.018265,
-      "2017": 2.476061,
-      "2018": 2.647187,
-      "2019": 2.423758,
-      "2020": 3.288205,
-      "2021": 2.574392,
-      "2022": 1.561101,
-      "2023": 2.26036,
-      "2024": 1.719695,
-      "2025": 1.305535,
-      "2026": 2.552156
+      "2015": 1.693228,
+      "2016": 1.999909,
+      "2017": 1.851056,
+      "2018": 1.937719,
+      "2019": 1.514738,
+      "2020": 2.220655,
+      "2021": 1.679183,
+      "2022": 1.541171,
+      "2023": 2.039478,
+      "2024": 1.422029,
+      "2025": 1.027399,
+      "2026": 1.812275
      },
-     "peak_month": "2020-01",
-     "peak_share_pct": 9.158095,
-     "mean_2015_2019": 2.517835,
-     "mean_2023_2026": 1.933666
+     "peak_month": "2015-11",
+     "peak_share_pct": 5.427678,
+     "mean_2015_2019": 1.801128,
+     "mean_2023_2026": 1.564992
     }
    },
    "london": {
@@ -8720,92 +8941,92 @@
      "peak_event_evidence": "A seeded sample of eight Governance stories from April 2015 is mostly about local candidates, hustings and the count for the May 2015 general election, plus the Tower Hamlets election court verdict.",
      "peak_event_named_by": "AI, after reading a seeded sample of the month's coverage; for Cayden to confirm",
      "yearly_mean_share_pct": {
-      "2015": 13.24588,
-      "2016": 8.864401,
-      "2017": 8.233975,
-      "2018": 10.124687,
-      "2019": 12.227889,
-      "2020": 10.675185,
-      "2021": 10.462541,
-      "2022": 11.325332,
-      "2023": 6.36068,
-      "2024": 6.896579,
-      "2025": 4.618863,
-      "2026": 4.926204
+      "2015": 13.009604,
+      "2016": 7.972757,
+      "2017": 7.127419,
+      "2018": 9.058044,
+      "2019": 10.804436,
+      "2020": 8.455998,
+      "2021": 8.912144,
+      "2022": 10.519648,
+      "2023": 6.236451,
+      "2024": 6.818744,
+      "2025": 4.057335,
+      "2026": 3.940845
      },
      "peak_month": "2015-04",
-     "peak_share_pct": 27.140803,
-     "mean_2015_2019": 10.493493,
-     "mean_2023_2026": 5.73425
+     "peak_share_pct": 28.037789,
+     "mean_2015_2019": 9.536568,
+     "mean_2023_2026": 5.320844
     },
     "culture": {
      "peak_event": null,
      "peak_event_evidence": null,
      "peak_event_named_by": null,
      "yearly_mean_share_pct": {
-      "2015": 1.09263,
-      "2016": 1.874364,
-      "2017": 1.923969,
-      "2018": 2.00987,
-      "2019": 1.853336,
-      "2020": 2.29046,
-      "2021": 1.727136,
-      "2022": 1.262051,
-      "2023": 1.643179,
-      "2024": 1.551314,
-      "2025": 1.815472,
-      "2026": 2.570224
+      "2015": 1.07783,
+      "2016": 1.621682,
+      "2017": 1.463512,
+      "2018": 1.711928,
+      "2019": 1.729201,
+      "2020": 1.939638,
+      "2021": 1.332996,
+      "2022": 0.908406,
+      "2023": 1.30235,
+      "2024": 1.155527,
+      "2025": 1.468927,
+      "2026": 2.358718
      },
-     "peak_month": "2023-08",
-     "peak_share_pct": 3.720539,
-     "mean_2015_2019": 1.76199,
-     "mean_2023_2026": 1.865692
+     "peak_month": "2026-03",
+     "peak_share_pct": 3.622731,
+     "mean_2015_2019": 1.528339,
+     "mean_2023_2026": 1.537148
     },
     "technology": {
      "peak_event": null,
      "peak_event_evidence": null,
      "peak_event_named_by": null,
      "yearly_mean_share_pct": {
-      "2015": 0.200155,
-      "2016": 0.320081,
-      "2017": 0.335904,
-      "2018": 0.353665,
-      "2019": 0.331106,
-      "2020": 0.470902,
-      "2021": 0.410877,
-      "2022": 0.439842,
-      "2023": 0.347332,
-      "2024": 0.387955,
-      "2025": 0.744448,
-      "2026": 0.488461
+      "2015": 0.151175,
+      "2016": 0.292833,
+      "2017": 0.272418,
+      "2018": 0.244237,
+      "2019": 0.255348,
+      "2020": 0.381878,
+      "2021": 0.309867,
+      "2022": 0.467006,
+      "2023": 0.391802,
+      "2024": 0.346792,
+      "2025": 0.500244,
+      "2026": 0.444352
      },
-     "peak_month": "2020-05",
-     "peak_share_pct": 1.46024,
-     "mean_2015_2019": 0.310013,
-     "mean_2023_2026": 0.492205
+     "peak_month": "2017-05",
+     "peak_share_pct": 1.393809,
+     "mean_2015_2019": 0.244762,
+     "mean_2023_2026": 0.419773
     },
     "community": {
      "peak_event": null,
      "peak_event_evidence": null,
      "peak_event_named_by": null,
      "yearly_mean_share_pct": {
-      "2015": 2.613264,
-      "2016": 3.061167,
-      "2017": 3.131278,
-      "2018": 3.458763,
-      "2019": 3.236769,
-      "2020": 3.510949,
-      "2021": 2.447333,
-      "2022": 1.545202,
-      "2023": 1.844399,
-      "2024": 1.404051,
-      "2025": 1.204374,
-      "2026": 1.918446
+      "2015": 3.062332,
+      "2016": 3.585567,
+      "2017": 3.873402,
+      "2018": 4.48094,
+      "2019": 4.023797,
+      "2020": 4.607691,
+      "2021": 3.058819,
+      "2022": 1.754229,
+      "2023": 1.872965,
+      "2024": 1.574397,
+      "2025": 1.646458,
+      "2026": 2.46316
      },
      "peak_month": "2020-06",
-     "peak_share_pct": 8.388688,
-     "mean_2015_2019": 3.108502,
-     "mean_2023_2026": 1.57866
+     "peak_share_pct": 9.415549,
+     "mean_2015_2019": 3.817799,
+     "mean_2023_2026": 1.864292
     }
    }
   },
@@ -9128,48 +9349,48 @@
   "all_passed": true
  },
  "tables": {
-  "main": "| Source | H1 slope (95% interval) | p | Pairs | Periods | Independent pair-years | Slope when worsening | Slope when improving | Difference (95% interval) |\n| :-- | :-- | --: | --: | --: | --: | :-- | :-- | :-- |\n| News | 0.07 (0.02 to 0.10) | 0.009 | 19 | 1,739 | 185 | 0.06 (0.01 to 0.10) | 0.10 (-0.05 to 0.18) | -0.05 (-0.14 to 0.12) |\n| Search | 0.26 (0.19 to 0.42) | < 0.001 | 18 | 3,980 | 336 | 0.37 (0.22 to 0.59) | 0.17 (0.08 to 0.39) | 0.20 (-0.10 to 0.47) |",
-  "h1_by_category": "| Category | News slope (95% interval) | Cities | Search slope (95% interval) | Cities |\n| :-- | :-- | --: | :-- | --: |\n| Safety | 0.05 (-0.15 to 0.18) | 3 | 0.27 (0.14 to 0.36) | 2 |\n| Economy | 0.08 (0.03 to 0.13) | 3 | 0.58 (0.36 to 0.70) | 3 |\n| Housing | 0.02 (-0.05 to 0.05) | 2 | 0.05 (-0.10 to 0.23) | 3 |\n| Transport | 0.13 (-0.00 to 0.25) | 2 | 0.22 (0.06 to 0.46) | 2 |\n| Environment | 0.13 (0.03 to 0.25) | 3 | 0.41 (0.05 to 0.90) | 3 |\n| Health | 0.45 (-0.44 to 0.50) | 2 | -0.06 (-0.31 to 0.08) | 2 |\n| Education | -0.22 (-0.78 to 0.19) | 3 | not tested | 0 |\n| Cost of Living | 0.10 (-0.11 to 0.22) | 1 | 0.59 (0.43 to 0.74) | 3 |",
-  "h1_by_city": "| City | News slope (95% interval) | Pairs | Search slope (95% interval) | Pairs |\n| :-- | :-- | --: | :-- | --: |\n| Hong Kong | -0.05 (-0.38 to 0.10) | 5 | 0.23 (0.08 to 0.36) | 5 |\n| New York City | 0.08 (0.03 to 0.11) | 8 | 0.31 (0.20 to 0.62) | 7 |\n| London | 0.10 (0.00 to 0.24) | 6 | 0.18 (0.08 to 0.26) | 6 |",
-  "checks": "| Check | News H1 slope (95% interval) | News pairs | News worse minus better | Search H1 slope (95% interval) | Search pairs | Search worse minus better |\n| :-- | :-- | --: | :-- | :-- | --: | :-- |\n| Main model | 0.07 (0.02 to 0.10) | 19 | -0.05 (-0.14 to 0.12) | 0.26 (0.19 to 0.42) | 18 | 0.20 (-0.10 to 0.47) |\n| Backup indicators in place of the main ones | 0.13 (0.07 to 0.21) | 19 | 0.02 (-0.16 to 0.21) | 0.28 (0.17 to 0.37) | 17 | -0.15 (-0.44 to 0.10) |\n| Without 2020 to 2022 | 0.02 (-0.04 to 0.06) | 19 | 0.05 (-0.14 to 0.22) | 0.26 (0.17 to 0.40) | 18 | 0.03 (-0.35 to 0.42) |\n| Without 2020 to 2022 and every other marked break month | 0.03 (-0.06 to 0.15) | 19 | 0.08 (-0.19 to 0.42) | 0.24 (0.17 to 0.31) | 18 | 0.04 (-0.21 to 0.21) |\n| Official series aligned by release date | 0.02 (-0.00 to 0.06) | 19 | 0.04 (-0.05 to 0.13) | 0.18 (0.11 to 0.31) | 18 | 0.23 (-0.05 to 0.45) |\n| All listed outlets in place of the fixed panel | 0.10 (0.01 to 0.14) | 19 | -0.12 (-0.25 to 0.13) | not run |  |  |\n| Negative-tone share in place of all coverage | 0.09 (0.02 to 0.13) | 19 | -0.10 (-0.22 to 0.16) | not run |  |  |\n| Hong Kong without HK China News Agency | 0.07 (0.01 to 0.10) | 19 | -0.05 (-0.14 to 0.12) | not run |  |  |\n| London without the seven borough papers that jumped in volume | 0.06 (0.00 to 0.09) | 19 | -0.04 (-0.14 to 0.12) | not run |  |  |\n| Categories kept or dropped by the validation rule as the plan words it (every validation item, weights by category only) | 0.08 (0.03 to 0.11) | 16 | -0.09 (-0.19 to 0.07) | not run |  |  |\n| Description: Hong Kong pairs only, periods before 2021 (several major outlets closed in 2021) | -0.23 (-1.08 to 0.27) | 5 | 1.21 (-2.32 to 2.54) | not run |  |  |\n| Description: Hong Kong pairs only, periods from 2021 on | 0.02 (-0.31 to 0.20) | 5 | 0.39 (-0.66 to 0.64) | not run |  |  |\n| Exploratory: every main-panel outlet in every year (no outlets left out of 2015 to 2019) | 0.07 (0.01 to 0.10) | 19 | -0.05 (-0.14 to 0.11) | not run |  |  |\n| Exploratory: Hong Kong from articles with headline words in the address only (no theme-tag-only labels in any year) | 0.07 (0.02 to 0.10) | 19 | -0.06 (-0.16 to 0.10) | not run |  |  |\n| Exploratory: bootstrap with 24-month blocks (wider intervals if changes are persistent) | 0.07 (0.03 to 0.10) | 19 | -0.05 (-0.11 to 0.11) | 0.26 (0.19 to 0.45) | 18 | 0.20 (-0.10 to 0.42) |",
-  "pair_level": "| City | Category | Source | Official indicator | Frequency | Periods | r (95% interval) | p | Adjusted p | Opposite directions |\n| :-- | :-- | :-- | :-- | :-- | --: | :-- | --: | --: | --: |\n| Hong Kong | Safety | News | Overall reported crime, annual total | A | 10 | -0.10 (-0.76 to 0.37) | 0.572 | 0.683 | 70% |\n| Hong Kong | Economy | News | Unemployment rate, seasonally adjusted, 3-month moving average | M | 127 | 0.22 (-0.44 to 0.60) | 0.374 | 0.477 | 59% |\n| Hong Kong | Housing | News |  | | | not tested: dropped: agreement between the two AI coders below 0.61 | | | |\n| Hong Kong | Transport | News |  | | | not tested: dropped: agreement between the two AI coders below 0.61 | | | |\n| Hong Kong | Environment | News | NO2 and PM10 (respirable suspended particulates), monthly mean across general stations running since 2005 | M | 124 | 0.00 (-0.13 to 0.11) | 0.972 | 0.992 | 47% |\n| Hong Kong | Health | News | Median waiting time for stable new specialist outpatient cases, mean over cluster and specialty pairs | Q | 29 | -0.25 (-0.84 to 0.36) | 0.344 | 0.477 | 59% |\n| Hong Kong | Education | News | Share of day-school HKDSE candidates with core subjects at 3322 or better (332A from 2024) | A | 9 | -0.20 (-0.81 to 0.33) | 0.366 | 0.477 | 56% |\n| Hong Kong | Cost of Living | News |  | | | not tested: dropped: agreement between the two AI coders below 0.61 | | | |\n| New York City | Safety | News | Felony complaints, NYPD, by report month | M | 128 | 0.34 (0.05 to 0.55) | 0.028 | 0.074 | 45% |\n| New York City | Economy | News | Unemployment rate, seasonally adjusted, New York City | M | 127 | 0.36 (-0.12 to 0.53) | 0.126 | 0.233 | 43% |\n| New York City | Housing | News | People in DHS shelters, monthly average of the daily census | M | 129 | 0.19 (-0.19 to 0.38) | 0.242 | 0.407 | 53% |\n| New York City | Transport | News | Subway weekday terminal on-time performance, system-wide | M | 129 | 0.29 (0.04 to 0.56) | 0.022 | 0.068 | 40% |\n| New York City | Environment | News | PM2.5, monthly mean of daily readings across the five boroughs | M | 124 | 0.32 (0.17 to 0.45) | < 0.001 | 0.004 | 38% |\n| New York City | Health | News | Deaths from all causes occurring in New York City, by month | M | 70 | 0.61 (0.00 to 0.65) | 0.050 | 0.123 | 41% |\n| New York City | Education | News | Four-year graduation rate as of June, NYC public schools | A | 9 | -0.25 (-0.72 to 0.54) | 0.288 | 0.447 | 67% |\n| New York City | Cost of Living | News | CPI all items less shelter, New York metro area | M | 127 | 0.10 (-0.08 to 0.26) | 0.204 | 0.359 | 45% |\n| London | Safety | News | Recorded crime, all offences, Metropolitan Police | M | 129 | 0.45 (0.27 to 0.63) | < 0.001 | 0.004 | 35% |\n| London | Economy | News | Unemployment rate, London, aged 16 and over, seasonally adjusted (ONS YCNI) | M | 126 | 0.46 (0.07 to 0.64) | 0.026 | 0.074 | 42% |\n| London | Housing | News | Private rents index, London (ONS PIPR, with IPHRP joined on before 2015) | M | 128 | -0.13 (-0.45 to 0.22) | 0.510 | 0.629 | 58% |\n| London | Transport | News | Killed or seriously injured road casualties, London, severity-adjusted (DfT) | M | 119 | 0.17 (-0.14 to 0.53) | 0.290 | 0.447 | 43% |\n| London | Environment | News | Nitrogen dioxide, mean of Marylebone Road and Bloomsbury (London Air Quality Network) | M | 85 | 0.10 (-0.14 to 0.41) | 0.356 | 0.477 | 51% |\n| London | Health | News |  | | | not tested: no official series | | | |\n| London | Education | News | Attainment 8 average score, London region, state-funded schools (DfE) | A | 10 | -0.15 (-0.78 to 0.74) | 0.670 | 0.751 | 40% |\n| London | Cost of Living | News |  | | | not tested: dropped: agreement between the two AI coders below 0.61 | | | |\n| Hong Kong | Safety | Search |  | | | not tested: search set too sparse to test (zero in more than 10% of months) | | | |\n| Hong Kong | Economy | Search | Unemployment rate, seasonally adjusted, 3-month moving average | M | 260 | 0.57 (0.30 to 0.74) | < 0.001 | 0.004 | 39% |\n| Hong Kong | Housing | Search | Private domestic rental index, all classes (1999 = 100) | M | 261 | 0.15 (-0.05 to 0.27) | 0.090 | 0.196 | 48% |\n| Hong Kong | Transport | Search |  | | | not tested: search set too sparse to test (zero in more than 10% of months) | | | |\n| Hong Kong | Environment | Search | NO2 and PM10 (respirable suspended particulates), monthly mean across general stations running since 2005 | M | 257 | 0.18 (0.10 to 0.33) | < 0.001 | 0.004 | 39% |\n| Hong Kong | Health | Search | Median waiting time for stable new specialist outpatient cases, mean over cluster and specialty pairs | Q | 29 | -0.30 (-0.76 to 0.08) | 0.108 | 0.222 | 52% |\n| Hong Kong | Education | Search |  | | | not tested: search set too sparse to test (zero in more than 10% of months) | | | |\n| Hong Kong | Cost of Living | Search | Composite CPI excluding the housing section (Oct 2019 to Sep 2020 = 100) | M | 240 | 0.51 (0.14 to 0.71) | 0.004 | 0.015 | 45% |\n| New York City | Safety | Search | Felony complaints, NYPD, by report month | M | 237 | 0.49 (0.24 to 0.66) | < 0.001 | 0.004 | 41% |\n| New York City | Economy | Search | Unemployment rate, seasonally adjusted, New York City | M | 260 | 0.83 (0.56 to 0.90) | < 0.001 | 0.004 | 28% |\n| New York City | Housing | Search | People in DHS shelters, monthly average of the daily census | M | 260 | -0.00 (-0.27 to 0.29) | 0.976 | 0.992 | 45% |\n| New York City | Transport | Search | Subway weekday terminal on-time performance, system-wide | M | 193 | 0.38 (0.07 to 0.67) | 0.014 | 0.047 | 36% |\n| New York City | Environment | Search | PM2.5, monthly mean of daily readings across the five boroughs | M | 251 | 0.48 (0.14 to 0.66) | < 0.001 | 0.004 | 47% |\n| New York City | Health | Search | Deaths from all causes occurring in New York City, by month | M | 70 | -0.06 (-0.13 to 0.55) | 0.694 | 0.755 | 43% |\n| New York City | Education | Search |  | | | not tested: search set too sparse to test (zero in more than 10% of months) | | | |\n| New York City | Cost of Living | Search | CPI all items less shelter, New York metro area | M | 260 | 0.61 (0.42 to 0.73) | < 0.001 | 0.004 | 41% |\n| London | Safety | Search | Recorded crime, all offences, Metropolitan Police | M | 187 | 0.31 (-0.04 to 0.54) | 0.114 | 0.222 | 41% |\n| London | Economy | Search | Unemployment rate, London, aged 16 and over, seasonally adjusted (ONS YCNI) | M | 259 | 0.06 (-0.20 to 0.32) | 0.662 | 0.751 | 40% |\n| London | Housing | Search | Private rents index, London (ONS PIPR, with IPHRP joined on before 2015) | M | 237 | 0.11 (-0.12 to 0.30) | 0.324 | 0.477 | 46% |\n| London | Transport | Search | Killed or seriously injured road casualties, London, severity-adjusted (DfT) | M | 252 | 0.10 (-0.01 to 0.20) | 0.080 | 0.185 | 49% |\n| London | Environment | Search | Nitrogen dioxide, mean of Marylebone Road and Bloomsbury (London Air Quality Network) | M | 206 | 0.02 (-0.13 to 0.12) | 0.992 | 0.992 | 52% |\n| London | Health | Search |  | | | not tested: no official series | | | |\n| London | Education | Search |  | | | not tested: search set too sparse to test (zero in more than 10% of months) | | | |\n| London | Cost of Living | Search | CPI 12-month rate, all items, UK (ONS D7G7) | M | 261 | 0.61 (0.36 to 0.81) | < 0.001 | 0.004 | 35% |",
-  "h3_news": "| Category | Hong Kong | New York City | London |\n| :-- | --: | --: | --: |\n| Safety | 70% (10 years) | 45% (128 months) | 35% (129 months) |\n| Economy | 59% (114 months) | 43% (118 months) | 42% (125 months) |\n| Housing | not tested | 53% (129 months) | 58% (128 months) |\n| Transport | not tested | 40% (129 months) | 43% (119 months) |\n| Environment | 47% (123 months) | 38% (124 months) | 51% (85 months) |\n| Health | 59% (29 quarters) | 41% (70 months) | not tested |\n| Education | 56% (9 years) | 67% (9 years) | 40% (10 years) |\n| Cost of Living | not tested | 45% (104 months) | not tested |",
+  "main": "| Source | H1 slope (95% interval) | p | Pairs | Periods | Independent pair-years | Slope when worsening | Slope when improving | Difference (95% interval) |\n| :-- | :-- | --: | --: | --: | --: | :-- | :-- | :-- |\n| News | 0.07 (0.02 to 0.10) | 0.006 | 21 | 1,994 | 206 | 0.05 (0.01 to 0.10) | 0.10 (-0.04 to 0.17) | -0.05 (-0.14 to 0.11) |\n| Search | 0.26 (0.19 to 0.42) | < 0.001 | 18 | 3,980 | 336 | 0.37 (0.22 to 0.59) | 0.17 (0.08 to 0.39) | 0.20 (-0.10 to 0.47) |",
+  "h1_by_category": "| Category | News slope (95% interval) | Cities | Search slope (95% interval) | Cities |\n| :-- | :-- | --: | :-- | --: |\n| Safety | 0.06 (-0.09 to 0.17) | 3 | 0.27 (0.14 to 0.36) | 2 |\n| Economy | 0.07 (0.01 to 0.11) | 3 | 0.58 (0.36 to 0.70) | 3 |\n| Housing | 0.03 (-0.03 to 0.06) | 3 | 0.05 (-0.10 to 0.23) | 3 |\n| Transport | 0.08 (-0.03 to 0.19) | 3 | 0.22 (0.06 to 0.46) | 2 |\n| Environment | 0.17 (0.07 to 0.29) | 3 | 0.41 (0.05 to 0.90) | 3 |\n| Health | 0.46 (-0.43 to 0.50) | 2 | -0.06 (-0.31 to 0.08) | 2 |\n| Education | -0.25 (-0.85 to 0.25) | 3 | not tested | 0 |\n| Cost of Living | 0.08 (-0.11 to 0.19) | 1 | 0.59 (0.43 to 0.74) | 3 |",
+  "h1_by_city": "| City | News slope (95% interval) | Pairs | Search slope (95% interval) | Pairs |\n| :-- | :-- | --: | :-- | --: |\n| Hong Kong | -0.04 (-0.26 to 0.08) | 7 | 0.23 (0.08 to 0.36) | 5 |\n| New York City | 0.08 (0.03 to 0.11) | 8 | 0.31 (0.20 to 0.62) | 7 |\n| London | 0.11 (-0.01 to 0.26) | 6 | 0.18 (0.08 to 0.26) | 6 |",
+  "checks": "| Check | News H1 slope (95% interval) | News pairs | News worse minus better | Search H1 slope (95% interval) | Search pairs | Search worse minus better |\n| :-- | :-- | --: | :-- | :-- | --: | :-- |\n| Main model | 0.07 (0.02 to 0.10) | 21 | -0.05 (-0.14 to 0.11) | 0.26 (0.19 to 0.42) | 18 | 0.20 (-0.10 to 0.47) |\n| Backup indicators in place of the main ones | 0.13 (0.06 to 0.20) | 21 | 0.02 (-0.17 to 0.20) | 0.28 (0.17 to 0.37) | 17 | -0.15 (-0.44 to 0.10) |\n| Without 2020 to 2022 | 0.02 (-0.05 to 0.06) | 21 | 0.02 (-0.16 to 0.22) | 0.26 (0.17 to 0.40) | 18 | 0.03 (-0.35 to 0.42) |\n| Without 2020 to 2022 and every other marked break month | 0.06 (-0.03 to 0.16) | 21 | 0.04 (-0.19 to 0.40) | 0.24 (0.17 to 0.31) | 18 | 0.04 (-0.21 to 0.21) |\n| Official series aligned by release date | 0.02 (-0.01 to 0.06) | 21 | 0.05 (-0.04 to 0.15) | 0.18 (0.11 to 0.31) | 18 | 0.23 (-0.05 to 0.45) |\n| All listed outlets in place of the fixed panel | 0.08 (0.01 to 0.12) | 21 | -0.09 (-0.22 to 0.16) | not run |  |  |\n| Negative-tone share in place of all coverage | 0.09 (0.03 to 0.13) | 21 | -0.11 (-0.22 to 0.13) | not run |  |  |\n| Hong Kong without HK China News Agency | 0.07 (0.01 to 0.10) | 21 | -0.05 (-0.14 to 0.12) | not run |  |  |\n| London without the seven borough papers that jumped in volume | 0.06 (-0.00 to 0.09) | 21 | -0.05 (-0.13 to 0.12) | not run |  |  |\n| Categories kept or dropped by the validation rule as the plan words it (every validation item, weights by category only) | 0.08 (0.02 to 0.11) | 16 | -0.09 (-0.19 to 0.07) | not run |  |  |\n| Description: Hong Kong pairs only, periods before 2021 (several major outlets closed in 2021) | -0.20 (-0.68 to 0.12) | 7 | 0.84 (-1.28 to 1.52) | not run |  |  |\n| Description: Hong Kong pairs only, periods from 2021 on | 0.04 (-0.15 to 0.20) | 7 | 0.24 (-0.31 to 0.44) | not run |  |  |\n| Exploratory: every main-panel outlet in every year (no outlets left out of 2015 to 2019) | 0.07 (0.02 to 0.09) | 21 | -0.05 (-0.14 to 0.11) | not run |  |  |\n| Exploratory: Hong Kong from articles with headline words in the address only (no theme-tag-only labels in any year) | 0.07 (0.02 to 0.10) | 21 | -0.06 (-0.15 to 0.10) | not run |  |  |\n| Exploratory: bootstrap with 24-month blocks (wider intervals if changes are persistent) | 0.07 (0.03 to 0.09) | 21 | -0.05 (-0.10 to 0.10) | 0.26 (0.19 to 0.45) | 18 | 0.20 (-0.10 to 0.42) |",
+  "pair_level": "| City | Category | Source | Official indicator | Frequency | Periods | r (95% interval) | p | Adjusted p | Opposite directions |\n| :-- | :-- | :-- | :-- | :-- | --: | :-- | --: | --: | --: |\n| Hong Kong | Safety | News | Overall reported crime, annual total | A | 10 | -0.14 (-0.73 to 0.38) | 0.458 | 0.576 | 70% |\n| Hong Kong | Economy | News | Unemployment rate, seasonally adjusted, 3-month moving average | M | 127 | 0.11 (-0.44 to 0.48) | 0.586 | 0.693 | 59% |\n| Hong Kong | Housing | News | Private domestic rental index, all classes (1999 = 100) | M | 128 | 0.35 (0.12 to 0.54) | 0.002 | 0.007 | 37% |\n| Hong Kong | Transport | News | Fatal and serious road traffic accidents | M | 127 | -0.13 (-0.40 to 0.19) | 0.282 | 0.419 | 54% |\n| Hong Kong | Environment | News | NO2 and PM10 (respirable suspended particulates), monthly mean across general stations running since 2005 | M | 124 | 0.02 (-0.11 to 0.12) | 0.856 | 0.902 | 46% |\n| Hong Kong | Health | News | Median waiting time for stable new specialist outpatient cases, mean over cluster and specialty pairs | Q | 29 | -0.25 (-0.83 to 0.35) | 0.336 | 0.452 | 59% |\n| Hong Kong | Education | News | Share of day-school HKDSE candidates with core subjects at 3322 or better (332A from 2024) | A | 9 | -0.12 (-0.75 to 0.43) | 0.564 | 0.687 | 56% |\n| Hong Kong | Cost of Living | News |  | | | not tested: dropped: agreement between the two AI coders below 0.61 | | | |\n| New York City | Safety | News | Felony complaints, NYPD, by report month | M | 128 | 0.38 (0.04 to 0.59) | 0.032 | 0.078 | 45% |\n| New York City | Economy | News | Unemployment rate, seasonally adjusted, New York City | M | 127 | 0.35 (-0.17 to 0.54) | 0.156 | 0.277 | 47% |\n| New York City | Housing | News | People in DHS shelters, monthly average of the daily census | M | 129 | 0.20 (-0.19 to 0.39) | 0.242 | 0.378 | 56% |\n| New York City | Transport | News | Subway weekday terminal on-time performance, system-wide | M | 129 | 0.36 (0.15 to 0.59) | < 0.001 | 0.004 | 34% |\n| New York City | Environment | News | PM2.5, monthly mean of daily readings across the five boroughs | M | 124 | 0.33 (0.17 to 0.50) | < 0.001 | 0.004 | 41% |\n| New York City | Health | News | Deaths from all causes occurring in New York City, by month | M | 70 | 0.59 (0.04 to 0.62) | 0.008 | 0.024 | 44% |\n| New York City | Education | News | Four-year graduation rate as of June, NYC public schools | A | 9 | -0.30 (-0.76 to 0.46) | 0.210 | 0.354 | 67% |\n| New York City | Cost of Living | News | CPI all items less shelter, New York metro area | M | 127 | 0.09 (-0.07 to 0.27) | 0.218 | 0.354 | 42% |\n| London | Safety | News | Recorded crime, all offences, Metropolitan Police | M | 129 | 0.45 (0.27 to 0.62) | < 0.001 | 0.004 | 34% |\n| London | Economy | News | Unemployment rate, London, aged 16 and over, seasonally adjusted (ONS YCNI) | M | 126 | 0.44 (0.09 to 0.61) | 0.024 | 0.062 | 44% |\n| London | Housing | News | Private rents index, London (ONS PIPR, with IPHRP joined on before 2015) | M | 128 | -0.18 (-0.49 to 0.17) | 0.350 | 0.455 | 59% |\n| London | Transport | News | Killed or seriously injured road casualties, London, severity-adjusted (DfT) | M | 119 | 0.17 (-0.13 to 0.52) | 0.290 | 0.419 | 43% |\n| London | Environment | News | Nitrogen dioxide, mean of Marylebone Road and Bloomsbury (London Air Quality Network) | M | 85 | 0.18 (-0.05 to 0.47) | 0.122 | 0.227 | 48% |\n| London | Health | News |  | | | not tested: no official series | | | |\n| London | Education | News | Attainment 8 average score, London region, state-funded schools (DfE) | A | 10 | -0.14 (-0.77 to 0.79) | 0.720 | 0.780 | 40% |\n| London | Cost of Living | News |  | | | not tested: dropped: agreement between the two AI coders below 0.61 | | | |\n| Hong Kong | Safety | Search |  | | | not tested: search set too sparse to test (zero in more than 10% of months) | | | |\n| Hong Kong | Economy | Search | Unemployment rate, seasonally adjusted, 3-month moving average | M | 260 | 0.57 (0.30 to 0.74) | < 0.001 | 0.004 | 39% |\n| Hong Kong | Housing | Search | Private domestic rental index, all classes (1999 = 100) | M | 261 | 0.15 (-0.05 to 0.27) | 0.090 | 0.195 | 48% |\n| Hong Kong | Transport | Search |  | | | not tested: search set too sparse to test (zero in more than 10% of months) | | | |\n| Hong Kong | Environment | Search | NO2 and PM10 (respirable suspended particulates), monthly mean across general stations running since 2005 | M | 257 | 0.18 (0.10 to 0.33) | < 0.001 | 0.004 | 39% |\n| Hong Kong | Health | Search | Median waiting time for stable new specialist outpatient cases, mean over cluster and specialty pairs | Q | 29 | -0.30 (-0.76 to 0.08) | 0.108 | 0.222 | 52% |\n| Hong Kong | Education | Search |  | | | not tested: search set too sparse to test (zero in more than 10% of months) | | | |\n| Hong Kong | Cost of Living | Search | Composite CPI excluding the housing section (Oct 2019 to Sep 2020 = 100) | M | 240 | 0.51 (0.14 to 0.71) | 0.004 | 0.013 | 45% |\n| New York City | Safety | Search | Felony complaints, NYPD, by report month | M | 237 | 0.49 (0.24 to 0.66) | < 0.001 | 0.004 | 41% |\n| New York City | Economy | Search | Unemployment rate, seasonally adjusted, New York City | M | 260 | 0.83 (0.56 to 0.90) | < 0.001 | 0.004 | 28% |\n| New York City | Housing | Search | People in DHS shelters, monthly average of the daily census | M | 260 | -0.00 (-0.27 to 0.29) | 0.976 | 0.992 | 45% |\n| New York City | Transport | Search | Subway weekday terminal on-time performance, system-wide | M | 193 | 0.38 (0.07 to 0.67) | 0.014 | 0.039 | 36% |\n| New York City | Environment | Search | PM2.5, monthly mean of daily readings across the five boroughs | M | 251 | 0.48 (0.14 to 0.66) | < 0.001 | 0.004 | 47% |\n| New York City | Health | Search | Deaths from all causes occurring in New York City, by month | M | 70 | -0.06 (-0.13 to 0.55) | 0.694 | 0.773 | 43% |\n| New York City | Education | Search |  | | | not tested: search set too sparse to test (zero in more than 10% of months) | | | |\n| New York City | Cost of Living | Search | CPI all items less shelter, New York metro area | M | 260 | 0.61 (0.42 to 0.73) | < 0.001 | 0.004 | 41% |\n| London | Safety | Search | Recorded crime, all offences, Metropolitan Police | M | 187 | 0.31 (-0.04 to 0.54) | 0.114 | 0.222 | 41% |\n| London | Economy | Search | Unemployment rate, London, aged 16 and over, seasonally adjusted (ONS YCNI) | M | 259 | 0.06 (-0.20 to 0.32) | 0.662 | 0.759 | 40% |\n| London | Housing | Search | Private rents index, London (ONS PIPR, with IPHRP joined on before 2015) | M | 237 | 0.11 (-0.12 to 0.30) | 0.324 | 0.451 | 46% |\n| London | Transport | Search | Killed or seriously injured road casualties, London, severity-adjusted (DfT) | M | 252 | 0.10 (-0.01 to 0.20) | 0.080 | 0.184 | 49% |\n| London | Environment | Search | Nitrogen dioxide, mean of Marylebone Road and Bloomsbury (London Air Quality Network) | M | 206 | 0.02 (-0.13 to 0.12) | 0.992 | 0.992 | 52% |\n| London | Health | Search |  | | | not tested: no official series | | | |\n| London | Education | Search |  | | | not tested: search set too sparse to test (zero in more than 10% of months) | | | |\n| London | Cost of Living | Search | CPI 12-month rate, all items, UK (ONS D7G7) | M | 261 | 0.61 (0.36 to 0.81) | < 0.001 | 0.004 | 35% |",
+  "h3_news": "| Category | Hong Kong | New York City | London |\n| :-- | --: | --: | --: |\n| Safety | 70% (10 years) | 45% (128 months) | 34% (129 months) |\n| Economy | 59% (114 months) | 47% (118 months) | 44% (125 months) |\n| Housing | 37% (126 months) | 56% (129 months) | 59% (128 months) |\n| Transport | 54% (125 months) | 34% (129 months) | 43% (119 months) |\n| Environment | 46% (123 months) | 41% (124 months) | 48% (85 months) |\n| Health | 59% (29 quarters) | 44% (70 months) | not tested |\n| Education | 56% (9 years) | 67% (9 years) | 40% (10 years) |\n| Cost of Living | not tested | 42% (91 months) | not tested |",
   "h3_search": "| Category | Hong Kong | New York City | London |\n| :-- | --: | --: | --: |\n| Safety | not tested | 41% (234 months) | 41% (187 months) |\n| Economy | 39% (233 months) | 28% (247 months) | 40% (253 months) |\n| Housing | 48% (257 months) | 45% (256 months) | 46% (237 months) |\n| Transport | not tested | 36% (191 months) | 49% (252 months) |\n| Environment | 39% (256 months) | 47% (247 months) | 52% (206 months) |\n| Health | 52% (29 quarters) | 43% (70 months) | not tested |\n| Education | not tested | not tested | not tested |\n| Cost of Living | 45% (240 months) | 41% (257 months) | 35% (258 months) |",
-  "runs_top20": "| City | Category | Source | From | To | Months | Official measure | Attention | Proposed cause (by AI, for Cayden to confirm) | Evidence |\n| :-- | :-- | :-- | :-- | :-- | --: | :-- | :-- | :-- | :-- |\n| New York City | Housing | Search | 2008-10 | 2010-01 | 16 | worsening | falling | attention followed a news cycle rather than conditions | the indicator kept worsening while attention's share fell (Downs's issue-attention cycle); no marked break or event overlaps |\n| New York City | Housing | Search | 2021-03 | 2022-06 | 16 | improving | rising | a real event drew coverage the indicator does not capture | COVID-19 distorts nearly every series |\n| London | Economy | Search | 2007-02 | 2008-04 | 15 | improving | rising | unclear | no marked break or named event overlaps this period |\n| Hong Kong | Economy | News | 2022-05 | 2023-06 | 14 | improving | rising | the two measure different parts of the problem | The unemployment rate fell through this period. A seeded sample of ten Economy stories from the period is about weak consumer spending, calls to reopen the border, rising interest rates and people leaving the city. The category covers business conditions as a whole. The indicator covers jobs only. |\n| London | Economy | News | 2018-02 | 2019-03 | 14 | improving | rising | unclear | no marked break or named event overlaps this period |\n| London | Housing | Search | 2019-03 | 2020-04 | 14 | worsening | falling | attention followed a news cycle rather than conditions | attention share fell while the indicator worsened; the period overlaps: COVID-19 distorts nearly every series (a spike elsewhere lowers every other share) |\n| London | Housing | News | 2023-08 | 2024-07 | 12 | worsening | falling | the two measure different parts of the problem | Private rents rose faster through this period. A seeded sample of ten Housing stories from the borough papers is about council repairs, planning rules and house prices. None of the ten is about rents. |\n| New York City | Safety | Search | 2010-02 | 2011-01 | 12 | improving | rising | unclear | no marked break or named event overlaps this period |\n| London | Safety | Search | 2013-03 | 2014-02 | 12 | improving | rising | the official measure changed how it counts | at least half of these months fall in a counting break marked in the official series: fraud offences moved from police forces to Action Fraud; the source note says March 2013 and the counts fall in February 2013 (found tonight; not in the methodology's breaks table) |\n| London | Economy | Search | 2012-07 | 2013-06 | 12 | improving | rising | unclear | no marked break or named event overlaps this period |\n| Hong Kong | Economy | News | 2025-08 | 2026-06 | 11 | worsening | falling | attention followed a news cycle rather than conditions | The unemployment rate rose while Economy's share of coverage fell from the year before. A seeded sample of eight Economy stories is about growth targets, exports, the minimum wage and markets, with mixed tone. |\n| Hong Kong | Cost of Living | Search | 2020-06 | 2021-04 | 11 | improving | rising | a real event drew coverage the indicator does not capture | COVID-19 distorts nearly every series |\n| New York City | Safety | Search | 2014-06 | 2015-04 | 11 | improving | rising | unclear | no marked break or named event overlaps this period |\n| New York City | Cost of Living | Search | 2014-11 | 2015-09 | 11 | improving | rising | unclear | no marked break or named event overlaps this period |\n| London | Economy | Search | 2009-05 | 2010-03 | 11 | worsening | falling | attention followed a news cycle rather than conditions | the indicator kept worsening while attention's share fell (Downs's issue-attention cycle); no marked break or event overlaps |\n| London | Environment | News | 2019-03 | 2019-12 | 10 | improving | rising | the two measure different parts of the problem | NO2 at the two sites fell after the Ultra Low Emission Zone began in April 2019. A seeded sample of ten Environment stories is about trees, plastic waste, climate change, a heatwave and flooding. The category is wider than the one pollutant the indicator tracks. |\n| Hong Kong | Cost of Living | Search | 2019-06 | 2020-03 | 10 | worsening | falling | attention followed a news cycle rather than conditions | attention share fell while the indicator worsened; the period overlaps: COVID-19 distorts nearly every series (a spike elsewhere lowers every other share) |\n| London | Housing | Search | 2010-01 | 2010-10 | 10 | improving | rising | unclear | no marked break or named event overlaps this period |\n| London | Cost of Living | Search | 2014-10 | 2015-07 | 10 | improving | rising | unclear | no marked break or named event overlaps this period |\n| Hong Kong | Environment | News | 2024-08 | 2025-04 | 9 | worsening | falling | the two measure different parts of the problem | NO2 and PM10 rose while Environment's share of coverage fell. A seeded sample of eight Environment stories is about typhoons, storms, recycling rules and water quality. None of the eight is about air pollution, which is what the indicator tracks. |",
-  "runs_by_cause": "| Proposed cause (by AI, for Cayden to confirm) | Disconnections of six months or more |\n| :-- | --: |\n| unclear | 36 |\n| attention followed a news cycle rather than conditions | 25 |\n| a real event drew coverage the indicator does not capture | 8 |\n| the two measure different parts of the problem | 4 |\n| the official measure changed how it counts | 4 |",
-  "leadlag_by_category": "| Category | News: lag where the mean r is furthest from zero | Mean r at that lag | Search: lag where the mean r is furthest from zero | Mean r at that lag |\n| :-- | --: | --: | --: | --: |\n| Safety | 0 months | 0.39 | -1 month | 0.43 |\n| Economy | -1 month | 0.42 | -1 month | 0.51 |\n| Housing | +12 months | -0.28 | -10 months | 0.25 |\n| Transport | +10 months | 0.25 | +3 months | 0.25 |\n| Environment | 0 months | 0.14 | 0 months | 0.23 |\n| Health | 0 months | 0.61 | -2 months | 0.47 |\n| Education | not tested |  | not tested |  |\n| Cost of Living | +3 months | 0.21 | -1 month | 0.58 |",
-  "news_vs_search": "| Category | Lag where the mean r is furthest from zero | Mean r at that lag | Mean r at lag 0 | Cities |\n| :-- | --: | --: | --: | --: |\n| Safety | +6 months | 0.23 | 0.13 | 3 |\n| Economy | 0 months | 0.32 | 0.32 | 3 |\n| Housing | -2 months | 0.15 | 0.10 | 3 |\n| Transport | -1 month | 0.28 | 0.27 | 3 |\n| Environment | +3 months | 0.19 | -0.02 | 3 |\n| Health | -11 months | -0.25 | 0.08 | 3 |\n| Education | +5 months | -0.21 | -0.09 | 3 |\n| Cost of Living | -5 months | 0.26 | 0.18 | 3 |\n| Governance | 0 months | 0.31 | 0.31 | 3 |\n| Culture | 0 months | 0.21 | 0.21 | 3 |\n| Technology | 0 months | 0.34 | 0.34 | 3 |\n| Community | -6 months | -0.16 | 0.07 | 3 |",
-  "ranking_hk": "| Category | Official: distance from its 2015 to 2019 average (SD, worse is positive) | Baseline periods in 2015 to 2019 | Official rank | News share, latest 12 months | Attention rank |\n| :-- | --: | --: | --: | --: | --: |\n| Safety | 6.31 (short or very flat baseline: read with care) | 5 | 1 | 10.4% | 2 |\n| Economy | 2.81 | 60 | 2 | 14.7% | 1 |\n| Cost of Living | 0.13 | 60 | 3 | 1.6% | 8 |\n| Housing | 0.12 | 60 | 4 | 3.6% | 7 |\n| Environment | -1.19 | 60 | 5 | 4.9% | 4 |\n| Education | -3.35 (short or very flat baseline: read with care) | 5 | 6 | 4.2% | 5 |\n| Transport | -4.23 | 60 | 7 | 3.8% | 6 |\n| Health | -10.45 (short or very flat baseline: read with care) | 6 | 8 | 6.2% | 3 |",
-  "ranking_nyc": "| Category | Official: distance from its 2015 to 2019 average (SD, worse is positive) | Baseline periods in 2015 to 2019 | Official rank | News share, latest 12 months | Attention rank |\n| :-- | --: | --: | --: | --: | --: |\n| Housing | 19.29 (short or very flat baseline: read with care) | 60 | 1 | 4.2% | 4 |\n| Safety | 3.10 | 60 | 2 | 25.4% | 1 |\n| Cost of Living | 2.46 | 60 | 3 | 0.5% | 8 |\n| Economy | 1.14 | 60 | 4 | 2.2% | 7 |\n| Environment | 0.69 | 60 | 5 | 5.7% | 3 |\n| Transport | -2.01 | 60 | 6 | 9.3% | 2 |\n| Education | -2.89 (short or very flat baseline: read with care) | 5 | 7 | 3.0% | 6 |\n| Health | n/a | n/a | n/a | 3.4% | 5 |",
-  "ranking_london": "| Category | Official: distance from its 2015 to 2019 average (SD, worse is positive) | Baseline periods in 2015 to 2019 | Official rank | News share, latest 12 months | Attention rank |\n| :-- | --: | --: | --: | --: | --: |\n| Economy | 2.22 | 60 | 1 | 3.3% | 7 |\n| Cost of Living | 1.46 | 60 | 2 | 1.4% | 8 |\n| Safety | 1.25 | 60 | 3 | 18.5% | 1 |\n| Housing | 0.22 | 60 | 4 | 3.8% | 5 |\n| Transport | 0.19 | 60 | 5 | 8.5% | 2 |\n| Education | -0.55 (short or very flat baseline: read with care) | 4 | 6 | 4.1% | 4 |\n| Environment | -3.58 | 60 | 7 | 3.8% | 6 |\n| Health | n/a | n/a | n/a | 4.9% | 3 |",
-  "signal_only_news": "| City | Category | Agreement check | Mean share 2015 to 2019 | Mean share 2023 to 2026 | Peak month | Share in peak month | What the peak month's coverage was about (named by AI from a seeded sample, for Cayden to confirm) |\n| :-- | :-- | :-- | --: | --: | :-- | --: | :-- |\n| Hong Kong | Governance | kept | 33.7% | 24.7% | 2019-06 | 53.3% | the extradition bill protests |\n| Hong Kong | Culture | dropped: shown for completeness only | 1.5% | 0.7% | 2016-03 | 4.2% |  |\n| Hong Kong | Technology | dropped: shown for completeness only | 1.0% | 1.5% | 2018-08 | 3.6% |  |\n| Hong Kong | Community | dropped: shown for completeness only | 2.1% | 0.7% | 2019-05 | 7.1% |  |\n| New York City | Governance | kept | 19.5% | 26.5% | 2025-06 | 42.8% | the Democratic primary for mayor |\n| New York City | Culture | dropped: shown for completeness only | 0.9% | 0.9% | 2022-10 | 5.0% |  |\n| New York City | Technology | kept | 0.4% | 0.4% | 2019-07 | 4.2% | the July 2019 power blackout in Manhattan |\n| New York City | Community | dropped: shown for completeness only | 2.5% | 1.9% | 2020-01 | 9.2% |  |\n| London | Governance | dropped: shown for completeness only | 10.5% | 5.7% | 2015-04 | 27.1% | the 2015 general election campaign |\n| London | Culture | dropped: shown for completeness only | 1.8% | 1.9% | 2023-08 | 3.7% |  |\n| London | Technology | dropped: shown for completeness only | 0.3% | 0.5% | 2020-05 | 1.5% |  |\n| London | Community | dropped: shown for completeness only | 3.1% | 1.6% | 2020-06 | 8.4% |  |",
-  "validation_kappa": "| Category | Hong Kong | New York City | London |\n| :-- | --: | --: | --: |\n| Safety | 0.72 kept | 0.80 kept | 0.83 kept |\n| Economy | 0.65 kept | 0.77 kept | 0.64 kept |\n| Housing | 0.46 dropped | 0.98 kept | 0.81 kept |\n| Transport | 0.36 dropped | 0.82 kept | 0.80 kept |\n| Environment | 0.79 kept | 0.65 kept | 0.61 kept |\n| Health | 0.76 kept | 0.86 kept | 0.81 kept |\n| Education | 0.82 kept | 0.74 kept | 0.88 kept |\n| Cost of Living | 0.44 dropped | 0.67 kept | 0.41 dropped |\n| Governance | 0.73 kept | 0.77 kept | 0.52 dropped |\n| Culture | 0.18 dropped | 0.20 dropped | 0.20 dropped |\n| Technology | 0.11 dropped | 0.68 kept | 0.45 dropped |\n| Community | 0.36 dropped | 0.46 dropped | 0.34 dropped |\n| Not a civic problem | 0.62 | 0.72 | 0.75 |\n| **Overall** | **0.65** | **0.76** | **0.71** |\n| Items | 228 | 300 | 299 |\n| Not about the city (weighted) | 15% | 8% | 9% |",
-  "counts": "| What | Count |\n| :-- | --: |\n| Cities | 3 |\n| Outlets in the main panels | 21 |\n| Outlets on the full lists | 68 |\n| GDELT records pulled for the listed outlets | 6,363,992 |\n| Articles left after the city filters and duplicate removal | 2,466,900 |\n| Articles labeled, main panels | 286,155 |\n| Articles labeled, main panels and check lists | 429,082 |\n| Months of news | 141 (2015-02 to 2026-10) |\n| Official series (main and backup) | 45 |\n| Official values | 11,948 |\n| Months of search data | 274 (2004-01 to 2026-10) |\n| Search downloads per request | 2 |",
-  "hk_by_outlet": "| Category | South China Morning Post 2015 to 2019 | South China Morning Post 2020 to 2026 | Oriental Daily 2020 to 2026 | HK China News Agency 2020 to 2026 |\n| :-- | --: | --: | --: | --: |\n| Safety | 16.8% | 15.4% | 6.7% | 6.2% |\n| Economy | 7.7% | 10.2% | 19.5% | 10.2% |\n| Housing | 3.2% | 2.8% | 5.6% | 0.5% |\n| Transport | 4.7% | 2.2% | 3.0% | 3.1% |\n| Environment | 5.2% | 5.1% | 3.7% | 5.0% |\n| Health | 7.2% | 16.8% | 15.6% | 19.8% |\n| Education | 4.5% | 5.6% | 1.7% | 4.6% |\n| Cost of Living | 0.7% | 1.1% | 1.3% | 0.8% |\n| Governance | 33.7% | 26.7% | 14.2% | 38.2% |\n| Culture | 1.5% | 1.3% | 0.3% | 0.0% |\n| Technology | 1.0% | 1.2% | 0.6% | 1.6% |\n| Community | 2.1% | 1.2% | 0.3% | 0.4% |\n| Not a civic problem | 11.9% | 10.3% | 27.4% | 9.6% |",
+  "runs_top20": "| City | Category | Source | From | To | Months | Official measure | Attention | Proposed cause (by AI, for Cayden to confirm) | Evidence |\n| :-- | :-- | :-- | :-- | :-- | --: | :-- | :-- | :-- | :-- |\n| New York City | Housing | Search | 2008-10 | 2010-01 | 16 | worsening | falling | attention followed a news cycle rather than conditions | the indicator kept worsening while attention's share fell (Downs's issue-attention cycle); no marked break or event overlaps |\n| New York City | Housing | Search | 2021-03 | 2022-06 | 16 | improving | rising | a real event drew coverage the indicator does not capture | COVID-19 distorts nearly every series |\n| London | Economy | Search | 2007-02 | 2008-04 | 15 | improving | rising | unclear | no marked break or named event overlaps this period |\n| Hong Kong | Economy | News | 2022-05 | 2023-06 | 14 | improving | rising | the two measure different parts of the problem | The unemployment rate fell through this period. A seeded sample of ten Economy stories from the period is about weak consumer spending, calls to reopen the border, rising interest rates and people leaving the city. The category covers business conditions as a whole. The indicator covers jobs only. |\n| London | Economy | News | 2018-01 | 2019-02 | 14 | improving | rising | unclear | no marked break or named event overlaps this period |\n| London | Housing | Search | 2019-03 | 2020-04 | 14 | worsening | falling | attention followed a news cycle rather than conditions | attention share fell while the indicator worsened; the period overlaps: COVID-19 distorts nearly every series (a spike elsewhere lowers every other share) |\n| London | Housing | News | 2023-08 | 2024-07 | 12 | worsening | falling | the two measure different parts of the problem | Private rents rose faster through this period. A seeded sample of ten Housing stories from the borough papers is about council repairs, planning rules and house prices. None of the ten is about rents. |\n| New York City | Safety | Search | 2010-02 | 2011-01 | 12 | improving | rising | unclear | no marked break or named event overlaps this period |\n| London | Safety | Search | 2013-03 | 2014-02 | 12 | improving | rising | the official measure changed how it counts | at least half of these months fall in a counting break marked in the official series: fraud offences moved from police forces to Action Fraud; the source note says March 2013 and the counts fall in February 2013 (found tonight; not in the methodology's breaks table) |\n| London | Economy | Search | 2012-07 | 2013-06 | 12 | improving | rising | unclear | no marked break or named event overlaps this period |\n| Hong Kong | Cost of Living | Search | 2020-06 | 2021-04 | 11 | improving | rising | a real event drew coverage the indicator does not capture | COVID-19 distorts nearly every series |\n| New York City | Safety | Search | 2014-06 | 2015-04 | 11 | improving | rising | unclear | no marked break or named event overlaps this period |\n| New York City | Cost of Living | Search | 2014-11 | 2015-09 | 11 | improving | rising | unclear | no marked break or named event overlaps this period |\n| London | Economy | Search | 2009-05 | 2010-03 | 11 | worsening | falling | attention followed a news cycle rather than conditions | the indicator kept worsening while attention's share fell (Downs's issue-attention cycle); no marked break or event overlaps |\n| Hong Kong | Cost of Living | Search | 2019-06 | 2020-03 | 10 | worsening | falling | attention followed a news cycle rather than conditions | attention share fell while the indicator worsened; the period overlaps: COVID-19 distorts nearly every series (a spike elsewhere lowers every other share) |\n| London | Housing | Search | 2010-01 | 2010-10 | 10 | improving | rising | unclear | no marked break or named event overlaps this period |\n| London | Cost of Living | Search | 2014-10 | 2015-07 | 10 | improving | rising | unclear | no marked break or named event overlaps this period |\n| Hong Kong | Economy | News | 2025-10 | 2026-06 | 9 | worsening | falling | attention followed a news cycle rather than conditions | the indicator kept worsening while attention's share fell (Downs's issue-attention cycle); no marked break or event overlaps |\n| Hong Kong | Environment | News | 2024-08 | 2025-04 | 9 | worsening | falling | the two measure different parts of the problem | NO2 and PM10 rose while Environment's share of coverage fell. A seeded sample of eight Environment stories is about typhoons, storms, recycling rules and water quality. None of the eight is about air pollution, which is what the indicator tracks. |\n| Hong Kong | Housing | Search | 2020-06 | 2021-02 | 9 | improving | rising | a real event drew coverage the indicator does not capture | COVID-19 distorts nearly every series |",
+  "runs_by_cause": "| Proposed cause (by AI, for Cayden to confirm) | Disconnections of six months or more |\n| :-- | --: |\n| unclear | 35 |\n| attention followed a news cycle rather than conditions | 25 |\n| a real event drew coverage the indicator does not capture | 11 |\n| the official measure changed how it counts | 4 |\n| the two measure different parts of the problem | 3 |",
+  "leadlag_by_category": "| Category | News: lag where the mean r is furthest from zero | Mean r at that lag | Search: lag where the mean r is furthest from zero | Mean r at that lag |\n| :-- | --: | --: | --: | --: |\n| Safety | 0 months | 0.42 | -1 month | 0.43 |\n| Economy | -1 month | 0.37 | -1 month | 0.51 |\n| Housing | +12 months | -0.19 | -10 months | 0.25 |\n| Transport | -12 months | -0.16 | +3 months | 0.25 |\n| Environment | -12 months | -0.19 | 0 months | 0.23 |\n| Health | 0 months | 0.59 | -2 months | 0.47 |\n| Education | not tested |  | not tested |  |\n| Cost of Living | +3 months | 0.18 | -1 month | 0.58 |",
+  "news_vs_search": "| Category | Lag where the mean r is furthest from zero | Mean r at that lag | Mean r at lag 0 | Cities |\n| :-- | --: | --: | --: | --: |\n| Safety | +6 months | 0.23 | 0.18 | 3 |\n| Economy | 0 months | 0.28 | 0.28 | 3 |\n| Housing | -2 months | 0.14 | 0.09 | 3 |\n| Transport | -1 month | 0.32 | 0.27 | 3 |\n| Environment | +3 months | 0.16 | 0.02 | 3 |\n| Health | -11 months | -0.23 | 0.08 | 3 |\n| Education | +3 months | -0.20 | -0.10 | 3 |\n| Cost of Living | -3 months | 0.25 | 0.18 | 3 |\n| Governance | 0 months | 0.33 | 0.33 | 3 |\n| Culture | +12 months | -0.10 | 0.07 | 3 |\n| Technology | 0 months | 0.34 | 0.34 | 3 |\n| Community | -6 months | -0.18 | 0.03 | 3 |",
+  "ranking_hk": "| Category | Official: distance from its 2015 to 2019 average (SD, worse is positive) | Baseline periods in 2015 to 2019 | Official rank | News share, latest 12 months | Attention rank |\n| :-- | --: | --: | --: | --: | --: |\n| Safety | 6.31 (short or very flat baseline: read with care) | 5 | 1 | 10.2% | 2 |\n| Economy | 2.81 | 60 | 2 | 20.1% | 1 |\n| Cost of Living | 0.13 | 60 | 3 | 1.3% | 8 |\n| Housing | 0.12 | 60 | 4 | 3.7% | 7 |\n| Environment | -1.19 | 60 | 5 | 5.5% | 4 |\n| Education | -3.35 (short or very flat baseline: read with care) | 5 | 6 | 4.3% | 6 |\n| Transport | -4.23 | 60 | 7 | 4.8% | 5 |\n| Health | -10.45 (short or very flat baseline: read with care) | 6 | 8 | 5.9% | 3 |",
+  "ranking_nyc": "| Category | Official: distance from its 2015 to 2019 average (SD, worse is positive) | Baseline periods in 2015 to 2019 | Official rank | News share, latest 12 months | Attention rank |\n| :-- | --: | --: | --: | --: | --: |\n| Housing | 19.29 (short or very flat baseline: read with care) | 60 | 1 | 4.4% | 4 |\n| Safety | 3.10 | 60 | 2 | 24.6% | 1 |\n| Cost of Living | 2.46 | 60 | 3 | 0.7% | 8 |\n| Economy | 1.14 | 60 | 4 | 2.2% | 7 |\n| Environment | 0.69 | 60 | 5 | 6.0% | 3 |\n| Transport | -2.01 | 60 | 6 | 10.3% | 2 |\n| Education | -2.89 (short or very flat baseline: read with care) | 5 | 7 | 3.2% | 5 |\n| Health | n/a | n/a | n/a | 3.1% | 6 |",
+  "ranking_london": "| Category | Official: distance from its 2015 to 2019 average (SD, worse is positive) | Baseline periods in 2015 to 2019 | Official rank | News share, latest 12 months | Attention rank |\n| :-- | --: | --: | --: | --: | --: |\n| Economy | 2.22 | 60 | 1 | 3.4% | 7 |\n| Cost of Living | 1.46 | 60 | 2 | 1.0% | 8 |\n| Safety | 1.25 | 60 | 3 | 18.2% | 1 |\n| Housing | 0.22 | 60 | 4 | 4.2% | 4 |\n| Transport | 0.19 | 60 | 5 | 8.8% | 2 |\n| Education | -0.55 (short or very flat baseline: read with care) | 4 | 6 | 3.8% | 6 |\n| Environment | -3.58 | 60 | 7 | 4.1% | 5 |\n| Health | n/a | n/a | n/a | 4.4% | 3 |",
+  "signal_only_news": "| City | Category | Agreement check | Mean share 2015 to 2019 | Mean share 2023 to 2026 | Peak month | Share in peak month | What the peak month's coverage was about (named by AI from a seeded sample, for Cayden to confirm) |\n| :-- | :-- | :-- | --: | --: | :-- | --: | :-- |\n| Hong Kong | Governance | kept | 32.3% | 22.7% | 2019-06 | 52.7% | the extradition bill protests |\n| Hong Kong | Culture | dropped: shown for completeness only | 1.5% | 0.6% | 2017-01 | 4.5% |  |\n| Hong Kong | Technology | dropped: shown for completeness only | 0.9% | 1.4% | 2018-11 | 3.3% |  |\n| Hong Kong | Community | dropped: shown for completeness only | 1.9% | 0.7% | 2019-05 | 6.0% |  |\n| New York City | Governance | kept | 21.0% | 26.4% | 2025-06 | 43.2% | the Democratic primary for mayor |\n| New York City | Culture | dropped: shown for completeness only | 0.9% | 0.7% | 2018-04 | 3.7% |  |\n| New York City | Technology | kept | 0.4% | 0.3% | 2019-07 | 3.9% | the July 2019 power blackout in Manhattan |\n| New York City | Community | dropped: shown for completeness only | 1.8% | 1.6% | 2015-11 | 5.4% |  |\n| London | Governance | kept | 9.5% | 5.3% | 2015-04 | 28.0% | the 2015 general election campaign |\n| London | Culture | dropped: shown for completeness only | 1.5% | 1.5% | 2026-03 | 3.6% |  |\n| London | Technology | dropped: shown for completeness only | 0.2% | 0.4% | 2017-05 | 1.4% |  |\n| London | Community | dropped: shown for completeness only | 3.8% | 1.9% | 2020-06 | 9.4% |  |",
+  "validation_kappa": "| Category | Hong Kong | New York City | London |\n| :-- | --: | --: | --: |\n| Safety | 0.72 kept, caution (fresh sample 0.57) | 0.80 kept | 0.83 kept |\n| Economy | 0.65 kept | 0.77 kept, caution (fresh sample 0.58) | 0.64 kept |\n| Housing | 0.46, retest 0.88: kept | 0.98 kept, caution (fresh sample 0.55) | 0.81 kept |\n| Transport | 0.36, retest 0.62: kept | 0.82 kept | 0.80 kept |\n| Environment | 0.79 kept | 0.65 kept | 0.61 kept |\n| Health | 0.76 kept | 0.86 kept | 0.81 kept |\n| Education | 0.82 kept, caution (fresh sample 0.58) | 0.74 kept | 0.88 kept, caution (fresh sample 0.51) |\n| Cost of Living | 0.44, retest 0.33: dropped | 0.67 kept | 0.41, retest 0.25: dropped |\n| Governance | 0.73 kept, caution (fresh sample 0.59) | 0.77 kept | 0.52, retest 0.69: kept |\n| Culture | 0.18, retest 0.14: dropped | 0.20, retest 0.15: dropped | 0.20, retest 0.23: dropped |\n| Technology | 0.11, retest 0.39: dropped | 0.68 kept, caution (fresh sample 0.50) | 0.45, retest 0.13: dropped |\n| Community | 0.36, retest 0.48: dropped | 0.46, retest 0.30: dropped | 0.34, retest 0.47: dropped |\n| Not a civic problem | 0.62 | 0.72 | 0.75 |\n| **Overall** | **0.65** | **0.76** | **0.71** |\n| Items | 228 | 300 | 299 |\n| Not about the city (weighted) | 15% | 8% | 9% |",
+  "counts": "| What | Count |\n| :-- | --: |\n| Cities | 3 |\n| Outlets in the main panels | 21 |\n| Outlets on the full lists | 68 |\n| GDELT records pulled for the listed outlets | 6,363,992 |\n| Articles left after the city filters and duplicate removal | 2,466,900 |\n| Articles labeled, main panels | 286,155 |\n| Articles labeled, main panels and check lists | 429,081 |\n| Months of news | 141 (2015-02 to 2026-10) |\n| Official series (main and backup) | 45 |\n| Official values | 11,948 |\n| Months of search data | 274 (2004-01 to 2026-10) |\n| Search downloads per request | 2 |",
+  "hk_by_outlet": "| Category | South China Morning Post 2015 to 2019 | South China Morning Post 2020 to 2026 | Oriental Daily 2020 to 2026 | HK China News Agency 2020 to 2026 |\n| :-- | --: | --: | --: | --: |\n| Safety | 15.5% | 15.1% | 6.3% | 5.5% |\n| Economy | 8.7% | 11.7% | 25.1% | 12.4% |\n| Housing | 3.4% | 3.1% | 5.9% | 0.5% |\n| Transport | 5.7% | 3.1% | 3.7% | 4.0% |\n| Environment | 5.6% | 5.6% | 4.3% | 5.2% |\n| Health | 6.8% | 16.6% | 15.6% | 19.6% |\n| Education | 4.3% | 5.6% | 1.7% | 4.6% |\n| Cost of Living | 0.5% | 0.9% | 1.0% | 0.7% |\n| Governance | 32.3% | 24.4% | 12.4% | 37.6% |\n| Culture | 1.5% | 1.2% | 0.3% | 0.0% |\n| Technology | 0.9% | 1.1% | 0.5% | 1.6% |\n| Community | 1.9% | 1.1% | 0.3% | 0.5% |\n| Not a civic problem | 13.0% | 10.5% | 22.8% | 7.9% |",
   "validation_rule_variants": "| City | Rule | Items | Overall kappa | Categories below 0.61 |\n| :-- | :-- | --: | --: | :-- |\n| Hong Kong | Every validation item, weights by category only (the plan as written) | 299 | 0.56 | Safety, Economy, Housing, Transport, Cost of Living, Governance, Culture, Technology and Community |\n| Hong Kong | Items that remain in the main series, weights by category only | 228 | 0.64 | Housing, Transport, Cost of Living, Culture, Technology and Community |\n| Hong Kong | Items that remain in the main series, weights by category and outlet (the rule used) | 228 | 0.65 | Housing, Transport, Cost of Living, Culture, Technology and Community |\n| New York City | Every validation item, weights by category only (the plan as written) | 300 | 0.76 | Culture and Community |\n| New York City | Items that remain in the main series, weights by category only | 300 | 0.76 | Culture and Community |\n| New York City | Items that remain in the main series, weights by category and outlet (the rule used) | 300 | 0.76 | Culture and Community |\n| London | Every validation item, weights by category only (the plan as written) | 299 | 0.72 | Environment, Cost of Living, Governance, Culture, Technology and Community |\n| London | Items that remain in the main series, weights by category only | 299 | 0.72 | Environment, Cost of Living, Governance, Culture, Technology and Community |\n| London | Items that remain in the main series, weights by category and outlet (the rule used) | 299 | 0.71 | Cost of Living, Governance, Culture, Technology and Community |"
  },
  "text": {
-  "pairs_tested": "37",
-  "pairs_adjusted_p_below_05": "11",
-  "pairs_not_tested": "11",
-  "runs_total": "77",
-  "runs_news": "23",
+  "pairs_tested": "39",
+  "pairs_adjusted_p_below_05": "14",
+  "pairs_not_tested": "9",
+  "runs_total": "78",
+  "runs_news": "24",
   "runs_search": "54",
-  "leadlag_pairs": "31",
-  "leadlag_pairs_p_below_05": "14",
-  "ranking_rho_hk": "0.24",
+  "leadlag_pairs": "33",
+  "leadlag_pairs_p_below_05": "16",
+  "ranking_rho_hk": "0.21",
   "ranking_rho_nyc": "0.04",
-  "ranking_rho_london": "-0.36",
-  "kept_hk": "Safety, Economy, Environment, Health, Education and Governance",
-  "dropped_hk": "Housing, Transport, Cost of Living, Culture, Technology and Community",
-  "dropped_compared_hk": "Housing, Transport and Cost of Living",
-  "n_kept_compared_hk": "5",
+  "ranking_rho_london": "-0.32",
+  "kept_hk": "Safety, Economy, Housing, Transport, Environment, Health, Education and Governance",
+  "dropped_hk": "Cost of Living, Culture, Technology and Community",
+  "dropped_compared_hk": "Cost of Living",
+  "n_kept_compared_hk": "7",
   "kept_nyc": "Safety, Economy, Housing, Transport, Environment, Health, Education, Cost of Living, Governance and Technology",
   "dropped_nyc": "Culture and Community",
   "dropped_compared_nyc": "none",
   "n_kept_compared_nyc": "8",
-  "kept_london": "Safety, Economy, Housing, Transport, Environment, Health and Education",
-  "dropped_london": "Cost of Living, Governance, Culture, Technology and Community",
+  "kept_london": "Safety, Economy, Housing, Transport, Environment, Health, Education and Governance",
+  "dropped_london": "Cost of Living, Culture, Technology and Community",
   "dropped_compared_london": "Cost of Living",
   "n_kept_compared_london": "7",
   "validation_status": "final",

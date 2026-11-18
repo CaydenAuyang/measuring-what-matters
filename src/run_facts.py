@@ -1,6 +1,7 @@
 """Collect facts about the run itself (costs, counts, times) from the logs into data/interim/run_facts.json,
 so documents can quote them by token."""
-import csv, glob, json, os
+import csv, glob, json, os, sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import pandas as pd
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -93,6 +94,59 @@ def main():
         F["revision_note"] = "No revision was run. Categories that failed the first test were dropped."
     else:
         F["revision_note"] = "The second coder had not run when this file was built."
+    # the whole sample labeled again with the revised codebook (only when a revised category passed its retest)
+    Ld = os.path.join(ROOT, "data/interim/labels")
+    swapped = os.path.exists(os.path.join(Ld, "labels_main_first_codebook.jsonl"))
+    F["relabeled"] = bool(swapped)
+    F["prompt_first_fixed_utc"] = "2026-11-17T21:00:35Z"
+    vsum = json.load(open(vs)) if os.path.exists(vs) else {}
+    rv = vsum.get("revision") or {}
+    if os.path.exists(rr) and rv.get("run"):
+        r_ = json.load(open(rr)); cnames = {"hk": "Hong Kong", "nyc": "New York City", "london": "London"}
+        from outlets import CATEGORY_NAMES as CN_
+        dropped_bits = [f"{cnames[c]}: " + ", ".join(f"{CN_[k]} ({v['kappa']:.2f})" for k, v in d.items() if not k.startswith("_") and not v["pass"]) for c, d in r_.items() if any((not k.startswith("_")) and (not v["pass"]) for k, v in d.items())]
+        ns = ", ".join(f"{next(v['n'] for k, v in d.items() if not k.startswith('_'))} in {cnames[c]}" for c, d in r_.items() if any(not k.startswith("_") for k in d))
+        F["revision_note"] = ("The wording of the seven categories that failed in any city was revised once (" + rv["categories_reworded_text"] + "). Both coders then labeled a fresh sample with the revised codebook (scored items: " + ns + "). "
+                              + "Passed the retest and kept: " + rv["kept_after_revision_text"] + " Still under 0.61 and dropped: " + ". ".join(dropped_bits) + "."
+                              + " A category that passed the first test stays kept, a rule the run set before the retest was scored. Kept categories that scored under 0.61 on the fresh sample, named as cautions: " + rv["caution_text"])
+        F["revision_kept_text"] = rv["kept_after_revision_text"]; F["revision_caution_text"] = rv["caution_text"]; F["revision_n_cautions"] = rv["n_cautions"]
+    if swapped:
+        cmpf, stf = os.path.join(Ld, "relabel_compare.json"), os.path.join(Ld, "full_run_revised_stats.json")
+        cm = json.load(open(cmpf)) if os.path.exists(cmpf) else {}
+        st3 = json.load(open(stf)) if os.path.exists(stf) else {}
+        by = cm.get("by_city") or {}
+        F["relabel_items"] = cm.get("labeled_revised_codebook"); F["relabel_cost_usd"] = st3.get("cost_usd")
+        F["relabel_minutes"] = round(st3["seconds"] / 60) if st3.get("seconds") else None
+        F["relabel_largest_request_tokens"] = st3.get("largest_request_input_tokens")
+        F["first_codebook_items"] = cm.get("labeled_first_codebook")
+        same = ", ".join(f"{names[c]} {by[c]['same_category_share'] * 100:.0f}% (kappa {by[c]['kappa_first_vs_revised']:.2f})" for c in ["hk", "nyc", "london"] if c in by)
+        F["relabel_same_text"] = same
+        F["relabel_note"] = (f"Because revised categories passed the retest, every article was labeled a second time on November 18 with the revised prompt, by the same model with the same settings ({F['relabel_items']:,} items"
+                             + (f", ${F['relabel_cost_usd']:.2f}" if F.get("relabel_cost_usd") else "") + (f", {F['relabel_minutes']} minutes" if F.get("relabel_minutes") else "")
+                             + f"). Every news number in the results rests on this second set of labels. The first validation test, the headline check and the consistency checks were run on the first set of labels. The AI-written notes on causes and events were read from samples drawn under the first labels. The two sets give the same category for these shares of articles: {same}.")
+        F["prompt_history_note"] = (f"The first prompt was fixed at {F['prompt_first_fixed_utc']} and labeled every article once. After the validation retest on November 18, seven category lines were reworded once (Section 4.3) and every article was labeled again with the revised prompt. The results use the second set of labels.")
+        F["prompt_frozen_note"] = "The first prompt was fixed before the full run and did not change during it. After validation, the one revision the plan allows changed seven category lines, and every article was labeled again with the revised prompt."
+        F["cost_twice_note"] = "That total includes labeling every article twice, because the one wording revision came after the first full run."
+        F["labels_made_with"] = "the revised prompt (`news-v2`)"
+        F["relabel_short_note"] = "After validation, the run reworded seven category lines once, as the plan allows, and labeled every article a second time. Some kept categories scored under the bar on the retest sample. `data/public/validation_report.md` shows both readings."
+    else:
+        F["relabel_note"] = "No article was labeled a second time."
+        F["prompt_history_note"] = f"The prompt has not changed since {F['prompt_first_fixed_utc']}."
+        F["prompt_frozen_note"] = "The prompt was frozen once and never changed."
+        F["labels_made_with"] = "the frozen prompt (`news-v1`)"
+        F["cost_twice_note"] = ""
+        F["relabel_short_note"] = ""
+    # the same analysis on the labels from the first codebook (snapshot of results.json taken before the relabel)
+    fc = os.path.join(ROOT, "data/interim/results_first_codebook.json")
+    if swapped and os.path.exists(fc):
+        import shutil
+        shutil.copyfile(fc, os.path.join(ROOT, "data/public/results_first_codebook.json"))
+        R1 = json.load(open(fc)); h = R1["main"]["news"]["h1"]; hc_ = R1["checks"]["without_covid"]["news"]["h1"]
+        F["first_codebook_news_h1_est"] = h["est"]; F["first_codebook_news_h1_ci_low"] = h["ci_low"]; F["first_codebook_news_h1_ci_high"] = h["ci_high"]; F["first_codebook_news_h1_pairs"] = h["n_pairs"]
+        F["first_codebook_note"] = (f"Exploratory comparison: with the labels from the first codebook, and the categories that failed the first test dropped with no retest, the pooled news slope was {h['est']:.2f} ({h['ci_low']:.2f} to {h['ci_high']:.2f}) across {h['n_pairs']} pairs, "
+                                    f"and {hc_['est']:.2f} ({hc_['ci_low']:.2f} to {hc_['ci_high']:.2f}) without 2020 to 2022. News verdicts there: H1 {R1['verdicts']['h1_news']}, H2 {R1['verdicts']['h2_news']}, H3 {R1['verdicts']['h3_news']}. That results file is saved as `data/public/results_first_codebook.json`.")
+    else:
+        F["first_codebook_note"] = ""
     # the Internet Archive copy of the repository page
     log = os.path.join(ROOT, "logs/archive_prereg.log")
     saved, tries = None, 0

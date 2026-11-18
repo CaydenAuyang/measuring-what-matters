@@ -3,7 +3,7 @@
 | Field | Value |
 | :-- | :-- |
 | Name | Measuring What Matters: monthly attention and official series for three cities |
-| Version | Built 2026-11-18T08:21:14Z (UTC) |
+| Version | Built 2026-11-18T09:20:01Z (UTC) |
 | Author | Cayden Auyang, Pomfret School. Produced by an AI agent run (Claude Code, model `claude-fable-5-2`) following his pre-registered plan. [CAYDEN TO CONFIRM: his own role in the question, codebook, design and interpretation] |
 | Cities | Hong Kong, New York City, London |
 | Categories | Safety, Economy, Housing, Transport, Environment, Health, Education, Cost of Living (compared with official data). Governance, Culture, Technology, Community (attention only). |
@@ -21,7 +21,7 @@
 1. Outlets: a fixed main panel per city (3 in Hong Kong, 3 in New York, 15 borough papers in London), set before any data were pulled.
 2. City filter: Hong Kong articles must carry a Hong Kong location tag. New York articles must carry a city or borough tag. London papers' national wire stories are dropped.
 3. Sample: a seeded random draw of up to 333 articles per outlet per month in Hong Kong and New York and up to 66 per paper per month in London. 435,201 items were sampled. 6,117 had nothing for the model to read and were left out.
-4. Labels: 429,082 items were labeled by `claude-haiku-5-5` (Anthropic API), 50 items per request, with the frozen prompt in `labeling_card.md`. The model read the headline words in each article's web address plus GDELT's theme tags. Cost: about $27.25 in total, $6.273e-05 per item in the cost test.
+4. Labels: 429,081 items were labeled by `claude-haiku-5-5` (Anthropic API), 50 items per request, with the revised prompt (`news-v2`) in `labeling_card.md`. Because revised categories passed the retest, every article was labeled a second time on November 18 with the revised prompt, by the same model with the same settings (429,081 items, $27.87, 35 minutes). Every news number in the results rests on this second set of labels. The first validation test, the headline check and the consistency checks were run on the first set of labels. The AI-written notes on causes and events were read from samples drawn under the first labels. The two sets give the same category for these shares of articles: Hong Kong 85% (kappa 0.82), New York 89% (kappa 0.87), London 89% (kappa 0.87). The model read the headline words in each article's web address plus GDELT's theme tags. Cost: about $55.18 in total, $6.273e-05 per item in the cost test.
 5. Shares: each category's share per outlet per month, averaged across outlets with equal weights. `neg_share` counts only articles labeled with negative tone.
 
 ## Validation
@@ -32,18 +32,18 @@
 
 | Category | Hong Kong | New York City | London |
 | :-- | --: | --: | --: |
-| Safety | 0.72 kept | 0.80 kept | 0.83 kept |
-| Economy | 0.65 kept | 0.77 kept | 0.64 kept |
-| Housing | 0.46 dropped | 0.98 kept | 0.81 kept |
-| Transport | 0.36 dropped | 0.82 kept | 0.80 kept |
+| Safety | 0.72 kept, caution (fresh sample 0.57) | 0.80 kept | 0.83 kept |
+| Economy | 0.65 kept | 0.77 kept, caution (fresh sample 0.58) | 0.64 kept |
+| Housing | 0.46, retest 0.88: kept | 0.98 kept, caution (fresh sample 0.55) | 0.81 kept |
+| Transport | 0.36, retest 0.62: kept | 0.82 kept | 0.80 kept |
 | Environment | 0.79 kept | 0.65 kept | 0.61 kept |
 | Health | 0.76 kept | 0.86 kept | 0.81 kept |
-| Education | 0.82 kept | 0.74 kept | 0.88 kept |
-| Cost of Living | 0.44 dropped | 0.67 kept | 0.41 dropped |
-| Governance | 0.73 kept | 0.77 kept | 0.52 dropped |
-| Culture | 0.18 dropped | 0.20 dropped | 0.20 dropped |
-| Technology | 0.11 dropped | 0.68 kept | 0.45 dropped |
-| Community | 0.36 dropped | 0.46 dropped | 0.34 dropped |
+| Education | 0.82 kept, caution (fresh sample 0.58) | 0.74 kept | 0.88 kept, caution (fresh sample 0.51) |
+| Cost of Living | 0.44, retest 0.33: dropped | 0.67 kept | 0.41, retest 0.25: dropped |
+| Governance | 0.73 kept, caution (fresh sample 0.59) | 0.77 kept | 0.52, retest 0.69: kept |
+| Culture | 0.18, retest 0.14: dropped | 0.20, retest 0.15: dropped | 0.20, retest 0.23: dropped |
+| Technology | 0.11, retest 0.39: dropped | 0.68 kept, caution (fresh sample 0.50) | 0.45, retest 0.13: dropped |
+| Community | 0.36, retest 0.48: dropped | 0.46, retest 0.30: dropped | 0.34, retest 0.47: dropped |
 | Not a civic problem | 0.62 | 0.72 | 0.75 |
 | **Overall** | **0.65** | **0.76** | **0.71** |
 | Items | 228 | 300 | 299 |

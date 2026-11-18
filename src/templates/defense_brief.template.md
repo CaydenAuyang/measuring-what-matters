@@ -165,7 +165,11 @@ Kappa is agreement beyond chance: 0 is what random labeling would give and 1 is 
 - New York City, dropped: {{text.dropped_nyc}}. Of the eight compared: {{text.dropped_compared_nyc}}.
 - London, dropped: {{text.dropped_london}}. Of the eight compared: {{text.dropped_compared_london}}.
 
-Whether a revision was tried for a category, and what it scored, is in `data/public/validation_report.md`.
+**The one revision.** {{run.revision_note}}
+
+{{run.relabel_note}} {{run.first_codebook_note}}
+
+If someone asks about the cautions: those categories passed the first test, so the rule set before the retest keeps them. On the fresh sample, with about 20 items per label, they came in under the bar. Say that plainly. Both readings are in `data/public/validation_report.md`.
 
 ### Why do Hong Kong's early years rest on one outlet?
 
@@ -223,7 +227,7 @@ The first job is the human check: code the 50-item file by hand, then a larger s
 
 ### How much did it cost?
 
-BigQuery billed {{run.bigquery_tb_billed}} terabytes across {{run.bigquery_queries}} queries, which is about {{run.bigquery_cost_usd|money}}. Language-model fees for the first coder came to {{run.anthropic_cost_usd|money}} in all, for {{run.items_labeled_total|comma}} labeled items plus the tests, which works out to about {{calc.cost_per_1000_items_usd|money}} per 1,000 articles. The second coder ran on its provider's free tier, logged as {{run.gemini_cost_usd|money}}. The official statistics and the search data were free downloads. My proposal budgeted under $300 for queries and AI labeling.
+BigQuery billed {{run.bigquery_tb_billed}} terabytes across {{run.bigquery_queries}} queries, which is about {{run.bigquery_cost_usd|money}}. Language-model fees for the first coder came to {{run.anthropic_cost_usd|money}} in all, for {{run.items_labeled_total|comma}} labeled items plus the tests, which works out to about {{calc.cost_per_1000_items_usd|money}} per 1,000 articles for one pass. {{run.cost_twice_note}} The second coder ran on its provider's free tier, logged as {{run.gemini_cost_usd|money}}. The official statistics and the search data were free downloads. My proposal budgeted under $300 for queries and AI labeling.
 
 ## The exact sentence to use when someone asks who coded the articles
 

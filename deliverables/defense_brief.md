@@ -5,7 +5,7 @@ Cayden Auyang. AI drafted and I reviewed.
 
 Read this once at breakfast. Then put it away and speak from memory.
 
-Every number below was filled in from the results files when this brief was built. Results file generated: 2026-11-18T08:21:14Z. Validation status: **final**. Bootstrap resamples: 2,000.
+Every number below was filled in from the results files when this brief was built. Results file generated: 2026-11-18T09:20:01Z. Validation status: **final**. Bootstrap resamples: 2,000.
 
 If the status reads "provisional", the kappas come from a stand-in third AI pass. They are replaced when the blind second coder has run, and other numbers can move with them. Rebuild this file after that with `.venv/bin/python src/build_docs.py`.
 
@@ -13,18 +13,18 @@ If the status reads "provisional", the kappas come from a stand-in third AI pass
 
 **The question.** When a city's problems get worse in the official numbers, does public attention rise with them?
 
-**What was compared.** The cities are Hong Kong, New York City and London. For eight kinds of problems, the study takes the yearly change in an official statistic and sets it next to the yearly change in two kinds of attention. The first is each problem's share of local news coverage, 2015-02 to 2026-10, built from 286,155 main-panel articles labeled by an AI language model. Counting the other listed outlets, which feed one check, the model labeled 429,082 articles. The second is each problem's share of Google search interest, 2004-01 to 2026-10.
+**What was compared.** The cities are Hong Kong, New York City and London. For eight kinds of problems, the study takes the yearly change in an official statistic and sets it next to the yearly change in two kinds of attention. The first is each problem's share of local news coverage, 2015-02 to 2026-10, built from 286,155 main-panel articles labeled by an AI language model. Counting the other listed outlets, which feed one check, the model labeled 429,081 articles. The second is each problem's share of Google search interest, 2004-01 to 2026-10.
 
 **The three findings.**
 
 1. Do attention and the official numbers move together (H1)? The plan predicted a positive but weak link.
-   - News: For news coverage, attention rose 0.07 standard deviations for each standard deviation the official measure worsened (95% interval 0.02 to 0.10, 19 city and category pairs, about 185 independent pair-years). That is a weak link, and the interval excludes zero, so H1 is supported for news coverage.
+   - News: For news coverage, attention rose 0.07 standard deviations for each standard deviation the official measure worsened (95% interval 0.02 to 0.10, 21 city and category pairs, about 206 independent pair-years). That is a weak link, and the interval excludes zero, so H1 is supported for news coverage.
    - Search: For search interest, attention rose 0.26 standard deviations for each standard deviation the official measure worsened (95% interval 0.19 to 0.42, 18 city and category pairs, about 336 independent pair-years). That is a weak link, and the interval excludes zero, so H1 is supported for search interest.
 2. Does attention react more when a problem gets worse than when it gets better (H2)? The plan predicted yes.
-   - News: For news coverage, the reaction to worsening and to improving could not be told apart. The slope was 0.06 when the problem worsened and 0.10 when it improved. The difference was -0.05 (95% interval -0.14 to 0.12). The interval includes zero, so H2 is not supported for news coverage.
+   - News: For news coverage, the reaction to worsening and to improving could not be told apart. The slope was 0.05 when the problem worsened and 0.10 when it improved. The difference was -0.05 (95% interval -0.14 to 0.11). The interval includes zero, so H2 is not supported for news coverage.
    - Search: For search interest, the reaction to worsening and to improving could not be told apart. The slope was 0.37 when the problem worsened and 0.17 when it improved. The difference was 0.20 (95% interval -0.10 to 0.47). The interval includes zero, so H2 is not supported for search interest.
 3. Is Safety the category where attention and official data disagree most (H3)? The plan predicted yes in at least two of the three cities.
-   - News: For news coverage, Safety showed the largest gap in 1 of 3 cities. Hong Kong: Safety ranked 1 of 5 (70% of periods moved in opposite directions; the largest was Safety at 70%). New York City: Safety ranked 4 of 8 (45% of periods moved in opposite directions; the largest was Education at 67%). London: Safety ranked 6 of 6 (35% of periods moved in opposite directions; the largest was Housing at 58%). H3 predicted the largest gap in at least two cities, so it is not supported.
+   - News: For news coverage, Safety showed the largest gap in 1 of 3 cities. Hong Kong: Safety ranked 1 of 7 (70% of periods moved in opposite directions; the largest was Safety at 70%). New York City: Safety ranked 4 of 8 (45% of periods moved in opposite directions; the largest was Education at 67%). London: Safety ranked 6 of 6 (34% of periods moved in opposite directions; the largest was Housing at 59%). H3 predicted the largest gap in at least two cities, so it is not supported.
    - Search: For search interest, Safety showed the largest gap in 0 of 3 cities. Hong Kong: Safety could not be tested. New York City: Safety ranked 4 of 7 (41% of periods moved in opposite directions; the largest was Environment at 47%). London: Safety ranked 4 of 6 (41% of periods moved in opposite directions; the largest was Environment at 52%). H3 predicted the largest gap in at least two cities, so it is not supported.
 
 **The sentence to add every time.** An AI language model did the labeling and a second AI language model did the checking. No person hand-coded any article in this run, so the check shows that two AI coders agree. It does not show that a person would agree with them.
@@ -41,7 +41,7 @@ If the status reads "provisional", the kappas come from a stand-in third AI pass
 
 **Block bootstrap and the 95% interval.** The yearly changes are resampled 2,000 times in whole 12-month blocks, and the slope is recomputed each time; blocks are used because neighboring months overlap and are not independent. The 95% interval is the middle 95% of those slopes, and the rule for H1 is whether that interval sits above zero.
 
-**Adjusted p-values (Benjamini-Hochberg).** With 37 separate pair tests, a few would look convincing by luck alone. The adjustment scales each p-value up by how many tests were run and where it ranks, which holds the expected share of false alarms among the pairs that pass to 5% or less; 11 of the 37 pairs had an adjusted p below 0.05.
+**Adjusted p-values (Benjamini-Hochberg).** With 39 separate pair tests, a few would look convincing by luck alone. The adjustment scales each p-value up by how many tests were run and where it ranks, which holds the expected share of false alarms among the pairs that pass to 5% or less; 14 of the 39 pairs had an adjusted p below 0.05.
 
 **Attention share.** Attention is one category's share of a city's local news coverage, or of its search interest, in a month, and never a raw count. Shares cancel out the growth in how many outlets the news database tracks, but they also move together, so a spike in one topic pushes every other share down.
 
@@ -56,12 +56,12 @@ If the status reads "provisional", the kappas come from a stand-in third AI pass
 1. **The answer chart.** Each dot is a pooled slope: how many of its own typical steps attention moves when an official measure worsens by one typical step. The pale bar is the 95% interval. The dark line marked "no link" is zero. Search: 0.26 (0.19 to 0.42), H1 supported. News: 0.07 (0.02 to 0.10), H1 supported.
 2. **The case-study chart.** The dark line is the yearly change in the official measure and the orange line is the yearly change in that category's share of news, both in their own typical steps, with worse at the top. The shaded band is the stretch where they moved in opposite directions: Hong Kong Economy, 2022-05 to 2023-06, with the official measure improving and attention rising for 14 months.
 
-**About the answer title.** The title's wording is picked by a rule in `src/poster_board.py` from the two H1 verdicts, and `poster/board_manifest.json` records which rule fired. The analysis calls a slope under 0.3 weak. If the slopes above are under it, say "follow, weakly" out loud. Without 2020 to 2022 the news slope is 0.02 (-0.04 to 0.06) and the search slope is 0.26 (0.17 to 0.40).
+**About the answer title.** The title's wording is picked by a rule in `src/poster_board.py` from the two H1 verdicts, and `poster/board_manifest.json` records which rule fired. The analysis calls a slope under 0.3 weak. If the slopes above are under it, say "follow, weakly" out loud. Without 2020 to 2022 the news slope is 0.02 (-0.05 to 0.06) and the search slope is 0.26 (0.17 to 0.40).
 
 **Results that are not on the poster.** Have these ready.
 
-- Validation: 23 of 36 category checks reached kappa 0.61. Overall kappa was 0.65 in Hong Kong, 0.76 in New York City and 0.71 in London.
-- H2: for news the slopes were 0.06 when worsening and 0.10 when improving (H2 not supported), and for search 0.37 and 0.17 (H2 not supported).
+- Validation: 26 of 36 category checks reached kappa 0.61. Overall kappa was 0.65 in Hong Kong, 0.76 in New York City and 0.71 in London.
+- H2: for news the slopes were 0.05 when worsening and 0.10 when improving (H2 not supported), and for search 0.37 and 0.17 (H2 not supported).
 - H3: Safety had the largest gap in 1 of 3 cities for news (H3 not supported) and in 0 of 3 for search (H3 not supported).
 
 Two things to know before someone asks.
@@ -83,34 +83,34 @@ Two things to know before someone asks.
 | On the poster | Value now | File and field |
 | :-- | :-- | :-- |
 | "3 cities" | 3 | `results.json -> counts.cities` |
-| "429k news articles sorted by topic" | 429,082 | `results.json -> counts.articles_labeled_all`, rounded to thousands. This counts the main panels and the check lists. The main panels alone hold 286,155. |
+| "429k news articles sorted by topic" | 429,081 | `results.json -> counts.articles_labeled_all`, rounded to thousands. This counts the main panels and the check lists. The main panels alone hold 286,155. |
 | "Official data series" | 23 | `results.json -> counts.official_series_main` (main indicators; with backups there are 45) |
 | "Years of search data" | 274 months | `results.json -> counts.search_months`, divided by 12 and rounded down |
 | "Local news outlets" | 21 | `results.json -> counts.outlets_main_panel_total` (the main panels; 68 outlets are listed in all) |
 | "Months of news" | 141 (2015-02 to 2026-10) | `results.json -> counts.news_months` |
 | Search downloads per request (not on the poster) | 2 | `results.json -> counts.search_downloads_per_request` |
 | The kappa bar (not on the poster) | 0.61 | `validation_summary.json -> threshold` |
-| Category checks that reached the bar | 23 of 36 | `validation_summary.json -> cities.*.kept`, counted over the twelve categories in each city |
+| Category checks that reached the bar | 26 of 36 | `validation_summary.json -> cities.*.kept`, counted over the twelve categories in each city |
 | Overall kappa, Hong Kong | 0.65 | `validation_summary.json -> cities.hk.overall_kappa` |
 | Overall kappa, New York City | 0.76 | `validation_summary.json -> cities.nyc.overall_kappa` |
 | Overall kappa, London | 0.71 | `validation_summary.json -> cities.london.overall_kappa` |
 | H1 slope, news | 0.07 | `results.json -> main.news.h1.est` |
 | H1 95% interval, news | 0.02 to 0.10 | `results.json -> main.news.h1.ci_low`, `ci_high` |
-| H1 bootstrap p, news | p = 0.009 | `results.json -> main.news.h1.p_text` (from `p_boot`) |
-| Pairs in the news model | 19 | `results.json -> main.news.h1.n_pairs` |
+| H1 bootstrap p, news | p = 0.006 | `results.json -> main.news.h1.p_text` (from `p_boot`) |
+| Pairs in the news model | 21 | `results.json -> main.news.h1.n_pairs` |
 | H1 slope, search | 0.26 | `results.json -> main.search.h1.est` |
 | H1 95% interval, search | 0.19 to 0.42 | `results.json -> main.search.h1.ci_low`, `ci_high` |
 | H1 bootstrap p, search | p < 0.001 | `results.json -> main.search.h1.p_text` (from `p_boot`) |
 | Pairs in the search model | 18 | `results.json -> main.search.h1.n_pairs` |
-| H2 news, slope when worsening | 0.06 | `results.json -> main.news.h2.worse.est` |
+| H2 news, slope when worsening | 0.05 | `results.json -> main.news.h2.worse.est` |
 | H2 news, slope when improving | 0.10 | `results.json -> main.news.h2.better.est` |
-| H2 news, difference (95% interval) | -0.05 (-0.14 to 0.12) | `results.json -> main.news.h2.diff` |
+| H2 news, difference (95% interval) | -0.05 (-0.14 to 0.11) | `results.json -> main.news.h2.diff` |
 | H2 search, slope when worsening | 0.37 | `results.json -> main.search.h2.worse.est` |
 | H2 search, slope when improving | 0.17 | `results.json -> main.search.h2.better.est` |
 | H2 search, difference (95% interval) | 0.20 (-0.10 to 0.47) | `results.json -> main.search.h2.diff` |
 | H3 news, cities where Safety had the largest gap | 1 of 3 | `results.json -> h3.safety_rank.news.cities_where_safety_is_largest` |
 | H3 search, cities where Safety had the largest gap | 0 of 3 | `results.json -> h3.safety_rank.search.cities_where_safety_is_largest` |
-| H3 news, Safety's rank in Hong Kong | 1 of 5 | `results.json -> h3.safety_rank.news.by_city.hk` |
+| H3 news, Safety's rank in Hong Kong | 1 of 7 | `results.json -> h3.safety_rank.news.by_city.hk` |
 | H3 news, Safety's rank in New York City | 4 of 8 | `results.json -> h3.safety_rank.news.by_city.nyc` |
 | H3 news, Safety's rank in London | 6 of 6 | `results.json -> h3.safety_rank.news.by_city.london` |
 | Case study, length | 14 months | `results.json -> case_study.months` |
@@ -148,23 +148,27 @@ Three scoring rules need saying out loud. The run set all three after it had see
 - Where no page could be read and the article was from 2020 on, the second coder read the real stored headline alone: 130 items in Hong Kong, 1 in New York City and 16 in London. One site challenged automated requests, so the run stopped using it and did not fetch its pages from anywhere else.
 - The weights match the labeled sample by category and the attention index by outlet.
 
-The table "Kappa under other scoring rules" at the end of this brief shows which categories fall under the bar with the plan as written and with each rule. If someone asks, say which categories the plan as written would have dropped. With the categories that rule keeps, the pooled news slope was 0.08 (0.03 to 0.11) across 16 pairs, against 0.07 (0.02 to 0.10) across 19 in the main model. No Hong Kong article from before 2020 is in the scored set, so the second coder never checked Hong Kong's labels for 2015 to 2019. The blind second coder ran on November 18 after its daily quota reset and labeled 898 validation items. It re-labeled 50 items in a fresh request.
+The table "Kappa under other scoring rules" at the end of this brief shows which categories fall under the bar with the plan as written and with each rule. If someone asks, say which categories the plan as written would have dropped. With the categories that rule keeps, the pooled news slope was 0.08 (0.02 to 0.11) across 16 pairs, against 0.07 (0.02 to 0.10) across 21 in the main model. No Hong Kong article from before 2020 is in the scored set, so the second coder never checked Hong Kong's labels for 2015 to 2019. The blind second coder ran on November 18 after its daily quota reset and labeled 898 validation items. It re-labeled 50 items in a fresh request.
 
 ### What does a kappa of 0.61 mean, and why were some categories dropped?
 
 Kappa is agreement beyond chance: 0 is what random labeling would give and 1 is perfect agreement, so 0.61 is a bit more than halfway from chance to perfect. It is the bottom of the range that Landis and Koch (1977) call substantial agreement. That cutoff is a convention, and it was fixed in the plan before any labels existed. The rule was that a category under the bar in a city gets one revision of its wording and a fresh sample, and if it still falls short it is dropped for that city. Dropping a category costs pairs, and it keeps the least consistent labels out of the results.
 
-- Hong Kong, dropped: Housing, Transport, Cost of Living, Culture, Technology and Community. Of the eight categories compared with official data: Housing, Transport and Cost of Living.
+- Hong Kong, dropped: Cost of Living, Culture, Technology and Community. Of the eight categories compared with official data: Cost of Living.
 - New York City, dropped: Culture and Community. Of the eight compared: none.
-- London, dropped: Cost of Living, Governance, Culture, Technology and Community. Of the eight compared: Cost of Living.
+- London, dropped: Cost of Living, Culture, Technology and Community. Of the eight compared: Cost of Living.
 
-Whether a revision was tried for a category, and what it scored, is in `data/public/validation_report.md`.
+**The one revision.** The wording of the seven categories that failed in any city was revised once (Housing, Transport, Cost of Living, Governance, Culture, Technology, Community). Both coders then labeled a fresh sample with the revised codebook (scored items: 243 in Hong Kong, 299 in New York City, 301 in London). Passed the retest and kept: Hong Kong: Housing (0.88), Transport (0.62). London: Governance (0.69). Still under 0.61 and dropped: Hong Kong: Cost of Living (0.33), Culture (0.14), Technology (0.39), Community (0.48). New York City: Culture (0.15), Community (0.30). London: Cost of Living (0.25), Culture (0.23), Technology (0.13), Community (0.47). A category that passed the first test stays kept, a rule the run set before the retest was scored. Kept categories that scored under 0.61 on the fresh sample, named as cautions: Hong Kong: Safety (0.57), Education (0.58), Governance (0.59). New York City: Economy (0.58), Housing (0.55), Technology (0.50). London: Education (0.51).
+
+Because revised categories passed the retest, every article was labeled a second time on November 18 with the revised prompt, by the same model with the same settings (429,081 items, $27.87, 35 minutes). Every news number in the results rests on this second set of labels. The first validation test, the headline check and the consistency checks were run on the first set of labels. The AI-written notes on causes and events were read from samples drawn under the first labels. The two sets give the same category for these shares of articles: Hong Kong 85% (kappa 0.82), New York 89% (kappa 0.87), London 89% (kappa 0.87). Exploratory comparison: with the labels from the first codebook, and the categories that failed the first test dropped with no retest, the pooled news slope was 0.07 (0.02 to 0.10) across 19 pairs, and 0.02 (-0.04 to 0.06) without 2020 to 2022. News verdicts there: H1 supported, H2 not supported, H3 not supported. That results file is saved as `data/public/results_first_codebook.json`.
+
+If someone asks about the cautions: those categories passed the first test, so the rule set before the retest keeps them. On the fresh sample, with about 20 items per label, they came in under the bar. Say that plainly. Both readings are in `data/public/validation_report.md`.
 
 ### Why do Hong Kong's early years rest on one outlet?
 
 The news database stores real headlines only from 2020, so in every year the AI reads the headline words inside each article's web address plus the database's topic tags. Some Hong Kong outlets use number-only addresses, which leaves the tags alone. The plan said to test tag-only labels against real-headline labels on 2020 and later articles, and to leave those outlets out of 2015 to 2019 if the kappa fell under 0.61. Rule applied: yes. Theme-tag-only labels agreed with real-headline labels at kappa 0.42, below 0.61. HK China News Agency and Oriental Daily, whose addresses were number-only before 2020, are left out of 2015 to 2019. Hong Kong's news series for those years rests on the South China Morning Post alone.
 
-One row in the checks table, marked exploratory, puts every main-panel outlet back into every year. The pooled news slope there was 0.07 (0.01 to 0.10), against 0.07 (0.02 to 0.10) in the main model.
+One row in the checks table, marked exploratory, puts every main-panel outlet back into every year. The pooled news slope there was 0.07 (0.02 to 0.09), against 0.07 (0.02 to 0.10) in the main model.
 
 ### Why did the labeling model change during the run?
 
@@ -182,15 +186,15 @@ Pre-registering means posting the plan with a timestamp before any outcome data 
 
 ### Why three cities?
 
-Hong Kong, New York City and London are close in population and very different in politics and media. The study compares how attention behaves inside each city and never ranks one city's problems against another's, which keeps those differences from tilting the result. Three cities also give more city and category pairs for the pooled test: 19 for news and 18 for search. The plan named Hong Kong as the pilot, but in this run all three cities ran in the same night, so there was no separate pilot.
+Hong Kong, New York City and London are close in population and very different in politics and media. The study compares how attention behaves inside each city and never ranks one city's problems against another's, which keeps those differences from tilting the result. Three cities also give more city and category pairs for the pooled test: 21 for news and 18 for search. The plan named Hong Kong as the pilot, but in this run all three cities ran in the same night, so there was no separate pilot.
 
 ### Isn't official data the truth?
 
-No, and the plan says so in its first section: official statistics are the benchmark here, and they have blind spots of their own. Recorded crime counts only what gets reported and recorded, and a shelter count moves with policy as well as need. So when attention and an official number disagree, the study lists the period and gives a proposed cause, and "the official measure changed how it counts" is one of the allowed causes. The run listed 77 such periods of six months or more, and 4 of them were put down to a change in how the official series counts. Those causes were proposed by AI, and I still have to review them.
+No, and the plan says so in its first section: official statistics are the benchmark here, and they have blind spots of their own. Recorded crime counts only what gets reported and recorded, and a shelter count moves with policy as well as need. So when attention and an official number disagree, the study lists the period and gives a proposed cause, and "the official measure changed how it counts" is one of the allowed causes. The run listed 78 such periods of six months or more, and 4 of them were put down to a change in how the official series counts. Those causes were proposed by AI, and I still have to review them.
 
 ### Why are the news slope and the search slope different?
 
-The pooled slope was 0.07 for news and 0.26 for search, and the study did not test why they differ, so I can only list reasons. They cover different years (search starts in 2004-01, news in 2015-02), different places (search covers all of Hong Kong, the New York media market and all of England) and different pairs (19 for news, 18 for search). They are also built differently: search uses term sets fixed in advance, and news uses AI labels on a small panel of outlets. Noise in either measure pulls its slope toward zero, so the noisier one will tend to show the smaller slope. The search numbers are also less settled than the plan intended: it called for three downloads on three different days, and the count so far is 2, from one night.
+The pooled slope was 0.07 for news and 0.26 for search, and the study did not test why they differ, so I can only list reasons. They cover different years (search starts in 2004-01, news in 2015-02), different places (search covers all of Hong Kong, the New York media market and all of England) and different pairs (21 for news, 18 for search). They are also built differently: search uses term sets fixed in advance, and news uses AI labels on a small panel of outlets. Noise in either measure pulls its slope toward zero, so the noisier one will tend to show the smaller slope. The search numbers are also less settled than the plan intended: it called for three downloads on three different days, and the count so far is 2, from one night.
 
 ### What do the intervals tell you, and what don't they?
 
@@ -200,7 +204,7 @@ Setup of that test: 8 unrelated pairs of 120 months each, both series with month
 
 ### What would change your mind?
 
-A human-coded sample that disagrees with the AI labels would change it first, because every news number rests on those labels. Next are the checks that the results hold: backup indicators, leaving out 2020 to 2022, leaving out every marked break, and lining official data up by release date. For news, the H1 interval stayed above zero in 9 of the 14 checks that ran (the ones where it did not: Without 2020 to 2022; Without 2020 to 2022 and every other marked break month; Official series aligned by release date; Description: Hong Kong pairs only, periods before 2021 (several major outlets closed in 2021); Description: Hong Kong pairs only, periods from 2021 on). For search it stayed above zero in 5 of 5 (the ones where it did not: none).
+A human-coded sample that disagrees with the AI labels would change it first, because every news number rests on those labels. Next are the checks that the results hold: backup indicators, leaving out 2020 to 2022, leaving out every marked break, and lining official data up by release date. For news, the H1 interval stayed above zero in 8 of the 14 checks that ran (the ones where it did not: Without 2020 to 2022; Without 2020 to 2022 and every other marked break month; Official series aligned by release date; London without the seven borough papers that jumped in volume; Description: Hong Kong pairs only, periods before 2021 (several major outlets closed in 2021); Description: Hong Kong pairs only, periods from 2021 on). For search it stayed above zero in 5 of 5 (the ones where it did not: none).
 
 If a result holds in the main model and fails one of those checks, say so before anyone asks, and name the check.
 
@@ -208,7 +212,7 @@ If a result holds in the main model and fails one of those checks, say so before
 
 No person has checked the labels. Two AI coders agreeing is weaker than the hand-coded check the plan promised, and every news result depends on those labels. After that, the whole study ran in one night, so the search downloads could not be spread over three different days as planned (downloads per request so far: 2). London Health has no official series, because the source blocked automated collection, so that pair was never tested. The full list is in `deliverables/deviations.md`.
 
-Also look at the row "Without 2020 to 2022" in the checks table. For news, the interval in that row includes zero (slope 0.02, -0.04 to 0.06). For search it is above zero (slope 0.26, 0.17 to 0.40). If either one includes zero, that link depends on the COVID years, and that belongs in this answer.
+Also look at the row "Without 2020 to 2022" in the checks table. For news, the interval in that row includes zero (slope 0.02, -0.05 to 0.06). For search it is above zero (slope 0.26, 0.17 to 0.40). If either one includes zero, that link depends on the COVID years, and that belongs in this answer.
 
 ### What would you do next with more time?
 
@@ -216,7 +220,7 @@ The first job is the human check: code the 50-item file by hand, then a larger s
 
 ### How much did it cost?
 
-BigQuery billed 3.29 terabytes across 43 queries, which is about $20.57. Language-model fees for the first coder came to $27.25 in all, for 429,082 labeled items plus the tests, which works out to about $0.06 per 1,000 articles. The second coder ran on its provider's free tier, logged as $0.00. The official statistics and the search data were free downloads. My proposal budgeted under $300 for queries and AI labeling.
+BigQuery billed 3.29 terabytes across 43 queries, which is about $20.57. Language-model fees for the first coder came to $55.18 in all, for 429,081 labeled items plus the tests, which works out to about $0.06 per 1,000 articles for one pass. That total includes labeling every article twice, because the one wording revision came after the first full run. The second coder ran on its provider's free tier, logged as $0.00. The official statistics and the search data were free downloads. My proposal budgeted under $300 for queries and AI labeling.
 
 ## The exact sentence to use when someone asks who coded the articles
 
@@ -244,7 +248,7 @@ Keep these open while you rehearse. Slopes are in standard deviations, with 95% 
 
 | Source | H1 slope (95% interval) | p | Pairs | Periods | Independent pair-years | Slope when worsening | Slope when improving | Difference (95% interval) |
 | :-- | :-- | --: | --: | --: | --: | :-- | :-- | :-- |
-| News | 0.07 (0.02 to 0.10) | 0.009 | 19 | 1,739 | 185 | 0.06 (0.01 to 0.10) | 0.10 (-0.05 to 0.18) | -0.05 (-0.14 to 0.12) |
+| News | 0.07 (0.02 to 0.10) | 0.006 | 21 | 1,994 | 206 | 0.05 (0.01 to 0.10) | 0.10 (-0.04 to 0.17) | -0.05 (-0.14 to 0.11) |
 | Search | 0.26 (0.19 to 0.42) | < 0.001 | 18 | 3,980 | 336 | 0.37 (0.22 to 0.59) | 0.17 (0.08 to 0.39) | 0.20 (-0.10 to 0.47) |
 
 **H1 by category**
@@ -253,55 +257,55 @@ Each row pools at most three cities, so read these as description. The main test
 
 | Category | News slope (95% interval) | Cities | Search slope (95% interval) | Cities |
 | :-- | :-- | --: | :-- | --: |
-| Safety | 0.05 (-0.15 to 0.18) | 3 | 0.27 (0.14 to 0.36) | 2 |
-| Economy | 0.08 (0.03 to 0.13) | 3 | 0.58 (0.36 to 0.70) | 3 |
-| Housing | 0.02 (-0.05 to 0.05) | 2 | 0.05 (-0.10 to 0.23) | 3 |
-| Transport | 0.13 (-0.00 to 0.25) | 2 | 0.22 (0.06 to 0.46) | 2 |
-| Environment | 0.13 (0.03 to 0.25) | 3 | 0.41 (0.05 to 0.90) | 3 |
-| Health | 0.45 (-0.44 to 0.50) | 2 | -0.06 (-0.31 to 0.08) | 2 |
-| Education | -0.22 (-0.78 to 0.19) | 3 | not tested | 0 |
-| Cost of Living | 0.10 (-0.11 to 0.22) | 1 | 0.59 (0.43 to 0.74) | 3 |
+| Safety | 0.06 (-0.09 to 0.17) | 3 | 0.27 (0.14 to 0.36) | 2 |
+| Economy | 0.07 (0.01 to 0.11) | 3 | 0.58 (0.36 to 0.70) | 3 |
+| Housing | 0.03 (-0.03 to 0.06) | 3 | 0.05 (-0.10 to 0.23) | 3 |
+| Transport | 0.08 (-0.03 to 0.19) | 3 | 0.22 (0.06 to 0.46) | 2 |
+| Environment | 0.17 (0.07 to 0.29) | 3 | 0.41 (0.05 to 0.90) | 3 |
+| Health | 0.46 (-0.43 to 0.50) | 2 | -0.06 (-0.31 to 0.08) | 2 |
+| Education | -0.25 (-0.85 to 0.25) | 3 | not tested | 0 |
+| Cost of Living | 0.08 (-0.11 to 0.19) | 1 | 0.59 (0.43 to 0.74) | 3 |
 
 **H1 by city**
 
 | City | News slope (95% interval) | Pairs | Search slope (95% interval) | Pairs |
 | :-- | :-- | --: | :-- | --: |
-| Hong Kong | -0.05 (-0.38 to 0.10) | 5 | 0.23 (0.08 to 0.36) | 5 |
+| Hong Kong | -0.04 (-0.26 to 0.08) | 7 | 0.23 (0.08 to 0.36) | 5 |
 | New York City | 0.08 (0.03 to 0.11) | 8 | 0.31 (0.20 to 0.62) | 7 |
-| London | 0.10 (0.00 to 0.24) | 6 | 0.18 (0.08 to 0.26) | 6 |
+| London | 0.11 (-0.01 to 0.26) | 6 | 0.18 (0.08 to 0.26) | 6 |
 
 **Checks that the results hold**
 
 | Check | News H1 slope (95% interval) | News pairs | News worse minus better | Search H1 slope (95% interval) | Search pairs | Search worse minus better |
 | :-- | :-- | --: | :-- | :-- | --: | :-- |
-| Main model | 0.07 (0.02 to 0.10) | 19 | -0.05 (-0.14 to 0.12) | 0.26 (0.19 to 0.42) | 18 | 0.20 (-0.10 to 0.47) |
-| Backup indicators in place of the main ones | 0.13 (0.07 to 0.21) | 19 | 0.02 (-0.16 to 0.21) | 0.28 (0.17 to 0.37) | 17 | -0.15 (-0.44 to 0.10) |
-| Without 2020 to 2022 | 0.02 (-0.04 to 0.06) | 19 | 0.05 (-0.14 to 0.22) | 0.26 (0.17 to 0.40) | 18 | 0.03 (-0.35 to 0.42) |
-| Without 2020 to 2022 and every other marked break month | 0.03 (-0.06 to 0.15) | 19 | 0.08 (-0.19 to 0.42) | 0.24 (0.17 to 0.31) | 18 | 0.04 (-0.21 to 0.21) |
-| Official series aligned by release date | 0.02 (-0.00 to 0.06) | 19 | 0.04 (-0.05 to 0.13) | 0.18 (0.11 to 0.31) | 18 | 0.23 (-0.05 to 0.45) |
-| All listed outlets in place of the fixed panel | 0.10 (0.01 to 0.14) | 19 | -0.12 (-0.25 to 0.13) | not run |  |  |
-| Negative-tone share in place of all coverage | 0.09 (0.02 to 0.13) | 19 | -0.10 (-0.22 to 0.16) | not run |  |  |
-| Hong Kong without HK China News Agency | 0.07 (0.01 to 0.10) | 19 | -0.05 (-0.14 to 0.12) | not run |  |  |
-| London without the seven borough papers that jumped in volume | 0.06 (0.00 to 0.09) | 19 | -0.04 (-0.14 to 0.12) | not run |  |  |
-| Categories kept or dropped by the validation rule as the plan words it (every validation item, weights by category only) | 0.08 (0.03 to 0.11) | 16 | -0.09 (-0.19 to 0.07) | not run |  |  |
-| Description: Hong Kong pairs only, periods before 2021 (several major outlets closed in 2021) | -0.23 (-1.08 to 0.27) | 5 | 1.21 (-2.32 to 2.54) | not run |  |  |
-| Description: Hong Kong pairs only, periods from 2021 on | 0.02 (-0.31 to 0.20) | 5 | 0.39 (-0.66 to 0.64) | not run |  |  |
-| Exploratory: every main-panel outlet in every year (no outlets left out of 2015 to 2019) | 0.07 (0.01 to 0.10) | 19 | -0.05 (-0.14 to 0.11) | not run |  |  |
-| Exploratory: Hong Kong from articles with headline words in the address only (no theme-tag-only labels in any year) | 0.07 (0.02 to 0.10) | 19 | -0.06 (-0.16 to 0.10) | not run |  |  |
-| Exploratory: bootstrap with 24-month blocks (wider intervals if changes are persistent) | 0.07 (0.03 to 0.10) | 19 | -0.05 (-0.11 to 0.11) | 0.26 (0.19 to 0.45) | 18 | 0.20 (-0.10 to 0.42) |
+| Main model | 0.07 (0.02 to 0.10) | 21 | -0.05 (-0.14 to 0.11) | 0.26 (0.19 to 0.42) | 18 | 0.20 (-0.10 to 0.47) |
+| Backup indicators in place of the main ones | 0.13 (0.06 to 0.20) | 21 | 0.02 (-0.17 to 0.20) | 0.28 (0.17 to 0.37) | 17 | -0.15 (-0.44 to 0.10) |
+| Without 2020 to 2022 | 0.02 (-0.05 to 0.06) | 21 | 0.02 (-0.16 to 0.22) | 0.26 (0.17 to 0.40) | 18 | 0.03 (-0.35 to 0.42) |
+| Without 2020 to 2022 and every other marked break month | 0.06 (-0.03 to 0.16) | 21 | 0.04 (-0.19 to 0.40) | 0.24 (0.17 to 0.31) | 18 | 0.04 (-0.21 to 0.21) |
+| Official series aligned by release date | 0.02 (-0.01 to 0.06) | 21 | 0.05 (-0.04 to 0.15) | 0.18 (0.11 to 0.31) | 18 | 0.23 (-0.05 to 0.45) |
+| All listed outlets in place of the fixed panel | 0.08 (0.01 to 0.12) | 21 | -0.09 (-0.22 to 0.16) | not run |  |  |
+| Negative-tone share in place of all coverage | 0.09 (0.03 to 0.13) | 21 | -0.11 (-0.22 to 0.13) | not run |  |  |
+| Hong Kong without HK China News Agency | 0.07 (0.01 to 0.10) | 21 | -0.05 (-0.14 to 0.12) | not run |  |  |
+| London without the seven borough papers that jumped in volume | 0.06 (-0.00 to 0.09) | 21 | -0.05 (-0.13 to 0.12) | not run |  |  |
+| Categories kept or dropped by the validation rule as the plan words it (every validation item, weights by category only) | 0.08 (0.02 to 0.11) | 16 | -0.09 (-0.19 to 0.07) | not run |  |  |
+| Description: Hong Kong pairs only, periods before 2021 (several major outlets closed in 2021) | -0.20 (-0.68 to 0.12) | 7 | 0.84 (-1.28 to 1.52) | not run |  |  |
+| Description: Hong Kong pairs only, periods from 2021 on | 0.04 (-0.15 to 0.20) | 7 | 0.24 (-0.31 to 0.44) | not run |  |  |
+| Exploratory: every main-panel outlet in every year (no outlets left out of 2015 to 2019) | 0.07 (0.02 to 0.09) | 21 | -0.05 (-0.14 to 0.11) | not run |  |  |
+| Exploratory: Hong Kong from articles with headline words in the address only (no theme-tag-only labels in any year) | 0.07 (0.02 to 0.10) | 21 | -0.06 (-0.15 to 0.10) | not run |  |  |
+| Exploratory: bootstrap with 24-month blocks (wider intervals if changes are persistent) | 0.07 (0.03 to 0.09) | 21 | -0.05 (-0.10 to 0.10) | 0.26 (0.19 to 0.45) | 18 | 0.20 (-0.10 to 0.42) |
 
 **H3: share of periods moving in opposite directions, news**
 
 | Category | Hong Kong | New York City | London |
 | :-- | --: | --: | --: |
-| Safety | 70% (10 years) | 45% (128 months) | 35% (129 months) |
-| Economy | 59% (114 months) | 43% (118 months) | 42% (125 months) |
-| Housing | not tested | 53% (129 months) | 58% (128 months) |
-| Transport | not tested | 40% (129 months) | 43% (119 months) |
-| Environment | 47% (123 months) | 38% (124 months) | 51% (85 months) |
-| Health | 59% (29 quarters) | 41% (70 months) | not tested |
+| Safety | 70% (10 years) | 45% (128 months) | 34% (129 months) |
+| Economy | 59% (114 months) | 47% (118 months) | 44% (125 months) |
+| Housing | 37% (126 months) | 56% (129 months) | 59% (128 months) |
+| Transport | 54% (125 months) | 34% (129 months) | 43% (119 months) |
+| Environment | 46% (123 months) | 41% (124 months) | 48% (85 months) |
+| Health | 59% (29 quarters) | 44% (70 months) | not tested |
 | Education | 56% (9 years) | 67% (9 years) | 40% (10 years) |
-| Cost of Living | not tested | 45% (104 months) | not tested |
+| Cost of Living | not tested | 42% (91 months) | not tested |
 
 **H3: share of periods moving in opposite directions, search**
 
@@ -320,28 +324,28 @@ Each row pools at most three cities, so read these as description. The main test
 
 | Proposed cause (by AI, for Cayden to confirm) | Disconnections of six months or more |
 | :-- | --: |
-| unclear | 36 |
+| unclear | 35 |
 | attention followed a news cycle rather than conditions | 25 |
-| a real event drew coverage the indicator does not capture | 8 |
-| the two measure different parts of the problem | 4 |
+| a real event drew coverage the indicator does not capture | 11 |
 | the official measure changed how it counts | 4 |
+| the two measure different parts of the problem | 3 |
 
 **Kappa by category and city**
 
 | Category | Hong Kong | New York City | London |
 | :-- | --: | --: | --: |
-| Safety | 0.72 kept | 0.80 kept | 0.83 kept |
-| Economy | 0.65 kept | 0.77 kept | 0.64 kept |
-| Housing | 0.46 dropped | 0.98 kept | 0.81 kept |
-| Transport | 0.36 dropped | 0.82 kept | 0.80 kept |
+| Safety | 0.72 kept, caution (fresh sample 0.57) | 0.80 kept | 0.83 kept |
+| Economy | 0.65 kept | 0.77 kept, caution (fresh sample 0.58) | 0.64 kept |
+| Housing | 0.46, retest 0.88: kept | 0.98 kept, caution (fresh sample 0.55) | 0.81 kept |
+| Transport | 0.36, retest 0.62: kept | 0.82 kept | 0.80 kept |
 | Environment | 0.79 kept | 0.65 kept | 0.61 kept |
 | Health | 0.76 kept | 0.86 kept | 0.81 kept |
-| Education | 0.82 kept | 0.74 kept | 0.88 kept |
-| Cost of Living | 0.44 dropped | 0.67 kept | 0.41 dropped |
-| Governance | 0.73 kept | 0.77 kept | 0.52 dropped |
-| Culture | 0.18 dropped | 0.20 dropped | 0.20 dropped |
-| Technology | 0.11 dropped | 0.68 kept | 0.45 dropped |
-| Community | 0.36 dropped | 0.46 dropped | 0.34 dropped |
+| Education | 0.82 kept, caution (fresh sample 0.58) | 0.74 kept | 0.88 kept, caution (fresh sample 0.51) |
+| Cost of Living | 0.44, retest 0.33: dropped | 0.67 kept | 0.41, retest 0.25: dropped |
+| Governance | 0.73 kept, caution (fresh sample 0.59) | 0.77 kept | 0.52, retest 0.69: kept |
+| Culture | 0.18, retest 0.14: dropped | 0.20, retest 0.15: dropped | 0.20, retest 0.23: dropped |
+| Technology | 0.11, retest 0.39: dropped | 0.68 kept, caution (fresh sample 0.50) | 0.45, retest 0.13: dropped |
+| Community | 0.36, retest 0.48: dropped | 0.46, retest 0.30: dropped | 0.34, retest 0.47: dropped |
 | Not a civic problem | 0.62 | 0.72 | 0.75 |
 | **Overall** | **0.65** | **0.76** | **0.71** |
 | Items | 228 | 300 | 299 |
@@ -373,7 +377,7 @@ This shows which categories fall below the bar under the plan as written and und
 | GDELT records pulled for the listed outlets | 6,363,992 |
 | Articles left after the city filters and duplicate removal | 2,466,900 |
 | Articles labeled, main panels | 286,155 |
-| Articles labeled, main panels and check lists | 429,082 |
+| Articles labeled, main panels and check lists | 429,081 |
 | Months of news | 141 (2015-02 to 2026-10) |
 | Official series (main and backup) | 45 |
 | Official values | 11,948 |

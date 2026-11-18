@@ -21,7 +21,7 @@
 1. Outlets: a fixed main panel per city ({{counts.outlets_main_panel.hk}} in Hong Kong, {{counts.outlets_main_panel.nyc}} in New York, {{counts.outlets_main_panel.london}} borough papers in London), set before any data were pulled.
 2. City filter: Hong Kong articles must carry a Hong Kong location tag. New York articles must carry a city or borough tag. London papers' national wire stories are dropped.
 3. Sample: a seeded random draw of up to 333 articles per outlet per month in Hong Kong and New York and up to 66 per paper per month in London. {{run.items_sampled_total|comma}} items were sampled. {{run.items_no_input|comma}} had nothing for the model to read and were left out.
-4. Labels: {{run.items_labeled_total|comma}} items were labeled by `claude-haiku-5-5` (Anthropic API), 50 items per request, with the frozen prompt in `labeling_card.md`. The model read the headline words in each article's web address plus GDELT's theme tags. Cost: about ${{run.anthropic_cost_usd}} in total, ${{run.cost_per_item_usd|raw}} per item in the cost test.
+4. Labels: {{run.items_labeled_total|comma}} items were labeled by `claude-haiku-5-5` (Anthropic API), 50 items per request, with {{run.labels_made_with}} in `labeling_card.md`. {{run.relabel_note}} The model read the headline words in each article's web address plus GDELT's theme tags. Cost: about ${{run.anthropic_cost_usd}} in total, ${{run.cost_per_item_usd|raw}} per item in the cost test.
 5. Shares: each category's share per outlet per month, averaged across outlets with equal weights. `neg_share` counts only articles labeled with negative tone.
 
 ## Validation

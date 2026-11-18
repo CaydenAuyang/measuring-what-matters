@@ -1,0 +1,13 @@
+{
+ "categories": {
+  "housing": "housing | Rent, home prices, the property market, land and housing supply, public housing, living conditions, subdivided flats, homelessness | Other prices (cost_of_living); a property company's results or shares with no housing angle (economy)",
+  "transport": "transport | Transit, roads, airports, ferries and ports: reliability, congestion, commuting, fares, the cost of driving, crashes and safety incidents on any vehicle | A story where travel is only a detail goes to its main problem",
+  "cost_of_living": "cost_of_living | Everyday prices residents pay other than housing: food, utilities, goods, bills, inflation as households feel it | Rent, home prices and housing costs (housing); fares (transport); markets, growth, trade and public finances (economy); shopping deals, product news and consumer tips (not_civic)",
+  "governance": "governance | Government conduct in general: elections, budgets, corruption, misconduct by officials or police, trust in institutions, national security cases | A government decision, plan or failure about one named problem goes to that problem's category",
+  "culture": "culture | Arts, heritage, libraries, museums, nightlife and entertainment venues as civic issues: closures, funding cuts, heritage at risk, limits on what can be shown or performed | Events, festivals, shows, openings, reviews, profiles, celebrity and television news (not_civic)",
+  "technology": "technology | Digital access, outages, cyberattacks, data leaks and privacy failures, including at government bodies; payment system failures | Tech industry, products, startups, television and broadcasting (not_civic); online scams against people (safety)",
+  "community": "community | Relations between groups of residents: cohesion, discrimination, racism and prejudice, neighborhood disputes, neighborhood life and local volunteering | Hate crimes and attacks (safety); misconduct by officials or police (governance); human-interest and personal stories (not_civic); stray or wild animals (environment)"
+ },
+ "note": "The one allowed revision. Written by the AI agent after the official second coder's scores, from the disagreements between the two AI coders on the first validation sample. Only categories that failed the first test in at least one city were reworded. No person reviewed the wording.",
+ "written_utc": "2026-11-18T08:24:26Z"
+}

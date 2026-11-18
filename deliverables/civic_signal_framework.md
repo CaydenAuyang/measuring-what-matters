@@ -15,14 +15,14 @@ It does not tell you which measure is right. Official statistics are a benchmark
 
 The method comes from one study of Hong Kong, New York City and London. Its main results:
 
-- News: For news coverage, attention rose 0.07 standard deviations for each standard deviation the official measure worsened (95% interval 0.02 to 0.10, 19 city and category pairs, about 185 independent pair-years). That is a weak link, and the interval excludes zero, so H1 is supported for news coverage.
+- News: For news coverage, attention rose 0.07 standard deviations for each standard deviation the official measure worsened (95% interval 0.02 to 0.10, 21 city and category pairs, about 206 independent pair-years). That is a weak link, and the interval excludes zero, so H1 is supported for news coverage.
 - Search: For search interest, attention rose 0.26 standard deviations for each standard deviation the official measure worsened (95% interval 0.19 to 0.42, 18 city and category pairs, about 336 independent pair-years). That is a weak link, and the interval excludes zero, so H1 is supported for search interest.
 
 Every recommendation in this guide points to a number from that study. Where the study did not settle something, the guide says so.
 
 Read the limits before you rely on it. In the study an AI agent ran the whole pipeline in one unattended session. An AI language model labeled the articles and a second AI language model checked a sample. No person hand-coded any article. Validation status when this file was built: **final**. If that reads "provisional", the agreement numbers below come from a stand-in third AI pass and will be replaced.
 
-What you need: someone who can write SQL and Python, a cloud account that can query the GDELT news database in BigQuery, and an API key for a language model. In dollars, the study spent about $20.57 on news database queries and $27.25 on labeling. It cannot tell you how long the work takes a person, because nobody did it by hand. The proposal behind the study budgeted 60 to 70 hours for one student over a term.
+What you need: someone who can write SQL and Python, a cloud account that can query the GDELT news database in BigQuery, and an API key for a language model. In dollars, the study spent about $20.57 on news database queries and $55.18 on labeling. It cannot tell you how long the work takes a person, because nobody did it by hand. The proposal behind the study budgeted 60 to 70 hours for one student over a term.
 
 ## The eleven steps
 
@@ -36,9 +36,9 @@ What you need: someone who can write SQL and Python, a cloud account that can qu
 
 **What can go wrong.** A category with a soft edge fails validation later and has to be dropped. The categories dropped in this study:
 
-- Hong Kong: Housing, Transport, Cost of Living, Culture, Technology and Community
+- Hong Kong: Cost of Living, Culture, Technology and Community
 - New York City: Culture and Community
-- London: Cost of Living, Governance, Culture, Technology and Community
+- London: Cost of Living, Culture, Technology and Community
 
 Look at that list before you copy the codebook, and tighten those boundaries first.
 
@@ -46,7 +46,7 @@ Look at that list before you copy the codebook, and tighten those boundaries fir
 
 **Do.** For every category choose one main indicator and one backup, both from a government or other official body, at the city level where one exists. Before you look at any values, write down which direction is worse and how the yearly change is computed: percent for counts, points for rates, and the change in the 12-month rate for prices. Use each series at its own frequency. Never fill a gap. Keep a table of every known break, such as a change in how something is counted.
 
-**What it produced in this study.** 45 main and backup series (23 main, the rest backups) holding 11,948 values, built from 465 saved raw files. The dataset file also holds 2 extra series that no test uses. Having backups let the study rerun the main test on different indicators. With backups in place of the main indicators, the pooled news slope was 0.13 (0.07 to 0.21), against 0.07 in the main model. The search slope was 0.28 (0.17 to 0.37), against 0.26.
+**What it produced in this study.** 45 main and backup series (23 main, the rest backups) holding 11,948 values, built from 465 saved raw files. The dataset file also holds 2 extra series that no test uses. Having backups let the study rerun the main test on different indicators. With backups in place of the main indicators, the pooled news slope was 0.13 (0.06 to 0.20), against 0.07 in the main model. The search slope was 0.28 (0.17 to 0.37), against 0.26.
 
 **What it cost here.** No fees. Every series was a public download. The proposal budgeted about 22 hours for assembling the official data and building the attention pipeline together.
 
@@ -89,9 +89,9 @@ Look at that list before you copy the codebook, and tighten those boundaries fir
 
 **Do.** Draw a seeded random sample each month, with the same cap for every outlet. Label in rounds, each round adding the same number of articles per outlet and month, so the sample stays even if the run stops early. Put the codebook into the prompt word for word and freeze the prompt before labeling. Use one model for every article. Label a small batch first to measure the real cost per item. Save the model's exact identifier and the prompt in a labeling card.
 
-**What it produced in this study.** 435,201 items were sampled, and 429,082 were labeled when this file was built. 6,117 had no headline words and no topic tags, so the model had nothing to read and they were left out. 286,155 of the labeled articles are from the main panels, and the main attention index is built from those, less the Hong Kong outlet-years that the headline check leaves out (Step 3). The rest are from the other listed outlets and feed one check. Labeling round reached: round 6 of 6, the full planned sample.
+**What it produced in this study.** 435,201 items were sampled, and 429,081 were labeled when this file was built. 6,117 had no headline words and no topic tags, so the model had nothing to read and they were left out. 286,155 of the labeled articles are from the main panels, and the main attention index is built from those, less the Hong Kong outlet-years that the headline check leaves out (Step 3). The rest are from the other listed outlets and feed one check. Labeling round reached: round 6 of 6, the full planned sample.
 
-**What it cost here.** About $0.06 per 1,000 items, or $6.27 per 100,000, measured on the first batch. Fees for the first coder came to $27.25 in all, against a cap of $100.00. Each request held 50 items from one city (`data/public/labeling_card.md`). The largest request was 23,856 input tokens in the cost test and 26,830 in the full run.
+**What it cost here.** About $0.06 per 1,000 items, or $6.27 per 100,000, measured on the first batch. Fees for the first coder came to $55.18 in all, against a cap of $100.00. That total includes labeling every article twice, because the one wording revision came after the first full run. Each request held 50 items from one city (`data/public/labeling_card.md`). The largest request was 23,856 input tokens in the cost test and 26,830 in the full run.
 
 **What can go wrong.**
 
@@ -104,22 +104,22 @@ Look at that list before you copy the codebook, and tighten those boundaries fir
 
 **Do.** Draw a validation set for each city. The plan here was about 300 items, at least 20 per category, spread across years and outlets. Have a second coder label it without seeing the first labels, reading more than the first coder did: the real headline and the opening lines. Weight the results back to the full sample and compute Cohen's kappa per category. Fix the threshold in advance. Record whether each article is really about the city. The second coder should be a person if you can manage it.
 
-**What it produced in this study.** Items scored: 228 in Hong Kong, 300 in New York City and 299 in London. In Hong Kong 71 more items were coded and left out of the score, because their outlet-years are not in the main series. Overall kappa was 0.65, 0.76 and 0.71 in the same order. 23 of 36 category checks (twelve categories in each city) reached the threshold of 0.61.
+**What it produced in this study.** Items scored: 228 in Hong Kong, 300 in New York City and 299 in London. In Hong Kong 71 more items were coded and left out of the score, because their outlet-years are not in the main series. Overall kappa was 0.65, 0.76 and 0.71 in the same order. 26 of 36 category checks (twelve categories in each city) reached the threshold of 0.61.
 
 | Category | Hong Kong | New York City | London |
 | :-- | --: | --: | --: |
-| Safety | 0.72 kept | 0.80 kept | 0.83 kept |
-| Economy | 0.65 kept | 0.77 kept | 0.64 kept |
-| Housing | 0.46 dropped | 0.98 kept | 0.81 kept |
-| Transport | 0.36 dropped | 0.82 kept | 0.80 kept |
+| Safety | 0.72 kept, caution (fresh sample 0.57) | 0.80 kept | 0.83 kept |
+| Economy | 0.65 kept | 0.77 kept, caution (fresh sample 0.58) | 0.64 kept |
+| Housing | 0.46, retest 0.88: kept | 0.98 kept, caution (fresh sample 0.55) | 0.81 kept |
+| Transport | 0.36, retest 0.62: kept | 0.82 kept | 0.80 kept |
 | Environment | 0.79 kept | 0.65 kept | 0.61 kept |
 | Health | 0.76 kept | 0.86 kept | 0.81 kept |
-| Education | 0.82 kept | 0.74 kept | 0.88 kept |
-| Cost of Living | 0.44 dropped | 0.67 kept | 0.41 dropped |
-| Governance | 0.73 kept | 0.77 kept | 0.52 dropped |
-| Culture | 0.18 dropped | 0.20 dropped | 0.20 dropped |
-| Technology | 0.11 dropped | 0.68 kept | 0.45 dropped |
-| Community | 0.36 dropped | 0.46 dropped | 0.34 dropped |
+| Education | 0.82 kept, caution (fresh sample 0.58) | 0.74 kept | 0.88 kept, caution (fresh sample 0.51) |
+| Cost of Living | 0.44, retest 0.33: dropped | 0.67 kept | 0.41, retest 0.25: dropped |
+| Governance | 0.73 kept, caution (fresh sample 0.59) | 0.77 kept | 0.52, retest 0.69: kept |
+| Culture | 0.18, retest 0.14: dropped | 0.20, retest 0.15: dropped | 0.20, retest 0.23: dropped |
+| Technology | 0.11, retest 0.39: dropped | 0.68 kept, caution (fresh sample 0.50) | 0.45, retest 0.13: dropped |
+| Community | 0.36, retest 0.48: dropped | 0.46, retest 0.30: dropped | 0.34, retest 0.47: dropped |
 | Not a civic problem | 0.62 | 0.72 | 0.75 |
 | **Overall** | **0.65** | **0.76** | **0.71** |
 | Items | 228 | 300 | 299 |
@@ -127,7 +127,6 @@ Look at that list before you copy the codebook, and tighten those boundaries fir
 
 The first coder was also compared with a larger model on the same inputs: kappa 0.81 on 300 items.
 
-<!-- FINAL PASS: the two tokens on the next line resolve only after the second-coder step writes its consistency results. If they still read "[not available]" at the end of the run, delete the line. -->
 Two more consistency checks: a third AI pass against the second coder gave kappa 0.76, and the second coder against itself on a fresh request gave kappa 0.80.
 
 **What it cost here.** 4,751 article pages were tried and 3,210 were fetched (68%). The second coder ran on its provider's free tier, logged as $0.00, so this study cannot tell you what a paid second coder costs.
@@ -138,7 +137,7 @@ Two more consistency checks: a third AI pass against the second coder gave kappa
 - **Scoring rules set late.** In this study three scoring rules (which items count, what to read when no page loads, and how to weight) were set after provisional scores had been seen and before the official second coder ran. Write those rules down before any score exists.
 - **Two AI coders can share a blind spot.** Their agreement shows the labels are consistent. Only a person coding a sample can show the labels match a human reader.
 - **Few items per category.** With about 20 items, one category's kappa has a wide interval. The intervals are in `data/public/validation_report.md`.
-- **When a category fails.** Revise its wording once, label a fresh sample and test again. If it still falls short, drop it for that city and report it. Do not lower the threshold after seeing the result. Of the eight compared categories, this study dropped: Hong Kong: Housing, Transport and Cost of Living. New York City: none. London: Cost of Living.
+- **When a category fails.** Revise its wording once, label a fresh sample and test again. If it still falls short, drop it for that city and report it. Do not lower the threshold after seeing the result. Of the eight compared categories, this study dropped: Hong Kong: Cost of Living. New York City: none. London: Cost of Living.
 
 ### Step 7. Add search data with an anchor term and fixed term sets
 
@@ -160,7 +159,7 @@ Two more consistency checks: a third AI pass against the second coder gave kappa
 
 **Do.** Compare each period with the same period a year earlier, for the official series and for attention. Divide each pair's changes by their own standard deviation, computed outside the marked breaks. Match the attention window to the indicator's frequency. For news, compute each outlet's own yearly change and average across the outlets present in both years.
 
-**What it produced in this study.** 1,739 matched periods across 19 news pairs, which is about 185 independent pair-years. For search: 3,980 periods across 18 pairs, about 336 independent pair-years. The file is `data/public/yearly_changes.csv`.
+**What it produced in this study.** 1,994 matched periods across 21 news pairs, which is about 206 independent pair-years. For search: 3,980 periods across 18 pairs, about 336 independent pair-years. The file is `data/public/yearly_changes.csv`.
 
 **What it cost here.** Computer time only.
 
@@ -178,30 +177,30 @@ Two more consistency checks: a third AI pass against the second coder gave kappa
 
 | Source | H1 slope (95% interval) | p | Pairs | Periods | Independent pair-years | Slope when worsening | Slope when improving | Difference (95% interval) |
 | :-- | :-- | --: | --: | --: | --: | :-- | :-- | :-- |
-| News | 0.07 (0.02 to 0.10) | 0.009 | 19 | 1,739 | 185 | 0.06 (0.01 to 0.10) | 0.10 (-0.05 to 0.18) | -0.05 (-0.14 to 0.12) |
+| News | 0.07 (0.02 to 0.10) | 0.006 | 21 | 1,994 | 206 | 0.05 (0.01 to 0.10) | 0.10 (-0.04 to 0.17) | -0.05 (-0.14 to 0.11) |
 | Search | 0.26 (0.19 to 0.42) | < 0.001 | 18 | 3,980 | 336 | 0.37 (0.22 to 0.59) | 0.17 (0.08 to 0.39) | 0.20 (-0.10 to 0.47) |
 
 | Check | News H1 slope (95% interval) | News pairs | News worse minus better | Search H1 slope (95% interval) | Search pairs | Search worse minus better |
 | :-- | :-- | --: | :-- | :-- | --: | :-- |
-| Main model | 0.07 (0.02 to 0.10) | 19 | -0.05 (-0.14 to 0.12) | 0.26 (0.19 to 0.42) | 18 | 0.20 (-0.10 to 0.47) |
-| Backup indicators in place of the main ones | 0.13 (0.07 to 0.21) | 19 | 0.02 (-0.16 to 0.21) | 0.28 (0.17 to 0.37) | 17 | -0.15 (-0.44 to 0.10) |
-| Without 2020 to 2022 | 0.02 (-0.04 to 0.06) | 19 | 0.05 (-0.14 to 0.22) | 0.26 (0.17 to 0.40) | 18 | 0.03 (-0.35 to 0.42) |
-| Without 2020 to 2022 and every other marked break month | 0.03 (-0.06 to 0.15) | 19 | 0.08 (-0.19 to 0.42) | 0.24 (0.17 to 0.31) | 18 | 0.04 (-0.21 to 0.21) |
-| Official series aligned by release date | 0.02 (-0.00 to 0.06) | 19 | 0.04 (-0.05 to 0.13) | 0.18 (0.11 to 0.31) | 18 | 0.23 (-0.05 to 0.45) |
-| All listed outlets in place of the fixed panel | 0.10 (0.01 to 0.14) | 19 | -0.12 (-0.25 to 0.13) | not run |  |  |
-| Negative-tone share in place of all coverage | 0.09 (0.02 to 0.13) | 19 | -0.10 (-0.22 to 0.16) | not run |  |  |
-| Hong Kong without HK China News Agency | 0.07 (0.01 to 0.10) | 19 | -0.05 (-0.14 to 0.12) | not run |  |  |
-| London without the seven borough papers that jumped in volume | 0.06 (0.00 to 0.09) | 19 | -0.04 (-0.14 to 0.12) | not run |  |  |
-| Categories kept or dropped by the validation rule as the plan words it (every validation item, weights by category only) | 0.08 (0.03 to 0.11) | 16 | -0.09 (-0.19 to 0.07) | not run |  |  |
-| Description: Hong Kong pairs only, periods before 2021 (several major outlets closed in 2021) | -0.23 (-1.08 to 0.27) | 5 | 1.21 (-2.32 to 2.54) | not run |  |  |
-| Description: Hong Kong pairs only, periods from 2021 on | 0.02 (-0.31 to 0.20) | 5 | 0.39 (-0.66 to 0.64) | not run |  |  |
-| Exploratory: every main-panel outlet in every year (no outlets left out of 2015 to 2019) | 0.07 (0.01 to 0.10) | 19 | -0.05 (-0.14 to 0.11) | not run |  |  |
-| Exploratory: Hong Kong from articles with headline words in the address only (no theme-tag-only labels in any year) | 0.07 (0.02 to 0.10) | 19 | -0.06 (-0.16 to 0.10) | not run |  |  |
-| Exploratory: bootstrap with 24-month blocks (wider intervals if changes are persistent) | 0.07 (0.03 to 0.10) | 19 | -0.05 (-0.11 to 0.11) | 0.26 (0.19 to 0.45) | 18 | 0.20 (-0.10 to 0.42) |
+| Main model | 0.07 (0.02 to 0.10) | 21 | -0.05 (-0.14 to 0.11) | 0.26 (0.19 to 0.42) | 18 | 0.20 (-0.10 to 0.47) |
+| Backup indicators in place of the main ones | 0.13 (0.06 to 0.20) | 21 | 0.02 (-0.17 to 0.20) | 0.28 (0.17 to 0.37) | 17 | -0.15 (-0.44 to 0.10) |
+| Without 2020 to 2022 | 0.02 (-0.05 to 0.06) | 21 | 0.02 (-0.16 to 0.22) | 0.26 (0.17 to 0.40) | 18 | 0.03 (-0.35 to 0.42) |
+| Without 2020 to 2022 and every other marked break month | 0.06 (-0.03 to 0.16) | 21 | 0.04 (-0.19 to 0.40) | 0.24 (0.17 to 0.31) | 18 | 0.04 (-0.21 to 0.21) |
+| Official series aligned by release date | 0.02 (-0.01 to 0.06) | 21 | 0.05 (-0.04 to 0.15) | 0.18 (0.11 to 0.31) | 18 | 0.23 (-0.05 to 0.45) |
+| All listed outlets in place of the fixed panel | 0.08 (0.01 to 0.12) | 21 | -0.09 (-0.22 to 0.16) | not run |  |  |
+| Negative-tone share in place of all coverage | 0.09 (0.03 to 0.13) | 21 | -0.11 (-0.22 to 0.13) | not run |  |  |
+| Hong Kong without HK China News Agency | 0.07 (0.01 to 0.10) | 21 | -0.05 (-0.14 to 0.12) | not run |  |  |
+| London without the seven borough papers that jumped in volume | 0.06 (-0.00 to 0.09) | 21 | -0.05 (-0.13 to 0.12) | not run |  |  |
+| Categories kept or dropped by the validation rule as the plan words it (every validation item, weights by category only) | 0.08 (0.02 to 0.11) | 16 | -0.09 (-0.19 to 0.07) | not run |  |  |
+| Description: Hong Kong pairs only, periods before 2021 (several major outlets closed in 2021) | -0.20 (-0.68 to 0.12) | 7 | 0.84 (-1.28 to 1.52) | not run |  |  |
+| Description: Hong Kong pairs only, periods from 2021 on | 0.04 (-0.15 to 0.20) | 7 | 0.24 (-0.31 to 0.44) | not run |  |  |
+| Exploratory: every main-panel outlet in every year (no outlets left out of 2015 to 2019) | 0.07 (0.02 to 0.09) | 21 | -0.05 (-0.14 to 0.11) | not run |  |  |
+| Exploratory: Hong Kong from articles with headline words in the address only (no theme-tag-only labels in any year) | 0.07 (0.02 to 0.10) | 21 | -0.06 (-0.15 to 0.10) | not run |  |  |
+| Exploratory: bootstrap with 24-month blocks (wider intervals if changes are persistent) | 0.07 (0.03 to 0.09) | 21 | -0.05 (-0.10 to 0.10) | 0.26 (0.19 to 0.45) | 18 | 0.20 (-0.10 to 0.42) |
 
-For news, the H1 interval stayed above zero in 9 of the 14 checks that ran (the ones where it did not: Without 2020 to 2022; Without 2020 to 2022 and every other marked break month; Official series aligned by release date; Description: Hong Kong pairs only, periods before 2021 (several major outlets closed in 2021); Description: Hong Kong pairs only, periods from 2021 on). For search it stayed above zero in 5 of 5 (the ones where it did not: none). News checks with no result: none.
+For news, the H1 interval stayed above zero in 8 of the 14 checks that ran (the ones where it did not: Without 2020 to 2022; Without 2020 to 2022 and every other marked break month; Official series aligned by release date; London without the seven borough papers that jumped in volume; Description: Hong Kong pairs only, periods before 2021 (several major outlets closed in 2021); Description: Hong Kong pairs only, periods from 2021 on). For search it stayed above zero in 5 of 5 (the ones where it did not: none). News checks with no result: none.
 
-At the level of single pairs, 11 of 37 had a Benjamini-Hochberg adjusted p below 0.05, and 11 could not be tested.
+At the level of single pairs, 14 of 39 had a Benjamini-Hochberg adjusted p below 0.05, and 9 could not be tested.
 
 **What it cost here.** Computer time only, with 2,000 bootstrap resamples.
 
@@ -216,15 +215,15 @@ At the level of single pairs, 11 of 37 had a Benjamini-Hochberg adjusted p below
 
 **Do.** For each pair, compute the share of periods in which attention and the official measure moved in opposite directions. List every stretch of six months or more. Give each one a cause from a short fixed list: the official measure changed how it counts, a real event drew coverage the indicator does not capture, attention followed a news cycle, the two measure different parts of the problem, or unclear. Read coverage from the period before you choose.
 
-**What it produced in this study.** 77 stretches, 23 in news and 54 in search.
+**What it produced in this study.** 78 stretches, 24 in news and 54 in search.
 
 | Proposed cause (by AI, for Cayden to confirm) | Disconnections of six months or more |
 | :-- | --: |
-| unclear | 36 |
+| unclear | 35 |
 | attention followed a news cycle rather than conditions | 25 |
-| a real event drew coverage the indicator does not capture | 8 |
-| the two measure different parts of the problem | 4 |
+| a real event drew coverage the indicator does not capture | 11 |
 | the official measure changed how it counts | 4 |
+| the two measure different parts of the problem | 3 |
 
 The longest news case with a named cause was Hong Kong Economy, 2022-05 to 2023-06: the official measure was improving while attention was rising for 14 months. Proposed cause: the two measure different parts of the problem. Proposed by: AI, after reading a seeded sample of the period's coverage; for Cayden to confirm.
 
@@ -233,7 +232,7 @@ The longest news case with a named cause was Hong Kong Economy, 2022-05 to 2023-
 **What can go wrong.**
 
 - **Reading too much into a share near half.** Two unrelated series move in opposite directions about half the time. A share near 50% means no visible relationship.
-- **Forcing a cause.** "Unclear" is an allowed answer. Here it was given to 36 of 77 stretches.
+- **Forcing a cause.** "Unclear" is an allowed answer. Here it was given to 35 of 78 stretches.
 - **Presenting a proposed cause as a finding.** Keep the "proposed" label until someone has read the coverage and the series notes.
 
 ### Step 11. Publish the data and the deviations
@@ -252,41 +251,41 @@ Each row starts from a question you might face, gives what this study found, and
 
 | Your question | What this study found | What to do |
 | :-- | :-- | :-- |
-| News coverage of a problem is rising. Did the problem get worse? | H1 for news: **supported**. For news coverage, attention rose 0.07 standard deviations for each standard deviation the official measure worsened (95% interval 0.02 to 0.10, 19 city and category pairs, about 185 independent pair-years). That is a weak link, and the interval excludes zero, so H1 is supported for news coverage. Without 2020 to 2022, the interval includes zero. | If "supported", treat rising coverage as a hint, no stronger than the link described, and go check the official number. If the interval without 2020 to 2022 includes zero, the study shows the link only when the pandemic years are in, so do not count on it in ordinary years. If "not supported" or "failed", do not read coverage changes as evidence about conditions. |
+| News coverage of a problem is rising. Did the problem get worse? | H1 for news: **supported**. For news coverage, attention rose 0.07 standard deviations for each standard deviation the official measure worsened (95% interval 0.02 to 0.10, 21 city and category pairs, about 206 independent pair-years). That is a weak link, and the interval excludes zero, so H1 is supported for news coverage. Without 2020 to 2022, the interval includes zero. | If "supported", treat rising coverage as a hint, no stronger than the link described, and go check the official number. If the interval without 2020 to 2022 includes zero, the study shows the link only when the pandemic years are in, so do not count on it in ordinary years. If "not supported" or "failed", do not read coverage changes as evidence about conditions. |
 | Searches about a problem are rising. Did the problem get worse? | H1 for search: **supported**. For search interest, attention rose 0.26 standard deviations for each standard deviation the official measure worsened (95% interval 0.19 to 0.42, 18 city and category pairs, about 336 independent pair-years). That is a weak link, and the interval excludes zero, so H1 is supported for search interest. Without 2020 to 2022, the interval is above zero. | Apply the same rule as for news. Keep in mind that search covers an area wider than the city, and that the downloads per request here numbered 2, from one night, where the plan said three on different days. |
 | Which categories does attention track? | News interval above zero: Environment and Economy. News interval includes zero: Health, Transport, Cost of Living, Safety, Housing and Education. Search interval above zero: Cost of Living, Economy, Environment, Safety and Transport. Search interval includes zero: Housing and Health. Not tested for search: Education. | Use attention as a signal only in a category whose interval is above zero for that source. For the others this study gives no support. Each category rests on at most three cities, so treat the list as a lead to test in your own city. |
-| Attention to a problem has gone quiet. Did the problem get better? | H2 for news: **not supported**. H2 for search: **not supported**. In 29 of 77 listed disconnections, the official measure was worsening while attention's share fell. | Do not take quiet as improvement without checking the official number. If H2 is "supported", attention reacts less to improvement than to worsening, so quiet is even weaker evidence. If "not supported", this study cannot say attention treats good and bad news differently, so do not assume it does. |
-| Is crime coverage the least reliable signal? | H3 for news: **not supported**. For news coverage, Safety showed the largest gap in 1 of 3 cities. Hong Kong: Safety ranked 1 of 5 (70% of periods moved in opposite directions; the largest was Safety at 70%). New York City: Safety ranked 4 of 8 (45% of periods moved in opposite directions; the largest was Education at 67%). London: Safety ranked 6 of 6 (35% of periods moved in opposite directions; the largest was Housing at 58%). H3 predicted the largest gap in at least two cities, so it is not supported. H3 for search: **not supported**. | If "supported", be most careful with Safety. If "not supported", do not single Safety out. Look up each category in the H3 tables below and check the same thing in your own city. |
-| When is the news signal unusable, so the official number is all I have? | Categories that failed the agreement test: Hong Kong: Housing, Transport, Cost of Living, Culture, Technology and Community. New York City: Culture and Community. London: Cost of Living, Governance, Culture, Technology and Community. Tag-only labels in the headline check: kappa 0.42 against a bar of 0.61. | Do not build a news signal for a category that fails validation in your city, or from outlets whose addresses carry no headline words. Use the official indicator alone there, and say that attention could not check it. |
-| When should I doubt the official number? | 4 of 77 listed disconnections were put down to a change in how the official series counts, and 4 to the indicator and the coverage measuring different parts of the problem. These causes were proposed by AI and are not yet confirmed. With every marked break month removed, the news interval includes zero and the search interval is above zero. | Before you trust an official change, read the series notes for a counting change in that window. If there is one, treat the change as unmeasured and look at the backup indicator. If the indicator covers one slice of the category, expect attention to move with the other slices too. |
-| Can attention warn me before the official number moves? | Exploratory only, with no prediction made. 14 of 31 monthly pairs had a permutation p below 0.05 at their best lag. With official data lined up by release date, the news interval includes zero and the search interval is above zero. | Do not use attention as an early warning on this evidence. The lags differ by category (table below). Use them to pick categories worth a proper test. |
-| Does the amount of coverage show which problem is worst right now? | Rank correlation between how far each official indicator sits from its 2015 to 2019 average and how much news coverage its category gets: 0.24 in Hong Kong, 0.04 in New York City and -0.36 in London. | A value near 1 would mean the most-covered problems are the ones furthest from normal. If these values are near zero or negative, do not rank problems by how much coverage they get. Each city has at most eight categories, so the values are rough. |
+| Attention to a problem has gone quiet. Did the problem get better? | H2 for news: **not supported**. H2 for search: **not supported**. In 28 of 78 listed disconnections, the official measure was worsening while attention's share fell. | Do not take quiet as improvement without checking the official number. If H2 is "supported", attention reacts less to improvement than to worsening, so quiet is even weaker evidence. If "not supported", this study cannot say attention treats good and bad news differently, so do not assume it does. |
+| Is crime coverage the least reliable signal? | H3 for news: **not supported**. For news coverage, Safety showed the largest gap in 1 of 3 cities. Hong Kong: Safety ranked 1 of 7 (70% of periods moved in opposite directions; the largest was Safety at 70%). New York City: Safety ranked 4 of 8 (45% of periods moved in opposite directions; the largest was Education at 67%). London: Safety ranked 6 of 6 (34% of periods moved in opposite directions; the largest was Housing at 59%). H3 predicted the largest gap in at least two cities, so it is not supported. H3 for search: **not supported**. | If "supported", be most careful with Safety. If "not supported", do not single Safety out. Look up each category in the H3 tables below and check the same thing in your own city. |
+| When is the news signal unusable, so the official number is all I have? | Categories that failed the agreement test: Hong Kong: Cost of Living, Culture, Technology and Community. New York City: Culture and Community. London: Cost of Living, Culture, Technology and Community. Tag-only labels in the headline check: kappa 0.42 against a bar of 0.61. | Do not build a news signal for a category that fails validation in your city, or from outlets whose addresses carry no headline words. Use the official indicator alone there, and say that attention could not check it. |
+| When should I doubt the official number? | 4 of 78 listed disconnections were put down to a change in how the official series counts, and 3 to the indicator and the coverage measuring different parts of the problem. These causes were proposed by AI and are not yet confirmed. With every marked break month removed, the news interval includes zero and the search interval is above zero. | Before you trust an official change, read the series notes for a counting change in that window. If there is one, treat the change as unmeasured and look at the backup indicator. If the indicator covers one slice of the category, expect attention to move with the other slices too. |
+| Can attention warn me before the official number moves? | Exploratory only, with no prediction made. 16 of 33 monthly pairs had a permutation p below 0.05 at their best lag. With official data lined up by release date, the news interval includes zero and the search interval is above zero. | Do not use attention as an early warning on this evidence. The lags differ by category (table below). Use them to pick categories worth a proper test. |
+| Does the amount of coverage show which problem is worst right now? | Rank correlation between how far each official indicator sits from its 2015 to 2019 average and how much news coverage its category gets: 0.21 in Hong Kong, 0.04 in New York City and -0.32 in London. | A value near 1 would mean the most-covered problems are the ones furthest from normal. If these values are near zero or negative, do not rank problems by how much coverage they get. Each city has at most eight categories, so the values are rough. |
 
 **H1 by category.** Each row pools at most three cities.
 
 | Category | News slope (95% interval) | Cities | Search slope (95% interval) | Cities |
 | :-- | :-- | --: | :-- | --: |
-| Safety | 0.05 (-0.15 to 0.18) | 3 | 0.27 (0.14 to 0.36) | 2 |
-| Economy | 0.08 (0.03 to 0.13) | 3 | 0.58 (0.36 to 0.70) | 3 |
-| Housing | 0.02 (-0.05 to 0.05) | 2 | 0.05 (-0.10 to 0.23) | 3 |
-| Transport | 0.13 (-0.00 to 0.25) | 2 | 0.22 (0.06 to 0.46) | 2 |
-| Environment | 0.13 (0.03 to 0.25) | 3 | 0.41 (0.05 to 0.90) | 3 |
-| Health | 0.45 (-0.44 to 0.50) | 2 | -0.06 (-0.31 to 0.08) | 2 |
-| Education | -0.22 (-0.78 to 0.19) | 3 | not tested | 0 |
-| Cost of Living | 0.10 (-0.11 to 0.22) | 1 | 0.59 (0.43 to 0.74) | 3 |
+| Safety | 0.06 (-0.09 to 0.17) | 3 | 0.27 (0.14 to 0.36) | 2 |
+| Economy | 0.07 (0.01 to 0.11) | 3 | 0.58 (0.36 to 0.70) | 3 |
+| Housing | 0.03 (-0.03 to 0.06) | 3 | 0.05 (-0.10 to 0.23) | 3 |
+| Transport | 0.08 (-0.03 to 0.19) | 3 | 0.22 (0.06 to 0.46) | 2 |
+| Environment | 0.17 (0.07 to 0.29) | 3 | 0.41 (0.05 to 0.90) | 3 |
+| Health | 0.46 (-0.43 to 0.50) | 2 | -0.06 (-0.31 to 0.08) | 2 |
+| Education | -0.25 (-0.85 to 0.25) | 3 | not tested | 0 |
+| Cost of Living | 0.08 (-0.11 to 0.19) | 1 | 0.59 (0.43 to 0.74) | 3 |
 
 **Share of periods moving in opposite directions, news.**
 
 | Category | Hong Kong | New York City | London |
 | :-- | --: | --: | --: |
-| Safety | 70% (10 years) | 45% (128 months) | 35% (129 months) |
-| Economy | 59% (114 months) | 43% (118 months) | 42% (125 months) |
-| Housing | not tested | 53% (129 months) | 58% (128 months) |
-| Transport | not tested | 40% (129 months) | 43% (119 months) |
-| Environment | 47% (123 months) | 38% (124 months) | 51% (85 months) |
-| Health | 59% (29 quarters) | 41% (70 months) | not tested |
+| Safety | 70% (10 years) | 45% (128 months) | 34% (129 months) |
+| Economy | 59% (114 months) | 47% (118 months) | 44% (125 months) |
+| Housing | 37% (126 months) | 56% (129 months) | 59% (128 months) |
+| Transport | 54% (125 months) | 34% (129 months) | 43% (119 months) |
+| Environment | 46% (123 months) | 41% (124 months) | 48% (85 months) |
+| Health | 59% (29 quarters) | 44% (70 months) | not tested |
 | Education | 56% (9 years) | 67% (9 years) | 40% (10 years) |
-| Cost of Living | not tested | 45% (104 months) | not tested |
+| Cost of Living | not tested | 42% (91 months) | not tested |
 
 **Share of periods moving in opposite directions, search.**
 
@@ -305,14 +304,14 @@ Each row starts from a question you might face, gives what this study found, and
 
 | Category | News: lag where the mean r is furthest from zero | Mean r at that lag | Search: lag where the mean r is furthest from zero | Mean r at that lag |
 | :-- | --: | --: | --: | --: |
-| Safety | 0 months | 0.39 | -1 month | 0.43 |
-| Economy | -1 month | 0.42 | -1 month | 0.51 |
-| Housing | +12 months | -0.28 | -10 months | 0.25 |
-| Transport | +10 months | 0.25 | +3 months | 0.25 |
-| Environment | 0 months | 0.14 | 0 months | 0.23 |
-| Health | 0 months | 0.61 | -2 months | 0.47 |
+| Safety | 0 months | 0.42 | -1 month | 0.43 |
+| Economy | -1 month | 0.37 | -1 month | 0.51 |
+| Housing | +12 months | -0.19 | -10 months | 0.25 |
+| Transport | -12 months | -0.16 | +3 months | 0.25 |
+| Environment | -12 months | -0.19 | 0 months | 0.23 |
+| Health | 0 months | 0.59 | -2 months | 0.47 |
 | Education | not tested |  | not tested |  |
-| Cost of Living | +3 months | 0.21 | -1 month | 0.58 |
+| Cost of Living | +3 months | 0.18 | -1 month | 0.58 |
 
 ## One-page checklist
 
@@ -366,7 +365,7 @@ This is the smallest version that still tests something.
 - **Sample.** Up to 1,000 articles a month, split equally across outlets.
 - **Validation.** About 300 items, and code them yourself. That gives you the human check this study lacks.
 - **Search.** One request holds an anchor set plus up to four others, so three categories fit in one request. Download it on three different days.
-- **Analysis.** You will have three pairs. Run the pooled test and the checks, and expect wide intervals: this study had 19 news pairs and its news interval still ran from 0.02 to 0.10. Report the result as description. Skip lead and lag, and skip the comparison of gaps across categories, which needs more than three.
+- **Analysis.** You will have three pairs. Run the pooled test and the checks, and expect wide intervals: this study had 21 news pairs and its news interval still ran from 0.02 to 0.10. Report the result as description. Skip lead and lag, and skip the comparison of gaps across categories, which needs more than three.
 
 Rough cost, from this study's own numbers:
 

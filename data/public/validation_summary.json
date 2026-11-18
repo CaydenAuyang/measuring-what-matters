@@ -540,22 +540,83 @@
      ]
     }
    },
-   "revised": {},
+   "revised": {
+    "housing": {
+     "kappa_first": 0.4623453227225007,
+     "kappa_after_revision": 0.8795330555621043,
+     "n_fresh": 243,
+     "kept": true
+    },
+    "transport": {
+     "kappa_first": 0.35738839602276307,
+     "kappa_after_revision": 0.6175793309543525,
+     "n_fresh": 243,
+     "kept": true
+    },
+    "cost_of_living": {
+     "kappa_first": 0.4352827114537986,
+     "kappa_after_revision": 0.33271342227799455,
+     "n_fresh": 243,
+     "kept": false
+    },
+    "culture": {
+     "kappa_first": 0.18233211925127618,
+     "kappa_after_revision": 0.13775897131524514,
+     "n_fresh": 243,
+     "kept": false
+    },
+    "technology": {
+     "kappa_first": 0.10834213032287025,
+     "kappa_after_revision": 0.387339237891863,
+     "n_fresh": 243,
+     "kept": false
+    },
+    "community": {
+     "kappa_first": 0.36179478326190584,
+     "kappa_after_revision": 0.4839808232035835,
+     "n_fresh": 243,
+     "kept": false
+    }
+   },
    "kept": [
     "safety",
     "economy",
+    "housing",
+    "transport",
     "environment",
     "health",
     "education",
     "governance"
    ],
    "dropped": [
-    "housing",
-    "transport",
     "cost_of_living",
     "culture",
     "technology",
     "community"
+   ],
+   "fresh_sample_kappa_revised_codebook": {
+    "safety": 0.5665870470059674,
+    "economy": 0.6693679447890468,
+    "housing": 0.8795330555621043,
+    "transport": 0.6175793309543525,
+    "environment": 0.7712772110012187,
+    "health": 0.6113755730544985,
+    "education": 0.5840380744757317,
+    "cost_of_living": 0.33271342227799455,
+    "governance": 0.5934399229678968,
+    "culture": 0.13775897131524514,
+    "technology": 0.387339237891863,
+    "community": 0.4839808232035835,
+    "not_civic": 0.4348766696978501
+   },
+   "kept_but_under_threshold_on_fresh_sample": {
+    "safety": 0.5665870470059674,
+    "education": 0.5840380744757317,
+    "governance": 0.5934399229678968
+   },
+   "kept_after_revision": [
+    "housing",
+    "transport"
    ]
   },
   "nyc": {
@@ -1072,7 +1133,20 @@
      ]
     }
    },
-   "revised": {},
+   "revised": {
+    "culture": {
+     "kappa_first": 0.20384351699212686,
+     "kappa_after_revision": 0.15432764433264265,
+     "n_fresh": 299,
+     "kept": false
+    },
+    "community": {
+     "kappa_first": 0.4642908751565021,
+     "kappa_after_revision": 0.29972838876006747,
+     "n_fresh": 299,
+     "kept": false
+    }
+   },
    "kept": [
     "safety",
     "economy",
@@ -1088,7 +1162,28 @@
    "dropped": [
     "culture",
     "community"
-   ]
+   ],
+   "fresh_sample_kappa_revised_codebook": {
+    "safety": 0.7583508297644564,
+    "economy": 0.5844318768988853,
+    "housing": 0.5535393091401305,
+    "transport": 0.8663357833792349,
+    "environment": 0.8036089347142669,
+    "health": 0.812159464127228,
+    "education": 0.844696555698409,
+    "cost_of_living": 0.6427998835427196,
+    "governance": 0.7871931996314603,
+    "culture": 0.15432764433264265,
+    "technology": 0.4987944184683269,
+    "community": 0.29972838876006747,
+    "not_civic": 0.5564437310261633
+   },
+   "kept_but_under_threshold_on_fresh_sample": {
+    "economy": 0.5844318768988853,
+    "housing": 0.5535393091401305,
+    "technology": 0.4987944184683269
+   },
+   "kept_after_revision": []
   },
   "london": {
    "n_items": 299,
@@ -1786,7 +1881,38 @@
      ]
     }
    },
-   "revised": {},
+   "revised": {
+    "cost_of_living": {
+     "kappa_first": 0.41109097000098355,
+     "kappa_after_revision": 0.2517807757288923,
+     "n_fresh": 301,
+     "kept": false
+    },
+    "governance": {
+     "kappa_first": 0.5211833665074739,
+     "kappa_after_revision": 0.6864201475023187,
+     "n_fresh": 301,
+     "kept": true
+    },
+    "culture": {
+     "kappa_first": 0.1994916947264434,
+     "kappa_after_revision": 0.2336196273209592,
+     "n_fresh": 301,
+     "kept": false
+    },
+    "technology": {
+     "kappa_first": 0.4511931106990201,
+     "kappa_after_revision": 0.13459005638825594,
+     "n_fresh": 301,
+     "kept": false
+    },
+    "community": {
+     "kappa_first": 0.34413988572073123,
+     "kappa_after_revision": 0.4704804613582252,
+     "n_fresh": 301,
+     "kept": false
+    }
+   },
    "kept": [
     "safety",
     "economy",
@@ -1794,14 +1920,35 @@
     "transport",
     "environment",
     "health",
-    "education"
+    "education",
+    "governance"
    ],
    "dropped": [
     "cost_of_living",
-    "governance",
     "culture",
     "technology",
     "community"
+   ],
+   "fresh_sample_kappa_revised_codebook": {
+    "safety": 0.8121585801890834,
+    "economy": 0.6159049813808961,
+    "housing": 0.7846661492972844,
+    "transport": 0.7382634859196527,
+    "environment": 0.6645728765764084,
+    "health": 0.7482779955133455,
+    "education": 0.5147284423603259,
+    "cost_of_living": 0.2517807757288923,
+    "governance": 0.6864201475023187,
+    "culture": 0.2336196273209592,
+    "technology": 0.13459005638825594,
+    "community": 0.4704804613582252,
+    "not_civic": 0.5920345495146967
+   },
+   "kept_but_under_threshold_on_fresh_sample": {
+    "education": 0.5147284423603259
+   },
+   "kept_after_revision": [
+    "governance"
    ]
   }
  },
@@ -1919,6 +2066,23 @@
     ]
    }
   }
+ },
+ "revision": {
+  "run": true,
+  "categories_reworded": [
+   "housing",
+   "transport",
+   "cost_of_living",
+   "governance",
+   "culture",
+   "technology",
+   "community"
+  ],
+  "categories_reworded_text": "Housing, Transport, Cost of Living, Governance, Culture, Technology, Community",
+  "whole_sample_labeled_again": true,
+  "kept_after_revision_text": "Hong Kong: Housing (0.88), Transport (0.62). London: Governance (0.69).",
+  "caution_text": "Hong Kong: Safety (0.57), Education (0.58), Governance (0.59). New York City: Economy (0.58), Housing (0.55), Technology (0.50). London: Education (0.51).",
+  "n_cautions": 7
  },
  "headline_check": {
   "hk": {

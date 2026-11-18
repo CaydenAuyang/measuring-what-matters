@@ -142,8 +142,33 @@ def main():
             else:
                 drop.append(k)
         b["kept"] = kept; b["dropped"] = drop; dropped[city] = drop
+        fresh = (rev.get(city) or {}).get("_all_categories_on_fresh_sample")
+        if fresh:
+            # Kappa of every label on the fresh sample, both coders using the revised codebook. A category that passed the
+            # first test stays kept (rule set before the retest was scored); one under the threshold here is named as a caution.
+            b["fresh_sample_kappa_revised_codebook"] = fresh
+            b["kept_but_under_threshold_on_fresh_sample"] = {k: fresh[k] for k in kept if b["categories"][k]["pass"] and fresh[k] < THRESHOLD}
         S["cities"][city] = b
         S.setdefault("rule_variants", {})[city] = b["rule_variants"]
+    if rev:
+        names_, cn_ = outlets.CATEGORY_NAMES, outlets.CITY_NAMES
+        revfile = jload(os.path.join(ROOT, "src/codebook_revision.json"), {})
+        def city_list(key, f):
+            parts = [f"{cn_[c]}: " + ", ".join(f(c, k) for k in S["cities"][c][key]) for c in S["cities"] if S["cities"][c].get(key)]
+            return ". ".join(parts) + "." if parts else "none."
+        kept_after = {c: [k for k, r in b["revised"].items() if r["kept"]] for c, b in S["cities"].items()}
+        for c in S["cities"]: S["cities"][c]["kept_after_revision"] = kept_after[c]
+        S["revision"] = {
+            "run": True,
+            "categories_reworded": list((revfile.get("categories") or {}).keys()),
+            "categories_reworded_text": ", ".join(names_[k] for k in (revfile.get("categories") or {})),
+            "whole_sample_labeled_again": os.path.exists(os.path.join(ROOT, "data/interim/labels/labels_main_first_codebook.jsonl")),
+            "kept_after_revision_text": city_list("kept_after_revision", lambda c, k: f"{names_[k]} ({S['cities'][c]['revised'][k]['kappa_after_revision']:.2f})"),
+            "caution_text": city_list("kept_but_under_threshold_on_fresh_sample", lambda c, k: f"{names_[k]} ({S['cities'][c]['kept_but_under_threshold_on_fresh_sample'][k]:.2f})"),
+            "n_cautions": sum(len(S["cities"][c].get("kept_but_under_threshold_on_fresh_sample") or {}) for c in S["cities"]),
+        }
+    else:
+        S["revision"] = {"run": False}
     hc = jload(os.path.join(V, "headline_check_result.json"))
     if hc:
         S["headline_check"] = {**{c: {g: {"n": v[g].get("n"), "kappa": v[g].get("kappa"), "ci_low": v[g].get("ci_low"), "ci_high": v[g].get("ci_high")} for g in v} for c, v in hc["cities"].items()},
@@ -210,6 +235,17 @@ def write_report(S):
         L.append("")
         L.append(f"Kept: {', '.join(names[k] for k in b['kept']) or 'none'}.")
         L.append(f"Dropped: {', '.join(names[k] for k in b['dropped']) or 'none'}.\n")
+        fr = b.get("fresh_sample_kappa_revised_codebook")
+        if fr:
+            L.append("The retest. The wording of the categories that failed in any city was revised once. Both coders then labeled a fresh sample with the revised codebook. The table shows every label on that fresh sample. A category that passed the first test stays kept, a rule set before the retest was scored. Its row here is a second reading on about 300 new items, with about 20 items per label, so single values move a lot.\n")
+            L.append("| Category | Kappa on the first sample (first codebook) | Kappa on the fresh sample (revised codebook) | Result |")
+            L.append("| :-- | --: | --: | :-- |")
+            for k in codebook.LABELS:
+                res = "reported only" if k == "not_civic" else ("kept" if k in b["kept"] else "dropped")
+                if k in (b.get("kept_but_under_threshold_on_fresh_sample") or {}): res += ", caution: under 0.61 on the fresh sample"
+                if k in (b.get("revised") or {}): res += " (decided by this retest)"
+                L.append(f"| {names[k]} | {fmt(b['categories'][k]['kappa'])} | {fmt(fr.get(k))} | {res} |")
+            L.append("")
         L.append("City filter error by outlet (share of validation items the second coder judged not about the city):\n")
         L.append("| Outlet | Items | Not about the city |")
         L.append("| :-- | --: | --: |")

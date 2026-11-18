@@ -4,11 +4,11 @@
 
 A fall 2026 independent study by Cayden Auyang at Pomfret School. It compares official statistics with local news coverage and Google search interest for Hong Kong, New York City and London.
 
-*This page was built from the results file generated at 2026-11-18T08:21:14Z (UTC). Validation status: final.*
+*This page was built from the results file generated at 2026-11-18T09:20:01Z (UTC). Validation status: final.*
 
 ## Read this first
 
-An AI agent ran every stage of this study in one unattended session on November 17 and 18, 2026. An AI language model labeled the news articles. A second AI language model from a different model family checked a sample of the labels. No person hand-coded any article, and no person reviewed the numbers before they were posted here. `deliverables/deviations.md` lists every difference from the plan. `deliverables/ai_use_log.md` says what AI did.
+An AI agent ran every stage of this study in one unattended session on November 17 and 18, 2026. An AI language model labeled the news articles. A second AI language model from a different model family checked a sample of the labels. No person hand-coded any article, and no person reviewed the numbers before they were posted here. After validation, the run reworded seven category lines once, as the plan allows, and labeled every article a second time. Some kept categories scored under the bar on the retest sample. `data/public/validation_report.md` shows both readings. `deliverables/deviations.md` lists every difference from the plan. `deliverables/ai_use_log.md` says what AI did.
 
 ## The pre-registration
 
@@ -29,7 +29,7 @@ The plan has four main tests: H1 and H2, each for news and for search. Slopes ar
 | Hypothesis | News | Search |
 | :-- | :-- | :-- |
 | H1: attention rises when the official measure worsens, weakly | supported, slope 0.07 (0.02 to 0.10) | supported, slope 0.26 (0.19 to 0.42) |
-| H1 without 2020 to 2022 | slope 0.02 (-0.04 to 0.06) | slope 0.26 (0.17 to 0.40) |
+| H1 without 2020 to 2022 | slope 0.02 (-0.05 to 0.06) | slope 0.26 (0.17 to 0.40) |
 | H2: attention reacts more to worsening than to improving | not supported | not supported |
 | H3: Safety shows the largest gap in at least two of three cities | not supported | not supported |
 
