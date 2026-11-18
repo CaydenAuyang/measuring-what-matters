@@ -5,7 +5,7 @@ Cayden Auyang. AI drafted and I reviewed.
 
 Read this once at breakfast. Then put it away and speak from memory.
 
-Every number below was filled in from the results files when this brief was built. Results file generated: 2026-11-18T09:20:01Z. Validation status: **final**. Bootstrap resamples: 2,000.
+Every number below was filled in from the results files when this brief was built. Results file generated: 2026-11-18T09:25:44Z. Validation status: **final**. Bootstrap resamples: 2,000.
 
 If the status reads "provisional", the kappas come from a stand-in third AI pass. They are replaced when the blind second coder has run, and other numbers can move with them. Rebuild this file after that with `.venv/bin/python src/build_docs.py`.
 

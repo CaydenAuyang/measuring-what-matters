@@ -157,7 +157,12 @@ def main():
                 if "location: https://web.archive.org/web/" in line:
                     saved = line.split("location: ")[1].split()[0]
     F["repo_archive_tries"] = tries + 4
+    index_only = None
+    if os.path.exists(log):
+        for line in open(log):
+            if "INDEX_ONLY " in line: index_only = line.split("INDEX_ONLY ")[1].split()[0]
     F["repo_archive_note"] = (f"Saved: {saved}" if saved else
+        f"Not verified. The Archive returned an error for the github.com page on {tries + 4} tries. Its index now lists one capture, stamped 05:20 UTC on November 18, 2026 ({index_only}), but that copy returned an error when the run tried to open it, so its content was not checked. The raw methodology, source inventory, proposal and README are saved and match their SHA-256." if index_only else
         f"Not saved. The Archive returned an error for the github.com page on every one of {tries + 4} tries. The raw methodology, source inventory, proposal and README are saved and match their SHA-256.")
     mf = os.path.join(ROOT, "logs/morning_failures.md")
     F["morning_failures"] = open(mf).read().strip() if os.path.exists(mf) else "Nothing recorded."

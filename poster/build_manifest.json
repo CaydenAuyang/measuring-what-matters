@@ -1,5 +1,5 @@
 {
- "generated_utc": "2026-11-18T09:22:09Z",
+ "generated_utc": "2026-11-18T09:27:52Z",
  "pdf": "print_me.pdf",
  "pdf_sha256": "fa473fa44183cc80e39aaee77740aebfc81ae41ab1ce4508b87d4674c840793d",
  "page_size_pt": [
@@ -17,7 +17,7 @@
  },
  "inputs": {
   "results": "/Users/caydenauyang/Code/measuring-what-matters/data/public/results.json",
-  "results_generated_utc": "2026-11-18T09:20:01Z",
+  "results_generated_utc": "2026-11-18T09:25:44Z",
   "changes": "/Users/caydenauyang/Code/measuring-what-matters/data/public/yearly_changes.csv",
   "validation": "/Users/caydenauyang/Code/measuring-what-matters/data/public/validation_summary.json",
   "validation_status": "final",

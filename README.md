@@ -4,7 +4,7 @@
 
 A fall 2026 independent study by Cayden Auyang at Pomfret School. It compares official statistics with local news coverage and Google search interest for Hong Kong, New York City and London.
 
-*This page was built from the results file generated at 2026-11-18T09:20:01Z (UTC). Validation status: final.*
+*This page was built from the results file generated at 2026-11-18T09:25:44Z (UTC). Validation status: final.*
 
 ## Read this first
 

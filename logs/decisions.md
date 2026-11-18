@@ -56,3 +56,6 @@
 - Kept categories that scored under 0.61 on the fresh sample are reported as cautions, not dropped (rule set at 00:20, before any official score): Hong Kong safety, education, governance; New York economy, housing, technology; London education.
 - The results file from before the revision is kept as `data/public/results_first_codebook.json` so the two can be compared. That comparison is exploratory.
 - The first validation test, the headline check and the consistency checks stay on the first labels. Reason: they were designed and sampled on those labels, and the plan's first test is a test of the first codebook.
+
+## 04:25 EST Nov 18. Internet Archive copy of the repository page
+- One more save request answered with a redirect to a capture stamped 05:20 UTC on Nov 18 (during the retry job). The Archive's index lists it with status 200, but opening it returned 404 twice. Recorded as "not verified" in `deliverables/preregistration.md`, deviations section 6 and MORNING.md. Not claimed as saved.

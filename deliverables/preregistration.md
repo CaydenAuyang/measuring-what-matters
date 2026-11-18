@@ -20,7 +20,7 @@ The study plan was made public and timestamped before any outcome data were coll
 | `spec/source_inventory.md` at the commit | https://web.archive.org/web/20261117203327/https://raw.githubusercontent.com/CaydenAuyang/measuring-what-matters/e8d5f32e0c64a43b752d27fb76c4f70a099cf3a6/spec/source_inventory.md | Loads. SHA-256 matches the local file. |
 | `spec/fall_proposal.md` at the commit | https://web.archive.org/web/20261117203828/https://raw.githubusercontent.com/CaydenAuyang/measuring-what-matters/e8d5f32e0c64a43b752d27fb76c4f70a099cf3a6/spec/fall_proposal.md | Loads. SHA-256 matches the local file. |
 | `README.md` at the commit | https://web.archive.org/web/20261117203854/https://raw.githubusercontent.com/CaydenAuyang/measuring-what-matters/e8d5f32e0c64a43b752d27fb76c4f70a099cf3a6/README.md | Loads. SHA-256 matches the committed file. |
-| Repository page (github.com) | Not saved | The Archive returned error 523 for the github.com page on every try over more than two hours. See `logs/archive_prereg.log`. The raw files above carry the same content and the commit hash is in their addresses. |
+| Repository page (github.com) | https://web.archive.org/web/20261118052052/https://github.com/CaydenAuyang/measuring-what-matters | Not verified. The Archive returned error 523 on every try for more than two hours. Its index now lists one capture, stamped 05:20 UTC on November 18, 2026, after the pre-registration commit and after outcome data were pulled. That copy returned an error when the run tried to open it, so its content was not checked. See `logs/archive_prereg.log`. The raw files above were saved before any outcome data, carry the same content, and have the commit hash in their addresses. |
 
 ## SHA-256 of each spec file
 

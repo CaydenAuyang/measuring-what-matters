@@ -3,7 +3,7 @@
 | Field | Value |
 | :-- | :-- |
 | Name | Measuring What Matters: monthly attention and official series for three cities |
-| Version | Built 2026-11-18T09:20:01Z (UTC) |
+| Version | Built 2026-11-18T09:25:44Z (UTC) |
 | Author | Cayden Auyang, Pomfret School. Produced by an AI agent run (Claude Code, model `claude-fable-5-2`) following his pre-registered plan. [CAYDEN TO CONFIRM: his own role in the question, codebook, design and interpretation] |
 | Cities | Hong Kong, New York City, London |
 | Categories | Safety, Economy, Housing, Transport, Environment, Health, Education, Cost of Living (compared with official data). Governance, Culture, Technology, Community (attention only). |

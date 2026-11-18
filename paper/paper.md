@@ -1,5 +1,5 @@
 <!--
-GENERATED FILE. Built by src/build_paper.py from src/templates/paper.template.md and the results file generated at 2026-11-18T09:20:01Z (UTC).
+GENERATED FILE. Built by src/build_paper.py from src/templates/paper.template.md and the results file generated at 2026-11-18T09:25:44Z (UTC).
 Edit the template and rebuild. Changes made here are lost at the next build.
 -->
 
@@ -9,7 +9,7 @@ Cayden Auyang. AI drafted and I reviewed.
 
 Pomfret School. Mentors: Mr. Qua and Mr. Lake. Independent study, fall 2026.
 
-*Draft filled from the results file generated at 2026-11-18T09:20:01Z (UTC). Validation status: final.*
+*Draft filled from the results file generated at 2026-11-18T09:25:44Z (UTC). Validation status: final.*
 
 ## Abstract
 
@@ -280,7 +280,7 @@ Two AI models can agree with each other and both be wrong in the same way. A fil
 
 ## 5. Results
 
-Every number in this section comes from `data/public/results.json`, generated at 2026-11-18T09:20:01Z (UTC). Table 5 holds the four pre-registered tests.
+Every number in this section comes from `data/public/results.json`, generated at 2026-11-18T09:25:44Z (UTC). Table 5 holds the four pre-registered tests.
 
 **Table 5.** The pooled models (the pre-registered main tests). Slopes are in standard deviations of attention change per standard deviation of official change. A positive slope means attention rose when the official measure worsened.
 
