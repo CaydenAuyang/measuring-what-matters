@@ -176,6 +176,29 @@ def extra_sources(src):
     for name in ("without_covid", "without_all_breaks"):
         for s in ("news", "search"):
             paper[f"{name}_{s}_reading"] = interval_reading(((checks.get(name) or {}).get(s) or {}).get("h1"))
+    # the two H1 strengths, for the prose check ("weak and weak" when both slopes are under the code's 0.3 cutoff)
+    def strength(s_):
+        e = (((R.get("main") or {}).get(s_) or {}).get("h1") or {}).get("est")
+        return None if not isinstance(e, (int, float)) else ("weak" if abs(e) < 0.3 else "not weak")
+    paper["h1_strengths"] = f"{strength('news')} and {strength('search')}"
+    # whether any other row of the checks table puts the H1 interval on a different side of zero than the main model
+    def other_checks_sentence(s_, word):
+        main = interval_reading(((R.get("main") or {}).get(s_) or {}).get("h1"))
+        if main is None:
+            return None
+        diff = []
+        for name, c in checks.items():
+            label = c.get("label", name)
+            if name in ("without_covid", "without_all_breaks") or label.lower().startswith("description") or not isinstance(c.get(s_), dict):
+                continue
+            r = interval_reading(c[s_].get("h1"))
+            if r is not None and r != main:
+                diff.append(label[0].lower() + label[1:])
+        if not diff:
+            return f"No other row of Table 13 moves the {word} interval to the other side of zero."
+        return f"The {word} interval also {'includes zero' if main != 'includes zero' else 'excludes zero'} in these rows of Table 13: " + "; ".join(diff) + "."
+    paper["other_checks_news_sentence"] = other_checks_sentence("news", "news")
+    paper["other_checks_search_sentence"] = other_checks_sentence("search", "search")
     return {"off": off, "paper": paper}
 
 
@@ -223,7 +246,22 @@ def style_check(md):
 def main():
     src = fill_template.sources()
     src.update(extra_sources(src))
-    text, missing = fill_template.fill(open(TEMPLATE, encoding="utf-8").read(), src)
+    template = open(TEMPLATE, encoding="utf-8").read()
+    text, missing = fill_template.fill(template, src)
+    # The Abstract and Discussion hold sentences written for particular verdicts. The template lists what
+    # those sentences assume ("PROSE ASSUMES: token=value; ..."). If the results no longer match, say so in
+    # the paper itself, so a rebuilt paper can never state a verdict its numbers do not show.
+    broken = []
+    for block in re.findall(r"<!--\s*PROSE ASSUMES:(.*?)-->", template, flags=re.S):
+        for pair in block.split(";"):
+            if "=" not in pair: continue
+            key, want = [x.strip() for x in pair.split("=", 1)]
+            got = fill_template.fill("{{" + key + "}}", src)[0].strip()
+            if got != want:
+                broken.append(f"{key} is now \"{got}\" (the text was written for \"{want}\")")
+    if broken:
+        warn = "**Check needed before this paper is used.** The Abstract and Discussion were written for results that have since changed: " + "; ".join(broken) + ". The tables and Section 5 are filled from the results file and are current."
+        text = text.replace("\n## Abstract\n", "\n" + warn + "\n\n## Abstract\n", 1)
     # the template's own header comment is replaced by a note that this file is generated
     note = (f"<!--\nGENERATED FILE. Built by src/build_paper.py from src/templates/paper.template.md and the results file "
             f"generated at {src[''].get('generated_utc')} (UTC).\nEdit the template and rebuild. Changes made here are lost at the next build.\n-->")
@@ -250,6 +288,7 @@ def main():
         for t in uniq: print("   ", t)
     else:
         print("every token was available")
+    print("prose check: " + ("FAILED: " + "; ".join(broken) if broken else "the Abstract and Discussion match the verdicts they were written for"))
     notes = style_check(text)
     print("style check: " + ("; ".join(notes) if notes else "clean"))
 
