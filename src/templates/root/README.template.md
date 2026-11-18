@@ -42,7 +42,7 @@ The intervals are 95% intervals from a block bootstrap. In a test on unrelated m
 | `spec/` | The pre-registered plan. |
 | `data/public/` | The dataset: monthly attention shares, official series, yearly changes, every reported number (`results.json`), the validation report, the data card, the labeling card and the codebook. Start with `data/public/README.md`. |
 | `paper/` | The paper draft (`paper.md` and `paper.docx`). |
-| `poster/` | The poster: `a4_pieces.pdf` (one piece per A4 page), `board_layout.pdf` and `board_preview.png`. An earlier 16-page Letter version is in `print_me.pdf`. |
+| `poster/` | The poster: `letter_pieces.pdf` (one piece per US Letter page), `board_layout.pdf` and `board_preview.png`. An earlier 16-page version is in `print_me.pdf`. |
 | `deliverables/` | Deviations from the plan, the AI-use log, the pre-registration record, the defense brief, the civic signal framework and source inventory v2. |
 | `src/` | All of the code. |
 | `logs/` | The decisions log, the run log and the BigQuery cost log. |

@@ -3,8 +3,9 @@ poster/design_reference_landscape.html. Every number and both charts are filled 
 data/public/results.json and data/public/yearly_changes.csv at run time.
 
 Writes:
-  poster/a4_pieces.pdf       one piece per A4 page at true size, with light cut lines
-                             (the 330 mm tall numbers piece is longer than A4, so it prints as two halves)
+  poster/letter_pieces.pdf   one piece per US Letter page at true size, with light cut lines. Every piece fits inside
+                             266 x 203 mm, so it prints on a normal printer with a 6.35 mm margin on all sides
+                             (the 330 mm tall numbers piece is longer than a sheet, so it prints as two halves)
   poster/board_layout.pdf    where each piece goes on the board, in mm
   poster/board_preview.png   the finished board
   poster/board.html          the board as a web page (the source of the preview)
@@ -27,16 +28,21 @@ BOARD_MM = (710, 550)
 NAVY, CORAL, TEAL, GREY = "#14213D", "#E76F51", "#2A9D8F", "#7A8499"
 
 # name, left, top, width, height in mm (from the board's top-left corner), css class
+# Columns are 215, 266 and 161 mm wide (22 mm outer margin, 12 mm gaps) so that every piece fits a US Letter sheet.
+# The three center heights are set at build time by fit_center(): they always add up to 482 mm.
+PAGE_MM = (215.9, 279.4)              # US Letter
+FIT_MM = (266, 203)                   # the largest piece a Letter sheet takes with a 6.35 mm margin on all sides
 PIECES = [
-    ("title", "Title", 22, 22, 200, 150, "dark"),
-    ("question", "The question", 22, 184, 200, 150, "cream"),
-    ("method", "The method", 22, 346, 200, 182, ""),
-    ("answer", "The answer (chart)", 234, 22, 297, 210, ""),
-    ("case", "When they disagree (case study)", 234, 244, 297, 190, ""),
-    ("surprised", "What surprised me", 234, 446, 297, 82, ""),
-    ("numbers", "By the numbers", 543, 22, 145, 330, "cream"),
-    ("qr", "QR card", 543, 364, 145, 164, ""),
+    ("title", "Title", 22, 22, 215, 150, "dark"),
+    ("question", "The question", 22, 184, 215, 150, "cream"),
+    ("method", "The method", 22, 346, 215, 182, ""),
+    ("answer", "The answer (chart)", 249, 22, 266, 170, ""),
+    ("case", "When they disagree (case study)", 249, 204, 266, 190, ""),
+    ("surprised", "What surprised me", 249, 406, 266, 122, ""),
+    ("numbers", "By the numbers", 527, 22, 161, 330, "cream"),
+    ("qr", "QR card", 527, 364, 161, 164, ""),
 ]
+ANSWER_MIN_MM = 170                   # what the answer chart needs; spare height in the center column goes to the case study
 # Cayden's own words for the "What surprised me" piece (his message of November 18). Kept word for word in every rebuild.
 SURPRISED = ["I expected the news to track real problems better than Google searches. It was the opposite: what people search for follows the official numbers far more closely than what papers cover.",
              "I assumed that when the news and official data disagreed, one of them was wrong. Often they were measuring different things, like Hong Kong's economy news covering business worries while unemployment fell."]
@@ -139,28 +145,29 @@ def case_wording(cs):
 
 
 # ------------------------------------------------------------------ charts (same geometry as the reference)
-def answer_svg(R):
+def answer_svg(R, W=474.0):
     rows = []
     for key, label, color in (("search", "Google searches", TEAL), ("news", "Local news", CORAL)):
         h = R["main"][key]["h1"]
         rows.append((label, color, round(need(h.get("est"), key + " slope"), 2), round(need(h.get("ci_low"), key + " interval"), 2), round(need(h.get("ci_high"), key + " interval"), 2)))
     lo = min(0.0, math.floor(min(r[3] for r in rows) * 10) / 10)
     hi = max(0.5, math.ceil(max(r[4] for r in rows) * 10) / 10)
-    x0, x1 = 190.0, 468.0
+    xl = 172.0 if W >= 538 else 150.0                      # right edge of the row labels
+    x0, x1 = xl + 18, W - 70.0
     X = lambda v: x0 + (v - lo) / (hi - lo) * (x1 - x0)
     n = int(round((hi - lo) * 10))
     step = 1 if n <= 6 else 2
-    s = ['<svg width="538" height="300" viewBox="0 0 538 300">']
+    s = [f'<svg width="{W:.0f}" height="172" viewBox="0 0 {W:.0f} 172">']
     for i in range(int(round(lo * 10)), int(round(hi * 10)) + 1):
         if i % step:                          # ticks sit on multiples of the step, counted from zero
             continue
         v = i / 10
-        s.append(f'<line x1="{X(v):.2f}" y1="70" x2="{X(v):.2f}" y2="240" stroke="#E3E0D8" stroke-width="1"/>'
-                 f'<text x="{X(v):.2f}" y="262" font-size="13" fill="{GREY}" text-anchor="middle">{("%.1f" % v) if abs(v) > 1e-9 else "0"}</text>')
-    s.append(f'<line x1="{X(0):.2f}" y1="62" x2="{X(0):.2f}" y2="244" stroke="{NAVY}" stroke-width="2"/>'
-             f'<text x="{X(0) + 6:.2f}" y="64" font-size="12.5" fill="{NAVY}" font-weight="600">no link</text>')
-    for (label, color, est, cl, ch), y in zip(rows, (110, 200)):
-        s.append(f'<text x="172" y="{y + 6}" font-size="17" font-weight="600" fill="{NAVY}" text-anchor="end">{label}</text>'
+        s.append(f'<line x1="{X(v):.2f}" y1="30" x2="{X(v):.2f}" y2="142" stroke="#E3E0D8" stroke-width="1"/>'
+                 f'<text x="{X(v):.2f}" y="162" font-size="13" fill="{GREY}" text-anchor="middle">{("%.1f" % v) if abs(v) > 1e-9 else "0"}</text>')
+    s.append(f'<line x1="{X(0):.2f}" y1="22" x2="{X(0):.2f}" y2="146" stroke="{NAVY}" stroke-width="2"/>'
+             f'<text x="{X(0) + 6:.2f}" y="24" font-size="12.5" fill="{NAVY}" font-weight="600">no link</text>')
+    for (label, color, est, cl, ch), y in zip(rows, (62, 114)):
+        s.append(f'<text x="{xl:.0f}" y="{y + 6}" font-size="17" font-weight="600" fill="{NAVY}" text-anchor="end">{label}</text>'
                  f'<line x1="{X(cl):.2f}" y1="{y}" x2="{X(ch):.2f}" y2="{y}" stroke="{color}" stroke-width="7" stroke-linecap="round" opacity="0.35"/>'
                  f'<circle cx="{X(est):.2f}" cy="{y}" r="13" fill="{color}"/>'
                  f'<text class="disp" x="{max(X(ch), X(est) + 13) + 16:.2f}" y="{y + 11}" font-size="32" font-weight="800" fill="{color}">{est:.2f}</text>')
@@ -168,7 +175,7 @@ def answer_svg(R):
     return "".join(s), {r[0]: {"slope": r[2], "interval": [r[3], r[4]]} for r in rows}
 
 
-def case_svg(cs, Y, half=83.0):
+def case_svg(cs, Y, half=83.0, W=474.0):
     """half: half the plot height in reference pixels (83 in the reference; smaller when the piece is made shorter)."""
     d = Y[(Y.city == cs["city"]) & (Y.category == cs["category"]) & (Y.source == cs["source"])].sort_values("period_end_month")
     d = d.dropna(subset=["official_change_sd", "attention_change_sd"])
@@ -177,16 +184,17 @@ def case_svg(cs, Y, half=83.0):
     if len(d) < 12:
         raise SystemExit("poster_board: too few months for the case study chart")
     months = pd.period_range(d.period_end_month.iloc[0], d.period_end_month.iloc[-1], freq="M")
-    step = (520 - 46) / (len(months) - 1)
+    xr = W - 18.0
+    step = (xr - 46) / (len(months) - 1)
     xi = {str(m): 46 + i * step for i, m in enumerate(months)}
     top = max(d.official_change_sd.abs().max(), d.attention_change_sd.abs().max())
     k = half / max(1, math.ceil(top))                      # both lines share one scale, in standard deviations
     mid, bot = 26.0 + half, 26.0 + 2 * half                # zero line and bottom of the plot
     Yp = lambda v: mid - v * k
     xa, xb = xi[cs["start"]], xi[cs["end"]]
-    s = [f'<svg width="538" height="{bot + 40:.0f}" viewBox="0 0 538 {bot + 40:.0f}">',
+    s = [f'<svg width="{W:.0f}" height="{bot + 40:.0f}" viewBox="0 0 {W:.0f} {bot + 40:.0f}">',
          f'<rect x="{xa:.2f}" y="20" width="{xb - xa:.2f}" height="{bot - 20:.1f}" fill="#F4A261" opacity="0.18" rx="4"/>',
-         f'<line x1="46" y1="{mid:.1f}" x2="520" y2="{mid:.1f}" stroke="{NAVY}" stroke-width="1.4" opacity="0.5"/>']
+         f'<line x1="46" y1="{mid:.1f}" x2="{xr:.0f}" y2="{mid:.1f}" stroke="{NAVY}" stroke-width="1.4" opacity="0.5"/>']
     years = sorted({m.year for m in months if m.month == 1})
     every = 1 if len(years) <= 9 else 2
     for yr in years[::every]:
@@ -217,45 +225,57 @@ ICONS = {
 }
 
 
-def surprised_text_height():
-    """Height in reference pixels of Cayden's two paragraphs at the box's text width, measured in Chrome."""
-    w = 594 - 2 - 56                                   # piece width less its border and padding: the text uses the full width
-    paras = "".join(f'<p style="margin:0 0 {0 if i == len(SURPRISED) - 1 else 10}px 0">{t}</p>' for i, t in enumerate(SURPRISED))
+def measure(fragment, width=None):
+    """Width and height in reference pixels of a piece of the poster's HTML, measured in Chrome with the poster's fonts.
+    With a width the fragment wraps inside it; without one it is measured on one line."""
+    box = f"width:{width}px" if width else "display:inline-block;white-space:nowrap"
     html = (f'<!doctype html><html><head><meta charset="utf-8"><style>{font_css("file://" + FONTS)}{BASE_CSS}</style></head><body>'
-            f'<div id="t" style="width:{w}px;{SURPRISED_STYLE}">{paras}</div>'
-            '<script>document.fonts.ready.then(()=>{document.body.setAttribute("data-h",document.getElementById("t").getBoundingClientRect().height)})</script></body></html>')
+            f'<div id="t" style="{box}">{fragment}</div>'
+            '<script>document.fonts.ready.then(()=>{const r=document.getElementById("t").getBoundingClientRect();document.body.setAttribute("data-m",r.width+","+r.height)})</script></body></html>')
     with tempfile.TemporaryDirectory() as tmp, tempfile.TemporaryDirectory() as prof:
         hp = os.path.join(tmp, "m.html"); open(hp, "w", encoding="utf-8").write(html)
         out = subprocess.run([find_chrome(), "--headless=new", "--disable-gpu", "--no-first-run", f"--user-data-dir={prof}", "--virtual-time-budget=6000", "--dump-dom", "file://" + hp],
                              check=True, timeout=120, capture_output=True, text=True).stdout
     import re
-    m = re.search(r'data-h="([0-9.]+)"', out)
+    m = re.search(r'data-m="([0-9.]+),([0-9.]+)"', out)
     if not m:
-        raise SystemExit("poster_board: could not measure the text of the What surprised me piece")
-    return float(m.group(1))
+        raise SystemExit("poster_board: could not measure text for the poster")
+    return float(m.group(1)), float(m.group(2))
 
 
-def fit_surprised():
-    """Make the What surprised me piece tall enough for the text, and the case study piece shorter by the same amount.
-    Every other piece stays where it is. Returns the plot half-height for the case chart."""
-    need_px = surprised_text_height() + 25 + 48 + 2 + 1         # label line above the text, piece padding, piece border, rounding room
-    need_mm = math.ceil(need_px / PX_PER_MM)
-    i_case = next(i for i, p in enumerate(PIECES) if p[0] == "case"); i_sur = next(i for i, p in enumerate(PIECES) if p[0] == "surprised")
-    k, n, x, y, w, h, cls = PIECES[i_sur]
-    extra = need_mm - h                                    # the piece is only as tall as the text needs
-    if extra:
-        PIECES[i_sur] = (k, n, x, y - extra, w, h + extra, cls)
-        k, n, x, y, w, h, cls = PIECES[i_case]
-        PIECES[i_case] = (k, n, x, y, w, h - extra, cls)
-    case_h_px = PIECES[i_case][5] * PX_PER_MM
-    half = (case_h_px - 2 - 48 - 94 - 66) / 2               # border, padding, text above the chart (kicker, two title lines, legend), axis and label room
-    if PIECES[i_sur][5] > 210 or half < 18:
-        raise SystemExit("poster_board: the What surprised me text does not fit with the case study on A4 pieces")
-    return min(83.0, half), extra
+def inner_px(key):
+    w = next(p for p in PIECES if p[0] == key)[4]
+    return w * PX_PER_MM - 2 - 56                           # piece width less its border and side padding
+
+
+def surprised_html():
+    return ('<div class="kicker">What surprised me</div><div style="' + SURPRISED_STYLE + '">'
+            + "".join(f'<p style="margin:0 0 {0 if i == len(SURPRISED) - 1 else 10}px 0">{t}</p>' for i, t in enumerate(SURPRISED)) + '</div>')
+
+
+def fit_center(case_header_html):
+    """Set the three center heights (they add up to 482 mm). The What surprised me piece is only as tall as its text.
+    The answer piece gets what its chart needs. The case study gets the rest, up to the 203 mm a Letter sheet takes;
+    anything beyond that goes back to the answer piece. Returns the plot half-height for the case chart."""
+    idx = {p[0]: i for i, p in enumerate(PIECES)}
+    total = BOARD_MM[1] - 44 - 24
+    s_mm = math.ceil((measure(surprised_html(), inner_px("surprised"))[1] + 48 + 2 + 1) / PX_PER_MM)
+    c_mm = min(FIT_MM[1], total - ANSWER_MIN_MM - s_mm)
+    a_mm = total - s_mm - c_mm
+    if a_mm > FIT_MM[1] or s_mm > FIT_MM[1] or c_mm < 100:
+        raise SystemExit("poster_board: the center pieces do not fit on Letter sheets with this text")
+    y = 22
+    for key, h in (("answer", a_mm), ("case", c_mm), ("surprised", s_mm)):
+        k, n, x, _, w, _, cls = PIECES[idx[key]]
+        PIECES[idx[key]] = (k, n, x, y, w, h, cls); y += h + 12
+    head = measure(case_header_html, inner_px("case"))[1]
+    half = (c_mm * PX_PER_MM - 2 - 48 - head - 6 - 66 - 2) / 2    # border, padding, text above the chart, gap, axis and label room
+    if half < 30:
+        raise SystemExit("poster_board: no room left for the case study chart")
+    return min(83.0, half)
 
 
 def build_pieces(R, Y):
-    half, extra = fit_surprised()
     c = R["counts"]
     man = {}
     out = {}
@@ -273,25 +293,27 @@ def build_pieces(R, Y):
                      f'<div style="margin-top:18px;display:flex;flex-direction:column;gap:16px">{rows}</div>'
                      '<div style="margin-top:20px;padding-top:14px;border-top:1px solid #E3E0D8;font-size:15px;font-weight:600">Do they rise and fall together, year by year?</div>')
     l1, l2, rule = answer_wording(R)
-    svg, vals = answer_svg(R)
-    out["answer"] = (f'<div class="kicker">The answer</div><h2 style="font-size:34px">{l1}<br><span style="color:{CORAL}">{l2}</span></h2>'
-                     f'<div class="sub">How much attention rises each time a problem gets worse</div><div>{svg}</div>')
-    man["answer"] = {"title": [l1, l2], "rule": rule, "values": vals}
     cs, why = pick_case(R)
     t1, t2, leg_off, leg_news = case_wording(cs)
-    svg, info = case_svg(cs, Y, half)
-    info["made_shorter_by_mm"] = extra
     sw = lambda col: f'<span style="display:inline-block;width:18px;height:4px;background:{col};vertical-align:middle;margin-right:6px;border-radius:2px"></span>'
-    longest = max(len(t1), len(t2))           # the reference's own title is 40 characters a line at 27 px; longer wording is set smaller so it stays on two lines
-    size = "" if longest <= 41 else f' style="font-size:{max(20.0, 27 * 41 / longest):.1f}px"'
-    out["case"] = (f'<div class="kicker">When they disagree</div><h2{size}>{t1}<br>{t2}</h2>'
-                   f'<div style="display:flex;gap:22px;margin-top:10px;font-size:13.5px;font-weight:600"><span>{sw(NAVY)}{leg_off}</span><span>{sw(CORAL)}{leg_news}</span></div>'
-                   f'<div style="margin-top:6px">{svg}</div>')
+    # The case title keeps the reference's 27 px and wraps inside the narrower Letter-width piece.
+    case_head = (f'<div class="kicker">When they disagree</div><h2 style="text-wrap:balance">{t1} {t2}</h2>'
+                 f'<div style="display:flex;gap:22px;margin-top:10px;font-size:13.5px;font-weight:600"><span>{sw(NAVY)}{leg_off}</span><span>{sw(CORAL)}{leg_news}</span></div>')
+    half = fit_center(case_head)
+    # The answer title is one line at 34 px in the reference. If the narrower piece cannot hold it, it is set just small enough to fit.
+    wa = inner_px("answer")
+    widest = max(measure(f'<h2 style="font-size:34px">{t}</h2>')[0] for t in (l1, l2))
+    a_size = 34.0 if widest <= wa else math.floor(34.0 * wa / widest * 2) / 2
+    svg, vals = answer_svg(R, wa)
+    out["answer"] = (f'<div class="kicker">The answer</div><h2 style="font-size:{a_size:g}px">{l1}<br><span style="color:{CORAL}">{l2}</span></h2>'
+                     f'<div class="sub">How much attention rises each time a problem gets worse</div><div>{svg}</div>')
+    man["answer"] = {"title": [l1, l2], "title_px": a_size, "rule": rule, "values": vals}
+    svg, info = case_svg(cs, Y, half, inner_px("case"))
+    out["case"] = case_head + f'<div style="margin-top:6px">{svg}</div>'
     man["case"] = {"title": [t1, t2], "picked_by": why, "city": cs["city"], "category": cs["category"], "start": cs["start"], "end": cs["end"], "months": cs["months"],
                    "official_direction": cs["official_direction"], "attention_direction": cs["attention_direction"], **info}
-    out["surprised"] = ('<div class="kicker">What surprised me</div><div style="' + SURPRISED_STYLE + '">'
-                        + "".join(f'<p style="margin:0 0 {0 if i == len(SURPRISED) - 1 else 10}px 0">{t}</p>' for i, t in enumerate(SURPRISED)) + '</div>')
-    man["surprised"] = {"text": SURPRISED, "made_taller_by_mm": extra}
+    out["surprised"] = surprised_html()
+    man["surprised"] = {"text": SURPRISED}
     y1, y2 = need(c.get("news_first_month"), "news_first_month")[:4], need(c.get("news_last_month"), "news_last_month")[:4]
     nums = [(str(need(c.get("cities"), "cities")), "cities", NAVY),
             (f"{round(need(c.get('articles_labeled_all'), 'articles_labeled_all') / 1000):,}k", "news articles sorted by topic", CORAL),
@@ -336,20 +358,22 @@ def chrome(args, html_path):
 
 
 def sheet_plan():
-    """One entry per A4 page: piece key, page name, landscape?, the window of the piece shown (top offset and height in mm)."""
+    """One entry per Letter page: piece key, page name, landscape?, the window of the piece shown (top offset and height in mm)."""
     plan = []
     for key, name, x, y, w, h, _ in PIECES:
-        if key == "numbers":                 # 330 mm is longer than an A4 sheet: two halves that meet between the third and fourth numbers
+        if key == "numbers":                 # 330 mm is longer than a sheet: two halves that meet between the third and fourth numbers
             plan.append((key, name + ", top half", False, 0, h / 2, "join this edge to the bottom half"))
             plan.append((key, name + ", bottom half", False, h / 2, h / 2, "join this edge to the top half"))
         else:
-            plan.append((key, name, w > 190, 0, h, ""))
+            plan.append((key, name, w > FIT_MM[1], 0, h, ""))
     return plan
 
 
 def sheet_html(key, name, landscape, off, hh, join, inner, page_no, n_pages):
     _, _, bx, by, w, h, _ = next(p for p in PIECES if p[0] == key)
-    pw, ph = (297, 210) if landscape else (210, 297)
+    pw, ph = (PAGE_MM[1], PAGE_MM[0]) if landscape else PAGE_MM
+    if w > (FIT_MM[0] if landscape else FIT_MM[1]) or hh > (FIT_MM[1] if landscape else FIT_MM[0]):
+        raise SystemExit(f"poster_board: {name} is {w} x {hh} mm and does not fit a Letter sheet's printable area")
     left, top = (pw - w) / 2, (ph - hh) / 2
     marks = []
     line = "position:absolute;background:#B5B5B5"
@@ -357,15 +381,15 @@ def sheet_html(key, name, landscape, off, hh, join, inner, page_no, n_pages):
     def vmark(xm, ym): marks.append(f'<div style="{line};left:{xm - 0.075}mm;top:{ym}mm;width:0.15mm;height:6mm"></div>')
     for cx, sx in ((left, -1), (left + w, 1)):
         for cy, sy in ((top, -1), (top + hh, 1)):
-            if left >= 9:                      # horizontal marks beside the corner
+            if left >= 14.5:                      # horizontal marks beside the corner
                 hmark(cx + (1.5 if sx > 0 else -7.5), cy)
-            if top >= 9:                       # vertical marks above and below the corner
+            if top >= 14.5:                       # vertical marks above and below the corner
                 vmark(cx, cy + (1.5 if sy > 0 else -7.5))
     note = f"Piece {page_no} of {n_pages}: {name}. {w:g} x {hh:g} mm. Cut along the edge of the piece."
     if join:
         edge = "bottom" if off == 0 else "top"
         note += f" The {edge} edge meets the other half."
-    note_y = top - 6 if top >= 12 else None
+    note_y = top - 6 if top >= 13 else None
     label = (f'<div style="position:absolute;left:{max(left, 8)}mm;top:{note_y}mm;font-size:7pt;color:#9A9A9A;font-family:Helvetica,Arial,sans-serif">{note}</div>' if note_y is not None else "")
     return f"""<!doctype html><html><head><meta charset="utf-8"><style>{font_css('file://' + FONTS)}{BASE_CSS}
 @page{{size:{pw}mm {ph}mm;margin:0}}
@@ -387,14 +411,15 @@ def layout_pdf(path, plan):
     from reportlab.pdfgen import canvas
     from reportlab.lib.units import mm
     from reportlab.lib.colors import HexColor
-    W, H = 297 * mm, 210 * mm
+    W, H = PAGE_MM[1] * mm, PAGE_MM[0] * mm
     c = canvas.Canvas(path, pagesize=(W, H))
     c.setTitle("Measuring What Matters: board layout")
     s = 0.30
+    col = sorted({(p[2], p[4]) for p in PIECES})
     ox, oy = 14 * mm, H - 20 * mm                      # top-left corner of the drawn board
     c.setFont("Helvetica-Bold", 13); c.drawString(ox, H - 12 * mm, "Board layout: where each piece goes")
     c.setFont("Helvetica", 8.5); c.setFillColor(HexColor("#555555"))
-    c.drawString(ox + 92 * mm, H - 12 * mm, f"Board {BOARD_MM[0]} x {BOARD_MM[1]} mm, landscape. 22 mm outer margin, 12 mm gaps. All numbers are mm from the board's top-left corner.")
+    c.drawString(ox + 84 * mm, H - 12 * mm, f"Board {BOARD_MM[0]} x {BOARD_MM[1]} mm, landscape. 22 mm outer margin, 12 mm gaps. All numbers are mm from the board's top-left corner.")
     c.setFillColor(HexColor("#FFFFFF")); c.setStrokeColor(HexColor("#444444")); c.setLineWidth(1)
     c.rect(ox, oy - BOARD_MM[1] * s * mm, BOARD_MM[0] * s * mm, BOARD_MM[1] * s * mm, stroke=1, fill=1)
     pages = {}
@@ -412,20 +437,21 @@ def layout_pdf(path, plan):
         c.setFont("Helvetica", 8.5)
         pg = pages[key]
         lines = [f"{w} x {h} mm", f"left {x}, top {y}", f"right {x + w}, bottom {y + h}",
-                 "A4 page " + (str(pg[0]) if len(pg) == 1 else f"{pg[0]} and {pg[1]} (two halves)")]
+                 "Letter page " + (str(pg[0]) if len(pg) == 1 else f"{pg[0]} and {pg[1]} (two halves)")]
         for j, t in enumerate(lines):
             c.drawString(px + 2.5 * mm, ty - (j + 1) * 4.2 * mm, t)
     c.setFillColor(HexColor("#333333")); c.setFont("Helvetica", 8.5)
-    notes = ["Columns: 200, 297 and 145 mm wide, starting 22, 234 and 543 mm from the left edge.",
-             "Print a4_pieces.pdf on A4 at 100% (no \"fit to page\"). Check one piece with a ruler: the dark title piece is 200 mm wide.",
-             "Pieces 4, 5 and 6 are 297 mm wide, the full width of an A4 sheet turned sideways. Print them borderless if the printer can. If not, the printer leaves a thin white strip at each end.",
-             "Piece 7 is 330 mm tall, longer than an A4 sheet. It prints as two halves of 145 x 165 mm that meet between the third and fourth numbers."]
+    tw = next(p for p in PIECES if p[0] == "title")[4]
+    notes = [f"Columns: {', '.join(str(w) for _, w in col[:-1])} and {col[-1][1]} mm wide, starting {', '.join(str(x) for x, _ in col[:-1])} and {col[-1][0]} mm from the left edge.",
+             f"Print letter_pieces.pdf on US Letter at 100% (no \"fit to page\"). Check one piece with a ruler: the dark title piece is {tw} mm wide.",
+             "Every piece is at most 266 x 203 mm, so it sits inside a normal printer's margins. No borderless printing is needed.",
+             "Piece 7 is 330 mm tall, longer than a sheet. It prints as two halves that meet between the third and fourth numbers."]
     yy = oy - BOARD_MM[1] * s * mm - 4.5 * mm
     for t in notes:
         c.drawString(ox, yy, t); yy -= 4 * mm
     c.showPage()
     c.setFont("Helvetica-Bold", 13); c.setFillColor(HexColor("#000000")); c.drawString(14 * mm, H - 14 * mm, "Positions in mm")
-    cols = [("Piece", 14), ("A4 page", 92), ("Width", 122), ("Height", 142), ("Left", 162), ("Top", 182), ("Right", 202), ("Bottom", 222)]
+    cols = [("Piece", 14), ("Letter page", 92), ("Width", 122), ("Height", 142), ("Left", 162), ("Top", 182), ("Right", 202), ("Bottom", 222)]
     yy = H - 26 * mm
     c.setFont("Helvetica-Bold", 10)
     for t, x in cols: c.drawString(x * mm, yy, t)
@@ -438,7 +464,7 @@ def layout_pdf(path, plan):
     yy -= 14 * mm
     c.setFont("Helvetica", 9.5)
     for t in ["Left and top are measured from the board's top-left corner to the piece's top-left corner.",
-              "Order that works: mark the three column starts (22, 234, 543 mm) along the top edge, then place each column from the top down.",
+              "Order that works: mark the three column starts along the top edge, then place each column from the top down.",
               "Gaps between pieces in a column and between columns are 12 mm."]:
         c.drawString(14 * mm, yy, t); yy -= 5.5 * mm
     c.showPage(); c.save()
@@ -454,7 +480,7 @@ def main():
     open(board_path, "w", encoding="utf-8").write(board_html(pieces, "fonts"))
     png = os.path.join(POSTER, "board_preview.png")
     chrome([f"--screenshot={png}", "--window-size=1420,1100", "--force-device-scale-factor=2"], board_path)
-    # one A4 page per piece
+    # one Letter page per piece
     out = fitz.open()
     with tempfile.TemporaryDirectory() as tmp:
         for i, (key, name, landscape, off, hh, join) in enumerate(plan, 1):
@@ -465,21 +491,21 @@ def main():
             if len(d) != 1:
                 raise SystemExit(f"poster_board: page {i} ({name}) came out as {len(d)} pages")
             r = d[0].rect
-            want = (841.89, 595.28) if landscape else (595.28, 841.89)
+            want = (792.0, 612.0) if landscape else (612.0, 792.0)
             if abs(r.width - want[0]) > 1 or abs(r.height - want[1]) > 1:
-                raise SystemExit(f"poster_board: page {i} ({name}) is {r.width:.0f} x {r.height:.0f} pt, not A4")
+                raise SystemExit(f"poster_board: page {i} ({name}) is {r.width:.0f} x {r.height:.0f} pt, not US Letter")
             out.insert_pdf(d); d.close()
-    a4 = os.path.join(POSTER, "a4_pieces.pdf")
-    out.set_metadata({"title": "Measuring What Matters: poster pieces, A4, true size", "author": "Cayden Auyang"})
+    a4 = os.path.join(POSTER, "letter_pieces.pdf")
+    out.set_metadata({"title": "Measuring What Matters: poster pieces, US Letter, true size", "author": "Cayden Auyang"})
     out.save(a4, deflate=True, garbage=3); out.close()
     layout_pdf(os.path.join(POSTER, "board_layout.pdf"), plan)
     man.update({"results_generated_utc": R.get("generated_utc"), "validation_status": (R.get("text") or {}).get("validation_status"),
                 "pages": [{"page": i, "piece": name, "orientation": "landscape" if ls else "portrait"} for i, (k, name, ls, *_r) in enumerate(plan, 1)],
                 "pieces_mm": [{"piece": name, "left": x, "top": y, "width": w, "height": h} for k, name, x, y, w, h, _ in PIECES]})
     json.dump(man, open(os.path.join(POSTER, "board_manifest.json"), "w"), indent=1)
-    print(f"board poster: {len(plan)} A4 pages | answer: {' / '.join(man['answer']['title'])} | case: {' '.join(man['case']['title'])}")
+    print(f"board poster: {len(plan)} Letter pages | answer: {' / '.join(man['answer']['title'])} | case: {' '.join(man['case']['title'])}")
     print("   answer rule:", man["answer"]["rule"])
-    print("   wrote poster/a4_pieces.pdf, poster/board_layout.pdf, poster/board_preview.png")
+    print("   wrote poster/letter_pieces.pdf, poster/board_layout.pdf, poster/board_preview.png")
 
 
 if __name__ == "__main__":

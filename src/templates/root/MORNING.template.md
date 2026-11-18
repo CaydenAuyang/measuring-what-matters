@@ -4,7 +4,7 @@ Built {{generated_utc}} UTC. Validation: **{{text.validation_status}}**.
 
 ## 1. Print first
 
-1. `poster/a4_pieces.pdf`: A4, 100% (no "fit to page"), one side. Nine pages with cut lines. The numbers piece is two halves (pages 7 and 8). Pages 4 to 6 fill the sheet's width: print borderless if you can.
+1. `poster/letter_pieces.pdf`: US Letter, 100% (no "fit to page"), one side. Nine pages with cut lines. Every piece sits inside normal printer margins. The numbers piece is two halves (pages 7 and 8).
 2. `poster/board_layout.pdf`: where each piece goes on the 710 by 550 mm board, in mm. `poster/board_preview.png` shows the result.
 3. `deliverables/defense_brief.md`: read it before the showcase.
 
