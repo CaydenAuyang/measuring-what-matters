@@ -230,10 +230,12 @@ These are facts the run could not know. Fill them in before you present, in your
 - [CAYDEN TO CONFIRM: date of mentor approval, if any] This one also appears in `deliverables/deviations.md` (row 1.3) and `deliverables/preregistration.md`.
 - [CAYDEN TO CONFIRM: why the study was compressed into one run]
 - [CAYDEN TO CONFIRM: why the pre-registration moved from October to November 17]
+- [CAYDEN TO CONFIRM: what these results mean for OurCityHealth] The paper's Discussion has a first draft of this paragraph (`paper/paper.md`, Section 6).
+- [CAYDEN TO CONFIRM: license for the dataset] In `data/public/README.md` and the data card.
 - [CAYDEN TO CONFIRM: the proposed cause for the case study] Every other proposed cause in the disconnection table is also marked "for Cayden to confirm."
 - [CAYDEN TO WRITE, 2 sentences: "What surprised me"] The poster card has two candidate sentences to use or discard. Its wording lives in `poster/poster_text.json`.
 
-To find every open line in the project: `grep -rn "CAYDEN TO" deliverables poster paper MORNING.md`
+To find every open line in the project: `grep -rn "CAYDEN TO" deliverables poster paper data/public MORNING.md`
 
 ## Tables behind the charts
 

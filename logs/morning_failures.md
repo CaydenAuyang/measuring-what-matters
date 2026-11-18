@@ -1,9 +1,7 @@
-- **Validation is still provisional.** The blind second coder runs after its quota resets at about 3:07 AM. Until then the kappas come from the third AI pass. If this line is still here, that step did not finish: see `STATE.md`.
-- **The first model key hit a free-tier daily cap.** You switched the first coder to another provider's model. One model labeled everything (`data/public/labeling_card.md`).
-- **London has no Health series** (NHS England pages showed a browser challenge). **New York Health starts in 2020** (CDC WONDER needs a terms form).
-- **Hong Kong news for 2015 to 2019 rests on the South China Morning Post alone.** Two outlets failed the headline check and the pre-registered rule left them out.
-- **scmp.com blocked automated requests.** Its validation items use GDELT's stored headline, 2020 on only. No Hong Kong item before 2020 was validated.
+- **Validation is still provisional.** The blind second coder runs after its quota resets at about 3:07 AM. If this line is still here, that step did not finish: see `STATE.md`.
+- **The first model key hit a free-tier daily cap.** You switched the first coder to another provider's model. One model labeled everything.
+- **No London Health series** (the site blocked automated requests). **New York Health starts in 2020.**
+- **Hong Kong news for 2015 to 2019 rests on the South China Morning Post alone**, and no Hong Kong label from before 2020 was validated (scmp.com blocked automated requests).
 - **Three validation rules were set during the run**, after provisional scores were seen. The validation report also shows the test as the plan worded it.
 - **The Internet Archive would not save the github.com repository page.** The plan files were saved and verified.
-- **Cut:** the social media snapshot and the pre-2015 news extension (they need logins or API keys).
-- **The poster is 16 pages**, the most a 48 by 36 inch board holds.
+- **Cut:** the social media snapshot and the pre-2015 news extension (they need logins or API keys). The poster is 16 pages, the most the board holds.
